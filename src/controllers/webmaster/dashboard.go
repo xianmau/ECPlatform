@@ -2,14 +2,14 @@ package webmaster
 
 import (
 	"html/template"
-	"log"
 	"net/http"
+	log "utils/logger"
 )
 
 func GetDashboard(w http.ResponseWriter, r *http.Request) {
 	t, err := template.ParseFiles("views/webmaster/dashboard.html")
 	if err != nil {
-		log.Println(err)
+		log.Fatal(err.Error())
 		return
 	}
 
@@ -19,7 +19,9 @@ func GetDashboard(w http.ResponseWriter, r *http.Request) {
 
 	err = t.Execute(w, data)
 	if err != nil {
-		log.Println(err)
+		log.Fatal(err.Error())
 		return
 	}
+
+	log.Info("a client visit /webmaster/dashboard")
 }
