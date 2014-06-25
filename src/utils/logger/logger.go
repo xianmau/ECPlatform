@@ -28,12 +28,12 @@ func SetLevel(l int) {
 	level = l
 }
 
-func Trace(msg string) {
+func Trace(msg interface{}) {
 	if level > LevelTrace {
 		return
 	}
 	logger := log.New(os.Stdout, "", log.Ldate|log.Ltime|log.LstdFlags)
-	logger.Println("[T]" + msg)
+	logger.Printf("[T]%+v\n", msg)
 }
 
 func Debug(msg string) {

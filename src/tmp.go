@@ -2,14 +2,14 @@ package main
 
 import (
 	"log"
-	"time"
-	"utils/tools"
+	"utils/global"
 )
 
 func main() {
-	log.Println(tools.GetDateYYYYMMDD())
-	log.Println(tools.GetAppPath())
+	log.Println(global.Sessions)
 
-	time.Sleep(5 * time.Second)
+}
+
+func init() {
 
 }

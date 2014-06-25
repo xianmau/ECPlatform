@@ -3,10 +3,14 @@ package webmaster
 import (
 	"html/template"
 	"net/http"
+	"utils/global"
 	log "utils/logger"
 )
 
 func GetDashboard(w http.ResponseWriter, r *http.Request) {
+	session := global.Sessions.Prepare(w, r)
+	session.Set("admin", "xm")
+
 	t, err := template.ParseFiles("views/webmaster/dashboard.html")
 	if err != nil {
 		log.Fatal(err.Error())
