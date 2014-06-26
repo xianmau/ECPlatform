@@ -16,10 +16,16 @@ func GetDashboard(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err.Error())
 		return
 	}
+	t, err = t.ParseFiles("views/webmaster/styles.html", "views/webmaster/scripts.html", "views/webmaster/leftside.html")
+	if err != nil {
+		log.Fatal(err.Error())
+		return
+	}
 
 	data := make(map[string]interface{})
 	data["Name"] = "Xianmau"
 	data["Email"] = "xianmaulin@gmail.com"
+	data["Css"] = "body{padding:0;}"
 
 	err = t.Execute(w, data)
 	if err != nil {

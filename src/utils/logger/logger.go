@@ -114,4 +114,5 @@ func Fatal(msg string) {
 	}
 	logger := log.New(logfile, "", log.Ldate|log.Ltime|log.Llongfile)
 	logger.Println("[F]" + msg)
+	os.Exit(-1)
 }
