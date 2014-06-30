@@ -9,4 +9,7 @@ import (
 func Register() {
 	http.HandleFunc("/webmaster", webmaster.GetDashboard)
 	http.HandleFunc("/webmaster/dashboard", webmaster.GetDashboard)
+
+	http.HandleFunc("/webmaster/login", webmaster.Login)
+
 }
