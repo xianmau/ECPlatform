@@ -34,7 +34,10 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			log.Error(err.Error())
 			return
 		}
-		err = t.Execute(w, nil)
+		data := make(map[string]interface{})
+		r.ParseForm()
+		data["login_result"] = r.Form.Get("msg")
+		err = t.Execute(w, data)
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -80,16 +83,16 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 			// check authorities
 			if ok, msg := authority.Check(admin.Role, "登录"); !ok {
-				http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusMovedPermanently)
+				http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusFound)
 				return
 			}
 
 			log.Info(client_ip + " " + admin.Name + " logged")
 			session.Set("admin", admin)
-			http.Redirect(w, r, "/webmaster", http.StatusMovedPermanently)
+			http.Redirect(w, r, "/webmaster", http.StatusFound)
 			return
 		} else {
-			http.Redirect(w, r, tools.UrlEncode("/webmaster/login?msg=用户名或密码错误"), http.StatusMovedPermanently)
+			http.Redirect(w, r, tools.UrlEncode("/webmaster/login?msg=用户名或密码错误"), http.StatusFound)
 			return
 		}
 	}
@@ -106,7 +109,7 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 		admin = (session.Get("admin")).(models.Admin)
 	} else {
 		log.Info(client_ip + " get /webmaster/logout")
-		http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=未登录"), http.StatusMovedPermanently)
+		http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=未登录"), http.StatusFound)
 		return
 	}
 
@@ -116,7 +119,7 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 
 		log.Info(client_ip + " " + admin.Name + " logged out")
 		session.Delete("admin")
-		http.Redirect(w, r, "/webmaster/login", http.StatusMovedPermanently)
+		http.Redirect(w, r, "/webmaster/login", http.StatusFound)
 		return
 	}
 }

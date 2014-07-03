@@ -12,6 +12,10 @@ type Session struct {
 	lastAccessTime time.Time
 }
 
+func (this *Session) IsTimeout(expires time.Duration) bool {
+	return this.lastAccessTime.Add(expires).Before(time.Now())
+}
+
 func (this *Session) UpdateAccessTime() {
 	this.lastAccessTime = time.Now()
 }
@@ -91,7 +95,7 @@ func (this *Sessions) get(sessionId string) *Session {
 	this.lock.Lock()
 	defer this.lock.Unlock()
 	if _, ok := this.sessions[sessionId]; ok {
-		if this.sessions[sessionId].lastAccessTime.Add(this.expires).After(time.Now()) {
+		if !this.sessions[sessionId].IsTimeout(this.expires) {
 			this.sessions[sessionId].UpdateAccessTime()
 			return this.sessions[sessionId]
 		}

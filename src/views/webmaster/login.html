@@ -5,16 +5,24 @@
     <title>Login - Electronic Commerce Platform</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     {{template "styles"}}
+    <style>
+      .top-line{position: relative; height: 10px;background: #000;margin-bottom: 50px;}
+      .bottom-copyright{position: relative; margin: 10px auto; width:300px;line-height: 50px;text-align: center;}
+      .login-board{background: #FFF;padding: 20px 30px; border-radius: 5px;}
+      .login-text{text-align: center;font-weight: bold;font-size: 18px;}
+    </style>
   </head>
   <body>
-    <br /><br /><br />
+    <div class="top-line"></div>
+
+    <p class="login-text">LOGIN</p>
     <div class="col-xs-12">
       <div class="row">
         <div class="col-xs-5"></div>
-        <div class="col-xs-2">
+        <div class="col-xs-2 login-board">
           <form role="form" action="/webmaster/login" method="post">
             <div class="form-group">
-              <label for="Name">User name</label>
+              <label for="Name">Name</label>
               <input type="text" class="form-control" name="Name" placeholder="Enter name" />
             </div>
             <div class="form-group">
@@ -27,11 +35,19 @@
               </label>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
+            <span id="login_result" class="text-danger">{{.login_result}}</span>
           </form>
         </div>
         <div class="col-xs-5"></div>
       </div>
     </div>
+
+    <div class="clear"></div>
+
+    <div class="bottom-copyright">
+      &copy 2014 racent.com
+    </div>
+
     {{template "scripts"}}
   </body>
 </html>

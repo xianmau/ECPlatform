@@ -22,7 +22,7 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 		admin = (session.Get("admin")).(models.Admin)
 	} else {
 		log.Info(client_ip + " get /webmaster/dashboard")
-		http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=未登录"), http.StatusMovedPermanently)
+		http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=未登录"), http.StatusFound)
 		return
 	}
 
@@ -32,7 +32,7 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 
 		// check authorities
 		if ok, msg := authority.Check(admin.Role, "登录"); !ok {
-			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusMovedPermanently)
+			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusFound)
 			return
 		}
 

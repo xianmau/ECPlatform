@@ -6,6 +6,7 @@ import (
 	"encoding/base64"
 	"encoding/hex"
 	"io"
+	"net/url"
 	"os"
 	"path/filepath"
 	"time"
@@ -40,7 +41,8 @@ func GetUUID() string {
 }
 
 // URL编码
-func UrlEncode(url string) string {
-
-	return url
+func UrlEncode(s string) string {
+	u, _ := url.Parse(s)
+	ret := u.Path + "?" + u.Query().Encode()
+	return ret
 }
