@@ -11,7 +11,7 @@ import (
 	"utils/tools"
 )
 
-func Dashboard(w http.ResponseWriter, r *http.Request) {
+func GoodsCategory(w http.ResponseWriter, r *http.Request) {
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
@@ -21,17 +21,17 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 	if session.Get("admin") != nil {
 		admin = (session.Get("admin")).(models.Admin)
 	} else {
-		log.Info(client_ip + " get /webmaster/dashboard")
+		log.Info(client_ip + " get /webmaster")
 		http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=未登录"), http.StatusMovedPermanently)
 		return
 	}
 
 	if r.Method == "GET" {
 		// deal with get method
-		log.Info(client_ip + " get /webmaster")
+		log.Info(client_ip + " get /webmaster/goodscategory")
 
 		// check authorities
-		if ok, msg := authority.Check(admin.Role, "登录"); !ok {
+		if ok, msg := authority.Check(admin.Role, "商品管理"); !ok {
 			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusMovedPermanently)
 			return
 		}

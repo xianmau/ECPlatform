@@ -38,3 +38,9 @@ func GetUUID() string {
 	h.Write([]byte(base64.URLEncoding.EncodeToString(b)))
 	return hex.EncodeToString(h.Sum(nil))
 }
+
+// URL编码
+func UrlEncode(url string) string {
+
+	return url
+}
