@@ -12,7 +12,6 @@ import (
 )
 
 func Dashboard(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Cache-Control", "no-cache")
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
@@ -26,7 +25,6 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=未登录"), http.StatusFound)
 		return
 	}
-
 	if r.Method == "GET" {
 		// deal with get method
 		log.Info(client_ip + " get /webmaster/dashboard")

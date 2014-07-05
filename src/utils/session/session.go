@@ -56,11 +56,14 @@ func (this *Sessions) Prepare(w http.ResponseWriter, r *http.Request) *Session {
 	if err != nil {
 		sessionId := tools.GetUUID()
 		cookie = &http.Cookie{
-			Name:     this.cookieName,
-			Value:    sessionId,
-			HttpOnly: true,
+			Name:  this.cookieName,
+			Value: sessionId,
+			Path:  "/",
+			//HttpOnly: true,
 		}
 		http.SetCookie(w, cookie)
+		r.AddCookie(cookie)
+
 		this.set(sessionId)
 		return this.get(sessionId)
 	}
@@ -68,11 +71,13 @@ func (this *Sessions) Prepare(w http.ResponseWriter, r *http.Request) *Session {
 	if session == nil {
 		sessionId := tools.GetUUID()
 		cookie = &http.Cookie{
-			Name:     this.cookieName,
-			Value:    sessionId,
-			HttpOnly: true,
+			Name:  this.cookieName,
+			Value: sessionId,
+			Path:  "/",
+			//HttpOnly: true,
 		}
 		http.SetCookie(w, cookie)
+		r.AddCookie(cookie)
 		this.set(sessionId)
 		return this.get(sessionId)
 	}

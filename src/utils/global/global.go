@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"time"
 	"utils/config"
+	log "utils/logger"
 	"utils/session"
 )
 
@@ -13,6 +14,7 @@ var (
 )
 
 func init() {
+	log.Trace("global init")
 	Config = config.NewConfig()
 	session_expires, err := strconv.Atoi(Config.Get("session_expires"))
 	if err != nil {

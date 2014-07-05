@@ -14,7 +14,6 @@ import (
 )
 
 func GoodsCategory(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Cache-Control", "no-cache")
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
@@ -94,7 +93,6 @@ func GoodsCategory(w http.ResponseWriter, r *http.Request) {
 }
 
 func GoodsCategoryCreate(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Cache-Control", "no-cache")
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
@@ -141,7 +139,6 @@ func GoodsCategoryCreate(w http.ResponseWriter, r *http.Request) {
 }
 
 func GoodsCategoryEdit(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Cache-Control", "no-cache")
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
@@ -188,7 +185,6 @@ func GoodsCategoryEdit(w http.ResponseWriter, r *http.Request) {
 }
 
 func GoodsCategoryDelete(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Cache-Control", "no-cache")
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip

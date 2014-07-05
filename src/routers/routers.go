@@ -14,8 +14,8 @@ func Register() {
 	http.HandleFunc("/webmaster/errorpage", webmaster.ErrorPage)
 
 	// 仪表板
-	http.HandleFunc("/webmaster", webmaster.Dashboard)
 	http.HandleFunc("/webmaster/dashboard", webmaster.Dashboard)
+	http.HandleFunc("/webmaster", webmaster.Dashboard)
 
 	// 商品分类
 	http.HandleFunc("/webmaster/goodscategory", webmaster.GoodsCategory)

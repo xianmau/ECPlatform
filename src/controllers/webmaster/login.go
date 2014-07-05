@@ -15,7 +15,6 @@ import (
 )
 
 func Login(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Cache-Control", "no-cache")
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
@@ -91,7 +90,8 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 			log.Info(client_ip + " " + admin.Name + " logged")
 			session.Set("admin", admin)
-			http.Redirect(w, r, "/webmaster", http.StatusFound)
+
+			http.Redirect(w, r, "/webmaster/dashboard", http.StatusFound)
 			return
 		} else {
 			http.Redirect(w, r, tools.UrlEncode("/webmaster/login?msg=用户名或密码错误"), http.StatusFound)
@@ -101,7 +101,6 @@ func Login(w http.ResponseWriter, r *http.Request) {
 }
 
 func Logout(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Cache-Control", "no-cache")
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
