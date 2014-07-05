@@ -5,6 +5,9 @@
     <title>Dashboard - Electronic Commerce Platform</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     {{template "styles"}}
+    <style>
+      .create-form{display: none; padding: 10px; margin: 10px 0;border: 1px solid #CCC;}
+    </style>
   </head>
   <body>
     <div id="leftside">
@@ -12,11 +15,87 @@
     </div>
 
     <div id="rightside">
-      {{.Admin}}
+      <div class="main">
+        <a href="javascript:void(0);" onclick="ShowCreateForm()"><span class="glyphicon glyphicon-plus"></span> Create</a>
+        <form class="create-form">
+          <label>Title</label>
+          <input id="CreateTitle" type="text" />
+          <label>Parent</label>
+          <select id="CreateParent">
+            <option>No Parent</option>
+          </select>
+          <label>Ordering</label>
+          <input id="CreateOrdering" type="text" value="0" />
+          <button type="button" onclick="SubmitCreateForm()">Submit</button>
+          <button type="button" onclick="HideCreateForm()">Cancel</button>
+        </form>
+
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <td>#</td>
+                <td>Title</td>
+                <td>Parent</td>
+                <td>Ordering</td>
+                <td>Operation</td>
+              </tr>
+            </thead>
+            <tbody>
+              {{range $index, $item := .CategoryList}}
+              <tr>
+                <td>{{$index}}</td>
+                <td>{{$item.Title}}</td>
+                <td>{{$item.Parent}}</td>
+                <td>{{$item.Ordering}}</td>
+                <td>
+                  <a href="javascript:void(0);" onclick="ShowEditForm()"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                  <a href="javascript:void(0);" onclick="Delete()"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                </td>
+              </tr>
+              {{end}}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
     <div class="clear"></div>
 
     {{template "scripts"}}
+    <script>
+      function ShowCreateForm(){
+        $('.create-form').slideDown();
+      }
+      function HideCreateForm(){
+        $('.create-form').slideUp();
+      }
+      function SubmitCreateForm(){
+        var title = $('.#CreateTitle').val();
+        var parent = $('.#CreateParent').val();
+        var ordering = $('.#CreateOrdering').val();
+
+        $.ajax({
+         type: 'POST',
+         url: '/webmaster/goodscategory/create',
+         data: {
+           title: title,
+           parent: parent,
+           ordering: ordering
+         },
+         success: function(data) {
+           location.reload();
+         },
+         dataType: 'text'
+        });
+      }
+      
+      function ShowEditForm(name){
+        $('.edit-form').slideDown();
+      }
+      function HideEditForm(){
+        $('.edit-form').slideUp();
+      }
+    </script>
   </body>
 </html>

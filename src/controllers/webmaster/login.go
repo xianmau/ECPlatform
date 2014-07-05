@@ -57,6 +57,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		rows, err := db.Query("select `tb_admin`.*,`tb_role`.`Authority` from `tb_admin` left join `tb_role` on `tb_admin`.`Role`=`tb_role`.`Name` where `tb_admin`.`Name`=? and `tb_admin`.`Password`=?", form_name, form_password)
+		defer rows.Close()
 		if err != nil {
 			log.Error(err.Error())
 			return

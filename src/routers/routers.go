@@ -18,15 +18,15 @@ func Register() {
 	http.HandleFunc("/webmaster/dashboard", webmaster.Dashboard)
 
 	// 商品分类
-	http.HandleFunc("webmaster/goodscategory", webmaster.GoodsCategory)
-	//http.HandleFunc("webmaster/goodscategory/create", webmaster.GoodsCategoryCreate)
-	//http.HandleFunc("webmaster/goodscategory/edit", webmaster.GoodsCategoryEdit)
-	//http.HandleFunc("webmaster/goodscategory/delete", webmaster.GoodsCategoryDelete)
+	http.HandleFunc("/webmaster/goodscategory", webmaster.GoodsCategory)
+	//http.HandleFunc("/webmaster/goodscategory/create", webmaster.GoodsCategoryCreate)
+	//http.HandleFunc("/webmaster/goodscategory/edit", webmaster.GoodsCategoryEdit)
+	//http.HandleFunc("/webmaster/goodscategory/delete", webmaster.GoodsCategoryDelete)
 	// 商品
-	//http.HandleFunc("webmaster/goods", webmaster.Goods)
-	//http.HandleFunc("webmaster/goods/create", webmaster.GoodsCreate)
-	//http.HandleFunc("webmaster/goods/edit", webmaster.GoodsEdit)
-	//http.HandleFunc("webmaster/goods/delete", webmaster.GoodsDelete)
+	http.HandleFunc("/webmaster/goods", webmaster.Goods)
+	//http.HandleFunc("/webmaster/goods/create", webmaster.GoodsCreate)
+	//http.HandleFunc("/webmaster/goods/edit", webmaster.GoodsEdit)
+	//http.HandleFunc("/webmaster/goods/delete", webmaster.GoodsDelete)
 
 	// 登录和注销
 	http.HandleFunc("/webmaster/login", webmaster.Login)

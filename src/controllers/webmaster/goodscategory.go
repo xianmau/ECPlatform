@@ -1,6 +1,8 @@
 package webmaster
 
 import (
+	"database/sql"
+	_ "github.com/go-sql-driver/mysql"
 	"html/template"
 	"models"
 	"net/http"
@@ -21,7 +23,7 @@ func GoodsCategory(w http.ResponseWriter, r *http.Request) {
 	if session.Get("admin") != nil {
 		admin = (session.Get("admin")).(models.Admin)
 	} else {
-		log.Info(client_ip + " get /webmaster")
+		log.Info(client_ip + " get /webmaster/goodscategory")
 		http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=未登录"), http.StatusFound)
 		return
 	}
@@ -37,7 +39,7 @@ func GoodsCategory(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// render template
-		t, err := template.ParseFiles("views/webmaster/dashboard.html")
+		t, err := template.ParseFiles("views/webmaster/goodscategory/list.html")
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -52,6 +54,35 @@ func GoodsCategory(w http.ResponseWriter, r *http.Request) {
 		data := make(map[string]interface{})
 		data["Admin"] = admin
 
+		db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+		defer db.Close()
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		rows, err := db.Query("select * from `tb_goods_category` where true")
+		defer rows.Close()
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		categorylist := []models.GoodsCategory{}
+		for rows.Next() {
+			var goodscategory models.GoodsCategory
+			var Title string
+			var Parent string
+			var Ordering int
+			if err := rows.Scan(&Title, &Parent, &Ordering); err != nil {
+				log.Error(err.Error())
+				return
+			}
+			goodscategory.Title = Title
+			goodscategory.Parent = Parent
+			goodscategory.Ordering = Ordering
+			categorylist = append(categorylist, goodscategory)
+		}
+		data["CategoryList"] = categorylist
+		log.Trace(categorylist)
 		// execute template
 		err = t.Execute(w, data)
 		if err != nil {
