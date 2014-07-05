@@ -15,6 +15,7 @@ import (
 )
 
 func Login(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Cache-Control", "no-cache")
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
@@ -100,6 +101,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 }
 
 func Logout(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Cache-Control", "no-cache")
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip

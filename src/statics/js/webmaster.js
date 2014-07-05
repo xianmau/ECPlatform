@@ -54,7 +54,9 @@
    if (p.length == 1) {
      $('.nav li a').eq(0).addClass("active");
    } else if (p.length > 1) {
-     if (p[1] == "goods" || p[1] == "goodscategory") {
+     if (p[1] == "dashboard") {
+       $('.nav li a').eq(0).addClass("active");
+     } else if (p[1] == "goods" || p[1] == "goodscategory") {
        $('.nav li a').eq(1).addClass("active");
      } else if (p[1] == "zones" || p[1] == "zktree") {
        $('.nav li a').eq(2).addClass("active");

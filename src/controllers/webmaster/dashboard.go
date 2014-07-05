@@ -12,6 +12,7 @@ import (
 )
 
 func Dashboard(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Cache-Control", "no-cache")
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
@@ -21,7 +22,7 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 	if session.Get("admin") != nil {
 		admin = (session.Get("admin")).(models.Admin)
 	} else {
-		log.Info(client_ip + " get /webmaster/dashboard")
+		log.Info(client_ip + " access /webmaster/dashboard")
 		http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=未登录"), http.StatusFound)
 		return
 	}

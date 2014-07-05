@@ -1,7 +1,7 @@
 package models
 
 type GoodsCategory struct {
-	Title    string `json:"title"`
+	Name     string `json:"name"`
 	Parent   string `json:"parent"`
 	Ordering int    `json:"ordering"`
 }

@@ -7,6 +7,9 @@
     {{template "styles"}}
     <style>
       .create-form{display: none; padding: 10px; margin: 10px 0;border: 1px solid #CCC;}
+
+
+      .edit-form{display: display;width: 350px;position: fixed;top: 200px;left:280px;right:0; padding: 10px; margin: 10px auto;border: 1px solid #CCC; background: #999;}
     </style>
   </head>
   <body>
@@ -19,23 +22,41 @@
         <a href="javascript:void(0);" onclick="ShowCreateForm()"><span class="glyphicon glyphicon-plus"></span> Create</a>
         <form class="create-form">
           <label>Title</label>
-          <input id="CreateTitle" type="text" />
+          <input id="CreateName" type="text" />
           <label>Parent</label>
           <select id="CreateParent">
             <option>No Parent</option>
+            {{range $index, $item := .CategoryList}}
+            <option>{{$item.Name}}</option>
+            {{end}}
           </select>
           <label>Ordering</label>
           <input id="CreateOrdering" type="text" value="0" />
           <button type="button" onclick="SubmitCreateForm()">Submit</button>
           <button type="button" onclick="HideCreateForm()">Cancel</button>
         </form>
-
+        <form class="edit-form">
+          <label>Title</label>
+          <input id="EditName" disabled="disabled" type="text" />
+          <label>Parent</label>
+          <select id="EditParent">
+            <option>No Parent</option>
+            {{range $index, $item := .CategoryList}}
+            <option>{{$item.Name}}</option>
+            {{end}}
+          </select>
+          <label>Ordering</label>
+          <input id="EditOrdering" type="text" value="0" />
+          <button type="button" onclick="SubmitCreateForm()">Submit</button>
+          <button type="button" onclick="HideCreateForm()">Cancel</button>
+        </form>
         <div>
+
           <table class="table">
             <thead>
               <tr>
                 <td>#</td>
-                <td>Title</td>
+                <td>Name</td>
                 <td>Parent</td>
                 <td>Ordering</td>
                 <td>Operation</td>
@@ -45,7 +66,7 @@
               {{range $index, $item := .CategoryList}}
               <tr>
                 <td>{{$index}}</td>
-                <td>{{$item.Title}}</td>
+                <td>{{$item.Name}}</td>
                 <td>{{$item.Parent}}</td>
                 <td>{{$item.Ordering}}</td>
                 <td>
@@ -71,19 +92,20 @@
         $('.create-form').slideUp();
       }
       function SubmitCreateForm(){
-        var title = $('.#CreateTitle').val();
-        var parent = $('.#CreateParent').val();
-        var ordering = $('.#CreateOrdering').val();
+        var name = $('#CreateName').val();
+        var parent = $('#CreateParent').val();
+        var ordering = $('#CreateOrdering').val();
 
         $.ajax({
          type: 'POST',
          url: '/webmaster/goodscategory/create',
          data: {
-           title: title,
+           name: name,
            parent: parent,
            ordering: ordering
          },
          success: function(data) {
+            alert(data);
            location.reload();
          },
          dataType: 'text'
@@ -96,6 +118,8 @@
       function HideEditForm(){
         $('.edit-form').slideUp();
       }
+
+
     </script>
   </body>
 </html>

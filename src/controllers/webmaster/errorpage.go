@@ -9,6 +9,7 @@ import (
 )
 
 func ErrorPage(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Cache-Control", "no-cache")
 	// prepare session
 	_ = global.Sessions.Prepare(w, r)
 	// get client ip
