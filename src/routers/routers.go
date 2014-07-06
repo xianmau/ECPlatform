@@ -24,9 +24,9 @@ func Register() {
 	http.HandleFunc("/webmaster/goodscategory/delete", webmaster.GoodsCategoryDelete)
 	// 商品
 	http.HandleFunc("/webmaster/goods", webmaster.Goods)
-	//http.HandleFunc("/webmaster/goods/create", webmaster.GoodsCreate)
-	//http.HandleFunc("/webmaster/goods/edit", webmaster.GoodsEdit)
-	//http.HandleFunc("/webmaster/goods/delete", webmaster.GoodsDelete)
+	http.HandleFunc("/webmaster/goods/create", webmaster.GoodsCreate)
+	http.HandleFunc("/webmaster/goods/edit", webmaster.GoodsEdit)
+	http.HandleFunc("/webmaster/goods/delete", webmaster.GoodsDelete)
 
 	// 登录和注销
 	http.HandleFunc("/webmaster/login", webmaster.Login)

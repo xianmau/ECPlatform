@@ -6,10 +6,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     {{template "styles"}}
     <style>
-      .create-form{display: none; padding: 10px; margin: 10px 0;border: 1px solid #CCC;}
-
+      .create-form{display: none; padding: 20px 10px; margin: 10px 0;border: 1px solid #CCC; border-radius: 5px; background: #FFF;}
       .masking{display: none; position: fixed; top:0;left:0; width:100%;height: 2000px;background: rgba(0,0,0,0.8);}
-      .edit-form{display: none; width: 250px;position: fixed;top: 100px;left:0px;right:0; padding: 20px 40px; margin: 10px auto; border-radius: 10px; border: 1px solid #CCC; background: #999;}
+      .edit-form{display: none; width: 250px;position: fixed;top: 100px;left:0px;right:0; padding: 20px 40px; margin: 10px auto; border-radius: 5px; border: 1px solid #CCC; background: #FFF;}
     </style>
   </head>
   <body>
@@ -19,21 +18,30 @@
 
     <div id="rightside">
       <div class="main">
+      
         <a href="javascript:void(0);" onclick="ShowCreateForm()"><span class="glyphicon glyphicon-plus"></span> Create</a>
-        <form class="create-form">
-          <label>Title</label>
-          <input id="CreateName" type="text" />
-          <label>Parent</label>
-          <select id="CreateParent">
-            <option value="">无</option>
-            {{range $index, $item := .CategoryList}}
-            <option>{{$item.Name}}</option>
-            {{end}}
-          </select>
-          <label>Ordering</label>
-          <input id="CreateOrdering" type="text" value="0" />
-          <button type="button" onclick="SubmitCreateForm()">Submit</button>
-          <button type="button" onclick="HideCreateForm()">Cancel</button>
+
+        <form class="create-form form-inline">
+          <div class="form-group">
+            <label for="CreateName">Name</label>
+            <input type="text" class="form-control" style="width:200px;" id="CreateName" placeholder="Enter name" />
+          </div>
+          <div class="form-group">
+            <label for="CreateParent">Parent</label>
+            <select class="form-control" id="CreateParent">
+              <option value="">无</option>
+              {{range $index, $item := .CategoryList}}
+              <option>{{$item.Name}}</option>
+              {{end}}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="CreateOrdering">Ordering</label>
+            <input type="text" class="form-control" style="width:100px;" id="CreateOrdering" value="0" />
+          </div>
+
+          <button type="button" class="btn btn-primary" onclick="SubmitCreateForm()">Submit</button>
+          <button type="button" class="btn btn-default" onclick="HideCreateForm()">Cancel</button>
         </form>
 
         <div>
@@ -63,6 +71,7 @@
             </tbody>
           </table>
         </div>
+
       </div>
     </div>
 
@@ -70,21 +79,26 @@
 
     <div class="masking"></div>
     <form class="edit-form">
-      <label>Title</label><br />
-      <input id="EditName" disabled="disabled" type="text" /><br />
-      <label>Parent</label><br />
-      <select id="EditParent">
-        <option value="">无</option>
-        {{range $index, $item := .CategoryList}}
-        <option>{{$item.Name}}</option>
-        {{end}}
-      </select>
-      <br />
-      <label>Ordering</label><br />
-      <input id="EditOrdering" type="text" value="0" /><br />
-      <br />
-      <button type="button" onclick="SubmitEditForm()">Submit</button>
-      <button type="button" onclick="HideEditForm()">Cancel</button>
+      <div class="form-group">
+        <label for="EditName">Name</label>
+        <input type="text" class="form-control" id="EditName" placeholder="Enter name" disabled="disabled" />
+      </div>
+      <div class="form-group">
+        <label for="EditParent">Parent</label>
+        <select class="form-control" id="EditParent">
+          <option value="">无</option>
+          {{range $index, $item := .CategoryList}}
+          <option>{{$item.Name}}</option>
+          {{end}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="EditOrdering">Ordering</label>
+        <input type="text" class="form-control" id="EditOrdering" />
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="SubmitEditForm()">Submit</button>
+      <button type="button" class="btn btn-default" onclick="HideEditForm()">Cancel</button>
     </form>
 
     {{template "scripts"}}
@@ -146,6 +160,7 @@
          dataType: 'text'
         });
       }
+
       function Delete(name){
         if(!confirm('Are you sure?')){
           return ;
