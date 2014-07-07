@@ -18,27 +18,33 @@
         <a href="/webmaster/goodscategory"><span class="glyphicon glyphicon-list"></span> Category</a>
         <a href="/webmaster/goods/create"><span class="glyphicon glyphicon-plus"></span> Create</a>
 
+        <h3>Goods List</h3>
+
         <div>
           <table class="table">
             <thead>
               <tr>
-                <td>#</td>
-                <td>Name</td>
-                <td>Parent</td>
-                <td>Ordering</td>
+                <td>Id</td>
+                <td>Title</td>
+                <td>Category</td>
+                <td>Unit</td>
+                <td>Price</td>
+                <td>Status</td>
                 <td>Operation</td>
               </tr>
             </thead>
             <tbody>
-              {{range $index, $item := .CategoryList}}
+              {{range $index, $item := .GoodsList}}
               <tr>
-                <td>{{$index}}</td>
-                <td>{{$item.Name}}</td>
-                <td>{{$item.Parent}}</td>
-                <td>{{$item.Ordering}}</td>
+                <td>{{$item.Id}}</td>
+                <td>{{$item.Title}}</td>
+                <td>{{$item.Category}}</td>
+                <td>{{$item.Unit}}</td>
+                <td>{{$item.Price}}</td>
+                <td>{{$item.Status}}</td>
                 <td>
-                  <a href="javascript:void(0);" onclick="ShowEditForm('{{$index}}')"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                  <a href="javascript:void(0);" onclick="Delete('{{$item.Name}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                  <a href="/webmaster/goods/edit?id={{$item.Id}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                  <a href="javascript:void(0);" onclick="Delete('{{$item.Id}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                 </td>
               </tr>
               {{end}}
@@ -52,5 +58,23 @@
     <div class="clear"></div>
 
     {{template "scripts"}}
+    <script>
+      function Delete(id){
+        if(!confirm('Are you sure?')){
+          return ;
+        }
+        $.ajax({
+         type: 'POST',
+         url: '/webmaster/goods/delete',
+         data: {
+           id: id
+         },
+         success: function(data) {
+           location.reload();
+         },
+         dataType: 'text'
+        });
+      }
+    </script>
   </body>
 </html>
