@@ -29,10 +29,6 @@
           <div class="form-group">
             <label for="CreateParent">Parent</label>
             <select class="form-control" id="CreateParent">
-              <option value="">无</option>
-              {{range $index, $item := .CategoryList}}
-              <option>{{$item.Name}}</option>
-              {{end}}
             </select>
           </div>
           <div class="form-group">
@@ -58,18 +54,6 @@
               </tr>
             </thead>
             <tbody>
-              {{range $index, $item := .CategoryList}}
-              <tr>
-                <td>{{$index}}</td>
-                <td>{{$item.Name}}</td>
-                <td>{{$item.Parent}}</td>
-                <td>{{$item.Ordering}}</td>
-                <td>
-                  <a href="javascript:void(0);" onclick="ShowEditForm('{{$index}}')"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                  <a href="javascript:void(0);" onclick="Delete('{{$item.Name}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-                </td>
-              </tr>
-              {{end}}
             </tbody>
           </table>
         </div>
@@ -88,10 +72,6 @@
       <div class="form-group">
         <label for="EditParent">Parent</label>
         <select class="form-control" id="EditParent">
-          <option value="">无</option>
-          {{range $index, $item := .CategoryList}}
-          <option>{{$item.Name}}</option>
-          {{end}}
         </select>
       </div>
       <div class="form-group">
@@ -105,6 +85,48 @@
 
     {{template "scripts"}}
     <script>
+      // 分类列表的json对象
+      var o = JSON.parse({{.JsonCategoryList}});
+
+      $(function(){
+        LoadTableData();
+        LoadCreateFormSelectData();
+        LoadEditFormSelectData();
+      });
+
+      // 从json对象生成表格数据
+      function LoadTableData(){
+        var tbody = $('.table tbody');
+        for(var i = 0; i < o.length; i ++){
+          tr = '<tr>';
+          tr += '<td>' + i + '</td>';
+          tr += '<td>' + o[i].name + '</td>';
+          tr += '<td>' + o[i].parent + '</td>';
+          tr += '<td>' + o[i].ordering + '</td>';
+          tr += '<td><a href="javascript:void(0);" onclick="ShowEditForm(\''+i+'\')"><span class="glyphicon glyphicon-edit"></span> Edit</a><a href="javascript:void(0);" onclick="Delete(\''+o[i].name+'\')"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>';
+          tr += '</tr>';
+          tbody.append(tr);
+        }
+      }
+      // 从json对象生成添加表单的下拉列表数据
+      function LoadCreateFormSelectData(){
+        var select = $('.create-form select');
+        select.append('<option value="">无</option>');
+        for(var i = 0; i < o.length; i ++){
+          option = '<option>' + o[i].name + '</option>';
+          select.append(option);
+        }
+      }
+      // 从json对象生成修改表单的下拉列表数据
+      function LoadEditFormSelectData(){
+        var select = $('.edit-form select');
+        select.append('<option value="">无</option>');
+        for(var i = 0; i < o.length; i ++){
+          option = '<option>' + o[i].name + '</option>';
+          select.append(option);
+        }
+      }
+
       function ShowCreateForm(){
         $('.create-form').slideDown();
       }

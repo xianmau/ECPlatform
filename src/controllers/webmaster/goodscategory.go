@@ -1,6 +1,7 @@
 package webmaster
 
 import (
+	"encoding/json"
 	"html/template"
 	"models"
 	"net/http"
@@ -51,12 +52,17 @@ func GoodsCategory(w http.ResponseWriter, r *http.Request) {
 		// bind data
 		data := make(map[string]interface{})
 		data["Admin"] = admin
-		categorylist, err := models.GetGoodsCategoryList()
+		categoryList, err := models.GetGoodsCategoryList()
 		if err != nil {
 			log.Error(err.Error())
 			return
 		}
-		data["CategoryList"] = categorylist
+		jsonCategoryList, err := json.Marshal(categoryList)
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		data["JsonCategoryList"] = string(jsonCategoryList)
 
 		// execute template
 		err = t.Execute(w, data)

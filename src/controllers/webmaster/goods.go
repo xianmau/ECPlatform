@@ -1,6 +1,7 @@
 package webmaster
 
 import (
+	"encoding/json"
 	"html/template"
 	"models"
 	"net/http"
@@ -107,12 +108,18 @@ func GoodsCreate(w http.ResponseWriter, r *http.Request) {
 		// bind data
 		data := make(map[string]interface{})
 		data["Admin"] = admin
-		categorylist, err := models.GetGoodsCategoryList()
+		categoryList, err := models.GetGoodsCategoryList()
 		if err != nil {
 			log.Error(err.Error())
 			return
 		}
-		data["CategoryList"] = categorylist
+		data["CategoryList"] = categoryList
+		jsonCategoryList, err := json.Marshal(categoryList)
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		data["JsonCategoryList"] = string(jsonCategoryList)
 
 		// execute template
 		err = t.Execute(w, data)
@@ -193,12 +200,18 @@ func GoodsEdit(w http.ResponseWriter, r *http.Request) {
 		// bind data
 		data := make(map[string]interface{})
 		data["Admin"] = admin
-		categorylist, err := models.GetGoodsCategoryList()
+		categoryList, err := models.GetGoodsCategoryList()
 		if err != nil {
 			log.Error(err.Error())
 			return
 		}
-		data["CategoryList"] = categorylist
+		data["CategoryList"] = categoryList
+		jsonCategoryList, err := json.Marshal(categoryList)
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		data["JsonCategoryList"] = string(jsonCategoryList)
 		r.ParseForm()
 		get_id := r.Form.Get("id")
 		goods, err := models.GetGoods(get_id)
