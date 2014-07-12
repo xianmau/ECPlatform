@@ -94,12 +94,35 @@
 <div class="clear"></div>
 
 {{template "scripts"}}
+<script src="http://cdn.bootcss.com/ckeditor/4.4.2/ckeditor.js"></script>
+<script src="http://cdn.bootcss.com/ckeditor/4.4.2/adapters/jquery.min.js"></script>
+
 <script>
     // 分类列表的json对象
     var o = JSON.parse({{.JsonCategoryList}});
 
     $(function () {
         InitRootSelect();
+
+        // 加载CKEditor
+        // 先设置上传目录
+        var upload_dir = "goods/1/";
+        $('#CreateContent').ckeditor({
+            height: '450',
+            toolbar: [
+                { name: 'document', items: ['Source', '-', 'Preview', 'Print', '-'] },
+                { name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
+                { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'] },
+                { name: 'insert', items: ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'] },
+                { name: 'links', items: ['Link', 'Unlink', 'Anchor'] },
+                '/',
+                { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'] },
+                { name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize'] },
+                { name: 'colors', items: ['TextColor', 'BGColor'] }
+            ],
+            image_previewText: ' ',
+            filebrowserImageUploadUrl: '/uploadprocess/webmaster/ckeditor?dir=' + upload_dir
+        });
     });
 
     // 初始化根下拉列表
@@ -153,6 +176,16 @@
         var images = $('#CreateImages').val();
         var certificates = $('#CreateCertificates').val();
         var status = $('#CreateStatus').val();
+
+        // 表单验证
+        if (title == ""){
+            alert("Title could not be empty")
+            return
+        }
+        if (category == ""){
+            alert("Category could not be empty")
+            return
+        }
 
         $.ajax({
             type: 'POST',

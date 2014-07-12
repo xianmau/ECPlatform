@@ -2,6 +2,7 @@ package routers
 
 import (
 	"controllers/webmaster"
+	"controllers/upload"
 	"net/http"
 )
 
@@ -9,6 +10,7 @@ import (
 func Register() {
 	// 注册静态文件
 	http.Handle("/statics/", http.StripPrefix("/statics/", http.FileServer(http.Dir("./statics"))))
+	http.Handle("/uploads/", http.StripPrefix("/uploads/", http.FileServer(http.Dir("./uploads"))))
 
 	// 错误处理
 	http.HandleFunc("/webmaster/errorpage", webmaster.ErrorPage)
@@ -31,5 +33,11 @@ func Register() {
 	// 登录和注销
 	http.HandleFunc("/webmaster/login", webmaster.Login)
 	http.HandleFunc("/webmaster/logout", webmaster.Logout)
+
+
+
+
+	// 上传文件相关
+	http.HandleFunc("/uploadprocess/webmaster/ckeditor", upload.CKEditorWebmaster)
 
 }

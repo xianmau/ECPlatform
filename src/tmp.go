@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	log.Println(global.Sessions)
+	log.Println(global.Config)
 }
 
 func init() {
