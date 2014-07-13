@@ -12,6 +12,7 @@ import (
 	"utils/authority"
 	"utils/global"
 	log "utils/logger"
+	"path"
 )
 
 func CKEditorWebmaster(w http.ResponseWriter, r *http.Request) {
@@ -56,18 +57,41 @@ func CKEditorWebmaster(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		filename := strconv.FormatInt(time.Now().Unix(), 10) + extension
-		filedir, _ := filepath.Abs(uploadDir + filename)
-		f, _ := os.OpenFile(filedir, os.O_CREATE|os.O_WRONLY, 0666)
+		filedir, _ := filepath.Abs(uploadDir)
+
+		// 判断目录是否存在，若不存在则生成目录
+		filestat, err := os.Stat(filedir)
+		if err != nil {
+			if !os.IsExist(err){
+				err := os.MkdirAll(filedir, os.ModePerm)
+				if err != nil {
+					log.Error(err.Error())
+					w.Write([]byte("<html><body><script>window.parent.CKEDITOR.tools.callFunction(" + ckeditorFuncNum + ", \"\", \"创建目录失败\");</script></body></html>"))
+					return
+				}
+			}
+		} else {
+			if !filestat.IsDir(){
+				err := os.MkdirAll(filedir, os.ModePerm)
+				if err != nil {
+					log.Error(err.Error())
+					w.Write([]byte("<html><body><script>window.parent.CKEDITOR.tools.callFunction(" + ckeditorFuncNum + ", \"\", \"创建目录失败\");</script></body></html>"))
+					return
+				}
+			}
+		}
+
+		f, _ := os.OpenFile(path.Join(filedir,filename), os.O_CREATE|os.O_WRONLY, 0666)
 		defer f.Close()
 		_, err = io.Copy(f, file)
-		log.Info("save file: " + filedir)
+		log.Info("save file: " + path.Join(filedir,filename))
 		if err != nil {
 			log.Error(err.Error())
 			w.Write([]byte("<html><body><script>window.parent.CKEDITOR.tools.callFunction(" + ckeditorFuncNum + ", \"\", \"上传失败\");</script></body></html>"))
 			return
 		}
 
-		w.Write([]byte("<html><body><script>window.parent.CKEDITOR.tools.callFunction(" + ckeditorFuncNum + ", \"" + uploadDir + filename + "\", \"\");</script></body></html>"))
+		w.Write([]byte("<html><body><script>window.parent.CKEDITOR.tools.callFunction(" + ckeditorFuncNum + ", \"" +uploadDir+filename + "\", \"\");</script></body></html>"))
 	}
 }
 

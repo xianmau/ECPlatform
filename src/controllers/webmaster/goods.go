@@ -108,18 +108,27 @@ func GoodsCreate(w http.ResponseWriter, r *http.Request) {
 		// bind data
 		data := make(map[string]interface{})
 		data["Admin"] = admin
+		// 分类，json格式
 		categoryList, err := models.GetGoodsCategoryList()
 		if err != nil {
 			log.Error(err.Error())
 			return
 		}
-		data["CategoryList"] = categoryList
 		jsonCategoryList, err := json.Marshal(categoryList)
 		if err != nil {
 			log.Error(err.Error())
 			return
 		}
 		data["JsonCategoryList"] = string(jsonCategoryList)
+		// 货源
+		originList, err := models.GetOriginList()
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		data["OriginList"] = originList
+		// 商品状态
+		data["GoodsStatusMap"] = global.GoodsStatus
 
 		// execute template
 		err = t.Execute(w, data)
@@ -200,18 +209,28 @@ func GoodsEdit(w http.ResponseWriter, r *http.Request) {
 		// bind data
 		data := make(map[string]interface{})
 		data["Admin"] = admin
+		// 分类，json格式
 		categoryList, err := models.GetGoodsCategoryList()
 		if err != nil {
 			log.Error(err.Error())
 			return
 		}
-		data["CategoryList"] = categoryList
 		jsonCategoryList, err := json.Marshal(categoryList)
 		if err != nil {
 			log.Error(err.Error())
 			return
 		}
 		data["JsonCategoryList"] = string(jsonCategoryList)
+		// 货源
+		originList, err := models.GetOriginList()
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		data["OriginList"] = originList
+		// 商品状态
+		data["GoodsStatusMap"] = global.GoodsStatus
+		// 当前商品
 		r.ParseForm()
 		get_id := r.Form.Get("id")
 		goods, err := models.GetGoods(get_id)

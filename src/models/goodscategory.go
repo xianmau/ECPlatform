@@ -50,7 +50,7 @@ func GetGoodsCategoryList() ([]GoodsCategory, error) {
 	if err != nil {
 		return nil, err
 	}
-	categorylist := []GoodsCategory{}
+	categoryList := []GoodsCategory{}
 	for rows.Next() {
 		var goodscategory GoodsCategory
 		var Name string
@@ -62,9 +62,9 @@ func GetGoodsCategoryList() ([]GoodsCategory, error) {
 		goodscategory.Name = Name
 		goodscategory.Parent = Parent
 		goodscategory.Ordering = Ordering
-		categorylist = append(categorylist, goodscategory)
+		categoryList = append(categoryList, goodscategory)
 	}
-	return categorylist, nil
+	return categoryList, nil
 }
 
 func CreateGoodsCategory(Name string, Parent string, Ordering string) error {

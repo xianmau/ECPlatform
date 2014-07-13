@@ -77,7 +77,7 @@ func GetGoodsList() ([]Goods, error) {
 	if err != nil {
 		return nil, err
 	}
-	goodslist := []Goods{}
+	goodsList := []Goods{}
 	for rows.Next() {
 		var goods Goods
 		var Id int
@@ -107,9 +107,9 @@ func GetGoodsList() ([]Goods, error) {
 		goods.Images = Images
 		goods.Certificates = Certificates
 		goods.Status = Status
-		goodslist = append(goodslist, goods)
+		goodsList = append(goodsList, goods)
 	}
-	return goodslist, nil
+	return goodsList, nil
 }
 
 func CreateGoods(Title string, Category string, Content string, Origin string, Unit string, Price string, Shop string, BuyLink string, Images string, Certificates string, Status string) error {
