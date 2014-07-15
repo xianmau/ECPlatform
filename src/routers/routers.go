@@ -39,5 +39,6 @@ func Register() {
 
 	// 上传文件相关
 	http.HandleFunc("/uploadprocess/webmaster/ckeditor", upload.CKEditorWebmaster)
+	http.HandleFunc("/uploadprocess/webmaster/uploadify", upload.UploadifyWebmaster)
 
 }

@@ -5,8 +5,10 @@
     <title>Edit Goods - Electronic Commerce Platform</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     {{template "styles"}}
+    <link href="/statics/thirdpart/uploadify/uploadify.css" rel="stylesheet" />
     <style>
         .edit-category-tmp{margin-right: 10px;}
+        .uploadify-img{width: 120px;height: 120px;}
     </style>
 </head>
 <body>
@@ -65,10 +67,105 @@
                 <div class="form-group">
                     <label for="EditImages">Images</label>
                     <textarea class="form-control" id="EditImages"></textarea>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td></td><td></td><td></td><td></td><td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Group
+                                </td>
+                                <td>
+                                    <img src="" class="uploadify-img" />
+                                    <span id="uploadify_1"></span>
+                                </td>
+                                <td>
+                                    <img src="" class="uploadify-img" />
+                                    <span id="uploadify_2"></span>
+                                </td>
+                                <td>
+                                    <img src="" class="uploadify-img" />
+                                    <span id="uploadify_3"></span>
+                                </td>
+                                <td>
+                                    <img src="" class="uploadify-img" />
+                                    <span id="uploadify_4"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Size
+                                </td>
+                                <td>
+                                    <img src="" class="uploadify-img" />
+                                    <span id="uploadify_5"></span>
+                                    (60*60)
+                                </td>
+                                <td>
+                                    <img src="" class="uploadify-img" />
+                                    <span id="uploadify_6"></span>
+                                    (120*120)
+                                </td>
+                                <td>
+                                    <img src="" class="uploadify-img" />
+                                    <span id="uploadify_7"></span>
+                                    (250*250)
+                                </td>
+                                <td>
+                                    <img src="" class="uploadify-img" />
+                                    <span id="uploadify_8"></span>
+                                    (500*500)
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td><td></td><td></td><td></td><td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
                 <div class="form-group">
                     <label for="EditCertificates">Certificates</label>
                     <textarea class="form-control" id="EditCertificates"></textarea>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td></td><td></td><td></td><td></td><td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Group
+                                </td>
+                                <td>
+                                    <img src="" class="uploadify-img" />
+                                    <span id="uploadify_9"></span>
+                                </td>
+                                <td>
+                                    <img src="" class="uploadify-img" />
+                                    <span id="uploadify_10"></span>
+                                </td>
+                                <td>
+                                    <img src="" class="uploadify-img" />
+                                    <span id="uploadify_11"></span>
+                                </td>
+                                <td>
+                                    <img src="" class="uploadify-img" />
+                                    <span id="uploadify_12"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td><td></td><td></td><td></td><td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
                 <div class="form-group">
                     <label for="EditStatus">Status</label>
@@ -92,16 +189,116 @@
     {{template "scripts"}}
     <script src="http://cdn.bootcss.com/ckeditor/4.4.2/ckeditor.js"></script>
     <script src="http://cdn.bootcss.com/ckeditor/4.4.2/adapters/jquery.min.js"></script>
-
+    <script src="/statics/thirdpart/uploadify/jquery.uploadify-3.2.min.js"></script>
     <script>
         // 分类列表的json对象
         var o = JSON.parse({{.JsonCategoryList}});
+        // 用于存放图片组的json对象
+        var imageUrl = JSON.parse({{.Goods.Images}});
+        // 用于存放证书的json对象
+        var certificatesUrl = JSON.parse({{.Goods.Certificates}})
 
         $(function(){
             InitSelect({{.Goods.Category}});
             InitForm();
             InitCKEditor();
+            InitImages();
+
+            // 组图和大小图
+            uploadify($('#uploadify_1'), "group_1")
+            uploadify($('#uploadify_2'), "group_2")
+            uploadify($('#uploadify_3'), "group_3")
+            uploadify($('#uploadify_4'), "group_4")
+            uploadify($('#uploadify_5'), "mini")
+            uploadify($('#uploadify_6'), "small")
+            uploadify($('#uploadify_7'), "medium")
+            uploadify($('#uploadify_8'), "large")
+
+            // 证书等
+            uploadify($('#uploadify_9'), "cer_1")
+            uploadify($('#uploadify_10'), "cer_2")
+            uploadify($('#uploadify_11'), "cer_3")
+            uploadify($('#uploadify_12'), "cer_4")
+
         });
+
+        function InitImages(){
+            $('#uploadify_1').prev().attr("src", imageUrl.group_1);
+            $('#uploadify_2').prev().attr("src", imageUrl.group_2);
+            $('#uploadify_3').prev().attr("src", imageUrl.group_3);
+            $('#uploadify_4').prev().attr("src", imageUrl.group_4);
+            $('#uploadify_5').prev().attr("src", imageUrl.mini);
+            $('#uploadify_6').prev().attr("src", imageUrl.small);
+            $('#uploadify_7').prev().attr("src", imageUrl.medium);
+            $('#uploadify_8').prev().attr("src", imageUrl.large);
+
+            $('#uploadify_9').prev().attr("src", certificatesUrl.cer_1);
+            $('#uploadify_10').prev().attr("src", certificatesUrl.cer_2);
+            $('#uploadify_11').prev().attr("src", certificatesUrl.cer_3);
+            $('#uploadify_12').prev().attr("src", certificatesUrl.cer_4);
+        }
+
+        // 加载uploadify
+        function uploadify(obj, key) {
+            var upload_dir = "goods/{{.Goods.Id}}/";
+            obj.uploadify({
+                uploader: '/uploadprocess/webmaster/uploadify?dir=' + upload_dir,
+                swf: '/statics/thirdpart/uploadify/uploadify.swf',
+                //width: 50,
+                //height: 25,
+                buttonText: "上传",
+                buttonCursor: 'hand',
+                fileObjName: 'upload',
+                fileTypeExts: '*.jpg;*.png;*.gif',
+                fileTypeDesc: "请选择 jpg png gif 文件",
+                auto: true,
+                multi: false,
+                onUploadSuccess: function (file, data, response) {
+                    var o = JSON.parse(data);
+                    if (o.status == "0") {
+                        if (key == "group_1"){
+                            imageUrl.group_1 = o.url;
+                            $('#uploadify_1').prev().attr("src", o.url);
+                        } else if (key == "group_2") {
+                            imageUrl.group_2 = o.url;
+                            $('#uploadify_2').prev().attr("src", o.url);
+                        } else if (key == "group_3") {
+                            imageUrl.group_3 = o.url;
+                            $('#uploadify_3').prev().attr("src", o.url);
+                        } else if (key == "group_4") {
+                            imageUrl.group_4 = o.url;
+                            $('#uploadify_4').prev().attr("src", o.url);
+                        } else if (key == "mini") {
+                            imageUrl.mini = o.url;
+                            $('#uploadify_5').prev().attr("src", o.url);
+                        } else if (key == "small") {
+                            imageUrl.small = o.url;
+                            $('#uploadify_6').prev().attr("src", o.url);
+                        } else if (key == "medium") {
+                            imageUrl.medium = o.url;
+                            $('#uploadify_7').prev().attr("src", o.url);
+                        } else if (key == "large") {
+                            imageUrl.large = o.url;
+                            $('#uploadify_8').prev().attr("src", o.url);
+                        } else if (key == "cer_1") {
+                            certificatesUrl.cer_1 = o.url;
+                            $('#uploadify_9').prev().attr("src", o.url);
+                        } else if (key == "cer_2") {
+                            certificatesUrl.cer_2 = o.url;
+                            $('#uploadify_10').prev().attr("src", o.url);
+                        } else if (key == "cer_3") {
+                            certificatesUrl.cer_3 = o.url;
+                            $('#uploadify_11').prev().attr("src", o.url);
+                        } else if (key == "cer_4") {
+                            certificatesUrl.cer_4 = o.url;
+                            $('#uploadify_12').prev().attr("src", o.url);
+                        }
+                        $('#EditImages').val(JSON.stringify(imageUrl));
+                        $('#EditCertificates').val(JSON.stringify(certificatesUrl));
+                    }
+                }
+            });
+        }
 
         // 初始化CKEditor
         function InitCKEditor(){
