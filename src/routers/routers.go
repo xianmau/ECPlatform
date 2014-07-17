@@ -1,6 +1,7 @@
 package routers
 
 import (
+	"controllers/web"
 	"controllers/webmaster"
 	"controllers/upload"
 	"net/http"
@@ -12,6 +13,19 @@ func Register() {
 	http.Handle("/statics/", http.StripPrefix("/statics/", http.FileServer(http.Dir("./statics"))))
 	http.Handle("/uploads/", http.StripPrefix("/uploads/", http.FileServer(http.Dir("./uploads"))))
 
+	registerWebmaster()
+
+	registerWeb()
+}
+
+func registerWeb() {
+	http.HandleFunc("/web", web.Home)
+	http.HandleFunc("/web/home", web.Home)
+
+	http.HandleFunc("/web/join", web.Join)
+}
+
+func registerWebmaster() {
 	// 错误处理
 	http.HandleFunc("/webmaster/errorpage", webmaster.ErrorPage)
 
@@ -34,11 +48,7 @@ func Register() {
 	http.HandleFunc("/webmaster/login", webmaster.Login)
 	http.HandleFunc("/webmaster/logout", webmaster.Logout)
 
-
-
-
 	// 上传文件相关
 	http.HandleFunc("/uploadprocess/webmaster/ckeditor", upload.CKEditorWebmaster)
 	http.HandleFunc("/uploadprocess/webmaster/uploadify", upload.UploadifyWebmaster)
-
 }
