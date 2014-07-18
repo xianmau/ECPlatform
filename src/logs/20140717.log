@@ -28,3 +28,12 @@
 2014/07/17 23:12:50 [I][::1] access /webmaster/dashboard
 2014/07/17 23:12:50 [I][::1] get /webmaster/errorpage
 2014/07/17 23:14:02 [I][::1] get /web/home
+2014/07/17 23:14:48 [I][::1] access /webmaster/dashboard
+2014/07/17 23:14:48 [I][::1] get /webmaster/errorpage
+2014/07/17 23:14:49 [I][::1] get /webmaster/login
+2014/07/17 23:14:52 [I][::1] post /webmaster/login
+2014/07/17 23:14:52 [I][::1] admin logged
+2014/07/17 23:14:52 [I][::1] get /webmaster/dashboard
+2014/07/17 23:14:53 [I][::1] get /webmaster/dashboard
+2014/07/17 23:14:54 [I][::1] get /webmaster/goods
+2014/07/17 23:15:06 [I][::1] get /webmaster/goodscategory

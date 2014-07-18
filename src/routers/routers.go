@@ -44,6 +44,18 @@ func registerWebmaster() {
 	http.HandleFunc("/webmaster/goods/edit", webmaster.GoodsEdit)
 	http.HandleFunc("/webmaster/goods/delete", webmaster.GoodsDelete)
 
+	// 文章分类
+	http.HandleFunc("/webmaster/articlecategory", webmaster.ArticleCategory)
+	http.HandleFunc("/webmaster/articlecategory/create", webmaster.ArticleCategoryCreate)
+	http.HandleFunc("/webmaster/articlecategory/edit", webmaster.ArticleCategoryEdit)
+	http.HandleFunc("/webmaster/articlecategory/delete", webmaster.ArticleCategoryDelete)
+	// 文章
+	http.HandleFunc("/webmaster/article", webmaster.Article)
+	http.HandleFunc("/webmaster/article/create", webmaster.ArticleCreate)
+	http.HandleFunc("/webmaster/article/edit", webmaster.ArticleEdit)
+	http.HandleFunc("/webmaster/article/delete", webmaster.ArticleDelete)
+
+
 	// 登录和注销
 	http.HandleFunc("/webmaster/login", webmaster.Login)
 	http.HandleFunc("/webmaster/logout", webmaster.Logout)
