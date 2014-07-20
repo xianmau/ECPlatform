@@ -24,17 +24,17 @@ func GetGoodsCategory(Name string) (*GoodsCategory, error) {
 		return nil, err
 	}
 	if rows.Next() {
-		var goodscategory GoodsCategory
+		var goodsCategory GoodsCategory
 		var Name string
 		var Parent string
 		var Ordering int
 		if err := rows.Scan(&Name, &Parent, &Ordering); err != nil {
 			return nil, err
 		}
-		goodscategory.Name = Name
-		goodscategory.Parent = Parent
-		goodscategory.Ordering = Ordering
-		return &goodscategory, nil
+		goodsCategory.Name = Name
+		goodsCategory.Parent = Parent
+		goodsCategory.Ordering = Ordering
+		return &goodsCategory, nil
 	}
 	return nil, nil
 }
@@ -52,17 +52,17 @@ func GetGoodsCategoryList() ([]GoodsCategory, error) {
 	}
 	categoryList := []GoodsCategory{}
 	for rows.Next() {
-		var goodscategory GoodsCategory
+		var goodsCategory GoodsCategory
 		var Name string
 		var Parent string
 		var Ordering int
 		if err := rows.Scan(&Name, &Parent, &Ordering); err != nil {
 			return nil, err
 		}
-		goodscategory.Name = Name
-		goodscategory.Parent = Parent
-		goodscategory.Ordering = Ordering
-		categoryList = append(categoryList, goodscategory)
+		goodsCategory.Name = Name
+		goodsCategory.Parent = Parent
+		goodsCategory.Ordering = Ordering
+		categoryList = append(categoryList, goodsCategory)
 	}
 	return categoryList, nil
 }

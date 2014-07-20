@@ -12,7 +12,7 @@ import (
 	"utils/tools"
 )
 
-func Article(w http.ResponseWriter, r *http.Request) {
+func Link(w http.ResponseWriter, r *http.Request) {
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
@@ -22,23 +22,23 @@ func Article(w http.ResponseWriter, r *http.Request) {
 	if session.Get("admin") != nil {
 		admin = (session.Get("admin")).(models.Admin)
 	} else {
-		log.Info(client_ip + " access /webmaster/article")
+		log.Info(client_ip + " access /webmaster/link")
 		http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=未登录"), http.StatusFound)
 		return
 	}
 
 	if r.Method == "GET" {
 		// deal with get method
-		log.Info(client_ip + " get /webmaster/article")
+		log.Info(client_ip + " get /webmaster/link")
 
 		// check authorities
-		if ok, msg := authority.Check(admin.Role, "文章管理"); !ok {
+		if ok, msg := authority.Check(admin.Role, "链接管理"); !ok {
 			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusFound)
 			return
 		}
 
 		// render template
-		t, err := template.ParseFiles("views/webmaster/article/list.html")
+		t, err := template.ParseFiles("views/webmaster/link/list.html")
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -52,12 +52,12 @@ func Article(w http.ResponseWriter, r *http.Request) {
 		// bind data
 		data := make(map[string]interface{})
 		data["Admin"] = admin
-		articlelist, err := models.GetArticleList()
+		linkList, err := models.GetLinkList()
 		if err != nil {
 			log.Error(err.Error())
 			return
 		}
-		data["ArticleList"] = articlelist
+		data["LinkList"] = linkList
 
 		// execute template
 		err = t.Execute(w, data)
@@ -68,7 +68,7 @@ func Article(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func ArticleCreate(w http.ResponseWriter, r *http.Request) {
+func LinkCreate(w http.ResponseWriter, r *http.Request) {
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
@@ -78,23 +78,23 @@ func ArticleCreate(w http.ResponseWriter, r *http.Request) {
 	if session.Get("admin") != nil {
 		admin = (session.Get("admin")).(models.Admin)
 	} else {
-		log.Info(client_ip + " access /webmaster/article/create")
+		log.Info(client_ip + " access /webmaster/link/create")
 		http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=未登录"), http.StatusFound)
 		return
 	}
 
 	if r.Method == "GET" {
 		// deal with get method
-		log.Info(client_ip + " get /webmaster/article/create")
+		log.Info(client_ip + " get /webmaster/link/create")
 
 		// check authorities
-		if ok, msg := authority.Check(admin.Role, "文章管理"); !ok {
+		if ok, msg := authority.Check(admin.Role, "链接管理"); !ok {
 			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusFound)
 			return
 		}
 
 		// render template
-		t, err := template.ParseFiles("views/webmaster/article/create.html")
+		t, err := template.ParseFiles("views/webmaster/link/create.html")
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -109,7 +109,7 @@ func ArticleCreate(w http.ResponseWriter, r *http.Request) {
 		data := make(map[string]interface{})
 		data["Admin"] = admin
 		// 分类，json格式
-		categoryList, err := models.GetArticleCategoryList()
+		categoryList, err := models.GetLinkCategoryList()
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -120,8 +120,8 @@ func ArticleCreate(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		data["JsonCategoryList"] = string(jsonCategoryList)
-		// 文章状态
-		data["ArticleStatusMap"] = global.ArticleStatus
+		// 链接状态
+		data["LinkStatusMap"] = global.LinkStatus
 
 		// execute template
 		err = t.Execute(w, data)
@@ -131,20 +131,21 @@ func ArticleCreate(w http.ResponseWriter, r *http.Request) {
 		}
 	} else if r.Method == "POST" {
 		// deal with get method
-		log.Info(client_ip + " post /webmaster/article/create")
+		log.Info(client_ip + " post /webmaster/link/create")
 
 		// check authorities
-		if ok, msg := authority.Check(admin.Role, "文章管理"); !ok {
+		if ok, msg := authority.Check(admin.Role, "链接管理"); !ok {
 			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusFound)
 			return
 		}
 
 		form_title := r.PostFormValue("title")
 		form_category := r.PostFormValue("category")
-		form_content := r.PostFormValue("content")
+		form_linkUrl := r.PostFormValue("linkUrl")
+		form_imageUrl := r.PostFormValue("imageUrl")
 		form_status := r.PostFormValue("status")
 
-		err := models.CreateArticle(form_title, form_category, form_content, form_status)
+		err := models.CreateLink(form_title, form_category, form_linkUrl, form_imageUrl, form_status)
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -155,7 +156,7 @@ func ArticleCreate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func ArticleEdit(w http.ResponseWriter, r *http.Request) {
+func LinkEdit(w http.ResponseWriter, r *http.Request) {
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
@@ -165,23 +166,23 @@ func ArticleEdit(w http.ResponseWriter, r *http.Request) {
 	if session.Get("admin") != nil {
 		admin = (session.Get("admin")).(models.Admin)
 	} else {
-		log.Info(client_ip + " access /webmaster/article/edit")
+		log.Info(client_ip + " access /webmaster/link/edit")
 		http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=未登录"), http.StatusFound)
 		return
 	}
 
 	if r.Method == "GET" {
 		// deal with get method
-		log.Info(client_ip + " get /webmaster/article/edit")
+		log.Info(client_ip + " get /webmaster/link/edit")
 
 		// check authorities
-		if ok, msg := authority.Check(admin.Role, "文章管理"); !ok {
+		if ok, msg := authority.Check(admin.Role, "链接管理"); !ok {
 			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusFound)
 			return
 		}
 
 		// render template
-		t, err := template.ParseFiles("views/webmaster/article/edit.html")
+		t, err := template.ParseFiles("views/webmaster/link/edit.html")
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -196,7 +197,7 @@ func ArticleEdit(w http.ResponseWriter, r *http.Request) {
 		data := make(map[string]interface{})
 		data["Admin"] = admin
 		// 分类，json格式
-		categoryList, err := models.GetArticleCategoryList()
+		categoryList, err := models.GetLinkCategoryList()
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -207,21 +208,21 @@ func ArticleEdit(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		data["JsonCategoryList"] = string(jsonCategoryList)
-		// 文章状态
-		data["ArticleStatusMap"] = global.ArticleStatus
-		// 当前文章
+		// 链接状态
+		data["LinkStatusMap"] = global.LinkStatus
+		// 当前链接
 		r.ParseForm()
 		get_id := r.Form.Get("id")
-		article, err := models.GetArticle(get_id)
+		link, err := models.GetLink(get_id)
 		if err != nil {
 			log.Error(err.Error())
 			return
 		}
-		if article == nil {
-			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=文章不存在"), http.StatusFound)
+		if link == nil {
+			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=链接不存在"), http.StatusFound)
 			return
 		}
-		data["Article"] = article
+		data["Link"] = link
 
 		// execute template
 		err = t.Execute(w, data)
@@ -231,10 +232,10 @@ func ArticleEdit(w http.ResponseWriter, r *http.Request) {
 		}
 	} else if r.Method == "POST" {
 		// deal with get method
-		log.Info(client_ip + " post /webmaster/article/edit")
+		log.Info(client_ip + " post /webmaster/link/edit")
 
 		// check authorities
-		if ok, msg := authority.Check(admin.Role, "文章管理"); !ok {
+		if ok, msg := authority.Check(admin.Role, "链接管理"); !ok {
 			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusFound)
 			return
 		}
@@ -242,10 +243,11 @@ func ArticleEdit(w http.ResponseWriter, r *http.Request) {
 		form_id := r.PostFormValue("id")
 		form_title := r.PostFormValue("title")
 		form_category := r.PostFormValue("category")
-		form_content := r.PostFormValue("content")
+		form_linkUrl := r.PostFormValue("linkUrl")
+		form_imageUrl := r.PostFormValue("imageUrl")
 		form_status := r.PostFormValue("status")
 
-		err := models.EditArticle(form_id, form_title, form_category, form_content, form_status)
+		err := models.EditLink(form_id, form_title, form_category, form_linkUrl, form_imageUrl, form_status)
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -256,7 +258,7 @@ func ArticleEdit(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func ArticleDelete(w http.ResponseWriter, r *http.Request) {
+func LinkDelete(w http.ResponseWriter, r *http.Request) {
 	// prepare session
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
@@ -266,24 +268,24 @@ func ArticleDelete(w http.ResponseWriter, r *http.Request) {
 	if session.Get("admin") != nil {
 		admin = (session.Get("admin")).(models.Admin)
 	} else {
-		log.Info(client_ip + " access /webmaster/article/delete")
+		log.Info(client_ip + " access /webmaster/link/delete")
 		http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=未登录"), http.StatusFound)
 		return
 	}
 
 	if r.Method == "POST" {
 		// deal with get method
-		log.Info(client_ip + " post /webmaster/article/delete")
+		log.Info(client_ip + " post /webmaster/link/delete")
 
 		// check authorities
-		if ok, msg := authority.Check(admin.Role, "文章管理"); !ok {
+		if ok, msg := authority.Check(admin.Role, "链接管理"); !ok {
 			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusFound)
 			return
 		}
 
 		form_id := r.PostFormValue("id")
 
-		err := models.DeleteArticle(form_id)
+		err := models.DeleteLink(form_id)
 		if err != nil {
 			log.Error(err.Error())
 			return

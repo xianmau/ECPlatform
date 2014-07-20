@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Dashboard - Electronic Commerce Platform</title>
+    <title>Article List - Electronic Commerce Platform</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     {{template "styles"}}
 </head>
@@ -15,8 +15,8 @@
 
         <div class="main">
 
-            <a href="/webmaster/goodscategory"><span class="glyphicon glyphicon-list"></span> Category</a>
-            <a href="/webmaster/goods/create"><span class="glyphicon glyphicon-plus"></span> Create</a>
+            <a href="/webmaster/articlecategory"><span class="glyphicon glyphicon-list"></span> Category</a>
+            <a href="/webmaster/article/create"><span class="glyphicon glyphicon-plus"></span> Create</a>
 
             <h3>Goods List</h3>
 
@@ -27,23 +27,23 @@
                             <td>Id</td>
                             <td>Title</td>
                             <td>Category</td>
-                            <td>Unit</td>
-                            <td>Price</td>
+                            <td>Click</td>
+                            <td>Time</td>
                             <td>Status</td>
                             <td>Operation</td>
                         </tr>
                     </thead>
                     <tbody>
-                        {{range $index, $item := .GoodsList}}
+                        {{range $index, $item := .ArticleList}}
                         <tr>
                             <td>{{$item.Id}}</td>
                             <td>{{$item.Title}}</td>
                             <td>{{$item.Category}}</td>
-                            <td>{{$item.Unit}}</td>
-                            <td>{{$item.Price}}</td>
+                            <td>{{$item.Click}}</td>
+                            <td>{{$item.Time}}</td>
                             <td>{{$item.Status}}</td>
                             <td>
-                                <a href="/webmaster/goods/edit?id={{$item.Id}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                <a href="/webmaster/article/edit?id={{$item.Id}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
                                 <a href="javascript:void(0);" onclick="Delete('{{$item.Id}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                             </td>
                         </tr>
@@ -65,7 +65,7 @@
             }
             $.ajax({
                 type: 'POST',
-                url: '/webmaster/goods/delete',
+                url: '/webmaster/article/delete',
                 data: {
                   id: id
                 },

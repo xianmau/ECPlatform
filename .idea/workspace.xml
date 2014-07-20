@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ed1288a-db1a-4a3f-9438-57bc09d9e434" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/controllers/webmaster/article.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/controllers/webmaster/articlecategory.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/webmaster/article/create.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/webmaster/article/edit.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/webmaster/article/list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/webmaster/articlecategory/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logs/20140717.log" afterPath="$PROJECT_DIR$/src/logs/20140717.log" />
+    <list default="true" id="1ed1288a-db1a-4a3f-9438-57bc09d9e434" name="Default" comment="kk">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/models/article.go" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/webmaster/link/create.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/webmaster/link/edit.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/controllers/webmaster/link.go" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/models/link.go" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/controllers/webmaster/linkcategory.go" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/webmaster/link/list.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/webmaster/linkcategory/list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/webmaster/article.go" afterPath="$PROJECT_DIR$/src/controllers/webmaster/article.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/webmaster/articlecategory.go" afterPath="$PROJECT_DIR$/src/controllers/webmaster/articlecategory.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/articlecategory.go" afterPath="$PROJECT_DIR$/src/models/articlecategory.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/webmaster/article/create.html" afterPath="$PROJECT_DIR$/src/views/webmaster/article/create.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/webmaster/goods/create.html" afterPath="$PROJECT_DIR$/src/views/webmaster/goods/create.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/webmaster/article/edit.html" afterPath="$PROJECT_DIR$/src/views/webmaster/article/edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/global/global.go" afterPath="$PROJECT_DIR$/src/utils/global/global.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/goodscategory.go" afterPath="$PROJECT_DIR$/src/models/goodscategory.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/linkcategory.go" afterPath="$PROJECT_DIR$/src/models/linkcategory.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/webmaster/article/list.html" afterPath="$PROJECT_DIR$/src/views/webmaster/article/list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/webmaster/articlecategory/list.html" afterPath="$PROJECT_DIR$/src/views/webmaster/articlecategory/list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/webmaster/goods/list.html" afterPath="$PROJECT_DIR$/src/views/webmaster/goods/list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/webmaster/goodscategory/list.html" afterPath="$PROJECT_DIR$/src/views/webmaster/goodscategory/list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routers/routers.go" afterPath="$PROJECT_DIR$/src/routers/routers.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -44,8 +58,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/views/webmaster/goods/create.html" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/routers/routers.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/views/webmaster/goods/create.html" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
@@ -60,18 +74,13 @@
         <option value="$PROJECT_DIR$/src/utils/logger/logger.go" />
         <option value="$PROJECT_DIR$/src/utils/session/session.go" />
         <option value="$PROJECT_DIR$/src/models/role.go" />
-        <option value="$PROJECT_DIR$/src/server.go" />
         <option value="$PROJECT_DIR$/src/utils/authority/authority.go" />
         <option value="$PROJECT_DIR$/src/logs/20140713.log" />
         <option value="$PROJECT_DIR$/src/statics/thirdpart/ckeditor/config.js" />
-        <option value="$PROJECT_DIR$/src/models/goodscategory.go" />
         <option value="$PROJECT_DIR$/src/models/goods.go" />
         <option value="$PROJECT_DIR$/src/models/origin.go" />
-        <option value="$PROJECT_DIR$/src/utils/global/global.go" />
         <option value="$PROJECT_DIR$/src/utils/config/config.go" />
-        <option value="$PROJECT_DIR$/src/views/webmaster/goods/list.html" />
         <option value="$PROJECT_DIR$/src/controllers/webmaster/goods.go" />
-        <option value="$PROJECT_DIR$/src/views/webmaster/goods/create.html" />
         <option value="$PROJECT_DIR$/src/controllers/upload/upload.go" />
         <option value="$PROJECT_DIR$/src/statics/thirdpart/uploadify/uploadify.css" />
         <option value="$PROJECT_DIR$/src/views/webmaster/goods/edit.html" />
@@ -83,9 +92,29 @@
         <option value="$PROJECT_DIR$/src/statics/css/web/index.css" />
         <option value="$PROJECT_DIR$/src/views/web/join.html" />
         <option value="$PROJECT_DIR$/src/statics/css/web/join.css" />
-        <option value="$PROJECT_DIR$/src/routers/routers.go" />
+        <option value="$PROJECT_DIR$/src/views/webmaster/goods/list.html" />
+        <option value="$PROJECT_DIR$/src/models/goodscategory.go" />
         <option value="$PROJECT_DIR$/src/controllers/webmaster/articlecategory.go" />
+        <option value="$PROJECT_DIR$/src/server.go" />
+        <option value="$PROJECT_DIR$/src/models/articlecategory.go" />
+        <option value="$PROJECT_DIR$/src/utils/global/global.go" />
+        <option value="$PROJECT_DIR$/src/views/webmaster/goods/create.html" />
+        <option value="$PROJECT_DIR$/src/models/article.go" />
+        <option value="$PROJECT_DIR$/src/views/webmaster/article/list.html" />
+        <option value="$PROJECT_DIR$/src/routers/routers.go" />
+        <option value="$PROJECT_DIR$/src/models/linkcategory.go" />
+        <option value="$PROJECT_DIR$/src/controllers/webmaster/linkcategory.go" />
         <option value="$PROJECT_DIR$/src/controllers/webmaster/article.go" />
+        <option value="$PROJECT_DIR$/src/models/link.go" />
+        <option value="$PROJECT_DIR$/src/views/webmaster/goodscategory/list.html" />
+        <option value="$PROJECT_DIR$/src/views/webmaster/articlecategory/list.html" />
+        <option value="$PROJECT_DIR$/src/views/webmaster/linkcategory/list.html" />
+        <option value="$PROJECT_DIR$/src/views/webmaster/link/create.html" />
+        <option value="$PROJECT_DIR$/src/views/webmaster/link/edit.html" />
+        <option value="$PROJECT_DIR$/src/views/webmaster/link/list.html" />
+        <option value="$PROJECT_DIR$/src/views/webmaster/article/create.html" />
+        <option value="$PROJECT_DIR$/src/views/webmaster/article/edit.html" />
+        <option value="$PROJECT_DIR$/src/controllers/webmaster/link.go" />
       </list>
     </option>
   </component>
@@ -142,6 +171,17 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -174,15 +214,176 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane">
-        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="ECPlatform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webmaster" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webmaster" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="link" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webmaster" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="article" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="global" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webmaster" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -203,42 +404,25 @@
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="LayoutCode.rearrangeEntriesHTML" value="false" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="LayoutCode.rearrangeEntriesGoogle Go Lang" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\models" />
+      <recent name="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\controllers\webmaster" />
+      <recent name="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\views\webmaster\linkcategory" />
+      <recent name="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\views\webmaster\link" />
       <recent name="E:\OneDrive\xianmau\Project\goworkspace\ECPlatform\src\controllers\webmaster" />
-      <recent name="E:\OneDrive\xianmau\Project\goworkspace\ECPlatform\src\views\webmaster\article" />
-      <recent name="E:\OneDrive\xianmau\Project\goworkspace\ECPlatform\src\views\webmaster\articlecategory" />
-      <recent name="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\statics\thirdpart" />
-      <recent name="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\controllers\upload" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Application.tmp.go">
-    <configuration default="false" name="tmp.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
-      <option name="name" value="tmp.go" />
-      <option name="saveOutputToFile" value="false" />
-      <option name="showConsoleOnStdErr" value="false" />
-      <option name="showConsoleOnStdOut" value="false" />
-      <option name="scriptName" value="$PROJECT_DIR$/src/tmp.go" />
-      <option name="scriptArguments" value="" />
-      <option name="builderArguments" value="" />
-      <option name="goBuildBeforeRun" value="false" />
-      <option name="goOutputDir" value="" />
-      <option name="workingDir" value="E:\OneDrive\xianmau\Project\goworkspace\ECPlatform" />
-      <option name="envVars" value="" />
-      <option name="goVetEnabled" value="false" />
-      <module name="ECPlatform" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <option name="name" value="Go application" />
       <option name="saveOutputToFile" value="false" />
@@ -489,14 +673,7 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Go Application.tmp.go" />
-    </list>
-    <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Go Application.tmp.go" />
-      </list>
-    </recent_temporary>
+    <list size="0" />
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -534,11 +711,13 @@
       <workItem from="1405602951756" duration="4763000" />
       <workItem from="1405678534893" duration="410000" />
       <workItem from="1405681643124" duration="1000" />
+      <workItem from="1405859131031" duration="3686000" />
+      <workItem from="1405866029220" duration="11331000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85839000" />
+    <option name="totallyTimeSpent" value="100856000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -567,31 +746,31 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32632744" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="go fmt Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3267974" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20032573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20424837" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32736155" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3267974" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19637462" sideWeight="0.50121063" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32736155" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3267974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3267974" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24848942" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24093656" sideWeight="0.49878934" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2439577" sideWeight="0.49878934" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="go fmt Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32736155" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -650,6 +829,22 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/controllers/webmaster/articlecategory.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3564">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routers/routers.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="594" max-vertical-offset="1296">
+          <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/webmaster/goods/edit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2556" max-vertical-offset="5562">
@@ -661,13 +856,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2556" max-vertical-offset="2826">
           <caret line="142" column="9" selection-start-line="142" selection-start-column="9" selection-end-line="142" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/articlecategory.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="579">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -727,13 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0616622" vertical-offset="0" max-vertical-offset="522">
-          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/webmaster/errorpage.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.13846155" vertical-offset="243" max-vertical-offset="828">
@@ -769,31 +950,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/goodscategory.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.24406047" vertical-offset="1301" max-vertical-offset="2034">
-          <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/goods.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.28222996" vertical-offset="2124" max-vertical-offset="2844">
           <caret line="109" column="36" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/webmaster/goods/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.21755028" vertical-offset="983" max-vertical-offset="1530">
-          <caret line="48" column="29" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/global/global.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22678186" vertical-offset="165" max-vertical-offset="810">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -804,21 +964,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/webmaster/goods/create.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30895796" vertical-offset="1415" max-vertical-offset="3384">
-          <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/statics/thirdpart/uploadify/license.txt">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/upload/upload.go">
@@ -856,13 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/webmaster/goods/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4734918" vertical-offset="3773" max-vertical-offset="8370">
-          <caret line="224" column="30" selection-start-line="224" selection-start-column="30" selection-end-line="224" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/webmaster/goods.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.92" vertical-offset="4536" max-vertical-offset="5922">
@@ -871,39 +1017,195 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/goodscategory.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0627178" vertical-offset="542" max-vertical-offset="2034">
+          <caret line="64" column="57" selection-start-line="64" selection-start-column="57" selection-end-line="64" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7758621" vertical-offset="0" max-vertical-offset="522">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/webmaster/articlecategory.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7184035" vertical-offset="648" max-vertical-offset="3564">
+          <caret line="54" column="58" selection-start-line="54" selection-start-column="36" selection-end-line="54" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/global/global.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.73594546" vertical-offset="432" max-vertical-offset="1062">
+          <caret line="48" column="19" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/webmaster/goods/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.7659575" vertical-offset="396" max-vertical-offset="1530">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/webmaster/article/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.87234044" vertical-offset="1107" max-vertical-offset="1530">
+          <caret line="41" column="52" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/articlecategory.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37762237" vertical-offset="0" max-vertical-offset="2034">
+          <caret line="12" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/linkcategory.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.031468533" vertical-offset="1404" max-vertical-offset="2034">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/routers/routers.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56978416" vertical-offset="594" max-vertical-offset="1296">
-          <caret line="55" column="73" selection-start-line="55" selection-start-column="73" selection-end-line="55" selection-end-column="73" />
+        <state vertical-scroll-proportion="0.5760684" vertical-offset="743" max-vertical-offset="1476">
+          <caret line="60" column="61" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/webmaster/linkcategory.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6853147" vertical-offset="2992" max-vertical-offset="3564">
+          <caret line="188" column="22" selection-start-line="188" selection-start-column="22" selection-end-line="188" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/article.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4160839" vertical-offset="0" max-vertical-offset="2394">
+          <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/webmaster/article.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62237763" vertical-offset="3604" max-vertical-offset="5418">
+          <caret line="220" column="76" selection-start-line="220" selection-start-column="76" selection-end-line="220" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/link.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.20134228" vertical-offset="324" max-vertical-offset="2304">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/webmaster/goodscategory/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6" vertical-offset="216" max-vertical-offset="3798">
+          <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/webmaster/articlecategory/list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3798">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.51428574" vertical-offset="540" max-vertical-offset="3798">
+          <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/webmaster/linkcategory/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.94678897" vertical-offset="3252" max-vertical-offset="3798">
+          <caret line="152" column="11" selection-start-line="152" selection-start-column="11" selection-end-line="152" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/webmaster/link/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16513762" vertical-offset="270" max-vertical-offset="1458">
+          <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/webmaster/goods/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.857142" vertical-offset="4212" max-vertical-offset="8370">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/webmaster/goods/create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.8642857" vertical-offset="2367" max-vertical-offset="3384">
+          <caret line="175" column="53" selection-start-line="175" selection-start-column="53" selection-end-line="175" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/webmaster/article/create.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3384">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.23571429" vertical-offset="1269" max-vertical-offset="3150">
+          <caret line="76" column="38" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/webmaster/article.go">
+    <entry file="file://$PROJECT_DIR$/src/views/webmaster/article/edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.228739" vertical-offset="218" max-vertical-offset="5922">
-          <caret line="286" column="12" selection-start-line="286" selection-start-column="12" selection-end-line="286" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.55714285" vertical-offset="1350" max-vertical-offset="3906">
+          <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/webmaster/articlecategory.go">
+    <entry file="file://$PROJECT_DIR$/src/controllers/webmaster/link.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9741007" vertical-offset="2113" max-vertical-offset="3564">
-          <caret line="155" column="12" selection-start-line="155" selection-start-column="12" selection-end-line="155" selection-end-column="12" />
+        <state vertical-scroll-proportion="-1.263986" vertical-offset="1983" max-vertical-offset="5454">
+          <caret line="70" column="42" selection-start-line="70" selection-start-column="42" selection-end-line="70" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/webmaster/link/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5045872" vertical-offset="409" max-vertical-offset="3618">
+          <caret line="38" column="40" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/webmaster/link/create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52844036" vertical-offset="1890" max-vertical-offset="2844">
+          <caret line="121" column="24" selection-start-line="121" selection-start-column="16" selection-end-line="121" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -965,6 +1267,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>Dashboard - Electronic Commerce Platform</title>
+    <title>Article Category - Electronic Commerce Platform</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     {{template "styles"}}
     <style>
@@ -24,7 +24,7 @@
         <form class="create-form form-inline">
           <div class="form-group">
             <label for="CreateName">Name</label>
-            <input type="text" class="form-control" style="width:200px;" id="CreateName" placeholder="Enter name" />
+            <input type="text" class="form-control" id="CreateName" placeholder="Enter name" />
           </div>
           <div class="form-group">
             <label for="CreateParent">Parent</label>
@@ -33,14 +33,14 @@
           </div>
           <div class="form-group">
             <label for="CreateOrdering">Ordering</label>
-            <input type="text" class="form-control" style="width:100px;" id="CreateOrdering" value="0" />
+            <input type="text" class="form-control" id="CreateOrdering" value="0" />
           </div>
 
           <button type="button" class="btn btn-primary" onclick="SubmitCreateForm()">Submit</button>
           <button type="button" class="btn btn-default" onclick="HideCreateForm()">Cancel</button>
         </form>
 
-        <h3>Goods Category List</h3>
+        <h3>Article Category List</h3>
 
         <div>
           <table class="table">
@@ -140,7 +140,7 @@
 
         $.ajax({
          type: 'POST',
-         url: '/webmaster/goodscategory/create',
+         url: '/webmaster/articlecategory/create',
          data: {
            name: name,
            parent: parent,
@@ -172,7 +172,7 @@
 
         $.ajax({
          type: 'POST',
-         url: '/webmaster/goodscategory/edit',
+         url: '/webmaster/articlecategory/edit',
          data: {
            name: name,
            parent: parent,
@@ -191,7 +191,7 @@
         }
         $.ajax({
          type: 'POST',
-         url: '/webmaster/goodscategory/delete',
+         url: '/webmaster/articlecategory/delete',
          data: {
            name: name
          },

@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Create Article - Electronic Commerce Platform</title>
+    <title>Create Link - Electronic Commerce Platform</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     {{template "styles"}}
     <style>
@@ -21,7 +21,7 @@
             <a href="javascript:void(0);" onclick="history.back(-1);"><span class="glyphicon glyphicon-arrow-left"></span>
                 Back</a>
 
-            <h3>Create New Article</h3>
+            <h3>Create New Link</h3>
 
             <form class="create-form">
                 <div class="form-group">
@@ -36,14 +36,18 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="CreateContent">Content</label>
-                    <textarea class="form-control" id="CreateContent"></textarea>
+                    <label for="CreateLinkUrl">Link Url</label>
+                    <input type="text" class="form-control" id="CreateLinkUrl" placeholder="Enter link url" />
+                </div>
+                <div class="form-group">
+                    <label for="CreateImageUrl">Image Url</label>
+                    <input type="text" class="form-control" id="CreateImageUrl" placeholder="Enter image url" />
                 </div>
                 <div class="form-group">
                     <label for="CreateStatus">Status</label>
                     <select class="form-control" id="CreateStatus">
                         <option value="">请选择</option>
-                        {{range $key, $value := .ArticleStatusMap}}
+                        {{range $key, $value := .LinkStatusMap}}
                         <option value="{{$key}}">{{$value}}</option>
                         {{end}}
                     </select>
@@ -68,30 +72,7 @@
 
         $(function () {
             InitSelect();
-            InitCKEditor();
         });
-
-        // 初始化CKEditor
-        function InitCKEditor(){
-            // 先设置上传目录
-            var upload_dir = "article/";
-            $('#CreateContent').ckeditor({
-                height: '450',
-                toolbar: [
-                    { name: 'document', items: ['Source', '-', 'Preview', 'Print', '-'] },
-                    { name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
-                    { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'] },
-                    { name: 'insert', items: ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'] },
-                    { name: 'links', items: ['Link', 'Unlink', 'Anchor'] },
-                    '/',
-                    { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'] },
-                    { name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize'] },
-                    { name: 'colors', items: ['TextColor', 'BGColor'] }
-                ],
-                image_previewText: ' ',
-                filebrowserImageUploadUrl: '/uploadprocess/webmaster/ckeditor?dir=' + upload_dir
-            });
-        }
 
         // 初始化下拉列表
         function InitSelect(){
@@ -137,7 +118,8 @@
         function SubmitCreateForm() {
             var title = $('#CreateTitle').val();
             var category = $('#CreateCategory').val();
-            var content = $('#CreateContent').val();
+            var linkUrl = $('#CreateLinkUrl').val();
+            var imageUrl = $('#CreateImageUrl').val();
             var status = $('#CreateStatus').val();
 
             // 表单验证
@@ -152,15 +134,16 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/webmaster/article/create',
+                url: '/webmaster/link/create',
                 data: {
                     title: title,
                     category: category,
-                    content: content,
+                    linkUrl: linkUrl,
+                    imageUrl: imageUrl,
                     status: status
                 },
                 success: function (data) {
-                    location.href = "/webmaster/article"
+                    location.href = "/webmaster/link"
                 },
                 dataType: 'text'
             });

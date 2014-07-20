@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Goods List - Electronic Commerce Platform</title>
+    <title>Link List - Electronic Commerce Platform</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     {{template "styles"}}
 </head>
@@ -15,10 +15,10 @@
 
         <div class="main">
 
-            <a href="/webmaster/goodscategory"><span class="glyphicon glyphicon-list"></span> Category</a>
-            <a href="/webmaster/goods/create"><span class="glyphicon glyphicon-plus"></span> Create</a>
+            <a href="/webmaster/linkcategory"><span class="glyphicon glyphicon-list"></span> Category</a>
+            <a href="/webmaster/link/create"><span class="glyphicon glyphicon-plus"></span> Create</a>
 
-            <h3>Goods List</h3>
+            <h3>Link List</h3>
 
             <div>
                 <table class="table">
@@ -27,23 +27,19 @@
                             <td>Id</td>
                             <td>Title</td>
                             <td>Category</td>
-                            <td>Unit</td>
-                            <td>Price</td>
                             <td>Status</td>
                             <td>Operation</td>
                         </tr>
                     </thead>
                     <tbody>
-                        {{range $index, $item := .GoodsList}}
+                        {{range $index, $item := .LinkList}}
                         <tr>
                             <td>{{$item.Id}}</td>
                             <td>{{$item.Title}}</td>
                             <td>{{$item.Category}}</td>
-                            <td>{{$item.Unit}}</td>
-                            <td>{{$item.Price}}</td>
                             <td>{{$item.Status}}</td>
                             <td>
-                                <a href="/webmaster/goods/edit?id={{$item.Id}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                <a href="/webmaster/link/edit?id={{$item.Id}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
                                 <a href="javascript:void(0);" onclick="Delete('{{$item.Id}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                             </td>
                         </tr>
@@ -65,7 +61,7 @@
             }
             $.ajax({
                 type: 'POST',
-                url: '/webmaster/goods/delete',
+                url: '/webmaster/link/delete',
                 data: {
                   id: id
                 },

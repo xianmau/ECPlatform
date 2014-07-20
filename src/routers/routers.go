@@ -55,6 +55,16 @@ func registerWebmaster() {
 	http.HandleFunc("/webmaster/article/edit", webmaster.ArticleEdit)
 	http.HandleFunc("/webmaster/article/delete", webmaster.ArticleDelete)
 
+	// 链接分类
+	http.HandleFunc("/webmaster/linkcategory", webmaster.LinkCategory)
+	http.HandleFunc("/webmaster/linkcategory/create", webmaster.LinkCategoryCreate)
+	http.HandleFunc("/webmaster/linkcategory/edit", webmaster.LinkCategoryEdit)
+	http.HandleFunc("/webmaster/linkcategory/delete", webmaster.LinkCategoryDelete)
+	// 链接
+	http.HandleFunc("/webmaster/link", webmaster.Link)
+	http.HandleFunc("/webmaster/link/create", webmaster.LinkCreate)
+	http.HandleFunc("/webmaster/link/edit", webmaster.LinkEdit)
+	http.HandleFunc("/webmaster/link/delete", webmaster.LinkDelete)
 
 	// 登录和注销
 	http.HandleFunc("/webmaster/login", webmaster.Login)

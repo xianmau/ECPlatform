@@ -12,6 +12,8 @@ var (
 	Config      *config.Config
 	Sessions    *session.Sessions
 	GoodsStatus map[int]string
+	ArticleStatus map[int]string
+	LinkStatus map[int]string
 )
 
 func init() {
@@ -35,5 +37,17 @@ func init() {
 		2: "缺货",
 		3: "下架",
 		4: "禁售",
+	}
+
+	// 初始化文章状态
+	ArticleStatus = map[int]string{
+		0: "未公开",
+		1: "公开",
+	}
+
+	// 初始化链接状态
+	LinkStatus = map[int]string{
+		0: "未公开",
+		1: "公开",
 	}
 }
