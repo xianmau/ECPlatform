@@ -14,6 +14,8 @@ var (
 	GoodsStatus map[int]string
 	ArticleStatus map[int]string
 	LinkStatus map[int]string
+
+	AuthorityList []string
 )
 
 func init() {
@@ -29,6 +31,21 @@ func init() {
 	}
 	Sessions = session.NewSessions("sessionid", time.Duration(session_expires)*time.Second)
 	go Sessions.GC()
+
+	// 初始化权限列表
+	AuthorityList = []string{
+		"登录",
+		"角色管理",
+		"管理员管理",
+		"用户管理",
+		"文章管理",
+		"链接管理",
+		"商店管理",
+		"商品管理",
+		"上传文件",
+		"货源设置",
+		"网站设置",
+	}
 
 	// 初始化商品状态
 	GoodsStatus = map[int]string{

@@ -66,6 +66,18 @@ func registerWebmaster() {
 	http.HandleFunc("/webmaster/link/edit", webmaster.LinkEdit)
 	http.HandleFunc("/webmaster/link/delete", webmaster.LinkDelete)
 
+	// 网站设置
+	http.HandleFunc("/webmaster/setting", webmaster.Setting)
+
+	// 系统
+	http.HandleFunc("/webmaster/system", webmaster.System)
+
+	// 用户管理
+	//http.HandleFunc("/webmaster/user", webmaster.User)
+
+	// 商店管理
+	//http.HandleFunc("/webmaster/shop", webmaster.Shop)
+
 	// 登录和注销
 	http.HandleFunc("/webmaster/login", webmaster.Login)
 	http.HandleFunc("/webmaster/logout", webmaster.Logout)
