@@ -13,10 +13,113 @@
 
         <div id="rightside">
             <div class="main">
-                <a href="/webmaster/role">角色设置</a>
-                <a href="/webmaster/admin">管理员设置</a>
-                <a href="/webmaster/origin">货源设置</a>
-                <a href="/webmaster/account">各种帐号设置</a>
+
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Role Manage</div>
+                    <div class="panel-body">
+                        <p>you can manage the roles here</p>
+                    </div>
+
+                    <!-- Table -->
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>Name</td>
+                            <td>Authority</td>
+                            <td>Operation</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{range $index, $item := .RoleList}}
+                        <tr>
+                            <td>{{$index}}</td>
+                            <td>{{$item.Name}}</td>
+                            <td>{{$item.Authority}}</td>
+                            <td>
+                                <a href="/webmaster/system/role/edit?name={{$item.Name}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                <a href="javascript:void(0);" onclick="RoleDelete('{{$item.Name}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                            </td>
+                        </tr>
+                        {{end}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Admin Manage</div>
+                    <div class="panel-body">
+                        <p>you can manage the admins here</p>
+                    </div>
+
+                    <!-- Table -->
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>Name</td>
+                            <td>Role</td>
+                            <td>Operation</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{range $index, $item := .AdminList}}
+                        <tr>
+                            <td>{{$index}}</td>
+                            <td>{{$item.Name}}</td>
+                            <td>{{$item.Role}}</td>
+                            <td>
+                                <a href="/webmaster/system/admin/edit?name={{$item.Name}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                <a href="javascript:void(0);" onclick="AdminDelete('{{$item.Name}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                            </td>
+                        </tr>
+                        {{end}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Origin Manage</div>
+                    <div class="panel-body">
+                        <p>you can manage the origins here</p>
+                    </div>
+
+                    <!-- Table -->
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>Name</td>
+                            <td>Operation</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{range $index, $item := .OriginList}}
+                        <tr>
+                            <td>{{$index}}</td>
+                            <td>{{$item.Name}}</td>
+                            <td>
+                                <a href="/webmaster/system/origin/edit?name={{$item.Name}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                <a href="javascript:void(0);" onclick="OriginDelete('{{$item.Name}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                            </td>
+                        </tr>
+                        {{end}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Account Manage</div>
+                    <div class="panel-body">
+                        <p>you can manage the accounts here</p>
+                    </div>
+
+                </div>
+
             </div>
         </div>
 

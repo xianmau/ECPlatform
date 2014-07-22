@@ -30,7 +30,7 @@ func Setting(w http.ResponseWriter, r *http.Request) {
 		log.Info(client_ip + " get /webmaster/setting")
 
 		// check authorities
-		if ok, msg := authority.Check(admin.Role, "设置管理"); !ok {
+		if ok, msg := authority.Check(admin.Role, "网站设置"); !ok {
 			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusFound)
 			return
 		}

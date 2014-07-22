@@ -1,9 +1,6 @@
 package webmaster
 
-import (
-	"database/sql"
-	"encoding/json"
-	_ "github.com/go-sql-driver/mysql"
+import (    _ "github.com/go-sql-driver/mysql"
 	"html/template"
 	"models"
 	"net/http"
@@ -50,38 +47,12 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		form_name := r.PostFormValue("Name")
 		form_password := r.PostFormValue("Password")
 
-		db, err := sql.Open("mysql", global.Config.Get("conn_str"))
-		defer db.Close()
-		if err != nil {
+		admin, err := models.GetAdminForLogin(form_name, form_password)
+		if err != nil{
 			log.Error(err.Error())
 			return
 		}
-		rows, err := db.Query("select `tb_admin`.*,`tb_role`.`Authority` from `tb_admin` left join `tb_role` on `tb_admin`.`Role`=`tb_role`.`Name` where `tb_admin`.`Name`=? and `tb_admin`.`Password`=?", form_name, form_password)
-		defer rows.Close()
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
-		if rows.Next() {
-			var admin models.Admin
-			var Name string
-			var Password string
-			var RoleName string
-			var RoleAuthority sql.NullString
-			if err := rows.Scan(&Name, &Password, &RoleName, &RoleAuthority); err != nil {
-				log.Error(err.Error())
-				return
-			}
-			admin.Name = Name
-			admin.Password = Password
-			admin.Role.Name = RoleName
-			if RoleAuthority.Valid {
-				if err := json.Unmarshal([]byte(RoleAuthority.String), &admin.Role.Authority); err != nil {
-					log.Error(err.Error())
-					return
-				}
-			}
-
+		if admin != nil {
 			// check authorities
 			if ok, msg := authority.Check(admin.Role, "登录"); !ok {
 				http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusFound)
@@ -89,7 +60,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			}
 
 			log.Info(client_ip + " " + admin.Name + " logged")
-			session.Set("admin", admin)
+			session.Set("admin", *admin)
 
 			http.Redirect(w, r, "/webmaster/dashboard", http.StatusFound)
 			return

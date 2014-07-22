@@ -1,0 +1,38 @@
+2014/07/23 00:18:57 [I][::1] get /webmaster/system
+2014/07/23 00:18:58 [I][::1] get /webmaster/setting
+2014/07/23 00:18:59 [I][::1] get /webmaster/system
+2014/07/23 00:19:46 [I][::1] get /webmaster/system
+2014/07/23 00:22:31 [I][::1] get /webmaster/system
+2014/07/23 00:24:59 [I][::1] get /webmaster/system
+2014/07/23 00:25:19 [I][::1] get /webmaster/system
+2014/07/23 00:25:19 [E]template: system.html:45:72: executing "system.html" at <$item.Id>: Id is not a field of struct type models.Role
+2014/07/23 00:25:33 [I][::1] get /webmaster/system
+2014/07/23 00:25:33 [E]template: system.html:45:72: executing "system.html" at <$item.Id>: Id is not a field of struct type models.Role
+2014/07/23 00:26:03 [I][::1] get /webmaster/system
+2014/07/23 00:26:03 [E]template: system.html:41: illegal number syntax: "+"
+2014/07/23 00:26:22 [I][::1] get /webmaster/system
+2014/07/23 00:26:22 [E]template: system.html:41: illegal number syntax: "+"
+2014/07/23 00:26:55 [I][::1] get /webmaster/system
+2014/07/23 00:26:55 [E]template: system.html:45:72: executing "system.html" at <$item.Id>: Id is not a field of struct type models.Role
+2014/07/23 00:27:01 [I][::1] get /webmaster/system
+2014/07/23 00:27:01 [E]template: system.html:45:72: executing "system.html" at <$item.Id>: Id is not a field of struct type models.Role
+2014/07/23 00:27:40 [I][::1] get /webmaster/system
+2014/07/23 00:28:10 [I][::1] get /webmaster/system
+2014/07/23 00:28:10 [E]template: system.html:45:72: executing "system.html" at <$item.Id>: Id is not a field of struct type models.Role
+2014/07/23 00:28:49 [I][::1] get /webmaster/system
+2014/07/23 00:28:49 [E]template: system.html:45:72: executing "system.html" at <$item.Id>: Id is not a field of struct type models.Role
+2014/07/23 00:30:22 [I][::1] get /webmaster/system
+2014/07/23 00:30:39 [I][::1] get /webmaster/system
+2014/07/23 00:32:10 [I][::1] get /webmaster/system
+2014/07/23 00:34:32 [I][::1] get /webmaster/system
+2014/07/23 00:35:00 [I][::1] get /webmaster/system
+2014/07/23 00:37:44 [I][::1] get /webmaster/system
+2014/07/23 00:38:25 [I][::1] get /webmaster/logout
+2014/07/23 00:38:25 [I][::1] get /webmaster/errorpage
+2014/07/23 00:38:26 [I][::1] get /webmaster/login
+2014/07/23 00:38:29 [I][::1] post /webmaster/login
+2014/07/23 00:38:29 [I][::1] root logged
+2014/07/23 00:38:29 [I][::1] get /webmaster/dashboard
+2014/07/23 00:38:31 [I][::1] get /webmaster/system
+2014/07/23 00:39:42 [I][::1] get /webmaster/system
+2014/07/23 00:40:54 [I][::1] get /webmaster/system

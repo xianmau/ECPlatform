@@ -30,7 +30,7 @@ func System(w http.ResponseWriter, r *http.Request) {
 		log.Info(client_ip + " get /webmaster/system")
 
 		// check authorities
-		if ok, msg := authority.Check(admin.Role, "登录"); !ok {
+		if ok, msg := authority.Check(admin.Role, "系统管理"); !ok {
 			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusFound)
 			return
 		}
@@ -50,6 +50,25 @@ func System(w http.ResponseWriter, r *http.Request) {
 		// bind data
 		data := make(map[string]interface{})
 		data["Admin"] = admin
+		data["AuthorityList"] = global.AuthorityList
+		roleList, err := models.GetRoleList()
+		if err != nil{
+			log.Error(err.Error())
+			return
+		}
+		data["RoleList"] = roleList
+		adminList, err := models.GetAdminList()
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		data["AdminList"] = adminList
+		originList, err := models.GetOriginList()
+		if err != nil{
+			log.Error(err.Error())
+			return
+		}
+		data["OriginList"] = originList
 
 		// execute template
 		err = t.Execute(w, data)
