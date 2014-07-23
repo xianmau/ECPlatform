@@ -16,27 +16,6 @@ func Check(role models.Role, dowhat string, args ...string) (bool, string) {
 			}
 		}
 		return false, "请确保您有登录权限"
-	case "角色管理":
-		for _, v := range role.Authority {
-			if v == dowhat {
-				return true, ""
-			}
-		}
-		return false, "请确保您有管角色管理权限"
-	case "管理员管理":
-		for _, v := range role.Authority {
-			if v == dowhat {
-				return true, ""
-			}
-		}
-		return false, "请确保您有管理员管理权限"
-	case "用户管理":
-		for _, v := range role.Authority {
-			if v == dowhat {
-				return true, ""
-			}
-		}
-		return false, "请确保您有用户管理权限"
 	case "文章管理":
 		for _, v := range role.Authority {
 			if v == dowhat {
@@ -51,6 +30,13 @@ func Check(role models.Role, dowhat string, args ...string) (bool, string) {
 			}
 		}
 		return false, "请确保您有链接管理权限"
+	case "用户管理":
+		for _, v := range role.Authority {
+			if v == dowhat {
+				return true, ""
+			}
+		}
+		return false, "请确保您有用户管理权限"
 	case "商店管理":
 		for _, v := range role.Authority {
 			if v == dowhat {
@@ -72,13 +58,6 @@ func Check(role models.Role, dowhat string, args ...string) (bool, string) {
 			}
 		}
 		return false, "请确保您有上传文件权限"
-	case "货源设置":
-		for _, v := range role.Authority {
-			if v == dowhat {
-				return true, ""
-			}
-		}
-		return false, "请确保您有货源设置权限"
 	case "网站设置":
 		for _, v := range role.Authority {
 			if v == dowhat {
@@ -87,12 +66,40 @@ func Check(role models.Role, dowhat string, args ...string) (bool, string) {
 		}
 		return false, "请确保您有网站设置权限"
 	case "系统管理":
-	for _, v := range role.Authority {
-		if v == dowhat {
-			return true, ""
+		for _, v := range role.Authority {
+			if v == dowhat {
+				return true, ""
+			}
 		}
-	}
 		return false, "请确保您有系统管理权限"
+	case "角色管理":
+		for _, v := range role.Authority {
+			if v == dowhat {
+				return true, ""
+			}
+		}
+		return false, "请确保您有管角色管理权限"
+	case "管理员管理":
+		for _, v := range role.Authority {
+			if v == dowhat {
+				return true, ""
+			}
+		}
+		return false, "请确保您有管理员管理权限"
+	case "货源管理":
+		for _, v := range role.Authority {
+			if v == dowhat {
+				return true, ""
+			}
+		}
+		return false, "请确保您有货源管理权限"
+	case "帐号管理":
+		for _, v := range role.Authority {
+			if v == dowhat {
+				return true, ""
+			}
+		}
+		return false, "请确保您有帐号管理权限"
 	default:
 	}
 	return false, "请确保您有相应的权限"

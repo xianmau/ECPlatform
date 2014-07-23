@@ -18,31 +18,34 @@
 
     <div id="rightside">
       <div class="main">
-        <a href="javascript:void(0);" onclick="history.back(-1)"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
-        <a href="javascript:void(0);" onclick="ShowCreateForm()"><span class="glyphicon glyphicon-plus"></span> Create</a>
 
-        <form class="create-form form-inline">
-          <div class="form-group">
-            <label for="CreateName">Name</label>
-            <input type="text" class="form-control" style="width:200px;" id="CreateName" placeholder="Enter name" />
-          </div>
-          <div class="form-group">
-            <label for="CreateParent">Parent</label>
-            <select class="form-control" id="CreateParent">
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="CreateOrdering">Ordering</label>
-            <input type="text" class="form-control" id="CreateOrdering" value="0" />
-          </div>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Link Category Manage</div>
+            <div class="panel-body">
+                <a href="javascript:void(0);" onclick="history.back(-1)"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+                <a href="javascript:void(0);" onclick="ShowCreateForm()"><span class="glyphicon glyphicon-plus"></span> Create</a>
 
-          <button type="button" class="btn btn-primary" onclick="SubmitCreateForm()">Submit</button>
-          <button type="button" class="btn btn-default" onclick="HideCreateForm()">Cancel</button>
-        </form>
+                <form class="create-form form-inline">
+                    <div class="form-group">
+                        <label for="CreateName">Name</label>
+                        <input type="text" class="form-control" style="width:200px;" id="CreateName" placeholder="Enter name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="CreateParent">Parent</label>
+                        <select class="form-control" id="CreateParent">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="CreateOrdering">Ordering</label>
+                        <input type="text" class="form-control" id="CreateOrdering" value="0" />
+                    </div>
 
-        <h3>Link Category List</h3>
-
-        <div>
+                    <button type="button" class="btn btn-primary" onclick="SubmitCreateForm()">Submit</button>
+                    <button type="button" class="btn btn-default" onclick="HideCreateForm()">Cancel</button>
+                </form>
+            </div>
+            <!-- Table -->
           <table class="table">
             <thead>
               <tr>

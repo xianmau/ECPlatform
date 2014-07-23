@@ -71,6 +71,17 @@ func registerWebmaster() {
 
 	// 系统
 	http.HandleFunc("/webmaster/system", webmaster.System)
+	// 角色
+	http.HandleFunc("/webmaster/role/create", webmaster.RoleCreate)
+	http.HandleFunc("/webmaster/role/edit", webmaster.RoleEdit)
+	http.HandleFunc("/webmaster/role/delete", webmaster.RoleDelete)
+	// 管理员
+	http.HandleFunc("/webmaster/admin/create", webmaster.AdminCreate)
+	http.HandleFunc("/webmaster/admin/edit", webmaster.AdminEdit)
+	http.HandleFunc("/webmaster/admin/delete", webmaster.AdminDelete)
+	// 货源
+	http.HandleFunc("/webmaster/origin/create", webmaster.OriginCreate)
+	http.HandleFunc("/webmaster/origin/delete", webmaster.OriginDelete)
 
 	// 用户管理
 	//http.HandleFunc("/webmaster/user", webmaster.User)

@@ -133,13 +133,13 @@ func EditAdmin(Name string, Password string, RoleName string) error {
 		return err
 	}
 	if Password == ""{
-		_, err = db.Exec("update `tb_admin` set `RoleName`=? where `Name`=?", Password, RoleName, Name)
+		_, err = db.Exec("update `tb_admin` set `Role`=? where `Name`=?", Password, RoleName, Name)
 		if err != nil {
 			return err
 		}
 		return nil
 	}
-	_, err = db.Exec("update `tb_admin` set `Password`=?,`RoleName`=? where `Name`=?", Password, RoleName, Name)
+	_, err = db.Exec("update `tb_admin` set `Password`=?,`Role`=? where `Name`=?", Password, RoleName, Name)
 	if err != nil {
 		return err
 	}

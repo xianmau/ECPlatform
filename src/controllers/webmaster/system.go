@@ -9,6 +9,7 @@ import (
 	"utils/global"
 	log "utils/logger"
 	"utils/tools"
+	"encoding/json"
 )
 
 func System(w http.ResponseWriter, r *http.Request) {
@@ -69,6 +70,12 @@ func System(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		data["OriginList"] = originList
+		authList, err := json.Marshal(global.AuthorityList)
+		if err != nil{
+			log.Error(err.Error())
+			return
+		}
+		data["AuthList"] = string(authList)
 
 		// execute template
 		err = t.Execute(w, data)
