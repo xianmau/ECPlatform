@@ -137,7 +137,7 @@ func GoodsCreate(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	} else if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/goods/create")
 
 		// check authorities
@@ -251,7 +251,7 @@ func GoodsEdit(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	} else if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/goods/edit")
 
 		// check authorities
@@ -300,7 +300,7 @@ func GoodsDelete(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/goods/delete")
 
 		// check authorities

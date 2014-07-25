@@ -89,7 +89,7 @@ func ArticleCategoryCreate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/articlecategory/create")
 
 		// check authorities
@@ -129,7 +129,7 @@ func ArticleCategoryEdit(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/articlecategory/edit")
 
 		// check authorities
@@ -169,7 +169,7 @@ func ArticleCategoryDelete(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/articlecategory/delete")
 
 		// check authorities

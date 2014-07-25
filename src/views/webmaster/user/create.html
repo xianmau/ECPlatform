@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Create User - Electronic Commerce Platform</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    {{template "styles"}}
+    <style>
+        .create-category-tmp{margin-right: 10px;}
+    </style>
+</head>
+<body>
+    <div id="leftside">
+        {{template "leftside" .}}
+    </div>
+
+    <div id="rightside">
+
+        <div class="main">
+
+            <a href="javascript:void(0);" onclick="history.back(-1);"><span class="glyphicon glyphicon-arrow-left"></span>
+                Back</a>
+
+            <h3>Create New Uesr</h3>
+
+            <form class="create-form">
+                <div class="form-group">
+                    <label for="CreateName">Name</label>
+                    <input type="text" class="form-control" id="CreateName" placeholder="Enter user name" />
+                </div>
+                <div class="form-group">
+                    <label for="CreatePassword">Password</label>
+                    <input type="password" class="form-control" id="CreatePassword" placeholder="Enter password" />
+                </div>
+                <div class="form-group">
+                    <label for="CreatePasswordConfirm">Again</label>
+                    <input type="password" class="form-control" id="CreatePasswordConfirm" placeholder="Enter password again" />
+                </div>
+                <div class="form-group">
+                    <label for="CreateLevel">Level</label>
+                    <select class="form-control" id="CreateLevel">
+                        {{range $k, $v := .UserLevelMap}}
+                        <option value="{{$k}}">{{$v}}</option>
+                        {{end}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="CreateStatus">Status</label>
+                    <select class="form-control" id="CreateStatus">
+                        {{range $k, $v := .UserStatusMap}}
+                        <option value="{{$k}}">{{$v}}</option>
+                        {{end}}
+                    </select>
+                </div>
+
+                <button type="button" class="btn btn-primary" onclick="SubmitCreateForm()">Submit</button>
+                <button type="reset" class="btn btn-default">Reset</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+    {{template "scripts"}}
+
+    <script>
+        // 提交表单
+        function SubmitCreateForm() {
+            var name = $('#CreateName').val();
+            var password = $('#CreatePassword').val();
+            var password2 = $('#CreatePasswordConfirm').val();
+            var level = $('#CreateLevel').val();
+            var status = $('#CreateStatus').val();
+
+            // 表单验证
+            if (name == ""){
+                alert("Name could not be empty")
+                return
+            }
+            if (password == ""){
+                alert("Password could not be empty")
+                return
+            }
+            if(password != password2){
+                alert("Password not the same")
+                return
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '/webmaster/user/create',
+                data: {
+                    name: name,
+                    password: password,
+                    level: level,
+                    status: status
+                },
+                success: function (data) {
+                    location.href = "/webmaster/user"
+                },
+                dataType: 'text'
+            });
+        }
+    </script>
+</body>
+</html>

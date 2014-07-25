@@ -130,7 +130,7 @@ func LinkCreate(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	} else if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/link/create")
 
 		// check authorities
@@ -231,7 +231,7 @@ func LinkEdit(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	} else if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/link/edit")
 
 		// check authorities
@@ -274,7 +274,7 @@ func LinkDelete(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/link/delete")
 
 		// check authorities

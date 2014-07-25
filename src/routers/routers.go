@@ -84,7 +84,12 @@ func registerWebmaster() {
 	http.HandleFunc("/webmaster/origin/delete", webmaster.OriginDelete)
 
 	// 用户管理
-	//http.HandleFunc("/webmaster/user", webmaster.User)
+	http.HandleFunc("/webmaster/user", webmaster.User)
+	http.HandleFunc("/webmaster/user/create", webmaster.UserCreate)
+	http.HandleFunc("/webmaster/user/edit", webmaster.UserEdit)
+	http.HandleFunc("/webmaster/user/resetpassword", webmaster.UserResetPassword)
+	http.HandleFunc("/webmaster/user/delete", webmaster.UserDelete)
+	http.HandleFunc("/webmaster/user/detail", webmaster.UserDetail)
 
 	// 商店管理
 	//http.HandleFunc("/webmaster/shop", webmaster.Shop)

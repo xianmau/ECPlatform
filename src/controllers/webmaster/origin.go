@@ -26,7 +26,7 @@ func OriginCreate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/origin/create")
 
 		// check authorities
@@ -64,7 +64,7 @@ func OriginDelete(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/origin/delete")
 
 		// check authorities

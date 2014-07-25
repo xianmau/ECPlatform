@@ -26,7 +26,7 @@ func AdminCreate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/admin/create")
 
 		// check authorities

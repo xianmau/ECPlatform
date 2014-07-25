@@ -89,7 +89,7 @@ func LinkCategoryCreate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/linkcategory/create")
 
 		// check authorities
@@ -129,7 +129,7 @@ func LinkCategoryEdit(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/linkcategory/edit")
 
 		// check authorities
@@ -169,7 +169,7 @@ func LinkCategoryDelete(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/linkcategory/delete")
 
 		// check authorities

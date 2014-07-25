@@ -52,12 +52,12 @@ func Article(w http.ResponseWriter, r *http.Request) {
 		// bind data
 		data := make(map[string]interface{})
 		data["Admin"] = admin
-		articlelist, err := models.GetArticleList()
+		articleList, err := models.GetArticleList()
 		if err != nil {
 			log.Error(err.Error())
 			return
 		}
-		data["ArticleList"] = articlelist
+		data["ArticleList"] = articleList
 
 		// execute template
 		err = t.Execute(w, data)
@@ -130,7 +130,7 @@ func ArticleCreate(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	} else if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/article/create")
 
 		// check authorities
@@ -230,7 +230,7 @@ func ArticleEdit(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	} else if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/article/edit")
 
 		// check authorities
@@ -272,7 +272,7 @@ func ArticleDelete(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/article/delete")
 
 		// check authorities

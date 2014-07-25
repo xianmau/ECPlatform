@@ -14,6 +14,8 @@ var (
 	GoodsStatus map[int]string
 	ArticleStatus map[int]string
 	LinkStatus map[int]string
+	UserStatus map[int]string
+	UserLevel map[int]string
 
 	AuthorityList []string
 )
@@ -68,5 +70,20 @@ func init() {
 	LinkStatus = map[int]string{
 		0: "未公开",
 		1: "公开",
+	}
+
+	// 初始化用户状态
+	UserStatus = map[int]string{
+		0: "冻结",
+		1: "未认证",
+		2: "已认证",
+	}
+
+	// 初始化用户等级
+	UserLevel = map[int]string{
+		0: "注册用户",
+		1: "黄金用户",
+		2: "白金用户",
+		3: "钻石用户",
 	}
 }

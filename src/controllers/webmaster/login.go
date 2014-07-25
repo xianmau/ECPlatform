@@ -87,7 +87,7 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "GET" {
-		// deal with post method
+		// deal with get method
 		log.Info(client_ip + " get /webmaster/logout")
 
 		log.Info(client_ip + " " + admin.Name + " logged out")

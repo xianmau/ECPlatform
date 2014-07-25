@@ -26,7 +26,7 @@ func RoleCreate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/role/create")
 
 		// check authorities
@@ -65,7 +65,7 @@ func RoleEdit(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/role/edit")
 
 		// check authorities
@@ -104,7 +104,7 @@ func RoleDelete(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "POST" {
-		// deal with get method
+		// deal with post method
 		log.Info(client_ip + " post /webmaster/role/delete")
 
 		// check authorities
