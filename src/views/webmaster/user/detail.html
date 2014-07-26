@@ -2,9 +2,14 @@
 
 <html>
 <head>
-    <title>User List - Electronic Commerce Platform</title>
+    <title>User Detail - Electronic Commerce Platform</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     {{template "styles"}}
+    <style>
+        .user-detail-info-lebal{margin: 5px;font-size: 14px; color: #CCC; display: inline-block;}
+        .user-base-info-lebal{margin: 5px;font-size: 14px; color: #CCC; min-width: 80px; display: inline-block;}
+        .user-detail-info-value{margin: 5px;font-size: 14px; color: #555;}
+    </style>
 </head>
 <body>
     <div id="leftside">
@@ -17,39 +22,69 @@
 
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">User Manage</div>
+                <div class="panel-heading">User Detail</div>
                 <div class="panel-body">
-                    <a href="/webmaster/user/create"><span class="glyphicon glyphicon-plus"></span> Create</a>
+                    <a href="javascript:void(0);" onclick="history.back(-1);"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+                    <a href="/webmaster/user/edit?name={{.User.Name}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                    <a href="javascript:void(0);" onclick="Delete('{{.User.Name}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+
+
+                    <h4 id="UserInfo">User Info</h4>
+                    <span class="user-detail-info-lebal">Name</span>
+                    <span class="user-detail-info-value">{{.User.Name}}</span>
+
+                    <span class="user-detail-info-lebal">Level</span>
+                    <span class="user-detail-info-value">{{.UserLevel}}</span>
+
+                    <span class="user-detail-info-lebal">Status</span>
+                    <span class="user-detail-info-value">{{.UserStatus}}</span>
+
+                    <span class="user-detail-info-lebal">Register Time</span>
+                    <span class="user-detail-info-value">{{.User.RegisterTime}}</span>
+
+                    <h4>Base Info</h4>
+
+                    <div style="float:left;"><img id="BaseInfo_Avatar" src="" style="height: 180px;min-width: 160px; border: 1px solid #CCC; border-radius: 10px;" /></div>
+
+                    <span class="user-base-info-lebal">Real Name</span>
+                    <span class="user-detail-info-value" id="BaseInfo_RealName"></span>
+
+                    <br />
+
+                    <span class="user-base-info-lebal">Sex</span>
+                    <span class="user-detail-info-value" id="BaseInfo_Sex"></span>
+
+                    <br />
+
+                    <span class="user-base-info-lebal">Birthday</span>
+                    <span class="user-detail-info-value" id="BaseInfo_Birthday"></span>
+
+                    <br />
+
+                    <span class="user-base-info-lebal">Birthplace</span>
+                    <span class="user-detail-info-value" id="BaseInfo_Birthplace"></span>
+
+                    <br />
+
+                    <span class="user-base-info-lebal">Tel</span>
+                    <span class="user-detail-info-value" id="BaseInfo_Tel"></span>
+
+                    <br />
+
+                    <span class="user-base-info-lebal">E-mail</span>
+                    <span class="user-detail-info-value" id="BaseInfo_Email"></span>
+
+                    <div class="clear"></div>
+
+                    <h4>Receive Info</h4>
+
+                    <div id="userReceiveInfo"></div>
+
+                    <h4>Login History</h4>
+
+                    <div id="userLoginHistory"></div>
+
                 </div>
-                <!-- Table -->
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <td>#</td>
-                            <td>Name</td>
-                            <td>Level</td>
-                            <td>RegisterTime</td>
-                            <td>Status</td>
-                            <td>Operation</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{range $index, $item := .UserList}}
-                        <tr>
-                            <td>{{$index}}</td>
-                            <td>{{$item.Name}}</td>
-                            <td>{{$item.Level}}</td>
-                            <td>{{$item.RegisterTime}}</td>
-                            <td>{{$item.Status}}</td>
-                            <td>
-                                <a href="/webmaster/user/detail?name={{$item.Name}}"><span class="glyphicon glyphicon-eye-open"></span> Detail</a>
-                                <a href="/webmaster/user/edit?name={{$item.Name}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                                <a href="javascript:void(0);" onclick="Delete('{{$item.Name}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-                            </td>
-                        </tr>
-                        {{end}}
-                    </tbody>
-                </table>
             </div>
 
         </div>
@@ -59,6 +94,52 @@
 
     {{template "scripts"}}
     <script>
+        // 分类列表的json对象
+        var JsonUserLoginHistory = JSON.parse({{.User.LoginHistory}});
+        var JsonUserBaseInfo = JSON.parse({{.User.BaseInfo}});
+        var JsonUserReceiveInfo = JSON.parse({{.User.ReceiveInfo}});
+
+        $(function(){
+            InitData();
+        });
+
+        function InitData(){
+            $('#BaseInfo_RealName').html(JsonUserBaseInfo.RealName);
+            $('#BaseInfo_Sex').html(JsonUserBaseInfo.Sex);
+            $('#BaseInfo_Birthday').html(JsonUserBaseInfo.Birthday);
+            $('#BaseInfo_Birthplace').html(JsonUserBaseInfo.Birthplace);
+            $('#BaseInfo_Tel').html(JsonUserBaseInfo.Tel);
+            $('#BaseInfo_Email').html(JsonUserBaseInfo.Email);
+
+            var userReceiveInfo = '<table class="table">';
+            userReceiveInfo += '<thead>';
+            userReceiveInfo += '<tr>';
+            userReceiveInfo += '<th>Consignee</th><th>Address</th><th>Postcode</th><th>Tel</th><th>Remark</th>';
+            userReceiveInfo += '</tr>';
+            userReceiveInfo += '</thead>';
+            userReceiveInfo += '<tbody>';
+
+            for(var i = JsonUserReceiveInfo.length - 1; i >= 0; i --) {
+
+                userReceiveInfo += '<tr>';
+                userReceiveInfo += '<td>'+ JsonUserReceiveInfo[i].Consignee +'</td>';
+                userReceiveInfo += '<td>'+ JsonUserReceiveInfo[i].Address +'</td>';
+                userReceiveInfo += '<td>'+ JsonUserReceiveInfo[i].Postcode +'</td>';
+                userReceiveInfo += '<td>'+ JsonUserReceiveInfo[i].Tel +'</td>';
+                userReceiveInfo += '<td>'+ JsonUserReceiveInfo[i].Remark +'</td>';
+                userReceiveInfo += '<tr>';
+            }
+
+            userReceiveInfo += '</tbody></table>';
+            $('#userReceiveInfo').html(userReceiveInfo);
+
+            var userLoginHistory = '<ul>';
+            for(var i = JsonUserLoginHistory.length - 1; i >= 0; i --) {
+                userLoginHistory += '<li>' + JsonUserLoginHistory[i] + '</li>';
+            }
+            userLoginHistory += '</ul>';
+            $('#userLoginHistory').html(userLoginHistory);
+        }
         function Delete(name){
             if(!confirm('Are you sure?')){
                 return ;
@@ -70,7 +151,7 @@
                   name: name
                 },
                 success: function(data) {
-                  location.reload();
+                  location.href = '/webmaster/user'
                 },
                 dataType: 'text'
             });

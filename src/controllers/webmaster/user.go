@@ -350,10 +350,6 @@ func UserDetail(w http.ResponseWriter, r *http.Request) {
 		// bind data
 		data := make(map[string]interface{})
 		data["Admin"] = admin
-		// 用户级别
-		data["UserLevelMap"] = global.UserLevel
-		// 用户状态
-		data["UserStatusMap"] = global.UserStatus
 		// 当前用户
 		r.ParseForm()
 		get_name := r.Form.Get("name")
@@ -367,6 +363,10 @@ func UserDetail(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		data["User"] = user
+		// 用户级别
+		data["UserLevel"] = global.UserLevel[user.Level]
+		// 用户状态
+		data["UserStatus"] = global.UserStatus[user.Status]
 
 		// execute template
 		err = t.Execute(w, data)
