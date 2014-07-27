@@ -16,6 +16,8 @@ var (
 	LinkStatus map[int]string
 	UserStatus map[int]string
 	UserLevel map[int]string
+	ShopStatus map[int]string
+	ShopKind map[int]string
 
 	AuthorityList []string
 )
@@ -85,5 +87,17 @@ func init() {
 		1: "黄金用户",
 		2: "白金用户",
 		3: "钻石用户",
+	}
+
+	// 初始化商店状态
+	ShopStatus = map[int]string{
+		0: "停止营业",
+		1: "正常营业",
+	}
+
+	// 初始化商店类型
+	ShopKind = map[int]string{
+		0: "个体户",
+		1: "合作社",
 	}
 }

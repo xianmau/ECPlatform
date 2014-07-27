@@ -92,7 +92,7 @@ func registerWebmaster() {
 	http.HandleFunc("/webmaster/user/detail", webmaster.UserDetail)
 
 	// 商店管理
-	//http.HandleFunc("/webmaster/shop", webmaster.Shop)
+	http.HandleFunc("/webmaster/shop", webmaster.Shop)
 
 	// 登录和注销
 	http.HandleFunc("/webmaster/login", webmaster.Login)
