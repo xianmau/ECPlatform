@@ -28,7 +28,7 @@ func User(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		// deal with get method
-		log.Info(client_ip + " post /webmaster/user")
+		log.Info(client_ip + " get /webmaster/user")
 
 		// check authorities
 		if ok, msg := authority.Check(admin.Role, "用户管理"); !ok {

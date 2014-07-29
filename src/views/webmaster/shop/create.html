@@ -20,7 +20,7 @@
 
             <a href="javascript:void(0);" onclick="history.back(-1);"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
 
-            <h3>Create New Uesr</h3>
+            <h3>Create New Shop</h3>
 
             <form class="create-form">
                 <div class="form-group">
@@ -28,17 +28,13 @@
                     <input type="text" class="form-control" id="CreateName" placeholder="Enter user name" />
                 </div>
                 <div class="form-group">
-                    <label for="CreatePassword">Password</label>
-                    <input type="password" class="form-control" id="CreatePassword" placeholder="Enter password" />
+                    <label for="CreateUserName">User Name</label>
+                    <input type="text" class="form-control" id="CreateUserName" placeholder="Enter user name" />
                 </div>
                 <div class="form-group">
-                    <label for="CreatePasswordConfirm">Again</label>
-                    <input type="password" class="form-control" id="CreatePasswordConfirm" placeholder="Enter password again" />
-                </div>
-                <div class="form-group">
-                    <label for="CreateLevel">Level</label>
-                    <select class="form-control" id="CreateLevel">
-                        {{range $k, $v := .UserLevelMap}}
+                    <label for="CreateKind">Kind</label>
+                    <select class="form-control" id="CreateKind">
+                        {{range $k, $v := .ShopKindMap}}
                         <option value="{{$k}}">{{$v}}</option>
                         {{end}}
                     </select>
@@ -46,7 +42,7 @@
                 <div class="form-group">
                     <label for="CreateStatus">Status</label>
                     <select class="form-control" id="CreateStatus">
-                        {{range $k, $v := .UserStatusMap}}
+                        {{range $k, $v := .ShopStatusMap}}
                         <option value="{{$k}}">{{$v}}</option>
                         {{end}}
                     </select>
@@ -67,9 +63,8 @@
         // 提交表单
         function SubmitCreateForm() {
             var name = $('#CreateName').val();
-            var password = $('#CreatePassword').val();
-            var password2 = $('#CreatePasswordConfirm').val();
-            var level = $('#CreateLevel').val();
+            var username = $('#CreateUserName').val();
+            var kind = $('#CreateKind').val();
             var status = $('#CreateStatus').val();
 
             // 表单验证
@@ -77,26 +72,22 @@
                 alert("Name could not be empty")
                 return
             }
-            if (password == ""){
-                alert("Password could not be empty")
-                return
-            }
-            if(password != password2){
-                alert("Password not the same")
+            if (username == ""){
+                alert("user name could not be empty")
                 return
             }
 
             $.ajax({
                 type: 'POST',
-                url: '/webmaster/user/create',
+                url: '/webmaster/shop/create',
                 data: {
                     name: name,
-                    password: password,
-                    level: level,
+                    username: username,
+                    kind: kind,
                     status: status
                 },
                 success: function (data) {
-                    location.href = "/webmaster/user"
+                    location.href = "/webmaster/shop"
                 },
                 dataType: 'text'
             });

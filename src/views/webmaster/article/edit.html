@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Edit Article - Electronic Commerce Platform</title>
+    <title>Edit Shop - Electronic Commerce Platform</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     {{template "styles"}}
     <link href="/statics/thirdpart/uploadify/uploadify.css" rel="stylesheet" />
@@ -22,28 +22,40 @@
 
             <a href="javascript:void(0);" onclick="history.back(-1)"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
 
-            <h3>Edit Article</h3>
+            <h3>Edit Shop</h3>
 
             <form class="edit-form">
                 <div class="form-group">
-                    <label for="EditTitle">Title</label>
+                    <label for="EditTitle">Name</label>
                     <input type="text" class="form-control" id="EditTitle" disabled="disabled" />
                 </div>
                 <div class="form-group">
-                    <label for="EditCategory">Category</label>
-                    <input type="hidden" id="EditCategory" value="" />
+                    <label for="EditUserName">User Name</label>
+                    <input type="hidden" id="EditUserName" value="" />
                     <div class="form-inline edit-category">
 
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="EditContent">Content</label>
-                    <textarea class="form-control" id="EditContent"></textarea>
+                    <label for="EditKind">Kind</label>
+                    <select class="form-control" id="EditKind">
+                        {{range $key, $value := .ShopKindMap}}
+                        <option value="{{$key}}">{{$value}}</option>
+                        {{end}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="EditIntroduce">Introduce</label>
+                    <textarea class="form-control" id="EditIntroduce"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="EditApplyStatement">Apply Statement</label>
+                    <textarea class="form-control" id="EditApplyStatement"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="EditStatus">Status</label>
                     <select class="form-control" id="EditStatus">
-                        {{range $key, $value := .ArticleStatusMap}}
+                        {{range $key, $value := .ShopStatusMap}}
                         <option value="{{$key}}">{{$value}}</option>
                         {{end}}
                     </select>
@@ -76,7 +88,7 @@
         // 初始化CKEditor
         function InitCKEditor(){
             // 先设置上传目录
-            var upload_dir = "article/";
+            var upload_dir = "shop/{{.Shop.Name}}";
             $('#EditContent').ckeditor({
                 height: '450',
                 toolbar: [
@@ -97,80 +109,12 @@
 
         // 初始化表单
         function InitForm(){
-            $('#EditId').val({{.Article.Id}});
-            $('#EditTitle').val({{.Article.Title}});
-            $('#EditCategory').val({{.Article.Category}});
-            $('#EditContent').val({{.Article.Content}});
-            $('#EditStatus').val({{.Article.Status}});
-        }
-
-        // 初始化下拉列表
-        function InitSelect(root){
-            // 递归出口，如果root的父结点为空，则跳出；否则进行递归
-            if(root == "") {
-                return;
-            }
-            var parent = "";
-            for(var i=0; i < o.length; i ++){
-                if(o[i].name == root){
-                    parent = o[i].parent;
-                    InitSelect(parent);
-                    break;
-                }
-            }
-            // 能到这来说明它有父节点
-            var container = $('.edit-category');
-            var options = '<option value="">请选择</option>';
-            // 从json对象生成添加表单的下拉列表数据
-            for(var i=0; i < o.length; i ++){
-                if(o[i].parent == parent){
-                    if(o[i].name == root){
-                        options += '<option selected="selected">' + o[i].name + '</option>';
-                    }else {
-                        options += '<option>' + o[i].name + '</option>';
-                    }
-                }
-            }
-            var select = '<select class="form-control edit-category-tmp" onchange="LoadChildrenSelect(this);">' + options + '</select>';
-            container.append(select);
-            // 如果当前结点为叶结点，则加上标记
-            var flag = false;
-            for(var i = 0; i < o.length; i ++){
-                if(o[i].parent == root){
-                    flag = true;
-                    break;
-                }
-            }
-            if(!flag){
-                container.append('<label><span class="glyphicon glyphicon-ok-sign text-success"></span></label>');
-                $('#EditCategory').val(root);
-            }
-        }
-
-        // 加载子下拉列表
-        function LoadChildrenSelect(sel) {
-            $(sel).nextAll().remove();
-            var root = $(sel).val();
-            if (root == "") {
-                $('#EditCategory').val("");
-                return
-            }
-            // 从json对象生成添加表单的下拉列表数据
-            var options = "";
-            for (var i = 0; i < o.length; i++) {
-                if (o[i].parent == root) {
-                    options += "<option>" + o[i].name + "</option>";
-                }
-            }
-            if (options != "") {
-                options = '<option value="">请选择</option>' + options;
-                var select = '<select class="form-control edit-category-tmp" onchange="LoadChildrenSelect(this);">' + options + '</select>';
-                $(sel).after(select);
-                $('#CreateCategory').val("");
-            } else {
-                $(sel).after('<label><span class="glyphicon glyphicon-ok-sign text-success"></span></label>');
-                $('#EditCategory').val(root);
-            }
+            $('#EditName').val({{.Shop.Name}});
+            $('#EditUserName').val({{.Shop.UserName}});
+            $('#EditKind').val({{.Shop.Kind}});
+            $('#EditIntroduce').val({{.Shop.Introduce}});
+            $('#EditApplyStatement').val({{.Shop.EditApplyStatement}});
+            $('#EditStatus').val({{.Shop.Status}});
         }
 
         // 提交表单
@@ -193,7 +137,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/webmaster/article/edit',
+                url: '/webmaster/shop/edit',
                 data: {
                     id: id,
                     title: title,

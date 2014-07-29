@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Goods List - Electronic Commerce Platform</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    {{template "styles"}}
+</head>
+<body>
+    <div id="leftside">
+      {{template "leftside" .}}
+    </div>
+
+    <div id="rightside">
+
+        <div class="main">
+
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Goods Manage</div>
+                <div class="panel-body">
+                    <a href="/webmaster/goodscategory"><span class="glyphicon glyphicon-list"></span> Category</a>
+                    <a href="/webmaster/goods/create"><span class="glyphicon glyphicon-plus"></span> Create</a>
+                </div>
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>Id</td>
+                            <td>Title</td>
+                            <td>Category</td>
+                            <td>Unit</td>
+                            <td>Price</td>
+                            <td>Status</td>
+                            <td>Operation</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{range $index, $item := .GoodsList}}
+                        <tr>
+                            <td>{{$item.Id}}</td>
+                            <td>{{$item.Title}}</td>
+                            <td>{{$item.Category}}</td>
+                            <td>{{$item.Unit}}</td>
+                            <td>{{$item.Price}}</td>
+                            <td>{{$item.Status}}</td>
+                            <td>
+                                <a href="/webmaster/goods/edit?id={{$item.Id}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                <a href="javascript:void(0);" onclick="Delete('{{$item.Id}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                            </td>
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+    {{template "scripts"}}
+    <script>
+        function Delete(id){
+            if(!confirm('Are you sure?')){
+                return ;
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/webmaster/goods/delete',
+                data: {
+                  id: id
+                },
+                success: function(data) {
+                  location.reload();
+                },
+                dataType: 'text'
+            });
+        }
+    </script>
+</body>
+</html>

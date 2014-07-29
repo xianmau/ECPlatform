@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Edit User - Electronic Commerce Platform</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    {{template "styles"}}
+    <link href="/statics/thirdpart/uploadify/uploadify.css" rel="stylesheet" />
+    <style>
+        .edit-category-tmp{margin-right: 10px;}
+        .uploadify-img{width: 120px;height: 120px;}
+    </style>
+</head>
+<body>
+    <div id="leftside">
+        {{template "leftside" .}}
+    </div>
+
+    <div id="rightside">
+
+        <div class="main">
+
+            <a href="javascript:void(0);" onclick="history.back(-1)"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+
+            <h3>Edit User</h3>
+
+            <form class="edit-form">
+                <div class="form-group">
+                    <label for="EditName">Name</label>
+                    <input type="text" class="form-control" id="EditName" disabled="disabled" />
+                </div>
+                <div class="form-group">
+                    <label for="EditLevel">Level</label>
+                    <select class="form-control" id="EditLevel">
+                        {{range $k, $v := .UserLevelMap}}
+                        <option value="{{$k}}">{{$v}}</option>
+                        {{end}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="EditStatus">Status</label>
+                    <select class="form-control" id="EditStatus">
+                        {{range $k, $v := .UserStatusMap}}
+                        <option value="{{$k}}">{{$v}}</option>
+                        {{end}}
+                    </select>
+                </div>
+
+                <button type="button" class="btn btn-primary" onclick="SubmitEditForm()">Submit</button>
+                <button type="button" class="btn btn-default" onclick="InitForm()">Reset</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+    {{template "scripts"}}
+    <script>
+        $(function(){
+            InitForm();
+        });
+
+        // 初始化表单
+        function InitForm(){
+            $('#EditName').val({{.User.Name}});
+            $('#EditLevel').val({{.User.Level}});
+            $('#EditStatus').val({{.User.Status}});
+        }
+
+        // 提交表单
+        function SubmitEditForm(){
+            var name = $('#EditName').val();
+            var level = $('#EditLevel').val();
+            var status = $('#EditStatus').val();
+
+            // 表单验证
+            if (name == ""){
+                alert("Name could not be empty")
+                return
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '/webmaster/user/edit',
+                data: {
+                    name: name,
+                    level: level,
+                    status: status
+                },
+                success: function(data) {
+                    location.reload();
+                },
+                dataType: 'text'
+            });
+        }
+    </script>
+</body>
+</html>

@@ -58,7 +58,7 @@ func GetShopList() ([]Shop, error) {
 	if err != nil {
 		return nil, err
 	}
-	rows, err := db.Query("select * from `tb_shop` where true order by `RegisterTime` desc")
+	rows, err := db.Query("select * from `tb_shop` where true order by `ApplyTime` desc")
 	defer rows.Close()
 	if err != nil {
 		return nil, err

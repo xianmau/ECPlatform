@@ -28,7 +28,7 @@ func Shop(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		// deal with get method
-		log.Info(client_ip + " post /webmaster/shop")
+		log.Info(client_ip + " get /webmaster/shop")
 
 		// check authorities
 		if ok, msg := authority.Check(admin.Role, "商店管理"); !ok {
@@ -51,12 +51,12 @@ func Shop(w http.ResponseWriter, r *http.Request) {
 		// bind data
 		data := make(map[string]interface{})
 		data["Admin"] = admin
-		userList, err := models.GetUserList()
+		shopList, err := models.GetShopList()
 		if err != nil {
 			log.Error(err.Error())
 			return
 		}
-		data["UserList"] = userList
+		data["ShopList"] = shopList
 
 		// execute template
 		err = t.Execute(w, data)
@@ -107,10 +107,10 @@ func ShopCreate(w http.ResponseWriter, r *http.Request) {
 		// bind data
 		data := make(map[string]interface{})
 		data["Admin"] = admin
-		// 用户级别
-		data["UserLevelMap"] = global.UserLevel
-		// 用户状态
-		data["UserStatusMap"] = global.UserStatus
+		// 商店类型
+		data["ShopKindMap"] = global.ShopKind
+		// 商店状态
+		data["ShopStatusMap"] = global.ShopStatus
 
 		// execute template
 		err = t.Execute(w, data)
@@ -129,11 +129,13 @@ func ShopCreate(w http.ResponseWriter, r *http.Request) {
 		}
 
 		form_name := r.PostFormValue("name")
-		form_password := r.PostFormValue("password")
-		form_level := r.PostFormValue("level")
+		form_username := r.PostFormValue("username")
+		form_kind := r.PostFormValue("kind")
+		//form_introduce := r.PostFormValue("introduce")
+		//form_applystatement := r.PostFormValue("applystatement")
 		form_status := r.PostFormValue("status")
 
-		err := models.CreateUser(form_name, form_password, form_level, form_status)
+		err := models.CreateShop(form_name, form_username, form_kind, "", "", form_status)
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -184,23 +186,23 @@ func ShopEdit(w http.ResponseWriter, r *http.Request) {
 		// bind data
 		data := make(map[string]interface{})
 		data["Admin"] = admin
-		// 用户级别
-		data["UserLevelMap"] = global.UserLevel
-		// 用户状态
-		data["UserStatusMap"] = global.UserStatus
+		// 商店类型
+		data["ShopKindMap"] = global.ShopKind
+		// 商店状态
+		data["ShopStatusMap"] = global.ShopStatus
 		// 当前用户
 		r.ParseForm()
 		get_name := r.Form.Get("name")
-		user, err := models.GetUser(get_name)
+		shop, err := models.GetShop(get_name)
 		if err != nil {
 			log.Error(err.Error())
 			return
 		}
-		if user == nil {
-			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=用户不存在"), http.StatusFound)
+		if shop == nil {
+			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=商店不存在"), http.StatusFound)
 			return
 		}
-		data["User"] = user
+		data["Shop"] = shop
 
 		// execute template
 		err = t.Execute(w, data)
@@ -219,10 +221,13 @@ func ShopEdit(w http.ResponseWriter, r *http.Request) {
 		}
 
 		form_name := r.PostFormValue("name")
-		form_level := r.PostFormValue("level")
+		form_username := r.PostFormValue("username")
+		form_kind := r.PostFormValue("kind")
+		form_introduce := r.PostFormValue("introduce")
+		form_applystatement := r.PostFormValue("applystatement")
 		form_status := r.PostFormValue("status")
 
-		err := models.EditUserByAdmin(form_name, form_level, form_status)
+		err := models.EditShop(form_name, form_username, form_kind, form_introduce, form_applystatement, form_status)
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -260,7 +265,7 @@ func ShopDelete(w http.ResponseWriter, r *http.Request) {
 
 		form_name := r.PostFormValue("name")
 
-		err := models.DeleteUser(form_name)
+		err := models.DeleteShop(form_name)
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -271,69 +276,3 @@ func ShopDelete(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func ShopDetail(w http.ResponseWriter, r *http.Request) {
-	// prepare session
-	session := global.Sessions.Prepare(w, r)
-	// get client ip
-	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
-
-	var admin models.Admin
-	if session.Get("admin") != nil {
-		admin = (session.Get("admin")).(models.Admin)
-	} else {
-		log.Info(client_ip + " access /webmaster/shop/detail")
-		http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=未登录"), http.StatusFound)
-		return
-	}
-
-	if r.Method == "GET" {
-		// deal with get method
-		log.Info(client_ip + " get /webmaster/shop/detail")
-
-		// check authorities
-		if ok, msg := authority.Check(admin.Role, "商店管理"); !ok {
-			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg="+msg), http.StatusFound)
-			return
-		}
-
-		// render template
-		t, err := template.ParseFiles("views/webmaster/shop/detail.html")
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
-		t, err = t.ParseFiles("views/webmaster/leftside.html", "views/webmaster/styles.html", "views/webmaster/scripts.html")
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
-
-		// bind data
-		data := make(map[string]interface{})
-		data["Admin"] = admin
-		// 当前用户
-		r.ParseForm()
-		get_name := r.Form.Get("name")
-		user, err := models.GetUser(get_name)
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
-		if user == nil {
-			http.Redirect(w, r, tools.UrlEncode("/webmaster/errorpage?msg=用户不存在"), http.StatusFound)
-			return
-		}
-		data["User"] = user
-		// 用户级别
-		data["UserLevel"] = global.UserLevel[user.Level]
-		// 用户状态
-		data["UserStatus"] = global.UserStatus[user.Status]
-
-		// execute template
-		err = t.Execute(w, data)
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
-	}
-}

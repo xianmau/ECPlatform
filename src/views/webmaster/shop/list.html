@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>User List - Electronic Commerce Platform</title>
+    <title>Shop List - Electronic Commerce Platform</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     {{template "styles"}}
 </head>
@@ -17,35 +17,32 @@
 
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">User Manage</div>
+                <div class="panel-heading">Shop Manage</div>
                 <div class="panel-body">
-                    <a href="/webmaster/user/create"><span class="glyphicon glyphicon-plus"></span> Create</a>
+                    <a href="/webmaster/shop/create"><span class="glyphicon glyphicon-plus"></span> Create</a>
                 </div>
                 <!-- Table -->
                 <table class="table">
                     <thead>
                         <tr>
-                            <td>View</td>
                             <td>Name</td>
-                            <td>Level</td>
-                            <td>RegisterTime</td>
+                            <td>User Name</td>
+                            <td>Kind</td>
+                            <td>Apply Time</td>
                             <td>Status</td>
                             <td>Operation</td>
                         </tr>
                     </thead>
                     <tbody>
-                        {{range $index, $item := .UserList}}
+                        {{range $index, $item := .ShopList}}
                         <tr>
-                            <td>
-                                <a href="/webmaster/user/detail?name={{$item.Name}}"><span class="glyphicon glyphicon-eye-open"></span> Detail</a>
-                            </td>
                             <td>{{$item.Name}}</td>
-                            <td>{{$item.Level}}</td>
-                            <td>{{$item.RegisterTime}}</td>
+                            <td>{{$item.UserName}}</td>
+                            <td>{{$item.Kind}}</td>
+                            <td>{{$item.ApplyTime}}</td>
                             <td>{{$item.Status}}</td>
                             <td>
-                                <a href="javascript:void(0);" onclick="ResetPassword('{{$item.Name}}')"><span class="glyphicon glyphicon-retweet"></span> Reset Password</a>
-                                <a href="/webmaster/user/edit?name={{$item.Name}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                <a href="/webmaster/shop/edit?name={{$item.Name}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
                                 <a href="javascript:void(0);" onclick="Delete('{{$item.Name}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                             </td>
                         </tr>
@@ -67,29 +64,12 @@
             }
             $.ajax({
                 type: 'POST',
-                url: '/webmaster/user/delete',
+                url: '/webmaster/shop/delete',
                 data: {
                   name: name
                 },
                 success: function(data) {
                   location.reload();
-                },
-                dataType: 'text'
-            });
-        }
-        function ResetPassword(name){
-            if(!confirm('Are you sure?')){
-                return ;
-            }
-            $.ajax({
-                type: 'POST',
-                url: '/webmaster/user/resetpassword',
-                data: {
-                    name: name,
-                    password: "123456"
-                },
-                success: function(data) {
-                    location.reload();
                 },
                 dataType: 'text'
             });
