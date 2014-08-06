@@ -1,0 +1,1 @@
+# just for static pages
