@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.silder{
+	width: 1199px;
+	height: 292px;
+	margin: 0 auto;
+	border:1px solid #ebeef7;
+	position: relative;
+}
+.slide_content{
+	width: 1199px;
+	overflow: hidden;
+	position: relative;
+	height: 291px;
+}
+.slide_content_list{
+	width: 9999px;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.slide_content ul{
+	overflow: hidden;
+}
+.slide_content li{
+	float: left;
+}
+.slide_content li img{
+	width: 1199px;
+	height: 291px;
+}
+.silder .prev,.silder .next{
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: url(../images/spring.png) no-repeat;
+	position: absolute;
+	cursor: pointer;
+}
+.silder .prev{
+	background-position: -260px -29px;
+	top:120px;
+	left: -21px;
+}
+.silder .next{
+	background-position: -290px -29px;
+	top:118px;
+	right: -24px;
+	z-index: 99;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script>
+	$(function(){
+		// var v_width=$(".slide_content").width();
+		// var v_show=$(".slide_content_list");
+		// var v_count=v_show.find("ul li").length;
+		var index=1;
+		$("span.next").click(function(){
+			var parent=$(this).parents("div.silder");
+			var v_content=parent.find(".slide_content");
+            var v_width=v_content.width();
+			var v_show=parent.find(".slide_content_list");
+		    var v_count=v_show.find("li").length;
+			if(!v_show.is(":animated")){
+				if(index==v_count){
+					v_show.animate({left:'0px'},"slow");
+					index=1;
+				}else{
+					v_show.animate({left:'-='+v_width},"slow");
+					index++;
+				}
+			}
+		});
+		$("span.prev").click(function(){
+			var parent=$(this).parents("div.silder");
+			var v_width=parent.find(".slide_content").width();
+			var v_show=parent.find(".slide_content_list");
+		    var v_count=v_show.find("li").length;
+		    if(!v_show.is(":animated")){
+		    	if(index=1){
+		    		v_show.animate({left:'-='+v_width*(v_count-1)},"slow");
+		    		index=v_count;
+		    	}else{
+		    		v_show.animate({left:'+='+v_width},"slow");
+		    		v_count--;
+		    	}
+		    }
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="silder">
+		    <div>
+				<span class="prev"></span>
+				<span class="next"></span>
+			</div>
+			<div class="slide_content">
+				<div class="slide_content_list">
+					<ul>
+						<li><img src="images/animate1.jpg" alt="健康粮油，最佳使用方法&美味健康孕妇餐"></li>
+						<li><img src="images/animate2.jpg" alt="粮油与健康"></li>
+						<li><img src="images/animate1.jpg" alt="健康粮油，最佳使用方法&美味健康孕妇餐"></li>
+						<li><img src="images/animate2.jpg" alt="粮油与健康"></li>
+						<li><img src="images/animate1.jpg" alt="健康粮油，最佳使用方法&美味健康孕妇餐"></li>
+						<li><img src="images/animate2.jpg" alt="粮油与健康"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

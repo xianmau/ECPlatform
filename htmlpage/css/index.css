@@ -1,0 +1,269 @@
+.page_wrapper{
+	height: 2999px;
+	background: url(../images/bg.jpg) no-repeat center top;
+	overflow: hidden;
+}
+.page_index{
+}
+.silder{
+	width: 1199px;
+	height: 292px;
+	margin: 0 auto;
+	border:1px solid #ebeef7;
+	position: relative;
+}
+.slide_content{
+	width: 1199px;
+	height: 291px;
+	overflow: hidden;
+	position: relative;
+}
+.slide_content_list{
+	width: 99999px;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.slide_content ul{
+	overflow: hidden;
+}
+.slide_content li{
+	float: left;
+}
+.silder .prev,.silder .next{
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: url(../images/spring.png) no-repeat;
+	position: absolute;
+	cursor: pointer;
+}
+.silder .prev{
+	background-position: -260px -29px;
+	top:120px;
+	left: -21px;
+}
+.silder .next{
+	background-position: -290px -29px;
+	top:118px;
+	right: -24px;
+	z-index: 99;
+}
+.main{
+	width: 1155px;
+	margin: 0 auto;
+	height: 2240px;
+	position: relative;
+}
+.main_list a,.main_person a{
+	display: block;
+	color: #737373;
+	font-size: 13px;
+}
+li.padding{
+	margin-bottom: 4px;
+}
+.grain{
+	margin-top: 73px;
+	overflow: hidden;
+	padding-top: 1px;
+	border-top: 2px solid black;
+	height: 485px;
+	width: 1148px;
+}
+.grain_left,
+.cargo_left,
+.vegetable_left,
+.sales_left{
+	position: relative;
+	width: 190px;
+	float: left;
+	padding-right: 2px;
+}
+.grain_left h3,
+.cargo_left h3,
+.vegetable_left h3,
+.sales_left h3{
+	padding-left: 20px;
+	padding-bottom: 6px;
+	position: absolute;
+}
+.grain_left h3{
+	top: 270px;
+}
+.cargo_left h3{
+	top:260px;
+}
+.vegetable_left h3{
+	top: 245px;
+}
+.sales_left h3{
+	top:242px;
+}
+.grain_mid,
+.cargo_mid,
+.vegetable_mid,
+.sales_mid{
+	float: left;
+}
+.grain_right,
+.cargo_right,
+.vegetable_right,
+.sales_right{
+	width: 579px;
+	float: left;
+	margin-right: -2px;
+}
+.grain_right li,
+.cargo_right li,
+.vegetable_right li,
+.sales_right li{
+	/*height: 240px;*/
+	float: left;
+	list-style: none;
+	/*margin-right:1px;*/
+}
+.grain_list{
+	padding-top: 8px;
+	padding-bottom: 18px;
+	background-color:#f8f8f8; 
+	overflow: hidden;
+}
+.cargo{
+	margin-top:65px;
+	border-top: 2px solid black;
+	overflow: hidden;
+	padding-top: 1px;
+	height: 485px;
+	width: 1148px;
+}
+
+.cargo_list{
+	padding-top: 22px;
+	padding-bottom: 22px;
+	background-color:#f8f8f8;
+	overflow: hidden; 
+}
+.vegetable_list{
+	padding-top: 5px;
+	padding-bottom: 22px;
+	background-color:#f8f8f8;
+	overflow: hidden;
+}
+.sales_list{
+	padding-top: 2px;
+	padding-bottom: 22px;
+	background-color:#f8f8f8;
+	overflow: hidden;
+}
+.grain_list li,
+.cargo_list li,
+.vegetable_list li,
+.sales_list li{
+	float: left;
+	width: 80px;
+	margin-bottom: 8px;
+	font-weight: bolder;
+	margin-left: 13px;
+}
+.grain_person,
+.cargo_person,
+.vegetable_person,
+.sales_person{
+	background-color: #f2f2f2;
+	padding-top: 16px;
+	padding-bottom: 40px;
+}
+.grain_person{
+	padding-bottom: 10px;
+}
+.cargo_person{
+	padding-bottom: 20px;
+}
+.grain_person li,
+.cargo_person li,
+.vegetable_person li,
+.sales_person li{
+	margin-bottom: 5px;
+	margin-left: 19px;
+	font-size: 14px;
+}
+.vegetable{
+	margin-top: 78px;
+	overflow: hidden;
+	padding-top: 1px;
+	border-top: 2px solid black;
+	height: 485px;
+	width: 1149px;
+}
+.sales{
+	margin-top:78px;
+	overflow: hidden;
+	border-top: 2px solid black;
+	padding-top: 1px;
+	width: 1149px;
+}
+.left li{
+	width: 191px;
+	height: 168px;
+	overflow: hidden;
+}
+.mid li{
+	width: 372px;
+	height: 236px;
+	overflow: hidden;
+	padding-bottom: 2px;
+	padding-left: 2px;
+}
+.mid li img,.right li img,.left{
+	width: 100%;
+	height: 100%;
+}
+.right li{
+	width: 191px;
+	height: 236px;
+	overflow: hidden;
+	padding-left: 2px;
+	padding-bottom: 2px;
+}
+.hot_01,.hot_02,.hot_03,.hot_04,.hot_05,.hot_06,.hot_07,.hot_08{
+	background: url(../images/hot.jpg) no-repeat -10px;
+}
+.hot_01,.hot_03,.hot_05,.hot_07{
+	background-position: -22px;
+}
+.footer{
+	background: url(../images/footer.jpg) no-repeat center top;
+}
+.footer_bar ul li{
+   margin-top: 6px;	
+}
+li{
+	padding: 0;
+	margin: 0;
+}
+.extra_01,.extra_02,.extra_03,.extra_04{
+	position: absolute;
+	font-size: 13px;
+	color: #000;
+	right: 13px;
+	font-weight: 660;
+}
+.extra_01:hover,.extra_02:hover,.extra_03:hover,.extra_04:hover{
+	color:#8ecb1d;
+}
+
+.extra_01{
+	top: -26px;
+}
+.extra_02{
+	margin-top: 40px;
+}
+.extra_03,.extra_04{
+	margin-top: 48px;
+}
+.dimension{
+	position: absolute;
+	right: 0;
+	top: 505px;
+}
