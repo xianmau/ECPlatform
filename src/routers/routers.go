@@ -21,6 +21,8 @@ func Register() {
 func registerWeb() {
 	http.HandleFunc("/web", web.Home)
 	http.HandleFunc("/web/home", web.Home)
+	http.HandleFunc("/web/cat", web.Cat)
+	http.HandleFunc("/web/detail", web.Detail)
 
 	http.HandleFunc("/web/join", web.Join)
 }

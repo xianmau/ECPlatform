@@ -8,7 +8,7 @@ import (
 	log "utils/logger"
 )
 
-func Home(w http.ResponseWriter, r *http.Request) {
+func Detail(w http.ResponseWriter, r *http.Request) {
 	// prepare session
 	_ = global.Sessions.Prepare(w, r)
 	// get client ip
@@ -16,10 +16,10 @@ func Home(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		// deal with get method
-		log.Info(client_ip + " get /web/home")
+		log.Info(client_ip + " get /web/detail")
 
 		// render template
-		t, err := template.ParseFiles("views/web/home.html")
+		t, err := template.ParseFiles("views/web/detail.html")
 		if err != nil {
 			log.Error(err.Error())
 			return

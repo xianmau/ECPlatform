@@ -1,0 +1,19 @@
+body{min-width:1145px;font-size: 12px/1.5; Font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", STXihei, "华文细黑", Heiti, "黑体", sans-serif}
+
+#header{position: relative;}
+
+#top{position: relative; height: 29px;background: #333;font-size: 13px;color: #FFF;}
+#top .wrap{position: relative; margin: 0 auto; width: 1145px;}
+
+#logo_search{position: relative; margin: 0 auto; width: 1145px;}
+#logo{position: relative; margin: 0 auto; width: 278px; height: 74px; margin-top: 21px;margin-bottom: 20px;}
+#logo img{border: none; width: 278px;height:74px;}
+#search{}
+
+#nav{position: relative; margin: 0 auto; width: 1145px; line-height: 50px; text-align: center;border-top: 2px solid #e2e2e2; border-bottom: 2px solid #e2e2e2;}
+#nav .item{font-size: 15px; padding:0 26px;color: #333; border-left: 1px solid #CCC;}
+
+
+#footer{position: relative;}
+#rule{background: #000; height: 66px;text-align: center;}
+#bottom{background: url(/statics/img/web/bottombg.png) center;height: 195px;}
