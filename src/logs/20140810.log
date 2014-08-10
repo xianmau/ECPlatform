@@ -15,3 +15,19 @@
 2014/08/10 01:24:48 [E]html/template:home.html:14: no such template "footerpart"
 2014/08/10 01:25:38 [I][::1] get /web/home
 2014/08/10 01:27:07 [I][::1] get /web/cat
+2014/08/10 22:50:37 [I][::1] access /webmaster/dashboard
+2014/08/10 22:50:37 [I][::1] get /webmaster/errorpage
+2014/08/10 22:50:42 [I][::1] get /web/detail
+2014/08/10 22:50:44 [I][::1] get /web/home
+2014/08/10 22:50:46 [I][::1] get /web/home
+2014/08/10 23:12:43 [I][::1] get /web/home
+2014/08/10 23:35:25 [I][::1] get /web/home
+2014/08/10 23:37:03 [I][::1] get /web/home
+2014/08/10 23:42:17 [I][::1] get /web/home
+2014/08/10 23:42:41 [I][::1] get /web/home
+2014/08/10 23:43:18 [I][::1] get /web/home
+2014/08/10 23:45:07 [I][::1] get /web/home
+2014/08/10 23:45:41 [I][::1] get /web/home
+2014/08/10 23:53:03 [I][::1] get /web/home
+2014/08/10 23:53:41 [I][::1] get /web/home
+2014/08/10 23:55:36 [I][::1] get /web/home

@@ -1,19 +1,94 @@
 body{min-width:1145px;font-size: 12px/1.5; Font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", STXihei, "华文细黑", Heiti, "黑体", sans-serif}
+img{border:none;}
+ul,li{padding: 0;margin: 0;}
+.clear{clear: both;}
 
+/************* header style ***********/
 #header{position: relative;}
 
 #top{position: relative; height: 29px;background: #333;font-size: 13px;color: #FFF;}
 #top .wrap{position: relative; margin: 0 auto; width: 1145px;}
 
 #logo_search{position: relative; margin: 0 auto; width: 1145px;}
-#logo{position: relative; margin: 0 auto; width: 278px; height: 74px; margin-top: 21px;margin-bottom: 20px;}
-#logo img{border: none; width: 278px;height:74px;}
+#logo{position: relative; margin: 21px auto 20px auto; width: 278px; height: 74px;}
+#logo img{width: 278px;height:74px;}
 #search{}
 
 #nav{position: relative; margin: 0 auto; width: 1145px; line-height: 50px; text-align: center;border-top: 2px solid #e2e2e2; border-bottom: 2px solid #e2e2e2;}
 #nav .item{font-size: 15px; padding:0 26px;color: #333; border-left: 1px solid #CCC;}
 
-
+/************* footer style ***********/
 #footer{position: relative;}
 #rule{background: #000; height: 66px;text-align: center;}
 #bottom{background: url(/statics/img/web/bottombg.png) center;height: 195px;}
+
+
+/************* main style ***********/
+
+
+
+/* home style */
+
+/* slider */
+.silder{
+    width: 1144px;
+    height: 290px;
+    margin: 35px auto;
+    border:none;
+    position: relative;
+}
+.slide_content{
+    width: 1144px;
+    height: 290px;
+    overflow: hidden;
+    position: relative;
+}
+.slide_content_list{
+    width: 99999px;
+    height: 290px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.slide_content ul{
+    overflow: hidden;
+}
+.slide_content li{
+    float: left;
+}
+.silder .prev,.silder .next{
+    display: block;
+    width: 14px;
+    height: 24px;
+    position: absolute;
+    cursor: pointer;
+}
+.silder .prev{
+    background: url(/statics/img/web/slider/prev.png) no-repeat;
+    top:120px;
+    left: -40px;
+}
+.silder .next{
+    background: url(/statics/img/web/slider/next.png) no-repeat;
+    top:120px;
+    right: -40px;
+    z-index: 99;
+}
+/* goods floor style */
+.floor{width: 1144px;margin: 0 auto 40px auto;position: relative;}
+.floor .floortop{position:relative;border-bottom: 2px solid #000;margin-bottom: 2px;height: 40px;}
+.floor .floortop .title{position:absolute;left:0px;bottom: 8px;font-size: 20px; font-weight:bold;}
+.floor .floortop .recommendicon{position:absolute; right: 165px;bottom: 8px;}
+.floor .floortop .recommendtext{position:absolute; right: 70px;bottom: 10px;font-size: 15px;font-weight: bold;color: #555;}
+.floor .floortop .more{position:absolute; right: 10px;bottom: 12px;font-size: 12px;text-decoration: none;color: #000;}
+
+/* goods list style */
+
+
+
+
+/* goods detail style */
+
+
+
+
