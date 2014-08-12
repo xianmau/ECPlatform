@@ -81,7 +81,15 @@ ul,li{padding: 0;margin: 0;}
 .floor .floortop .recommendicon{position:absolute; right: 165px;bottom: 8px;}
 .floor .floortop .recommendtext{position:absolute; right: 70px;bottom: 10px;font-size: 15px;font-weight: bold;color: #555;}
 .floor .floortop .more{position:absolute; right: 10px;bottom: 12px;font-size: 12px;text-decoration: none;color: #000;}
-
+.floor .floorleft{float:left;width:190px;margin-right:2px;height: 482px;}
+.floor .floorleft .top{height: 170px;}
+.floor .floorleft .top img{height: 170px;}
+.floor .floorleft .mid{height: 100px;background: #F8F8F8;}
+.floor .floorleft .mid .cat-tag{margin: 12px 0 0 13px;color: #999; width: 80px;font-size: 13px; display: inline-block;}
+.floor .floorbottom{height: 212px;background: #F2F2F2;}
+.floor .floorbottom .title{font-size: 16px;color:#555;margin: 0;padding: 5px 13px;line-height: 30px;}
+.floor .floorbottom .list{}
+.floor .floorbottom .list li{list-style: none;padding-left:13px; font-size: 13px;color: #999;line-height: 23px;}
 /* goods list style */
 
 
