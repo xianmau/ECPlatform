@@ -2,19 +2,19 @@ body{min-width:1145px;font-size: 12px/1.5; Font-family: Helvetica, Tahoma, Arial
 img{border:none;}
 ul,li{padding: 0;margin: 0;}
 .clear{clear: both;}
+.wrap{position: relative; margin: 0 auto; width: 1145px;}
 
 /************* header style ***********/
 #header{position: relative;}
 
 #top{position: relative; height: 29px;background: #333;font-size: 13px;color: #FFF;}
-#top .wrap{position: relative; margin: 0 auto; width: 1145px;}
 
-#logo_search{position: relative; margin: 0 auto; width: 1145px;}
+#logo_search{}
 #logo{position: relative; margin: 21px auto 20px auto; width: 278px; height: 74px;}
 #logo img{width: 278px;height:74px;}
 #search{}
 
-#nav{position: relative; margin: 0 auto; width: 1145px; line-height: 50px; text-align: center;border-top: 2px solid #e2e2e2; border-bottom: 2px solid #e2e2e2;}
+#nav{line-height: 50px; text-align: center;border-top: 2px solid #e2e2e2; border-bottom: 2px solid #e2e2e2;}
 #nav .item{font-size: 15px; padding:0 26px;color: #333; border-left: 1px solid #CCC;}
 
 /************* footer style ***********/
@@ -90,10 +90,23 @@ ul,li{padding: 0;margin: 0;}
 .floor .floorbottom .title{font-size: 16px;color:#555;margin: 0;padding: 5px 13px;line-height: 30px;}
 .floor .floorbottom .list{}
 .floor .floorbottom .list li{list-style: none;padding-left:13px; font-size: 13px;color: #999;line-height: 23px;}
+
+
 /* goods list style */
+.pos{width: 1144px;margin: 0 auto 15px auto;position: relative;height: 60px;border-bottom: 1px solid #CCC;}
+.pos img{width: 16px;line-height: 60px;margin-left: 10px;}
+.pos span{font-size: 14px;line-height: 60px;display: inline-block;color: #555;}
 
+#cat{min-height:500px;}
 
+#cat .cat-left{float: left;width: 170px;}
+#cat .cat-left p{margin: 0 10px;padding: 0;line-height:18px;font-size: 14px;color:#333;}
+#cat .cat-left ul{margin-left: 10px;margin-top: 5px;}
+#cat .cat-left ul li{list-style-image: url(/statics/img/web/triangle_right.png); line-height:25px;margin-left:16px;font-size: 14px;color: #555;}
 
+#cat .cat-right{float: left;width: 974px;}
+#cat .cat-right .goodslist{position: relative;}
+#cat .cat-right .goodslist .item{display:inline-block; background: #CCC; border-bottom: 1px solid #b3b3b3; height: 285px; width: 220px;margin: 10px;}
 
 /* goods detail style */
 
