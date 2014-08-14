@@ -1,4 +1,5 @@
 body{min-width:1145px;font-size: 12px/1.5; Font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", STXihei, "华文细黑", Heiti, "黑体", sans-serif}
+a{text-decoration: none;color: #555;}
 img{border:none;}
 ul,li{padding: 0;margin: 0;}
 .clear{clear: both;}
@@ -8,6 +9,14 @@ ul,li{padding: 0;margin: 0;}
 #header{position: relative;}
 
 #top{position: relative; height: 29px;background: #333;font-size: 13px;color: #FFF;}
+#top .left-title{position: absolute; top: 9px;left: 18px;}
+#top .icon-user{position: absolute; top: 12px;right: 210px;"}
+#top .link-user{position: absolute; top: 10px;right: 154px;font-family: 宋体;color: #ddd;}
+#top .icon-vline{position: absolute; top: 5px;right: 135px;}
+#top .link-service{position: absolute; top: 10px;right: 68px;font-family: 宋体;color: #ddd;}
+#top .link-help{position: absolute; top: 10px;right: 28px;font-family: 宋体;color: #ddd;}
+#top .icon-down{position: absolute; top: 15px;right: 16px;}
+#top a:hover{color: #009900;}
 
 #logo_search{}
 #logo{position: relative; margin: 21px auto 20px auto; width: 278px; height: 74px;}
@@ -15,13 +24,22 @@ ul,li{padding: 0;margin: 0;}
 #search{}
 
 #nav{line-height: 50px; text-align: center;border-top: 2px solid #e2e2e2; border-bottom: 2px solid #e2e2e2;}
-#nav .item{font-size: 15px; padding:0 26px;color: #333; border-left: 1px solid #CCC;}
+#nav .item{font-size: 15px; padding:0 26px;color: #333; border-left: 1px solid #CCC; }
+#nav .item:hover{color: #009900;}
+#nav .active{color: #009900;font-weight: bold;}
 
 /************* footer style ***********/
 #footer{position: relative;}
 #rule{background: #000; height: 66px;text-align: center;}
+#rule a{line-height: 66px;text-align:center;color:#88c31d;font-size:14px;}
+#rule a:hover{text-decoration: underline;}
 #bottom{background: url(/statics/img/web/bottombg.png) center;height: 195px;}
-
+#bottom h3{margin:0;padding: 30px 0 5px 0;text-align:center;color:#FFF;font-size:19px;font-weight:normal;}
+#bottom .copy{margin:0;padding: 0;text-align:center;color:#FFF;font-size:13px;font-weight:normal;}
+#bottom .navlink{text-align:center;margin: 2px; color:#FFF;font-size:13px;}
+#bottom .navlink a{color: #FFF;}
+#bottom .navlink a:hover{color: #009900;}
+#bottom .share-icon{height:48px;margin:0 4px;}
 
 /************* main style ***********/
 
@@ -80,12 +98,12 @@ ul,li{padding: 0;margin: 0;}
 .floor .floortop .title{position:absolute;left:0px;bottom: 8px;font-size: 20px; font-weight:bold;}
 .floor .floortop .recommendicon{position:absolute; right: 165px;bottom: 8px;}
 .floor .floortop .recommendtext{position:absolute; right: 70px;bottom: 10px;font-size: 15px;font-weight: bold;color: #555;}
-.floor .floortop .more{position:absolute; right: 10px;bottom: 12px;font-size: 12px;text-decoration: none;color: #000;}
+.floor .floortop .more{position:absolute; right: 10px;bottom: 12px;font-size: 12px;color: #000;}
 .floor .floorleft{float:left;width:190px;margin-right:2px;height: 482px;}
 .floor .floorleft .top{height: 170px;}
 .floor .floorleft .top img{height: 170px;}
 .floor .floorleft .mid{height: 100px;background: #F8F8F8;}
-.floor .floorleft .mid .cat-tag{margin: 12px 0 0 13px;color: #999; width: 80px;font-size: 13px; display: inline-block;}
+.floor .floorleft .mid .cat-tag{margin: 12px 0 0 12px;line-height: 16px; color: #999; width: 80px;font-size: 13px; display: inline-block;}
 .floor .floorbottom{height: 212px;background: #F2F2F2;}
 .floor .floorbottom .title{font-size: 16px;color:#555;margin: 0;padding: 5px 13px;line-height: 30px;}
 .floor .floorbottom .list{}
@@ -113,10 +131,10 @@ ul,li{padding: 0;margin: 0;}
 
 #cat .cat-right .select-price{width: 100%;height:47px;margin-top:20px;border: 1px solid #f3f3f3;line-height: 47px;font-size: 12px;}
 #cat .cat-right .select-price span{padding-left: 20px;}
-#cat .cat-right .select-price a{padding: 0 20px; text-decoration: none;color: #555;}
+#cat .cat-right .select-price a{padding: 0 20px;color: #555;}
 
 #cat .cat-right .order{background: #f5f7f6;width: 100%; height: 49px;margin-top: 12px;line-height: 47px;}
-#cat .cat-right .order a{padding: 0 20px; text-decoration: none;color: #999;font-size: 12px;}
+#cat .cat-right .order a{padding: 0 20px; color: #999;font-size: 12px;}
 
 #cat .cat-right .goodslist{position: relative;}
 #cat .cat-right .goodslist .item{float: left; border-bottom: 1px solid #b3b3b3; margin: 10px 5px;padding: 0;}
@@ -127,7 +145,7 @@ ul,li{padding: 0;margin: 0;}
 #cat .cat-right .goodslist .item .info .price{font-size: 16px;color: #555;}
 
 #pager{position:absolute;right:0;top:0;line-height: 50px;}
-#pager a{padding: 5px 8px;margin: 0 2px;font-size: 12px;text-decoration: none;color: #000;}
+#pager a{padding: 5px 8px;margin: 0 2px;font-size: 12px;color: #000;}
 #pager .active{background: #000;color: #FFF;}
 #pager a:hover{background: #000;color: #FFF;}
 

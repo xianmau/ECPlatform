@@ -11,21 +11,21 @@
 	<!--main-->
 	<div class="pos">
         <img src="/statics/img/web/icon_house.png" />
-        <span>一村一品</span>
+        <span><a href="/web">一村一品</a></span>
         >
-        <span>商品分类</span>
+        <span><a href="/web/gcat?c={{.ParentCat}}">商品分类</a></span>
         >
-        <span>粮油</span>
+        <span><a href="/web/gcat?c={{.CurrentCat}}">粮油</a></span>
 	</div>
 
     <div id="cat" class="wrap">
         <div class="cat-left">
             <p>全部分类</p>
             <ul>
-                <li>优质粮油</li>
-                <li>农家干货</li>
-                <li>新鲜果蔬</li>
-                <li>华农出品</li>
+                <li><a href="/web/gcat?c=优质粮油">优质粮油</a></li>
+                <li><a href="/web/gcat?c=农家干货">农家干货</a></li>
+                <li><a href="/web/gcat?c=新鲜果蔬">新鲜果蔬</a></li>
+                <li><a href="/web/gcat?c=华农出品">华农出品</a></li>
             </ul>
         </div>
 
@@ -56,7 +56,7 @@
             <div class="goodslist">
 
                 <div class="item">
-                    <img class="goods-pic" src="/statics/img/web2/1.png" />
+                    <a href="/web/goods?id=1"><img class="goods-pic" src="/statics/img/web2/1.png" /></a>
                     <div class="info">
                         <p class="title">这是商品标题最好长一点点比较好看</p>
                         <img class="rmb-icon" src="/statics/img/web/icon_rmb.png" />

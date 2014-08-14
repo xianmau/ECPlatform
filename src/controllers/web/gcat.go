@@ -8,7 +8,7 @@ import (
 	log "utils/logger"
 )
 
-func Detail(w http.ResponseWriter, r *http.Request) {
+func GoodsCat(w http.ResponseWriter, r *http.Request) {
 	// prepare session
 	_ = global.Sessions.Prepare(w, r)
 	// get client ip
@@ -16,10 +16,10 @@ func Detail(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		// deal with get method
-		log.Info(client_ip + " get /web/detail")
+		log.Info(client_ip + " get /web/gcat")
 
 		// render template
-		t, err := template.ParseFiles("views/web/detail.html")
+		t, err := template.ParseFiles("views/web/gcat.html")
 		if err != nil {
 			log.Error(err.Error())
 			return
