@@ -56,14 +56,112 @@
         <div class="clear"></div>
     </div>
 
-    <div class="comment-list">
+    <div class="comment">
         <div><img src="/statics/img/web/line.png" alt=""/></div>
         <p class="title">评论互动</p>
+
+        <div id="commentForm" style="margin: 20px auto;width: 618px;">
+            <div style="float: left;">
+                <textarea id="commentContent" style="margin: 0;padding:5px; height: 38px;width: 550px;"></textarea>
+            </div>
+            <div style="float: left;">
+                <a href="javascript:void(0);" onclick="CommonFormSubmit();" style="line-height:50px;display:inline-block;margin-left:10px; width: 45px;text-align: center; background: #222;color: #FFF;font-size: 14px;">发布</a>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div id="commonList" style="margin: 20px auto;width: 618px;">
+            <table style="width: 618px;font-size: 12px;color: #555;">
+                <tbody>
+                    <tr>
+                        <td rowspan="2" style="width: 32px; vertical-align: top;text-align: center;">
+                            <img style="width:32px;height: 32px;" src="http://www.gravatar.com/avatar/4a1ab7c9545910cfaa681bafd4e84efd" />
+                        </td>
+                        <td style=" vertical-align: top;font-weight: bold;padding-left: 15px;">xianmau</td>
+                        <td style=" vertical-align: top;text-align: right;">2014-08-16</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding-bottom: 20px;padding-left:15px;line-height: 20px; vertical-align: top;">
+                            这里是评论内容收到米后，马上焖饭准备晚餐，果然很不错，米口感非常好，很成功的一次网购，以后会继续在你家店购买。
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" style="width: 32px; vertical-align: top;text-align: center;">
+                            <img style="width:32px;height: 32px;" src="http://www.gravatar.com/avatar/4a1ab7c9545910cfaa681bafd4e84efd" />
+                        </td>
+                        <td style=" vertical-align: top;font-weight: bold;padding-left: 15px;">xianmau</td>
+                        <td style=" vertical-align: top;text-align: right;">2014-08-16</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding-bottom: 20px;padding-left:15px;line-height: 20px; vertical-align: top;">
+                            这里是评论内容收到米后，马上焖饭准备晚餐，果然很不错，米口感非常好，很成功的一次网购，以后会继续在你家店购买。
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="commentPager">
+            <a href="#">首页</a>
+            <a href="#">1</a>
+            <a href="#" class="active">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">...</a>
+            <a href="#">9</a>
+            <a href="#">10</a>
+            <a href="#">12</a>
+            <a href="#">13</a>
+            <a href="#">尾页</a>
+        </div>
     </div>
 
     <div class="recommend">
         <div><img src="/statics/img/web/line.png" alt=""/></div>
         <p class="title">猜你喜欢</p>
+
+        <div class="recommendList">
+
+            <div class="item" style="float: left;width: 150px;margin: 10px 7px 20px 7px;border-bottom: 1px solid #CCC;">
+                <img src="/statics/img/web2/detail1.png" style="width: 150px;height: 150px;"/>
+                <a style="margin: 0;padding: 0;line-height: 20px;color: #555;font-size: 12px;">这里是商品的标题可...</a>
+                <p style="margin: 0;padding: 0;line-height: 20px;color:orangered;font-size: 12px;text-align: right;">￥500.00</p>
+            </div>
+
+            <div class="item" style="float: left;width: 150px;margin: 10px 7px 20px 7px;border-bottom: 1px solid #CCC;">
+                <img src="/statics/img/web2/detail1.png" style="width: 150px;height: 150px;"/>
+                <a style="margin: 0;padding: 0;line-height: 20px;color: #555;font-size: 12px;">这里是商品的标题可...</a>
+                <p style="margin: 0;padding: 0;line-height: 20px;color:orangered;font-size: 12px;text-align: right;">￥500.00</p>
+            </div>
+
+            <div class="item" style="float: left;width: 150px;margin: 10px 7px 20px 7px;border-bottom: 1px solid #CCC;">
+                <img src="/statics/img/web2/detail1.png" style="width: 150px;height: 150px;"/>
+                <a style="margin: 0;padding: 0;line-height: 20px;color: #555;font-size: 12px;">这里是商品的标题可...</a>
+                <p style="margin: 0;padding: 0;line-height: 20px;color:orangered;font-size: 12px;text-align: right;">￥500.00</p>
+            </div>
+
+            <div class="item" style="float: left;width: 150px;margin: 10px 7px 20px 7px;border-bottom: 1px solid #CCC;">
+                <img src="/statics/img/web2/detail1.png" style="width: 150px;height: 150px;"/>
+                <a style="margin: 0;padding: 0;line-height: 20px;color: #555;font-size: 12px;">这里是商品的标题可...</a>
+                <p style="margin: 0;padding: 0;line-height: 20px;color:orangered;font-size: 12px;text-align: right;">￥500.00</p>
+            </div>
+
+            <div class="item" style="float: left;width: 150px;margin: 10px 7px 20px 7px;border-bottom: 1px solid #CCC;">
+                <img src="/statics/img/web2/detail1.png" style="width: 150px;height: 150px;"/>
+                <a style="margin: 0;padding: 0;line-height: 20px;color: #555;font-size: 12px;">这里是商品的标题可...</a>
+                <p style="margin: 0;padding: 0;line-height: 20px;color:orangered;font-size: 12px;text-align: right;">￥500.00</p>
+            </div>
+
+            <div class="item" style="float: left;width: 150px;margin: 10px 7px 20px 7px;border-bottom: 1px solid #CCC;">
+                <img src="/statics/img/web2/detail1.png" style="width: 150px;height: 150px;"/>
+                <a style="margin: 0;padding: 0;line-height: 20px;color: #555;font-size: 12px;">这里是商品的标题可...</a>
+                <p style="margin: 0;padding: 0;line-height: 20px;color:orangered;font-size: 12px;text-align: right;">￥500.00</p>
+            </div>
+
+            <div class="clear"></div>
+        </div>
     </div>
 
     {{template "footerpart" .}}

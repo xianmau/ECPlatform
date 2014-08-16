@@ -3,7 +3,6 @@ package models
 import (
 	"database/sql"
 	"encoding/json"
-	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"utils/global"
 )
@@ -29,10 +28,9 @@ func GetAdminForLogin(Name string, Password string) (*Admin, error) {
 		var admin Admin
 		//var Name string
 		//var Password string
-		var Department string
 		var RoleName string
 		var RoleAuthority sql.NullString
-		if err := rows.Scan(&Name, &Password, &Department, &RoleName, &RoleAuthority); err != nil {
+		if err := rows.Scan(&Name, &Password, &RoleName, &RoleAuthority); err != nil {
 			return nil, err
 		}
 		admin.Name = Name
