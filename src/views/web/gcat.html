@@ -13,19 +13,27 @@
         <img src="/statics/img/web/icon_house.png" />
         <span><a href="/web">一村一品</a></span>
         >
-        <span><a href="/web/gcat?c={{.ParentCat}}">商品分类</a></span>
+        {{if ne .currentCategory.Parent ""}}
+        <span><a href="/web/gcat?c={{.currentCategory.Parent}}">{{.currentCategory.Parent}}</a></span>
         >
-        <span><a href="/web/gcat?c={{.CurrentCat}}">粮油</a></span>
+        {{end}}
+        <span><a href="/web/gcat?c={{.currentCategory.Name}}">{{.currentCategory.Name}}</a></span>
 	</div>
 
     <div id="cat" class="wrap">
         <div class="cat-left">
             <p>全部分类</p>
             <ul>
-                <li><a href="/web/gcat?c=优质粮油">优质粮油</a></li>
-                <li><a href="/web/gcat?c=农家干货">农家干货</a></li>
-                <li><a href="/web/gcat?c=新鲜果蔬">新鲜果蔬</a></li>
-                <li><a href="/web/gcat?c=华农出品">华农出品</a></li>
+                {{range $i, $e := .goodsCategories}}
+                <li>
+                    <a {{if eq $e.Name $.currentCategory.Name}}class="active" {{end}}href="/web/gcat?c={{$e.Name}}">{{$e.Name}}</a>
+                    <ul>
+                        {{range $i2, $e2 := $e.Slice}}
+                        <li><a {{if eq $e2 $.currentCategory.Name}}class="active" {{end}}href="/web/gcat?c={{$e2}}">{{$e2}}</a></li>
+                        {{end}}
+                    </ul>
+                </li>
+                {{end}}
             </ul>
         </div>
 
@@ -55,38 +63,16 @@
 
             <div class="goodslist">
 
+                {{range $k, $v := .goodsList}}
                 <div class="item">
-                    <a href="/web/goods?id=1"><img class="goods-pic" src="/statics/img/web2/1.png" /></a>
+                    <a href="/web/goods?id={{$v.Id}}"><img class="goods-pic" src="{{GetJsonData $v.Images "mini"}}" /></a>
                     <div class="info">
-                        <p class="title">这是商品标题最好长一点点比较好看</p>
+                        <p class="title">{{$v.Title}}</p>
                         <img class="rmb-icon" src="/statics/img/web/icon_rmb.png" />
-                        <span class="price">250.00</span>
+                        <span class="price">{{$v.Price}}</span>
                     </div>
                 </div>
-                <div class="item">
-                    <img class="goods-pic" src="/statics/img/web2/2.png" />
-                    <div class="info">
-                        <p class="title">这是商品标题最好长一点点比较好看</p>
-                        <img class="rmb-icon" src="/statics/img/web/icon_rmb.png" />
-                        <span class="price">250.00</span>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class="goods-pic" src="/statics/img/web2/3.png" />
-                    <div class="info">
-                        <p class="title">这是商品标题最好长一点点比较好看</p>
-                        <img class="rmb-icon" src="/statics/img/web/icon_rmb.png" />
-                        <span class="price">250.00</span>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class="goods-pic" src="/statics/img/web2/4.png" />
-                    <div class="info">
-                        <p class="title">这是商品标题最好长一点点比较好看</p>
-                        <img class="rmb-icon" src="/statics/img/web/icon_rmb.png" />
-                        <span class="price">250.00</span>
-                    </div>
-                </div>
+                {{end}}
             </div>
             <div class="clear"></div>
 
@@ -116,14 +102,7 @@
     {{template "scripts"}}
     <script>
         $(function(){
-            var o = $('.goodslist');
-            var e = $('.goodslist').html();
-            var code = "";
-            for(var i = 0; i < 4; i ++){
-                code += e;
-            }
-            //code += '<div class="clear"></div>';
-            o.html(code)
+
         });
     </script>
 </body>

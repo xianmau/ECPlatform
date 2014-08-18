@@ -1,4 +1,4 @@
-body{min-width:1145px;font-size: 12px/1.5; Font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", STXihei, "华文细黑", Heiti, "黑体", sans-serif}
+body{min-width:1145px;font-size: 12px; Font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", STXihei, "华文细黑", Heiti, "黑体", sans-serif}
 a{text-decoration: none;color: #555;}
 img{border:none;}
 ul,li{padding: 0;margin: 0;}
@@ -10,11 +10,11 @@ ul,li{padding: 0;margin: 0;}
 
 #top{position: relative; height: 29px;background: #333;font-size: 13px;color: #FFF;}
 #top .left-title{position: absolute; top: 9px;left: 18px;}
-#top .icon-user{position: absolute; top: 12px;right: 210px;"}
-#top .link-user{position: absolute; top: 10px;right: 154px;font-family: 宋体;color: #ddd;}
+#top .icon-user{position: absolute; top: 12px;right: 210px;}
+#top .link-user{position: absolute; top: 10px;right: 154px;font-family: "宋体";color: #ddd;}
 #top .icon-vline{position: absolute; top: 5px;right: 135px;}
-#top .link-service{position: absolute; top: 10px;right: 68px;font-family: 宋体;color: #ddd;}
-#top .link-help{position: absolute; top: 10px;right: 28px;font-family: 宋体;color: #ddd;}
+#top .link-service{position: absolute; top: 10px;right: 68px;font-family: "宋体";color: #ddd;}
+#top .link-help{position: absolute; top: 10px;right: 28px;font-family: "宋体";color: #ddd;}
 #top .icon-down{position: absolute; top: 15px;right: 16px;}
 #top a:hover{color: #009900;}
 
@@ -109,7 +109,6 @@ ul,li{padding: 0;margin: 0;}
 .floor .floorbottom .list{}
 .floor .floorbottom .list li{list-style: none;padding-left:13px; font-size: 13px;color: #999;line-height: 23px;}
 
-
 /* goods list style */
 .pos{width: 1144px;margin: 0 auto 15px auto;position: relative;height: 60px;border-bottom: 1px solid #CCC;}
 .pos img{width: 16px;line-height: 60px;margin-left: 10px;}
@@ -121,6 +120,10 @@ ul,li{padding: 0;margin: 0;}
 #cat .cat-left p{margin: 0 10px;padding: 0;line-height:18px;font-size: 14px;color:#333;}
 #cat .cat-left ul{margin-left: 10px;margin-top: 5px;}
 #cat .cat-left ul li{list-style-image: url(/statics/img/web/triangle_right.png); line-height:25px;margin-left:16px;font-size: 14px;color: #555;}
+#cat .cat-left ul ul li{list-style: url(/statics/img/web/triangle_right_light.png);}
+#cat .cat-left li a{color: #999;}
+#cat .cat-left li a:hover{color: #555;}
+#cat .cat-left .active{color: #000;font-weight: bold;}
 
 #cat .cat-right{float: left;width: 974px;}
 

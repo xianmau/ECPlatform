@@ -112,6 +112,53 @@ func GetGoodsList() ([]Goods, error) {
 	return goodsList, nil
 }
 
+
+func GetGoodsListByCategory(Category string) ([]Goods, error) {
+	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	defer db.Close()
+	if err != nil {
+		return nil, err
+	}
+	rows, err := db.Query("select * from `tb_goods` where `Category`=? order by `Id` desc", Category)
+	defer rows.Close()
+	if err != nil {
+		return nil, err
+	}
+	goodsList := []Goods{}
+	for rows.Next() {
+		var goods Goods
+		var Id int
+		var Title string
+		var Category string
+		var Content string
+		var Origin string
+		var Unit string
+		var Price float64
+		var Shop string
+		var BuyLink string
+		var Images string
+		var Certificates string
+		var Status int
+		if err := rows.Scan(&Id, &Title, &Category, &Content, &Origin, &Unit, &Price, &Shop, &BuyLink, &Images, &Certificates, &Status); err != nil {
+			return nil, err
+		}
+		goods.Id = Id
+		goods.Title = Title
+		goods.Category = Category
+		goods.Content = Content
+		goods.Origin = Origin
+		goods.Unit = Unit
+		goods.Price = Price
+		goods.Shop = Shop
+		goods.BuyLink = BuyLink
+		goods.Images = Images
+		goods.Certificates = Certificates
+		goods.Status = Status
+		goodsList = append(goodsList, goods)
+	}
+	return goodsList, nil
+}
+
 func CreateGoods(Title string, Category string, Content string, Origin string, Unit string, Price string, Shop string, BuyLink string, Images string, Certificates string, Status string) error {
 	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
 	defer db.Close()
