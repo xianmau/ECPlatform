@@ -79,6 +79,13 @@ func registerWebmaster() {
 	// 网站设置
 	http.HandleFunc("/webmaster/setting", webmaster.Setting)
 
+	http.HandleFunc("/webmaster/setting/gcatpage", webmaster.SettingGoodsCategory)
+	http.HandleFunc("/webmaster/setting/gcatpage/create", webmaster.SettingGoodsCategoryCreate)
+	http.HandleFunc("/webmaster/setting/gcatpage/edit", webmaster.SettingGoodsCategoryEdit)
+	http.HandleFunc("/webmaster/setting/gcatpage/delete", webmaster.SettingGoodsCategoryDelete)
+
+
+
 	// 系统
 	http.HandleFunc("/webmaster/system", webmaster.System)
 	// 角色

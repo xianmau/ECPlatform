@@ -76,6 +76,25 @@ func GoodsCat(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		data["goodsList"] = goodsList
+
+		cur_c, err := models.GetGoodsCategory(get_c)
+		goodsCategoryInfo, err := models.GetGoodsCategoryInfo(cur_c.Name)
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		if goodsCategoryInfo == nil {
+			goodsCategoryInfo, err = models.GetGoodsCategoryInfo(cur_c.Parent)
+			if err != nil {
+				log.Error(err.Error())
+				return
+			}
+		}
+		if goodsCategoryInfo == nil{
+			goodsCategoryInfo = new(models.GoodsCategoryInfo)
+		}
+		data["goodsCategoryInfo"] = goodsCategoryInfo
+
 		// execute template
 		err = t.Execute(w, data)
 		if err != nil {
@@ -130,7 +149,7 @@ func GoodsDetail(w http.ResponseWriter, r *http.Request) {
 			data["NotFound"] = "找不到该商品的信息"
 		}
 		comments, err := models.GetCommentListByGoods(get_id)
-		if err != nil{
+		if err != nil {
 			log.Error(err.Error())
 			return
 		}
