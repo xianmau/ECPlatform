@@ -36,6 +36,10 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="CreateRecommend">Recommend</label>
+                    <textarea class="form-control" id="CreateRecommend" placeholder="Enter the recommend statements"></textarea>
+                </div>
+                <div class="form-group">
                     <label for="CreateOrigin">Origin</label>
                     <select class="form-control" id="CreateOrigin">
                         <option value="">请选择</option>
@@ -133,6 +137,7 @@
         function SubmitCreateForm() {
             var title = $('#CreateTitle').val();
             var category = $('#CreateCategory').val();
+            var recommend = $('#CreateRecommend').val();
             //var content = $('#CreateContent').val();
             var content = "// 请在此描述商品";
             var origin = $('#CreateOrigin').val();
@@ -162,6 +167,7 @@
                 data: {
                     title: title,
                     category: category,
+                    recommend: recommend,
                     content: content,
                     origin: origin,
                     unit: unit,

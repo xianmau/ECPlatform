@@ -21,7 +21,7 @@
 	</div>
 
     <div id="cat" class="wrap">
-        <div class="cat-left">
+        <div class="cat-left" style="margin-bottom: 100px;">
             <p>全部分类</p>
             <ul>
                 {{range $i, $e := .goodsCategories}}
@@ -37,7 +37,7 @@
             </ul>
         </div>
 
-        <div class="cat-right">
+        <div class="cat-right" style="margin-bottom: 100px;">
             <div style="width: 100%;height:300px;border: 1px solid #f3f3f3;">
                 <div class="cat-text">
                     <img src="/statics/img/web2/cattext1.png" />
@@ -65,7 +65,7 @@
 
                 {{range $k, $v := .goodsList}}
                 <div class="item">
-                    <a href="/web/goods?id={{$v.Id}}"><img class="goods-pic" src="{{GetJsonData $v.Images "mini"}}" /></a>
+                    <a href="/web/goods?id={{$v.Id}}"><img class="goods-pic" src="{{GetJsonData $v.Images "medium"}}" /></a>
                     <div class="info">
                         <p class="title">{{$v.Title}}</p>
                         <img class="rmb-icon" src="/statics/img/web/icon_rmb.png" />
@@ -76,7 +76,7 @@
             </div>
             <div class="clear"></div>
 
-            <div style="position:relative;height: 50px;margin:10px 0 30px 0;">
+            <div style="display: none; position:relative;height: 50px;margin:10px 0 30px 0;">
                 <div id="pager">
                     <a href="#">首页</a>
                     <a href="#">1</a>
@@ -101,9 +101,6 @@
 
     {{template "scripts"}}
     <script>
-        $(function(){
-
-        });
     </script>
 </body>
 </html>

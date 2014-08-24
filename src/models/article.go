@@ -51,6 +51,42 @@ func GetArticle(Id string) (*Article, error) {
 	return nil, nil
 }
 
+func GetArticleListByCategory(Category string) ([]Article, error) {
+	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	defer db.Close()
+	if err != nil {
+		return nil, err
+	}
+	rows, err := db.Query("select * from `tb_article` where `Category`=? order by `Id` desc", Category)
+	defer rows.Close()
+	if err != nil {
+		return nil, err
+	}
+	articleList := []Article{}
+	for rows.Next() {
+		var article Article
+		var Id int
+		var Title string
+		var Category string
+		var Content string
+		var Time string
+		var Click int
+		var Status int
+		if err := rows.Scan(&Id, &Title, &Category, &Content, &Time, &Click, &Status); err != nil {
+			return nil, err
+		}
+		article.Id = Id
+		article.Title = Title
+		article.Category = Category
+		article.Content = Content
+		article.Time = Time
+		article.Click = Click
+		article.Status = Status
+		articleList = append(articleList, article)
+	}
+	return articleList, nil
+}
+
 func GetArticleList() ([]Article, error) {
 	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
 	defer db.Close()

@@ -10,6 +10,8 @@ import (
 	"os"
 	"path/filepath"
 	"time"
+	"regexp"
+	"html/template"
 )
 
 func GetDateYYYYMMDD() string {
@@ -45,4 +47,22 @@ func UrlEncode(s string) string {
 	u, _ := url.Parse(s)
 	ret := u.Path + "?" + u.Query().Encode()
 	return ret
+}
+
+// 获取json数据
+func GetJsonData(jsonStr string, key string) string {
+	re, err := regexp.Compile(`"` + key + `":"(.*?)"`)
+	if err != nil {
+		return ""
+	}
+	value := re.FindStringSubmatch(jsonStr)
+	if len(value) > 1{
+		return value[1]
+	}
+	return ""
+}
+
+// 将被转义的html代码还原
+func ConvertToHtml (x string) interface{}{
+	return template.HTML(x)
 }

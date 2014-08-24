@@ -148,6 +148,7 @@ func GoodsCreate(w http.ResponseWriter, r *http.Request) {
 
 		form_title := r.PostFormValue("title")
 		form_category := r.PostFormValue("category")
+		form_recommend := r.PostFormValue("recommend")
 		form_content := r.PostFormValue("content")
 		form_origin := r.PostFormValue("origin")
 		form_unit := r.PostFormValue("unit")
@@ -158,7 +159,7 @@ func GoodsCreate(w http.ResponseWriter, r *http.Request) {
 		form_certificates := r.PostFormValue("certificates")
 		form_status := r.PostFormValue("status")
 
-		err := models.CreateGoods(form_title, form_category, form_content, form_origin, form_unit, form_price, form_shop, form_buylink, form_images, form_certificates, form_status)
+		err := models.CreateGoods(form_title, form_category, form_recommend, form_content, form_origin, form_unit, form_price, form_shop, form_buylink, form_images, form_certificates, form_status)
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -263,6 +264,7 @@ func GoodsEdit(w http.ResponseWriter, r *http.Request) {
 		form_id := r.PostFormValue("id")
 		form_title := r.PostFormValue("title")
 		form_category := r.PostFormValue("category")
+		form_recommend := r.PostFormValue("recommend")
 		form_content := r.PostFormValue("content")
 		form_origin := r.PostFormValue("origin")
 		form_unit := r.PostFormValue("unit")
@@ -273,7 +275,7 @@ func GoodsEdit(w http.ResponseWriter, r *http.Request) {
 		form_certificates := r.PostFormValue("certificates")
 		form_status := r.PostFormValue("status")
 
-		err := models.EditGoods(form_id, form_title, form_category, form_content, form_origin, form_unit, form_price, form_shop, form_buylink, form_images, form_certificates, form_status)
+		err := models.EditGoods(form_id, form_title, form_category, form_recommend, form_content, form_origin, form_unit, form_price, form_shop, form_buylink, form_images, form_certificates, form_status)
 		if err != nil {
 			log.Error(err.Error())
 			return

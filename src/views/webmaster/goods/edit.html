@@ -37,6 +37,10 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="EditRecommend">Recommend</label>
+                    <textarea class="form-control" id="EditRecommend" placeholder="Enter the recommend statements"></textarea>
+                </div>
+                <div class="form-group">
                     <label for="EditContent">Content</label>
                     <textarea class="form-control" id="EditContent"></textarea>
                 </div>
@@ -331,6 +335,7 @@
             $('#EditId').val({{.Goods.Id}});
             $('#EditTitle').val({{.Goods.Title}});
             $('#EditCategory').val({{.Goods.Category}});
+            $('#EditRecommend').val({{.Goods.Recommend}});
             $('#EditContent').val({{.Goods.Content}});
             $('#EditOrigin').val({{.Goods.Origin}});
             $('#EditUnit').val({{.Goods.Unit}});
@@ -416,6 +421,7 @@
             var id = $('#EditId').val();
             var title = $('#EditTitle').val();
             var category = $('#EditCategory').val();
+            var recommend = $('#EditRecommend').val();
             var content = $('#EditContent').val();
             var origin = $('#EditOrigin').val();
             var unit = $('#EditUnit').val();
@@ -443,6 +449,7 @@
                     id: id,
                     title: title,
                     category: category,
+                    recommend: recommend,
                     content: content,
                     origin: origin,
                     unit: unit,

@@ -21,10 +21,18 @@ func Register() {
 func registerWeb() {
 	http.HandleFunc("/web", web.Home)
 	http.HandleFunc("/web/home", web.Home)
+
 	http.HandleFunc("/web/gcat", web.GoodsCat)
 	http.HandleFunc("/web/goods", web.GoodsDetail)
 
+	http.HandleFunc("/web/acat", web.ArticleCat)
+	http.HandleFunc("/web/article", web.ArticleDetail)
+
+	http.HandleFunc("/web/comment/create", web.CommentCreate)
+
 	http.HandleFunc("/web/join", web.Join)
+
+
 }
 
 func registerWebmaster() {

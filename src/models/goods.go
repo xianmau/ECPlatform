@@ -10,6 +10,7 @@ type Goods struct {
 	Id           int     `json:"id"`
 	Title        string  `json:"title"`
 	Category     string  `json:"category"`
+	Recommend    string  `json:"recommend"`
 	Content      string  `json:"content"`
 	Origin       string  `json:"origin"`
 	Unit         string  `json:"unit"`
@@ -36,6 +37,7 @@ func GetGoods(Id string) (*Goods, error) {
 		var goods Goods
 		var Id int
 		var Title string
+		var Recommend string
 		var Category string
 		var Content string
 		var Origin string
@@ -46,12 +48,13 @@ func GetGoods(Id string) (*Goods, error) {
 		var Images string
 		var Certificates string
 		var Status int
-		if err := rows.Scan(&Id, &Title, &Category, &Content, &Origin, &Unit, &Price, &Shop, &BuyLink, &Images, &Certificates, &Status); err != nil {
+		if err := rows.Scan(&Id, &Title, &Category, &Recommend, &Content, &Origin, &Unit, &Price, &Shop, &BuyLink, &Images, &Certificates, &Status); err != nil {
 			return nil, err
 		}
 		goods.Id = Id
 		goods.Title = Title
 		goods.Category = Category
+		goods.Recommend = Recommend
 		goods.Content = Content
 		goods.Origin = Origin
 		goods.Unit = Unit
@@ -83,6 +86,7 @@ func GetGoodsList() ([]Goods, error) {
 		var Id int
 		var Title string
 		var Category string
+		var Recommend string
 		var Content string
 		var Origin string
 		var Unit string
@@ -92,12 +96,13 @@ func GetGoodsList() ([]Goods, error) {
 		var Images string
 		var Certificates string
 		var Status int
-		if err := rows.Scan(&Id, &Title, &Category, &Content, &Origin, &Unit, &Price, &Shop, &BuyLink, &Images, &Certificates, &Status); err != nil {
+		if err := rows.Scan(&Id, &Title, &Category, &Recommend, &Content, &Origin, &Unit, &Price, &Shop, &BuyLink, &Images, &Certificates, &Status); err != nil {
 			return nil, err
 		}
 		goods.Id = Id
 		goods.Title = Title
 		goods.Category = Category
+		goods.Recommend = Recommend
 		goods.Content = Content
 		goods.Origin = Origin
 		goods.Unit = Unit
@@ -112,14 +117,13 @@ func GetGoodsList() ([]Goods, error) {
 	return goodsList, nil
 }
 
-
 func GetGoodsListByCategory(Category string) ([]Goods, error) {
 	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
 	defer db.Close()
 	if err != nil {
 		return nil, err
 	}
-	rows, err := db.Query("select * from `tb_goods` where `Category`=? order by `Id` desc", Category)
+	rows, err := db.Query("select A.* from `tb_goods` as A left join `tb_goods_category` as B on A.`Category`=B.`Name` where A.`Category`=? or B.`Parent`=? order by `Id` desc", Category, Category)
 	defer rows.Close()
 	if err != nil {
 		return nil, err
@@ -130,6 +134,7 @@ func GetGoodsListByCategory(Category string) ([]Goods, error) {
 		var Id int
 		var Title string
 		var Category string
+		var Recommend string
 		var Content string
 		var Origin string
 		var Unit string
@@ -139,12 +144,13 @@ func GetGoodsListByCategory(Category string) ([]Goods, error) {
 		var Images string
 		var Certificates string
 		var Status int
-		if err := rows.Scan(&Id, &Title, &Category, &Content, &Origin, &Unit, &Price, &Shop, &BuyLink, &Images, &Certificates, &Status); err != nil {
+		if err := rows.Scan(&Id, &Title, &Category, &Recommend, &Content, &Origin, &Unit, &Price, &Shop, &BuyLink, &Images, &Certificates, &Status); err != nil {
 			return nil, err
 		}
 		goods.Id = Id
 		goods.Title = Title
 		goods.Category = Category
+		goods.Recommend = Recommend
 		goods.Content = Content
 		goods.Origin = Origin
 		goods.Unit = Unit
@@ -159,26 +165,26 @@ func GetGoodsListByCategory(Category string) ([]Goods, error) {
 	return goodsList, nil
 }
 
-func CreateGoods(Title string, Category string, Content string, Origin string, Unit string, Price string, Shop string, BuyLink string, Images string, Certificates string, Status string) error {
+func CreateGoods(Title string, Category string, Recommend string, Content string, Origin string, Unit string, Price string, Shop string, BuyLink string, Images string, Certificates string, Status string) error {
 	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
 	defer db.Close()
 	if err != nil {
 		return err
 	}
-	_, err = db.Exec("insert into `tb_goods`(`Title`,`Category`,`Content`,`Origin`,`Unit`,`Price`,`Shop`,`BuyLink`,`Images`,`Certificates`,`Status`) values(?,?,?,?,?,?,?,?,?,?,?)", Title, Category, Content, Origin, Unit, Price, Shop, BuyLink, Images, Certificates, Status)
+	_, err = db.Exec("insert into `tb_goods`(`Title`,`Category`,`Recommend`,`Content`,`Origin`,`Unit`,`Price`,`Shop`,`BuyLink`,`Images`,`Certificates`,`Status`) values(?,?,?,?,?,?,?,?,?,?,?,?)", Title, Category, Recommend, Content, Origin, Unit, Price, Shop, BuyLink, Images, Certificates, Status)
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func EditGoods(Id string, Title string, Category string, Content string, Origin string, Unit string, Price string, Shop string, BuyLink string, Images string, Certificates string, Status string) error {
+func EditGoods(Id string, Title string, Category string, Recommend string, Content string, Origin string, Unit string, Price string, Shop string, BuyLink string, Images string, Certificates string, Status string) error {
 	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
 	defer db.Close()
 	if err != nil {
 		return err
 	}
-	_, err = db.Exec("update `tb_goods` set `Title`=?,`Category`=?,`Content`=?,`Origin`=?,`Unit`=?,`Price`=?,`Shop`=?,`BuyLink`=?,`Images`=?,`Certificates`=?,`Status`=? where `Id`=?", Title, Category, Content, Origin, Unit, Price, Shop, BuyLink, Images, Certificates, Status, Id)
+	_, err = db.Exec("update `tb_goods` set `Title`=?,`Category`=?,`Recommend`=?,`Content`=?,`Origin`=?,`Unit`=?,`Price`=?,`Shop`=?,`BuyLink`=?,`Images`=?,`Certificates`=?,`Status`=? where `Id`=?", Title, Category, Recommend, Content, Origin, Unit, Price, Shop, BuyLink, Images, Certificates, Status, Id)
 	if err != nil {
 		return err
 	}
