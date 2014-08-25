@@ -168,7 +168,9 @@
 
         function LoadAvatar() {
             var account_email = $(".comment-avatar").attr("title");
-            $(".comment-avatar").attr("src", "http://www.gravatar.com/avatar/" + MD5(account_email) + "");
+            if (account_email != "") {
+                $(".comment-avatar").attr("src", "http://www.gravatar.com/avatar/" + MD5(account_email) + "");
+            }
         }
 
         function CommonFormSubmit(){
