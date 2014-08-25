@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>反馈建议 - 一村一品</title>
+    {{template "styles"}}
+    <style>
+        .message-table{width: 100%;}
+        .message-table td {vertical-align: top; height: 30px;}
+        .message-table td label{color:#999;display: inline-block; line-height: 30px; height: 30px;margin: 10px;}
+        .message-table td input{width: 500px;height: 30px;margin: 10px;}
+        .message-table td textarea{width: 500px;height: 200px;margin: 10px;}
+        .message-table .a-submit {display: inline-block; line-height: 30px; font-size: 16px;border: 1px solid #CCC;background: #DDD; padding: 3px 20px;}
+        .message-table .a-submit:hover{color: #FFF; background: #555;}
+    </style>
+</head>
+<body>
+    {{template "headerpart" .}}
+
+    <!--main-->
+    <div class="pos">
+        <img src="/statics/img/web/icon_house.png" />
+        <span><a href="/web">一村一品</a></span>
+        >
+        <span><a href="/web/message">反馈建设</a></span>
+    </div>
+
+    <div style="position: relative; margin: 50px auto;width: 600px;text-align: center;">
+        <h4 style="text-align: left;line-height: 25px;">
+            在一村一品，我们以为您提供一流的服务而感到自豪。
+            在任何时候，如果您觉得我们提供的服务未能达到您的预期，您可以通过几种途径让我们获知。
+            我们非常重视您的反馈，并且您的反馈将帮助我们提高我们的服务水准。
+            我们将尽力在收到您反馈后两个工作日内联络您。
+        </h4>
+        <table class="message-table">
+            <tr>
+                <td><label for="Name">您的称呼</label></td>
+                <td><input type="text" id="Name" /></td>
+            </tr>
+            <tr>
+                <td><label for="Email">您的邮箱</label></td>
+                <td><input type="text" id="Email" /></td>
+            </tr>
+            <tr>
+                <td><label for="Content">您的建议</label></td>
+                <td>
+                    <textarea id="Content"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <a href="javascript:void(0);" class="a-submit" onclick="MessageSubmit()">提交</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    {{template "footerpart" .}}
+
+    {{template "scripts"}}
+    <script>
+        function MessageSubmit(){
+            var name = $('#Name').val();
+            var email = $('#Email').val();
+            var content = $('#Content').val();
+            $.ajax({
+                type: 'POST',
+                url: '/web/message/create',
+                data: {
+                    name: name,
+                    email: email,
+                    content: content
+                },
+                success: function (data) {
+                    alert("感谢您的建议，我们会尽快改善:)")
+                    location.reload();
+                },
+                dataType: 'text'
+            });
+        }
+    </script>
+</body>
+</html>

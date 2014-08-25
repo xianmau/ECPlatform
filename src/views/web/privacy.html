@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>隐私政策 - 一村一品</title>
+    {{template "styles"}}
+    <style>
+        .message-table{width: 100%;}
+        .message-table td {vertical-align: top; height: 30px;}
+        .message-table td label{color:#999;display: inline-block; line-height: 30px; height: 30px;margin: 10px;}
+        .message-table td input{width: 500px;height: 30px;margin: 10px;}
+        .message-table td textarea{width: 500px;height: 200px;margin: 10px;}
+        .message-table .a-submit {display: inline-block; line-height: 30px; font-size: 16px;border: 1px solid #CCC;background: #DDD; padding: 3px 20px;}
+        .message-table .a-submit:hover{color: #FFF; background: #555;}
+    </style>
+</head>
+<body>
+    {{template "headerpart" .}}
+
+    <!--main-->
+    <div class="pos">
+        <img src="/statics/img/web/icon_house.png" />
+        <span><a href="/web">一村一品</a></span>
+        >
+        <span><a href="/web/privacy">隐私政策</a></span>
+    </div>
+
+
+    {{template "footerpart" .}}
+
+    {{template "scripts"}}
+</body>
+</html>

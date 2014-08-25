@@ -30,7 +30,17 @@ func registerWeb() {
 
 	http.HandleFunc("/web/comment/create", web.CommentCreate)
 
+	http.HandleFunc("/web/message", web.Message)
+	http.HandleFunc("/web/message/create", web.MessageCreate)
+
 	http.HandleFunc("/web/join", web.Join)
+
+	// 单页面
+	http.HandleFunc("/web/about", web.About)
+	http.HandleFunc("/web/promotion", web.Promotion)
+	http.HandleFunc("/web/privacy", web.Privacy)
+	http.HandleFunc("/web/link", web.Link)
+	http.HandleFunc("/web/screening", web.Screening)
 
 
 }

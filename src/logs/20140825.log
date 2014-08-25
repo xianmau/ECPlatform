@@ -128,3 +128,6 @@
 2014/08/25 01:29:28 [I][::1] get /web/gcat
 2014/08/25 01:29:28 [E]template: gcat.html:43:50: executing "gcat.html" at <.goodsCategoryInfo.C...>: nil pointer evaluating interface {}.CategoryInfo
 2014/08/25 01:30:59 [I][::1] get /web/gcat
+2014/08/25 23:36:28 [I][::1] get /web/home
+2014/08/25 23:36:31 [I][::1] get /web/gcat
+2014/08/25 23:36:44 [I][::1] get /web/acat
