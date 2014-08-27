@@ -43,10 +43,12 @@
                     </thead>
                     <tbody>
                         {{range .articleList}}
+                        {{if ne .Status 0}}
                         <tr>
                             <td class="table-title"><a href="/web/article?id={{.Id}}">{{.Title}}</a></td>
                             <td class="table-time">{{.Time}}</td>
                         </tr>
+                        {{end}}
                         {{end}}
                     </tbody>
                 </table>

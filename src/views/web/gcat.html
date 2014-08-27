@@ -64,6 +64,7 @@
             <div class="goodslist">
 
                 {{range $k, $v := .goodsList}}
+                {{if eq $v.Status 1}}
                 <div class="item">
                     <a href="/web/goods?id={{$v.Id}}"><img class="goods-pic" src="{{GetJsonData $v.Images "medium"}}" /></a>
                     <div class="info">
@@ -72,6 +73,7 @@
                         <span class="price">{{$v.Price}}</span>
                     </div>
                 </div>
+                {{end}}
                 {{end}}
             </div>
             <div class="clear"></div>

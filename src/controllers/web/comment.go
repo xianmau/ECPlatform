@@ -14,6 +14,9 @@ func CommentCreate(w http.ResponseWriter, r *http.Request) {
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
+	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
+		client_ip = xff_ip
+	}
 
 	var user models.User
 	if session.Get("user") != nil {

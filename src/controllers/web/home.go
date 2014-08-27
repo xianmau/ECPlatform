@@ -13,6 +13,9 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	_ = global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
+	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
+		client_ip = xff_ip
+	}
 
 	if r.Method == "GET" {
 		// deal with get method
