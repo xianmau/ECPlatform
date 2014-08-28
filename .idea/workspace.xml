@@ -2,7 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ed1288a-db1a-4a3f-9438-57bc09d9e434" name="Default" comment="kk">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/upload/upload.go" afterPath="$PROJECT_DIR$/src/controllers/upload/upload.go" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140725.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140726.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140727.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140728.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140729.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140803.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140810.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140811.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140812.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140813.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140814.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140815.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140816.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140817.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140818.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140819.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140822.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140823.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140824.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140825.log" afterPath="" />
+      <change type="DELETED" beforePath="E:\SkyDrive\xianmau\Project\goworkspace\ECPlatform\src\logs\20140826.log" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logs/20140828.log" afterPath="$PROJECT_DIR$/src/logs/20140828.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/web/gcat.html" afterPath="$PROJECT_DIR$/src/views/web/gcat.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/statics/css/web.css" afterPath="$PROJECT_DIR$/src/statics/css/web.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="86e3569d-fb54-4049-b4ef-dbfe2beece86" name="update" comment="" />
     <ignored path="ECPlatform.iws" />
@@ -25,18 +49,7 @@
     <favorites_list name="ECPlatform" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="upload.go" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controllers/upload/upload.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.97092086" vertical-offset="2711" max-vertical-offset="3438">
-              <caret line="184" column="1" selection-start-line="184" selection-start-column="1" selection-end-line="184" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -91,7 +104,6 @@
         <option value="$PROJECT_DIR$/src/views/web/screening.html" />
         <option value="$PROJECT_DIR$/src/views/web/footerpart.html" />
         <option value="$PROJECT_DIR$/src/views/web/message.html" />
-        <option value="$PROJECT_DIR$/src/statics/css/web.css" />
         <option value="$PROJECT_DIR$/src/views/web/article.html" />
         <option value="$PROJECT_DIR$/src/views/web/goods.html" />
         <option value="$PROJECT_DIR$/src/controllers/web/comment.go" />
@@ -102,8 +114,9 @@
         <option value="$PROJECT_DIR$/src/controllers/web/goods.go" />
         <option value="$PROJECT_DIR$/src/controllers/web/article.go" />
         <option value="$PROJECT_DIR$/src/views/web/acat.html" />
-        <option value="$PROJECT_DIR$/src/views/web/gcat.html" />
         <option value="$PROJECT_DIR$/src/controllers/upload/upload.go" />
+        <option value="$PROJECT_DIR$/src/views/web/gcat.html" />
+        <option value="$PROJECT_DIR$/src/statics/css/web.css" />
       </list>
     </option>
   </component>
@@ -224,7 +237,11 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -242,11 +259,29 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="statics" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ECPlatform" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="upload" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="statics" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -622,12 +657,12 @@
       <workItem from="1408934567397" duration="1179000" />
       <workItem from="1408980901855" duration="10299000" />
       <workItem from="1409066548598" duration="3728000" />
-      <workItem from="1409234703325" duration="1909000" />
+      <workItem from="1409234703325" duration="7824000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="323506000" />
+    <option name="totallyTimeSpent" value="329421000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -650,14 +685,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3262519" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32223904" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32169953" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -671,7 +706,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17673716" sideWeight="0.49878934" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17673716" sideWeight="0.49878934" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="go fmt Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
@@ -1008,13 +1043,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/statics/css/web.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5815831" vertical-offset="2171" max-vertical-offset="3546">
-          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/web/goods.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25619835" vertical-offset="2923" max-vertical-offset="3564">
@@ -1086,18 +1114,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/web/gcat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42744064" vertical-offset="1026" max-vertical-offset="2034">
-          <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/upload/upload.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.97092086" vertical-offset="2711" max-vertical-offset="3438">
           <caret line="184" column="1" selection-start-line="184" selection-start-column="1" selection-end-line="184" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/statics/css/web.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44749597" vertical-offset="2279" max-vertical-offset="3546">
+          <caret line="142" column="117" selection-start-line="142" selection-start-column="117" selection-end-line="142" selection-end-column="117" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/web/gcat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4560811" vertical-offset="1026" max-vertical-offset="2034">
+          <caret line="72" column="70" selection-start-line="72" selection-start-column="70" selection-end-line="72" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
