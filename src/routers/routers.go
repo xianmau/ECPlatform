@@ -2,6 +2,7 @@ package routers
 
 import (
 	"controllers/web"
+	"controllers/user"
 	"controllers/webmaster"
 	"controllers/upload"
 	"net/http"
@@ -16,6 +17,8 @@ func Register() {
 	registerWebmaster()
 
 	registerWeb()
+
+	registerUserCenter()
 }
 
 func registerWeb() {
@@ -36,13 +39,19 @@ func registerWeb() {
 
 
 	// 单页面
+	http.HandleFunc("/web/service", web.Service)
+	http.HandleFunc("/web/help", web.Help)
 	http.HandleFunc("/web/about", web.About)
 	http.HandleFunc("/web/promotion", web.Promotion)
 	http.HandleFunc("/web/privacy", web.Privacy)
 	http.HandleFunc("/web/link", web.Link)
 	http.HandleFunc("/web/screening", web.Screening)
 
+}
 
+func registerUserCenter(){
+	http.HandleFunc("/user", user.Home)
+	http.HandleFunc("/user/home", user.Home)
 }
 
 func registerWebmaster() {
