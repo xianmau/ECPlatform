@@ -42,7 +42,7 @@ func UploadifyWebmaster(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		uploadDir := "/uploads/" + r.FormValue("dir") // 上传路径
+		uploadDir := "uploads/" + r.FormValue("dir") // 上传路径
 		file, handler, err := r.FormFile("upload")    // 默认文件框名为upload
 
 		if err != nil {
@@ -122,7 +122,7 @@ func CKEditorWebmaster(w http.ResponseWriter, r *http.Request) {
 		}
 
 		ckeditorFuncNum := r.FormValue("CKEditorFuncNum") // 客户端脚本编号，默认为1
-		uploadDir := "/uploads/" + r.FormValue("dir")     // 上传路径
+		uploadDir := "uploads/" + r.FormValue("dir")     // 上传路径
 		file, handler, err := r.FormFile("upload")        // 默认文件框名为upload
 
 		if err != nil {
