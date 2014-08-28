@@ -90,7 +90,7 @@ func UploadifyWebmaster(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		w.Write([]byte(`{"msg":"上传成功","status":"0","url":"` + uploadDir + fileName + `"}`))
+		w.Write([]byte(`{"msg":"上传成功","status":"0","url":"` + "/" + uploadDir + fileName + `"}`))
 	}
 }
 
@@ -170,7 +170,7 @@ func CKEditorWebmaster(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		w.Write([]byte("<html><body><script>window.parent.CKEDITOR.tools.callFunction(" + ckeditorFuncNum + ", \"" + uploadDir + fileName + "\", \"\");</script></body></html>"))
+		w.Write([]byte("<html><body><script>window.parent.CKEDITOR.tools.callFunction(" + ckeditorFuncNum + ", \"/" + uploadDir + fileName + "\", \"\");</script></body></html>"))
 	}
 }
 
