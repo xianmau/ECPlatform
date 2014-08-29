@@ -17,6 +17,9 @@ func Article(w http.ResponseWriter, r *http.Request) {
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
+	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
+		client_ip = xff_ip
+	}
 
 	var admin models.Admin
 	if session.Get("admin") != nil {
@@ -73,6 +76,9 @@ func ArticleCreate(w http.ResponseWriter, r *http.Request) {
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
+	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
+		client_ip = xff_ip
+	}
 
 	var admin models.Admin
 	if session.Get("admin") != nil {
@@ -160,6 +166,9 @@ func ArticleEdit(w http.ResponseWriter, r *http.Request) {
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
+	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
+		client_ip = xff_ip
+	}
 
 	var admin models.Admin
 	if session.Get("admin") != nil {
@@ -261,6 +270,9 @@ func ArticleDelete(w http.ResponseWriter, r *http.Request) {
 	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
+	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
+		client_ip = xff_ip
+	}
 
 	var admin models.Admin
 	if session.Get("admin") != nil {
