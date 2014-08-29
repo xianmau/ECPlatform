@@ -28,8 +28,14 @@
 
     <div id="cat" class="wrap">
         <div class="cat-left" style="margin-bottom: 100px; border-right: 1px solid #CCC;min-height: 500px;">
-            <p>阅读排行</p>
-
+            <p style="line-height: 40px;"><strong>阅读排行 TOP {{len .hotArticleList}}</strong></p>
+            <ul class="read-rank">
+                {{range .hotArticleList}}
+                <li>
+                    <a href="/web/article?id={{.Id}}">{{.Title}}</a>
+                </li>
+                {{end}}
+            </ul>
         </div>
 
         <div class="cat-right" style="margin-bottom: 100px;">

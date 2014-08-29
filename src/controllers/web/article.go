@@ -42,6 +42,11 @@ func ArticleCat(w http.ResponseWriter, r *http.Request) {
 			log.Error(err.Error())
 			return
 		}
+		// 判断一下是否为允许在前台显示的栏目
+		if get_c != "健康食谱" {
+			log.Error("not allowed category")
+			return
+		}
 		data["currentCategory"] = currentCategory
 
 		// 获取当前分类下的所有文章
@@ -51,6 +56,14 @@ func ArticleCat(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		data["articleList"] = articleList
+		// 获取排行文章
+		hotArticleList, err := models.GetHotArticles(get_c, "10")
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		data["hotArticleList"] = hotArticleList
+
 		// execute template
 		err = t.Execute(w, data)
 		if err != nil {
@@ -107,6 +120,25 @@ func ArticleDetail(w http.ResponseWriter, r *http.Request) {
 		} else {
 			data["NotFound"] = "找不到该文章的信息"
 		}
+		// 判断一下是否为允许在前台显示的栏目
+		if article.Category != "健康食谱" {
+			log.Error("not allowed category")
+			return
+		}
+		// 文章阅读次数增加
+		err = models.IncreaseArticleReadTimes(get_id)
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+
+		// 获取排行文章
+		hotArticleList, err := models.GetHotArticles(article.Category, "10")
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		data["hotArticleList"] = hotArticleList
 
 		// execute template
 		err = t.Execute(w, data)

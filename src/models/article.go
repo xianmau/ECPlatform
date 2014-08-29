@@ -51,6 +51,41 @@ func GetArticle(Id string) (*Article, error) {
 	return nil, nil
 }
 
+func GetArticleByTitle(Title string) (*Article, error) {
+	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	defer db.Close()
+	if err != nil {
+		return nil, err
+	}
+	rows, err := db.Query("select * from `tb_article` where `Title`=?", Title)
+	defer rows.Close()
+	if err != nil {
+		return nil, err
+	}
+	if rows.Next() {
+		var article Article
+		var Id int
+		var Title string
+		var Category string
+		var Content string
+		var Time string
+		var Click int
+		var Status int
+		if err := rows.Scan(&Id, &Title, &Category, &Content, &Time, &Click, &Status); err != nil {
+			return nil, err
+		}
+		article.Id = Id
+		article.Title = Title
+		article.Category = Category
+		article.Content = Content
+		article.Time = Time
+		article.Click = Click
+		article.Status = Status
+		return &article, nil
+	}
+	return nil, nil
+}
+
 func GetArticleListByCategory(Category string) ([]Article, error) {
 	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
 	defer db.Close()
@@ -58,6 +93,42 @@ func GetArticleListByCategory(Category string) ([]Article, error) {
 		return nil, err
 	}
 	rows, err := db.Query("select * from `tb_article` where `Category`=? order by `Id` desc", Category)
+	defer rows.Close()
+	if err != nil {
+		return nil, err
+	}
+	articleList := []Article{}
+	for rows.Next() {
+		var article Article
+		var Id int
+		var Title string
+		var Category string
+		var Content string
+		var Time string
+		var Click int
+		var Status int
+		if err := rows.Scan(&Id, &Title, &Category, &Content, &Time, &Click, &Status); err != nil {
+			return nil, err
+		}
+		article.Id = Id
+		article.Title = Title
+		article.Category = Category
+		article.Content = Content
+		article.Time = Time
+		article.Click = Click
+		article.Status = Status
+		articleList = append(articleList, article)
+	}
+	return articleList, nil
+}
+
+func GetHotArticles(Category string, Top string) ([]Article, error) {
+	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	defer db.Close()
+	if err != nil {
+		return nil, err
+	}
+	rows, err := db.Query("select * from `tb_article` where `Status`>0 and `Category`=? order by `Click` desc limit 0, ?", Category, Top)
 	defer rows.Close()
 	if err != nil {
 		return nil, err
@@ -156,6 +227,19 @@ func DeleteArticle(Id string) error {
 		return err
 	}
 	_, err = db.Exec("delete from `tb_article` where `Id`=?", Id)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func IncreaseArticleReadTimes(Id string) error {
+	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	defer db.Close()
+	if err != nil {
+		return err
+	}
+	_, err = db.Exec("update `tb_article` set `Click`=`Click`+1 where `Id`=?", Id)
 	if err != nil {
 		return err
 	}

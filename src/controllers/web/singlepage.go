@@ -2,10 +2,12 @@ package web
 
 import (
 	"html/template"
+	"models"
 	"net/http"
 	"strings"
 	"utils/global"
 	log "utils/logger"
+	"utils/tools"
 )
 
 // 客户服务的页面
@@ -23,12 +25,10 @@ func Service(w http.ResponseWriter, r *http.Request) {
 		log.Info(client_ip + " get /web/service")
 
 		// render template
-		t, err := template.ParseFiles("views/web/service.html")
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
-		t, err = t.ParseFiles("views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		t := template.New("service.html")
+		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
+		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
+		t, err := t.ParseFiles("views/web/service.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -36,6 +36,17 @@ func Service(w http.ResponseWriter, r *http.Request) {
 
 		// bind data
 		data := make(map[string]interface{})
+
+		article, err := models.GetArticleByTitle("客户服务")
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		if article != nil {
+			data["article"] = article
+		} else {
+			data["NotFound"] = "找不到该文章的信息"
+		}
 
 		// execute template
 		err = t.Execute(w, data)
@@ -61,12 +72,10 @@ func Help(w http.ResponseWriter, r *http.Request) {
 		log.Info(client_ip + " get /web/help")
 
 		// render template
-		t, err := template.ParseFiles("views/web/help.html")
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
-		t, err = t.ParseFiles("views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		t := template.New("help.html")
+		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
+		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
+		t, err := t.ParseFiles("views/web/help.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -74,6 +83,17 @@ func Help(w http.ResponseWriter, r *http.Request) {
 
 		// bind data
 		data := make(map[string]interface{})
+
+		article, err := models.GetArticleByTitle("帮助")
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		if article != nil {
+			data["article"] = article
+		} else {
+			data["NotFound"] = "找不到该文章的信息"
+		}
 
 		// execute template
 		err = t.Execute(w, data)
@@ -99,12 +119,10 @@ func About(w http.ResponseWriter, r *http.Request) {
 		log.Info(client_ip + " get /web/about")
 
 		// render template
-		t, err := template.ParseFiles("views/web/about.html")
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
-		t, err = t.ParseFiles("views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		t := template.New("about.html")
+		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
+		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
+		t, err := t.ParseFiles("views/web/about.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -112,6 +130,17 @@ func About(w http.ResponseWriter, r *http.Request) {
 
 		// bind data
 		data := make(map[string]interface{})
+
+		article, err := models.GetArticleByTitle("关于我们")
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		if article != nil {
+			data["article"] = article
+		} else {
+			data["NotFound"] = "找不到该文章的信息"
+		}
 
 		// execute template
 		err = t.Execute(w, data)
@@ -137,12 +166,10 @@ func Promotion(w http.ResponseWriter, r *http.Request) {
 		log.Info(client_ip + " get /web/promotion")
 
 		// render template
-		t, err := template.ParseFiles("views/web/promotion.html")
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
-		t, err = t.ParseFiles("views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		t := template.New("promotion.html")
+		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
+		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
+		t, err := t.ParseFiles("views/web/promotion.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -150,6 +177,17 @@ func Promotion(w http.ResponseWriter, r *http.Request) {
 
 		// bind data
 		data := make(map[string]interface{})
+
+		article, err := models.GetArticleByTitle("供应商推广")
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		if article != nil {
+			data["article"] = article
+		} else {
+			data["NotFound"] = "找不到该文章的信息"
+		}
 
 		// execute template
 		err = t.Execute(w, data)
@@ -175,12 +213,10 @@ func Privacy(w http.ResponseWriter, r *http.Request) {
 		log.Info(client_ip + " get /web/privacy")
 
 		// render template
-		t, err := template.ParseFiles("views/web/privacy.html")
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
-		t, err = t.ParseFiles("views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		t := template.New("privacy.html")
+		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
+		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
+		t, err := t.ParseFiles("views/web/privacy.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -188,6 +224,17 @@ func Privacy(w http.ResponseWriter, r *http.Request) {
 
 		// bind data
 		data := make(map[string]interface{})
+
+		article, err := models.GetArticleByTitle("隐私政策")
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		if article != nil {
+			data["article"] = article
+		} else {
+			data["NotFound"] = "找不到该文章的信息"
+		}
 
 		// execute template
 		err = t.Execute(w, data)
@@ -251,12 +298,10 @@ func Screening(w http.ResponseWriter, r *http.Request) {
 		log.Info(client_ip + " get /web/screening")
 
 		// render template
-		t, err := template.ParseFiles("views/web/screening.html")
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
-		t, err = t.ParseFiles("views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		t := template.New("screening.html")
+		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
+		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
+		t, err := t.ParseFiles("views/web/screening.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -264,6 +309,17 @@ func Screening(w http.ResponseWriter, r *http.Request) {
 
 		// bind data
 		data := make(map[string]interface{})
+
+		article, err := models.GetArticleByTitle("筛选规则")
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		if article != nil {
+			data["article"] = article
+		} else {
+			data["NotFound"] = "找不到该文章的信息"
+		}
 
 		// execute template
 		err = t.Execute(w, data)
