@@ -7,6 +7,7 @@ import (
 	"utils/global"
 	log "utils/logger"
 	"models"
+	"utils/tools"
 )
 
 func Message(w http.ResponseWriter, r *http.Request) {
@@ -23,12 +24,9 @@ func Message(w http.ResponseWriter, r *http.Request) {
 		log.Info(client_ip + " get /web/message")
 
 		// render template
-		t, err := template.ParseFiles("views/web/message.html")
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
-		t, err = t.ParseFiles("views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		t := template.New("message.html")
+		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
+		t, err := t.ParseFiles("views/web/message.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
 			return

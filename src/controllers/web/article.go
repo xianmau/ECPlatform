@@ -25,6 +25,7 @@ func ArticleCat(w http.ResponseWriter, r *http.Request) {
 
 		// render template
 		t := template.New("acat.html")
+		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
 		t, err := t.ParseFiles("views/web/acat.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
@@ -90,6 +91,7 @@ func ArticleDetail(w http.ResponseWriter, r *http.Request) {
 		t := template.New("article.html")
 		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
 		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
+		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
 		t, err := t.ParseFiles("views/web/article.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())

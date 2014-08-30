@@ -6,6 +6,7 @@ import (
 	"strings"
 	"utils/global"
 	log "utils/logger"
+	"utils/tools"
 )
 
 func Home(w http.ResponseWriter, r *http.Request) {
@@ -22,12 +23,9 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		log.Info(client_ip + " get /web/home")
 
 		// render template
-		t, err := template.ParseFiles("views/web/home.html")
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
-		t, err = t.ParseFiles("views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		t := template.New("home.html")
+		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
+		t, err := t.ParseFiles("views/web/home.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
 			return

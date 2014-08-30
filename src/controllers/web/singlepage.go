@@ -28,6 +28,7 @@ func Service(w http.ResponseWriter, r *http.Request) {
 		t := template.New("service.html")
 		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
 		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
+		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
 		t, err := t.ParseFiles("views/web/service.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
@@ -75,6 +76,7 @@ func Help(w http.ResponseWriter, r *http.Request) {
 		t := template.New("help.html")
 		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
 		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
+		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
 		t, err := t.ParseFiles("views/web/help.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
@@ -122,6 +124,7 @@ func About(w http.ResponseWriter, r *http.Request) {
 		t := template.New("about.html")
 		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
 		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
+		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
 		t, err := t.ParseFiles("views/web/about.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
@@ -169,6 +172,7 @@ func Promotion(w http.ResponseWriter, r *http.Request) {
 		t := template.New("promotion.html")
 		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
 		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
+		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
 		t, err := t.ParseFiles("views/web/promotion.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
@@ -216,6 +220,7 @@ func Privacy(w http.ResponseWriter, r *http.Request) {
 		t := template.New("privacy.html")
 		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
 		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
+		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
 		t, err := t.ParseFiles("views/web/privacy.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
@@ -260,12 +265,11 @@ func Link(w http.ResponseWriter, r *http.Request) {
 		log.Info(client_ip + " get /web/link")
 
 		// render template
-		t, err := template.ParseFiles("views/web/link.html")
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
-		t, err = t.ParseFiles("views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		t := template.New("link.html")
+		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
+		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
+		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
+		t, err := t.ParseFiles("views/web/link.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -301,6 +305,7 @@ func Screening(w http.ResponseWriter, r *http.Request) {
 		t := template.New("screening.html")
 		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
 		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
+		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
 		t, err := t.ParseFiles("views/web/screening.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
 		if err != nil {
 			log.Error(err.Error())
