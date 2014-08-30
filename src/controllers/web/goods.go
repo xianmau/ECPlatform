@@ -80,9 +80,7 @@ func GoodsCat(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		data["goodsList"] = goodsList
-
 		cur_c, err := models.GetGoodsCategory(get_c)
-		log.Trace(get_c)
 		goodsCategoryInfo, err := models.GetGoodsCategoryInfo(cur_c.Name)
 		if err != nil {
 			log.Error(err.Error())
