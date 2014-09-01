@@ -22,6 +22,7 @@ func Register() {
 }
 
 func registerWeb() {
+	http.HandleFunc("/", web.Home)
 	http.HandleFunc("/web", web.Home)
 	http.HandleFunc("/web/home", web.Home)
 

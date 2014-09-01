@@ -18,6 +18,13 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		client_ip = xff_ip
 	}
 
+	// 对首页来说需要特殊判断一下URL
+	checkUrl := strings.ToLower(r.URL.Path)
+	if checkUrl != "/" && checkUrl != "/web" && checkUrl != "/web/home" {
+		http.NotFound(w, r)
+		return
+	}
+
 	if r.Method == "GET" {
 		// deal with get method
 		log.Info(client_ip + " get /web/home")
