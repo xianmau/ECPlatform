@@ -20,7 +20,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 
 	// 对首页来说需要特殊判断一下URL
 	checkUrl := strings.ToLower(r.URL.Path)
-	if checkUrl != "/" && checkUrl !="/index.html" && checkUrl != "/web" && checkUrl != "/web/home" {
+	if checkUrl != "/" && checkUrl !="/index.html" && checkUrl != "/index.htm" && checkUrl != "/web" && checkUrl != "/web/home" {
 		http.NotFound(w, r)
 		return
 	}
