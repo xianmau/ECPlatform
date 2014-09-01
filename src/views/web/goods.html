@@ -168,7 +168,7 @@
 
         function LoadAvatar() {
             var account_email = $(".comment-avatar").attr("title");
-            if (account_email != "") {
+            if (account_email != "" && account_email != undefined) {
                 $(".comment-avatar").attr("src", "http://www.gravatar.com/avatar/" + MD5(account_email) + "");
             }
         }

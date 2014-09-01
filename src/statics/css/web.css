@@ -105,10 +105,18 @@ ul,li{padding: 0;margin: 0;}
 .floor .floorleft .top img{height: 170px;}
 .floor .floorleft .mid{height: 100px;background: #F8F8F8;}
 .floor .floorleft .mid .cat-tag{margin: 12px 0 0 12px;line-height: 16px; color: #999; width: 80px;font-size: 13px; display: inline-block;}
+.floor .floorright{float:left;width:952px;margin-bottom:2px;height: 240px;}
+.floor .floorright .floor-first-item{float:left;}
+.floor .floorright .floor-first-item img{height: 240px;width: 376px;}
+.floor .floorright .floor-item{float:left;margin-left: 2px;}
+.floor .floorright .floor-item img{height: 180px;width: 190px;}
+.floor .floorright .floor-item p{background: #000;color: #FFF; margin: 0;padding: 10px 15px;height: 40px;width: 160px; line-height: 20px;text-align: center;font-size: 14px;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .floor .floorbottom{height: 212px;background: #F2F2F2;}
 .floor .floorbottom .title{font-size: 16px;color:#555;margin: 0;padding: 5px 13px;line-height: 30px;}
 .floor .floorbottom .list{}
-.floor .floorbottom .list li{list-style: none;padding-left:13px; font-size: 13px;color: #999;line-height: 23px;}
+.floor .floorbottom .list li{list-style: none;padding-left:13px;width: 160px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.floor .floorbottom .list li a{font-size: 13px;color: #999;line-height: 23px;}
+.floor .floorbottom .list li a:hover{color: #555;}
 
 /* goods list style */
 .pos{width: 1144px;margin: 0 auto 15px auto;position: relative;height: 60px;border-bottom: 1px solid #CCC;}
