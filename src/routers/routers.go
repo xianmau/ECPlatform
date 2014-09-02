@@ -104,6 +104,10 @@ func registerWebmaster() {
 	http.HandleFunc("/webmaster/setting/gcatpage/edit", webmaster.SettingGoodsCategoryEdit)
 	http.HandleFunc("/webmaster/setting/gcatpage/delete", webmaster.SettingGoodsCategoryDelete)
 
+	http.HandleFunc("/webmaster/setting/homepage", webmaster.SettingHomePage)
+	http.HandleFunc("/webmaster/setting/homepage/create", webmaster.SettingHomePageCreate)
+	http.HandleFunc("/webmaster/setting/homepage/edit", webmaster.SettingHomePageEdit)
+	http.HandleFunc("/webmaster/setting/homepage/delete", webmaster.SettingHomePageDelete)
 
 
 	// 系统

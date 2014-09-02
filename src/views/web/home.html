@@ -37,7 +37,7 @@
             <a href="{{UrlEncode "/web/gcat?c=优质粮油"}}" class="more">MORE></a>
         </div>
         <div class="floorleft">
-            <div class="top"><img src="/statics/img/web1/grain11.jpg" /></div>
+            <div class="top"><img src="/statics/img/web/floor/grain1.jpg" /></div>
             <div class="mid">
                 <span class="cat-tag">大米</span>
                 <span class="cat-tag">粗粮</span>
@@ -61,37 +61,25 @@
         </div>
         <div class="floorright">
             <div class="floor-first-item">
-                <a href="/web/goods?id=92" target="_blank"><img src="/uploads/goods/92/1409316970.jpg" /></a>
+                <a href="/web/goods?id={{.F1_UP.Id}}" target="_blank"><img src="{{GetJsonData .F1_UP.Images "medium"}}" /></a>
             </div>
+            {{range $k, $v := .F1_UPs}}
             <div class="floor-item">
-                <p>福建特级红曲米500g福建特级红曲米500g<br />￥149</p>
-                <a href="/web/goods?id=87" target="_blank"><img src="/uploads/goods/87/1409313254.jpg" /></a>
+                <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
+                <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "medium"}}" /></a>
             </div>
-            <div class="floor-item">
-                <p>张老大原汁胚芯玉米油1.8L<br />￥39.6</p>
-                <a href="/web/goods?id=99" target="_blank"><img src="/uploads/goods/99/1409320294.jpg" /></a>
-            </div>
-            <div class="floor-item">
-                <p>东北北大荒九三非转基因大豆油5L<br />￥55.5</p>
-                <a href="/web/goods?id=72" target="_blank"><img src="/uploads/goods/72/1409284322.jpg" /></a>
-            </div>
+            {{end}}
         </div>
         <div class="floorright">
             <div class="floor-first-item">
-                <a href="/web/goods?id=27" target="_blank"><img src="/uploads/goods/27/1409155921.jpg" /></a>
+                <a href="/web/goods?id={{.F1_DOWN.Id}}" target="_blank"><img src="{{GetJsonData .F1_DOWN.Images "medium"}}" /></a>
             </div>
+            {{range $k, $v := .F1_DOWNs}}
             <div class="floor-item">
-                <p>特价促销柬埔寨茉莉香米<br />￥19.8</p>
-                <a href="/web/goods?id=40" target="_blank"><img src="/uploads/goods/40/1409214978.jpg" /></a>
+                <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
+                <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "medium"}}" /></a>
             </div>
-            <div class="floor-item">
-                <p>朝阳特级优质黑米<br />￥13.9</p>
-                <a href="/web/goods?id=46" target="_blank"><img src="/uploads/goods/46/1409218393.jpg" /></a>
-            </div>
-            <div class="floor-item">
-                <p>农家正宗长粒赤豆杂粮<br />￥15.8</p>
-                <a href="/web/goods?id=63" target="_blank"><img src="/uploads/goods/63/1409277498.jpg" /></a>
-            </div>
+            {{end}}
         </div>
 
         <div class="clear"></div>
@@ -106,7 +94,7 @@
             <a href="{{UrlEncode "/web/gcat?c=农家干货"}}" class="more">MORE></a>
         </div>
         <div class="floorleft">
-            <div class="top"><img src="/statics/img/web1/cargo1.jpg" /></div>
+            <div class="top"><img src="/statics/img/web/floor/cargo1.jpg" /></div>
             <div class="mid">
                 <span class="cat-tag">干果</span>
                 <span class="cat-tag">海产</span>
@@ -128,37 +116,25 @@
         </div>
         <div class="floorright">
             <div class="floor-first-item">
-                <a href="/web/goods?id=29" target="_blank"><img src="/uploads/goods/29/1409205137.jpg" /></a>
+                <a href="/web/goods?id={{.F2_UP.Id}}" target="_blank"><img src="{{GetJsonData .F2_UP.Images "medium"}}" /></a>
             </div>
+            {{range $k, $v := .F2_UPs}}
             <div class="floor-item">
-                <p>莆田干货特产桂圆干龙眼干(500g*2袋)<br />￥36.9</p>
-                <a href="/web/goods?id=54" target="_blank"><img src="/uploads/goods/54/1409235417.jpg" /></a>
+                <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
+                <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "medium"}}" /></a>
             </div>
-            <div class="floor-item">
-                <p>特级香菇干货250g<br />￥13.9</p>
-                <a href="/web/goods?id=68" target="_blank"><img src="/uploads/goods/68/1409279519.jpg" /></a>
-            </div>
-            <div class="floor-item">
-                <p>纯淡干海参干货5-20只50克<br />￥347</p>
-                <a href="/web/goods?id=60" target="_blank"><img src="/uploads/goods/60/1409237806.jpg" /></a>
-            </div>
+            {{end}}
         </div>
         <div class="floorright">
             <div class="floor-first-item">
-                <a href="/web/goods?id=102" target="_blank"><img src="/uploads/goods/102/1409327158.jpg" /></a>
+                <a href="/web/goods?id={{.F2_DOWN.Id}}" target="_blank"><img src="{{GetJsonData .F2_DOWN.Images "medium"}}" /></a>
             </div>
+            {{range $k, $v := .F2_DOWNs}}
             <div class="floor-item">
-                <p>宁夏中宁枸杞王100g<br />￥9.95</p>
-                <a href="/web/goods?id=100" target="_blank"><img src="/uploads/goods/100/1409326003.jpg" /></a>
+                <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
+                <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "medium"}}" /></a>
             </div>
-            <div class="floor-item">
-                <p>黑木耳东北野生500g<br />￥58</p>
-                <a href="/web/goods?id=106" target="_blank"><img src="/uploads/goods/106/1409329578.jpg" /></a>
-            </div>
-            <div class="floor-item">
-                <p>天然农家百花土蜂蜜<br />￥24.9</p>
-                <a href="/web/goods?id=127" target="_blank"><img src="/uploads/goods/127/1409382115.jpg" /></a>
-            </div>
+            {{end}}
         </div>
 
         <div class="clear"></div>
@@ -173,7 +149,7 @@
             <a href="{{UrlEncode "/web/gcat?c=新鲜果蔬"}}" class="more">MORE></a>
         </div>
         <div class="floorleft">
-            <div class="top"><img src="/statics/img/web1/vegetables1.jpg" /></div>
+            <div class="top"><img src="/statics/img/web/floor/vegetables1.jpg" /></div>
             <div class="mid">
                 <span class="cat-tag">套餐</span>
                 <span class="cat-tag">时菜</span>
@@ -195,37 +171,25 @@
         </div>
         <div class="floorright">
             <div class="floor-first-item">
-                <a href="/web/goods?id=88" target="_blank"><img src="/uploads/goods/88/1409317156.png" /></a>
+                <a href="/web/goods?id={{.F3_UP.Id}}" target="_blank"><img src="{{GetJsonData .F3_UP.Images "medium"}}" /></a>
             </div>
+            {{range $k, $v := .F3_UPs}}
             <div class="floor-item">
-                <p>北京农家新鲜自然熟油菜500g<br />￥3.08</p>
-                <a href="/web/goods?id=113" target="_blank"><img src="/uploads/goods/113/1409367201.jpg" /></a>
+                <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
+                <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "medium"}}" /></a>
             </div>
-            <div class="floor-item">
-                <p>新鲜农家马蹄荸荠约500g<br />￥10.5</p>
-                <a href="/web/goods?id=131" target="_blank"><img src="/uploads/goods/131/1409382663.jpg" /></a>
-            </div>
-            <div class="floor-item">
-                <p>特级百香果12颗装<br />￥49</p>
-                <a href="/web/goods?id=136" target="_blank"><img src="/uploads/goods/136/1409388935.jpg" /></a>
-            </div>
+            {{end}}
         </div>
         <div class="floorright">
             <div class="floor-first-item">
-                <a href="/web/goods?id=135" target="_blank"><img src="/uploads/goods/135/1409383203.jpg" /></a>
+                <a href="/web/goods?id={{.F3_DOWN.Id}}" target="_blank"><img src="{{GetJsonData .F3_DOWN.Images "medium"}}" /></a>
             </div>
+            {{range $k, $v := .F3_DOWNs}}
             <div class="floor-item">
-                <p>新鲜自然熟番茄农家西红柿约500g<br />￥3.08</p>
-                <a href="/web/goods?id=132" target="_blank"><img src="/uploads/goods/132/1409382952.jpg" /></a>
+                <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
+                <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "medium"}}" /></a>
             </div>
-            <div class="floor-item">
-                <p>新鲜农家马蹄荸荠约500g<br />￥5.8</p>
-                <a href="/web/goods?id=131" target="_blank"><img src="/uploads/goods/131/1409382663.jpg" /></a>
-            </div>
-            <div class="floor-item">
-                <p>3斤包邮免邮新鲜进口越南青柠檬迷你小进口时令水果空运500g散装<br />￥12.5</p>
-                <a href="/web/goods?id=119" target="_blank"><img src="/uploads/goods/119/1409383457.jpg" /></a>
-            </div>
+            {{end}}
         </div>
 
         <div class="clear"></div>
@@ -240,7 +204,7 @@
             <a href="{{UrlEncode "/web/gcat?c=华农出品"}}" class="more">MORE></a>
         </div>
         <div class="floorleft">
-            <div class="top"><img src="/statics/img/web1/sales1.jpg" /></div>
+            <div class="top"><img src="/statics/img/web/floor/sales1.jpg" /></div>
             <div class="mid">
                 <span class="cat-tag">保健</span>
                 <span class="cat-tag">腌制</span>
@@ -261,16 +225,26 @@
             </div>
         </div>
         <div class="floorright">
-            <div><img style="float:left;height: 240px;width: 376px;margin-right: 2px;" src="/statics/img/web1/sales2.jpg" /></div>
-            <div><img style="float:left;height: 240px;width: 190px;margin-right: 2px;" src="/statics/img/web1/sales3.jpg" /></div>
-            <div><img style="float:left;height: 240px;width: 190px;margin-right: 2px;" src="/statics/img/web1/sales4.jpg" /></div>
-            <div><img style="float:left;height: 240px;width: 190px;" src="/statics/img/web1/sales5.jpg" /></div>
+            <div class="floor-first-item">
+                <a href="/web/goods?id={{.F4_UP.Id}}" target="_blank"><img src="{{GetJsonData .F4_UP.Images "large"}}" /></a>
+            </div>
+            {{range $k, $v := .F4_UPs}}
+            <div class="floor-item">
+                <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
+                <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "small"}}" /></a>
+            </div>
+            {{end}}
         </div>
         <div class="floorright">
-            <div><img style="float:left;height: 240px;width: 376px;margin-right: 2px;" src="/statics/img/web1/sales7.jpg" /></div>
-            <div><img style="float:left;height: 240px;width: 190px;margin-right: 2px;" src="/statics/img/web1/sales8.jpg" /></div>
-            <div><img style="float:left;height: 240px;width: 190px;margin-right: 2px;" src="/statics/img/web1/sales9.jpg" /></div>
-            <div><img style="float:left;height: 240px;width: 190px;" src="/statics/img/web1/sales10.jpg" /></div>
+            <div class="floor-first-item">
+                <a href="/web/goods?id={{.F4_DOWN.Id}}" target="_blank"><img src="{{GetJsonData .F4_DOWN.Images "large"}}" /></a>
+            </div>
+            {{range $k, $v := .F4_DOWNs}}
+            <div class="floor-item">
+                <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
+                <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "small"}}" /></a>
+            </div>
+            {{end}}
         </div>
 
         <div class="clear"></div>
