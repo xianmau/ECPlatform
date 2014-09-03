@@ -93,7 +93,7 @@ func GoodsCat(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		}
-		if goodsCategoryInfo == nil{
+		if goodsCategoryInfo == nil {
 			goodsCategoryInfo = new(models.GoodsCategoryInfo)
 		}
 		data["goodsCategoryInfo"] = goodsCategoryInfo
@@ -164,6 +164,17 @@ func GoodsDetail(w http.ResponseWriter, r *http.Request) {
 
 		recommends := []models.Goods{}
 		data["recommends"] = recommends
+
+		// 增加商品的浏览次数
+		goods_statistic, err := models.GetGoodsStatistic(get_id)
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		if goods_statistic == nil {
+			models.CreateGoodsStatistic(get_id)
+		}
+		models.IncreaseGoodsStatisticViewTimes(get_id)
 
 		// execute template
 		err = t.Execute(w, data)

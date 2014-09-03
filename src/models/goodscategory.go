@@ -67,6 +67,34 @@ func GetGoodsCategoryList() ([]GoodsCategory, error) {
 	return categoryList, nil
 }
 
+func GetSubGoodsCategoryList(root string) ([]GoodsCategory, error) {
+	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	defer db.Close()
+	if err != nil {
+		return nil, err
+	}
+	rows, err := db.Query("select * from `tb_goods_category` where `Parent`=? order by `Ordering` desc", root)
+	defer rows.Close()
+	if err != nil {
+		return nil, err
+	}
+	categoryList := []GoodsCategory{}
+	for rows.Next() {
+		var goodsCategory GoodsCategory
+		var Name string
+		var Parent string
+		var Ordering int
+		if err := rows.Scan(&Name, &Parent, &Ordering); err != nil {
+			return nil, err
+		}
+		goodsCategory.Name = Name
+		goodsCategory.Parent = Parent
+		goodsCategory.Ordering = Ordering
+		categoryList = append(categoryList, goodsCategory)
+	}
+	return categoryList, nil
+}
+
 func CreateGoodsCategory(Name string, Parent string, Ordering string) error {
 	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
 	defer db.Close()

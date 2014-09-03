@@ -39,15 +39,12 @@
         <div class="floorleft">
             <div class="top"><img src="/statics/img/web/floor/grain1.jpg" /></div>
             <div class="mid">
-                <span class="cat-tag">大米</span>
-                <span class="cat-tag">粗粮</span>
-                <span class="cat-tag">山茶油</span>
-                <span class="cat-tag">橄榄油</span>
-                <span class="cat-tag">五谷杂粮</span>
-                <span class="cat-tag">健康礼品</span>
+                {{range $k, $v := .F1_SubCol}}
+                <a class="cat-tag" href="/web/gcat?c={{$v.Name}}">{{$v.Name}}</a>
+                {{end}}
             </div>
             <div class="floorbottom">
-                <p class="title">本分类销售排行</p>
+                <p class="title">本分类热门推荐</p>
                 <ul class="list">
                     <li><a target="_blank" href="/web/goods?id=90">金龙鱼原香稻五常大米5kg</a></li>
                     <li><a target="_blank" href="/web/goods?id=92">欧丽薇兰特级初榨橄榄油+纯正橄榄油</a></li>
@@ -96,13 +93,12 @@
         <div class="floorleft">
             <div class="top"><img src="/statics/img/web/floor/cargo1.jpg" /></div>
             <div class="mid">
-                <span class="cat-tag">干果</span>
-                <span class="cat-tag">海产</span>
-                <span class="cat-tag">干菇菌</span>
-                <span class="cat-tag">果仁</span>
+                {{range $k, $v := .F2_SubCol}}
+                <a class="cat-tag" href="/web/gcat?c={{$v.Name}}">{{$v.Name}}</a>
+                {{end}}
             </div>
             <div class="floorbottom">
-                <p class="title">本分类销售排行</p>
+                <p class="title">本分类热门推荐</p>
                 <ul class="list">
                     <li><a target="_blank" href="/web/goods?id=107">野生香菇干货500g</a></li>
                     <li><a target="_blank" href="/web/goods?id=102">古田银耳木耳糯耳丑耳干货菌菇土特产500g</a></li>
@@ -151,13 +147,12 @@
         <div class="floorleft">
             <div class="top"><img src="/statics/img/web/floor/vegetables1.jpg" /></div>
             <div class="mid">
-                <span class="cat-tag">套餐</span>
-                <span class="cat-tag">时菜</span>
-                <span class="cat-tag">水培菜</span>
-                <span class="cat-tag">瓜类</span>
+                {{range $k, $v := .F3_SubCol}}
+                <a class="cat-tag" href="/web/gcat?c={{$v.Name}}">{{$v.Name}}</a>
+                {{end}}
             </div>
             <div class="floorbottom">
-                <p class="title">本分类销售排行</p>
+                <p class="title">本分类热门推荐</p>
                 <ul class="list">
                     <li><a target="_blank" href="/web/goods?id=130">现货 新鲜水果大甜石榴 云南蒙自甜石榴6斤装 包邮</a></li>
                     <li><a target="_blank" href="/web/goods?id=111">北京新鲜蔬菜自然熟农家红胡萝卜约500g</a></li>
@@ -206,13 +201,12 @@
         <div class="floorleft">
             <div class="top"><img src="/statics/img/web/floor/sales1.jpg" /></div>
             <div class="mid">
-                <span class="cat-tag">保健</span>
-                <span class="cat-tag">腌制</span>
-                <span class="cat-tag">果制品</span>
-                <span class="cat-tag">手工</span>
+                {{range $k, $v := .F4_SubCol}}
+                <a class="cat-tag" href="/web/gcat?c={{$v.Name}}">{{$v.Name}}</a>
+                {{end}}
             </div>
             <div class="floorbottom">
-                <p class="title">本分类销售排行</p>
+                <p class="title">本分类热门推荐</p>
                 <ul class="list">
                     <li><a target="_blank" href="/web/goods?id=90">金龙鱼原香稻五常大米5kg</a></li>
                     <li><a target="_blank" href="/web/goods?id=92">欧丽薇兰特级初榨橄榄油+纯正橄榄油</a></li>

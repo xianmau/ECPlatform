@@ -164,6 +164,27 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		data["F4_DOWN"] = F4[4]
 		data["F4_DOWNs"] = F4[5:8]
 
+		F1_SubCol, _ := models.GetSubGoodsCategoryList("优质粮油")
+		F2_SubCol, _ := models.GetSubGoodsCategoryList("农家干货")
+		F3_SubCol, _ := models.GetSubGoodsCategoryList("新鲜果蔬")
+		F4_SubCol, _ := models.GetSubGoodsCategoryList("华农出品")
+		if len(F1_SubCol) > 6 {
+			F1_SubCol = F1_SubCol[0:6]
+		}
+		if len(F2_SubCol) > 6 {
+			F2_SubCol = F2_SubCol[0:6]
+		}
+		if len(F2_SubCol) > 6 {
+			F3_SubCol = F3_SubCol[0:6]
+		}
+		if len(F2_SubCol) > 6 {
+			F4_SubCol = F4_SubCol[0:6]
+		}
+		data["F1_SubCol"] = F1_SubCol
+		data["F2_SubCol"] = F2_SubCol
+		data["F3_SubCol"] = F3_SubCol
+		data["F4_SubCol"] = F4_SubCol
+
 		// execute template
 		err = t.Execute(w, data)
 		if err != nil {
