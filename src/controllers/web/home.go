@@ -185,6 +185,27 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		data["F3_SubCol"] = F3_SubCol
 		data["F4_SubCol"] = F4_SubCol
 
+		F1_HotGoods, _ := models.GetHotGoodsListByCategory("优质粮油")
+		F2_HotGoods, _ := models.GetHotGoodsListByCategory("农家干货")
+		F3_HotGoods, _ := models.GetHotGoodsListByCategory("新鲜果蔬")
+		F4_HotGoods, _ := models.GetHotGoodsListByCategory("华农出品")
+		if len(F1_HotGoods) > 7 {
+			F1_HotGoods = F1_HotGoods[0:7]
+		}
+		if len(F2_HotGoods) > 7 {
+			F2_HotGoods = F2_HotGoods[0:7]
+		}
+		if len(F3_HotGoods) > 7 {
+			F3_HotGoods = F3_HotGoods[0:7]
+		}
+		if len(F4_HotGoods) > 7 {
+			F4_HotGoods = F4_HotGoods[0:7]
+		}
+		data["F1_HotGoods"] = F1_HotGoods
+		data["F2_HotGoods"] = F2_HotGoods
+		data["F3_HotGoods"] = F3_HotGoods
+		data["F4_HotGoods"] = F4_HotGoods
+
 		// execute template
 		err = t.Execute(w, data)
 		if err != nil {
