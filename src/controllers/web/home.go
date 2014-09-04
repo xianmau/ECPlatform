@@ -174,10 +174,10 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		if len(F2_SubCol) > 6 {
 			F2_SubCol = F2_SubCol[0:6]
 		}
-		if len(F2_SubCol) > 6 {
+		if len(F3_SubCol) > 6 {
 			F3_SubCol = F3_SubCol[0:6]
 		}
-		if len(F2_SubCol) > 6 {
+		if len(F4_SubCol) > 6 {
 			F4_SubCol = F4_SubCol[0:6]
 		}
 		data["F1_SubCol"] = F1_SubCol

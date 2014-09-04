@@ -44,7 +44,7 @@ func ArticleCat(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		// 判断一下是否为允许在前台显示的栏目
-		if get_c != "健康食谱" {
+		if get_c != "每周食谱" {
 			log.Error("not allowed category")
 			return
 		}
@@ -123,7 +123,7 @@ func ArticleDetail(w http.ResponseWriter, r *http.Request) {
 			data["NotFound"] = "找不到该文章的信息"
 		}
 		// 判断一下是否为允许在前台显示的栏目
-		if article.Category != "健康食谱" {
+		if article.Category != "每周食谱" {
 			log.Error("not allowed category")
 			return
 		}
