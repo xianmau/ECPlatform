@@ -4,27 +4,22 @@
     <div id="top">
         <div class="wrap">
             <span class="left-title">把真正的农产品带回家！</span>
+            {{if .IsUserLogin}}
             <img class="icon-user" src="/statics/img/web/myordericon.png" />
             <a href="/user" class="link-user">我的中心</a>
+            {{else}}
+            <a href="/user/login" class="link-user-login">登录</a>
+            <a href="/user/register" class="link-user-reg">注册</a>
+            {{end}}
             <img class="icon-vline" src="/statics/img/web/hlineicon.png" />
             <a href="/web/service" class="link-service">客户服务</a>
             <a href="/web/help" class="link-help">帮助</a>
             <img class="icon-down" src="/statics/img/web/downicon.png" />
         </div>
     </div>
-    <div id="logo_search" class="wrap">
-        <div id="logo"><img src="/statics/img/web/logo.png" /></div>
-        <div id="search"></div>
-    </div>
-    <div id="nav" class="wrap">
-        <a href="/web" class="item" style="border-left:none;">首页</a>
-        <a href="/web/gcat?c=优质粮油" class="item">优质粮油</a>
-        <a href="/web/gcat?c=农家干货" class="item">农家干货</a>
-        <a href="/web/gcat?c=新鲜果蔬" class="item">新鲜果蔬</a>
-        <a href="/web/gcat?c=华农出品" class="item">华农出品</a>
-        <a href="/web/acat?c=健康食谱" class="item">健康食谱</a>
-        <a href="/web/message" class="item">反馈建议</a>
-    </div>
+    {{if .IsUserLogin}}
+    <div id="logo" class="wrap"><img src="/statics/img/user/logo.png" /></div>
+    {{end}}
 </div>
 
 {{end}}

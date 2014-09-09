@@ -13,11 +13,19 @@ import (
 
 func Home(w http.ResponseWriter, r *http.Request) {
 	// prepare session
-	_ = global.Sessions.Prepare(w, r)
+	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
 	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
 		client_ip = xff_ip
+	}
+	isUserLogin := false
+	var user models.User
+	if session.Get("user") != nil {
+		user = (session.Get("user")).(models.User)
+		isUserLogin = true
+	} else {
+		isUserLogin = false
 	}
 
 	// 对首页来说需要特殊判断一下URL
@@ -205,6 +213,10 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		data["F2_HotGoods"] = F2_HotGoods
 		data["F3_HotGoods"] = F3_HotGoods
 		data["F4_HotGoods"] = F4_HotGoods
+
+		// 记录登录信息
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
 
 		// execute template
 		err = t.Execute(w, data)

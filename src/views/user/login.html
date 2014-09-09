@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>村民登录 - 一村一品</title>
+    {{template "styles"}}
+    <style>
+
+    </style>
+</head>
+<body>
+    {{template "headerpart" .}}
+
+    <!--main-->
+
+    <div class="wrap">
+        <div style="margin: 150px 20px 150px 100px; float: left;">
+            <img src="/statics/img/user/login_left_pic.png" alt=""/>
+        </div>
+        <div style="float: left;">
+            <img style="position: absolute; right: 160px; top: 80px; width: 200px;" src="/statics/img/user/logo.png" />
+            <div style="position: absolute; right: 100px; top: 150px; border: 1px solid #CCC;border-top: 5px solid green;height: 340px;width: 320px;">
+                <img src="/statics/img/user/login_right_top_qrcode.png" style="position: absolute;right: 0;top: 0;" />
+                <span style="position:absolute;top: 50px; left: 30px;font-weight: bold;font-size: 16px;">登录</span>
+                <img src="/statics/img/user/login_icon_user.png" style="position: absolute;left: 30px;top: 100px;" />
+                <input type="text" style="position: absolute; top:100px;left: 56px; width: 230px;height: 23px;border:1px solid #CCC;"/>
+                <img src="/statics/img/user/login_icon_key.png" style="position: absolute;left: 30px;top: 150px;" />
+                <input type="text" style="position: absolute; top:150px;left: 56px; width: 230px;height: 23px;border:1px solid #CCC;"/>
+                <a href="#" style="position:absolute;right: 40px;top: 220px;">
+                    忘记密码?
+                </a>
+                <a href="#" style="background: url('/statics/img/user/login_btn.png');display: block;width:257px;height:38px;line-height:38px;color: #FFF;font-size: 14px; text-align:center; position: absolute;left: 30px;top: 250px;">
+                    登录
+                </a>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div style="position: relative;">
+            <a href="http://shop112801358.taobao.com/" target="_blank" style="font-size: 14px; margin-left: 100px; line-height: 100px;">一村一品淘宝店，点此进入 >></a>
+            <a href="/user/register" style="font-size: 14px;position: absolute;right: 100px; line-height: 100px;">注册成为我们的“村民”</a>
+        </div>
+    </div>
+
+    {{template "footerpart" .}}
+
+    {{template "scripts"}}
+</body>
+</html>
