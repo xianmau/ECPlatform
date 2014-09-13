@@ -45,15 +45,6 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		// bind data
 		data := make(map[string]interface{})
 
-		isUserLogin := false
-		var user models.User
-		if session.Get("user") != nil {
-			user = (session.Get("user")).(models.User)
-			isUserLogin = true
-		} else {
-			isUserLogin = false
-		}
-
 		// 记录登录信息
 		data["isUserLogin"] = isUserLogin
 		data["user"] = user

@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ed1288a-db1a-4a3f-9438-57bc09d9e434" name="Default" comment="kk">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/user/headerpart.html" afterPath="$PROJECT_DIR$/src/views/user/headerpart.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/web/headerpart.html" afterPath="$PROJECT_DIR$/src/views/web/headerpart.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/user/home.go" afterPath="$PROJECT_DIR$/src/controllers/user/home.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/user/home.html" afterPath="$PROJECT_DIR$/src/views/user/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/user/login.go" afterPath="$PROJECT_DIR$/src/controllers/user/login.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/user/login.html" afterPath="$PROJECT_DIR$/src/views/user/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="86e3569d-fb54-4049-b4ef-dbfe2beece86" name="update" comment="" />
     <ignored path="ECPlatform.iws" />
@@ -35,8 +29,8 @@
       <file leaf-file-name="home.go" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controllers/user/home.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49434572" vertical-offset="162" max-vertical-offset="1368">
-              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.37802908" vertical-offset="576" max-vertical-offset="1206">
+              <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -836,12 +830,12 @@
       <workItem from="1409755867114" duration="9201000" />
       <workItem from="1409843078438" duration="2923000" />
       <workItem from="1410267515097" duration="11224000" />
-      <workItem from="1410535386531" duration="7346000" />
+      <workItem from="1410535386531" duration="7440000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="404286000" />
+    <option name="totallyTimeSpent" value="404380000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -864,7 +858,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1349,8 +1343,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/user/home.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49434572" vertical-offset="162" max-vertical-offset="1368">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.37802908" vertical-offset="576" max-vertical-offset="1206">
+          <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
           <folding />
         </state>
       </provider>
