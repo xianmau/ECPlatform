@@ -48,6 +48,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		form_password := r.PostFormValue("Password")
 
 		user, err := models.GetUserForLogin(form_name, form_password)
+
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -56,18 +57,18 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			// check authorities
 			if user.Status == 0 {
 				msg := "帐号暂不可用，请联系管理员！"
-				http.Redirect(w, r, tools.UrlEncode("/user/errorpage?msg="+msg), http.StatusFound)
+				w.Write([]byte(msg))
 				return
 			}
 
 			log.Info(client_ip + " " + user.Name + " logged")
 			session.Set("user", *user)
 
-			http.Redirect(w, r, "/user/home", http.StatusFound)
+			w.Write([]byte("success"))
 			return
 		} else {
 			msg := "用户名或密码错误"
-			http.Redirect(w, r, tools.UrlEncode("/user/login?msg="+msg), http.StatusFound)
+			w.Write([]byte(msg))
 			return
 		}
 	}
