@@ -12,11 +12,19 @@ import (
 
 func ArticleCat(w http.ResponseWriter, r *http.Request) {
 	// prepare session
-	_ = global.Sessions.Prepare(w, r)
+	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
 	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
 		client_ip = xff_ip
+	}
+	isUserLogin := false
+	var user models.User
+	if session.Get("user") != nil {
+		user = (session.Get("user")).(models.User)
+		isUserLogin = true
+	} else {
+		isUserLogin = false
 	}
 
 	if r.Method == "GET" {
@@ -65,6 +73,10 @@ func ArticleCat(w http.ResponseWriter, r *http.Request) {
 		}
 		data["hotArticleList"] = hotArticleList
 
+		// 记录登录信息
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
+
 		// execute template
 		err = t.Execute(w, data)
 		if err != nil {
@@ -76,11 +88,19 @@ func ArticleCat(w http.ResponseWriter, r *http.Request) {
 
 func ArticleDetail(w http.ResponseWriter, r *http.Request) {
 	// prepare session
-	_ = global.Sessions.Prepare(w, r)
+	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
 	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
 		client_ip = xff_ip
+	}
+	isUserLogin := false
+	var user models.User
+	if session.Get("user") != nil {
+		user = (session.Get("user")).(models.User)
+		isUserLogin = true
+	} else {
+		isUserLogin = false
 	}
 
 	if r.Method == "GET" {
@@ -141,6 +161,10 @@ func ArticleDetail(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		data["hotArticleList"] = hotArticleList
+
+		// 记录登录信息
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
 
 		// execute template
 		err = t.Execute(w, data)

@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ed1288a-db1a-4a3f-9438-57bc09d9e434" name="Default" comment="kk">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/user/home.go" afterPath="$PROJECT_DIR$/src/controllers/user/home.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/web/article.go" afterPath="$PROJECT_DIR$/src/controllers/web/article.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/web/goods.go" afterPath="$PROJECT_DIR$/src/controllers/web/goods.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/web/message.go" afterPath="$PROJECT_DIR$/src/controllers/web/message.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/web/singlepage.go" afterPath="$PROJECT_DIR$/src/controllers/web/singlepage.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="86e3569d-fb54-4049-b4ef-dbfe2beece86" name="update" comment="" />
     <ignored path="ECPlatform.iws" />
@@ -25,28 +29,7 @@
     <favorites_list name="ECPlatform" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="home.go" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controllers/user/home.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37802908" vertical-offset="576" max-vertical-offset="1206">
-              <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.go" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/web/home.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="4212">
-              <caret line="28" column="5" selection-start-line="21" selection-start-column="4" selection-end-line="28" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -63,7 +46,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/controllers/webmaster/articlecategory.go" />
         <option value="$PROJECT_DIR$/src/controllers/webmaster/dashboard.go" />
         <option value="$PROJECT_DIR$/src/controllers/webmaster/errorpage.go" />
         <option value="$PROJECT_DIR$/src/controllers/webmaster/goods.go" />
@@ -86,19 +68,15 @@
         <option value="$PROJECT_DIR$/src/views/web/privacy.html" />
         <option value="$PROJECT_DIR$/src/views/web/help.html" />
         <option value="$PROJECT_DIR$/src/views/web/service.html" />
-        <option value="$PROJECT_DIR$/src/controllers/web/message.go" />
-        <option value="$PROJECT_DIR$/src/controllers/web/singlepage.go" />
         <option value="$PROJECT_DIR$/src/views/web/goods.html" />
         <option value="$PROJECT_DIR$/src/models/webhomeinfo.go" />
         <option value="$PROJECT_DIR$/src/controllers/webmaster/settinghomepage.go" />
         <option value="$PROJECT_DIR$/src/views/webmaster/goods/edit.html" />
         <option value="$PROJECT_DIR$/src/views/webmaster/setting/homepage.html" />
         <option value="$PROJECT_DIR$/src/models/goodscategory.go" />
-        <option value="$PROJECT_DIR$/src/controllers/web/goods.go" />
         <option value="$PROJECT_DIR$/src/models/goodsstatistic.go" />
         <option value="$PROJECT_DIR$/src/models/goods.go" />
         <option value="$PROJECT_DIR$/src/views/web/home.html" />
-        <option value="$PROJECT_DIR$/src/controllers/web/article.go" />
         <option value="$PROJECT_DIR$/src/views/web/acat.html" />
         <option value="$PROJECT_DIR$/src/controllers/web/home.go" />
         <option value="$PROJECT_DIR$/src/statics/css/web.css" />
@@ -114,6 +92,11 @@
         <option value="$PROJECT_DIR$/src/views/web/headerpart.html" />
         <option value="$PROJECT_DIR$/src/views/user/home.html" />
         <option value="$PROJECT_DIR$/src/controllers/user/home.go" />
+        <option value="$PROJECT_DIR$/src/controllers/web/article.go" />
+        <option value="$PROJECT_DIR$/src/controllers/web/comment.go" />
+        <option value="$PROJECT_DIR$/src/controllers/web/goods.go" />
+        <option value="$PROJECT_DIR$/src/controllers/web/message.go" />
+        <option value="$PROJECT_DIR$/src/controllers/web/singlepage.go" />
       </list>
     </option>
   </component>
@@ -830,12 +813,12 @@
       <workItem from="1409755867114" duration="9201000" />
       <workItem from="1409843078438" duration="2923000" />
       <workItem from="1410267515097" duration="11224000" />
-      <workItem from="1410535386531" duration="7440000" />
+      <workItem from="1410535386531" duration="8888000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="404380000" />
+    <option name="totallyTimeSpent" value="405828000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -858,8 +841,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3262519" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -879,7 +862,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18655589" sideWeight="0.49878934" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18655589" sideWeight="0.49878934" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -947,20 +930,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/controllers/web/singlepage.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0468497" vertical-offset="5526" max-vertical-offset="6156">
-          <caret line="271" column="16" selection-start-line="271" selection-start-column="16" selection-end-line="271" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/admin.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1453958" vertical-offset="0" max-vertical-offset="2988">
-          <caret line="5" column="37" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/statics/js/md5.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="3978">
@@ -1064,14 +1033,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/web/goods.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5638126" vertical-offset="2837" max-vertical-offset="3456">
-          <caret line="177" column="0" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/goods.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17447495" vertical-offset="3132" max-vertical-offset="4662">
@@ -1092,14 +1053,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.983108" vertical-offset="0" max-vertical-offset="4356">
           <caret line="131" column="23" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/web/article.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.040387724" vertical-offset="2225" max-vertical-offset="2844">
-          <caret line="125" column="36" selection-start-line="125" selection-start-column="36" selection-end-line="125" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1266,14 +1219,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/web/message.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73828757" vertical-offset="803" max-vertical-offset="1422">
-          <caret line="70" column="34" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/user/headerpart.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23801653" vertical-offset="0" max-vertical-offset="605">
@@ -1286,14 +1231,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23801653" vertical-offset="0" max-vertical-offset="720">
           <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/user/login.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0759289" vertical-offset="270" max-vertical-offset="1998">
-          <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -1333,18 +1270,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/user/login.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0759289" vertical-offset="270" max-vertical-offset="1998">
+          <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/web/home.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="4212">
-          <caret line="28" column="5" selection-start-line="21" selection-start-column="4" selection-end-line="28" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.5638126" vertical-offset="3593" max-vertical-offset="4212">
+          <caret line="219" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="219" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/user/home.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37802908" vertical-offset="576" max-vertical-offset="1206">
-          <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+        <state vertical-scroll-proportion="-0.453958" vertical-offset="587" max-vertical-offset="1206">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/web/article.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5638126" vertical-offset="2657" max-vertical-offset="3276">
+          <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/web/comment.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51265824" vertical-offset="0" max-vertical-offset="1008">
+          <caret line="18" column="5" selection-start-line="12" selection-start-column="4" selection-end-line="18" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/web/goods.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.2277868" vertical-offset="0" max-vertical-offset="3888">
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/web/message.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1638">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/web/singlepage.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.802908" vertical-offset="0" max-vertical-offset="7668">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -13,11 +13,19 @@ import (
 // 客户服务的页面
 func Service(w http.ResponseWriter, r *http.Request) {
 	// prepare session
-	_ = global.Sessions.Prepare(w, r)
+	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
 	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
 		client_ip = xff_ip
+	}
+	isUserLogin := false
+	var user models.User
+	if session.Get("user") != nil {
+		user = (session.Get("user")).(models.User)
+		isUserLogin = true
+	} else {
+		isUserLogin = false
 	}
 
 	if r.Method == "GET" {
@@ -49,6 +57,10 @@ func Service(w http.ResponseWriter, r *http.Request) {
 			data["NotFound"] = "找不到该文章的信息"
 		}
 
+		// 记录登录信息
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
+
 		// execute template
 		err = t.Execute(w, data)
 		if err != nil {
@@ -61,11 +73,19 @@ func Service(w http.ResponseWriter, r *http.Request) {
 // 帮助的页面
 func Help(w http.ResponseWriter, r *http.Request) {
 	// prepare session
-	_ = global.Sessions.Prepare(w, r)
+	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
 	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
 		client_ip = xff_ip
+	}
+	isUserLogin := false
+	var user models.User
+	if session.Get("user") != nil {
+		user = (session.Get("user")).(models.User)
+		isUserLogin = true
+	} else {
+		isUserLogin = false
 	}
 
 	if r.Method == "GET" {
@@ -97,6 +117,10 @@ func Help(w http.ResponseWriter, r *http.Request) {
 			data["NotFound"] = "找不到该文章的信息"
 		}
 
+		// 记录登录信息
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
+
 		// execute template
 		err = t.Execute(w, data)
 		if err != nil {
@@ -109,11 +133,19 @@ func Help(w http.ResponseWriter, r *http.Request) {
 // 关于我们的页面
 func About(w http.ResponseWriter, r *http.Request) {
 	// prepare session
-	_ = global.Sessions.Prepare(w, r)
+	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
 	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
 		client_ip = xff_ip
+	}
+	isUserLogin := false
+	var user models.User
+	if session.Get("user") != nil {
+		user = (session.Get("user")).(models.User)
+		isUserLogin = true
+	} else {
+		isUserLogin = false
 	}
 
 	if r.Method == "GET" {
@@ -145,6 +177,10 @@ func About(w http.ResponseWriter, r *http.Request) {
 			data["NotFound"] = "找不到该文章的信息"
 		}
 
+		// 记录登录信息
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
+
 		// execute template
 		err = t.Execute(w, data)
 		if err != nil {
@@ -157,11 +193,19 @@ func About(w http.ResponseWriter, r *http.Request) {
 // 供应商推广的页面
 func Promotion(w http.ResponseWriter, r *http.Request) {
 	// prepare session
-	_ = global.Sessions.Prepare(w, r)
+	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
 	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
 		client_ip = xff_ip
+	}
+	isUserLogin := false
+	var user models.User
+	if session.Get("user") != nil {
+		user = (session.Get("user")).(models.User)
+		isUserLogin = true
+	} else {
+		isUserLogin = false
 	}
 
 	if r.Method == "GET" {
@@ -193,6 +237,10 @@ func Promotion(w http.ResponseWriter, r *http.Request) {
 			data["NotFound"] = "找不到该文章的信息"
 		}
 
+		// 记录登录信息
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
+
 		// execute template
 		err = t.Execute(w, data)
 		if err != nil {
@@ -205,11 +253,19 @@ func Promotion(w http.ResponseWriter, r *http.Request) {
 // 隐私政策的页面
 func Privacy(w http.ResponseWriter, r *http.Request) {
 	// prepare session
-	_ = global.Sessions.Prepare(w, r)
+	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
 	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
 		client_ip = xff_ip
+	}
+	isUserLogin := false
+	var user models.User
+	if session.Get("user") != nil {
+		user = (session.Get("user")).(models.User)
+		isUserLogin = true
+	} else {
+		isUserLogin = false
 	}
 
 	if r.Method == "GET" {
@@ -241,6 +297,10 @@ func Privacy(w http.ResponseWriter, r *http.Request) {
 			data["NotFound"] = "找不到该文章的信息"
 		}
 
+		// 记录登录信息
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
+
 		// execute template
 		err = t.Execute(w, data)
 		if err != nil {
@@ -253,11 +313,19 @@ func Privacy(w http.ResponseWriter, r *http.Request) {
 // 友情链接的页面
 func Link(w http.ResponseWriter, r *http.Request) {
 	// prepare session
-	_ = global.Sessions.Prepare(w, r)
+	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
 	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
 		client_ip = xff_ip
+	}
+	isUserLogin := false
+	var user models.User
+	if session.Get("user") != nil {
+		user = (session.Get("user")).(models.User)
+		isUserLogin = true
+	} else {
+		isUserLogin = false
 	}
 
 	if r.Method == "GET" {
@@ -278,6 +346,10 @@ func Link(w http.ResponseWriter, r *http.Request) {
 		// bind data
 		data := make(map[string]interface{})
 
+		// 记录登录信息
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
+
 		// execute template
 		err = t.Execute(w, data)
 		if err != nil {
@@ -290,11 +362,19 @@ func Link(w http.ResponseWriter, r *http.Request) {
 // 筛选规则的页面
 func Screening(w http.ResponseWriter, r *http.Request) {
 	// prepare session
-	_ = global.Sessions.Prepare(w, r)
+	session := global.Sessions.Prepare(w, r)
 	// get client ip
 	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
 	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
 		client_ip = xff_ip
+	}
+	isUserLogin := false
+	var user models.User
+	if session.Get("user") != nil {
+		user = (session.Get("user")).(models.User)
+		isUserLogin = true
+	} else {
+		isUserLogin = false
 	}
 
 	if r.Method == "GET" {
@@ -325,6 +405,10 @@ func Screening(w http.ResponseWriter, r *http.Request) {
 		} else {
 			data["NotFound"] = "找不到该文章的信息"
 		}
+
+		// 记录登录信息
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
 
 		// execute template
 		err = t.Execute(w, data)
