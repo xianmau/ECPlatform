@@ -19,6 +19,11 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		client_ip = xff_ip
 	}
 
+	if session.Get("user") != nil {
+		http.Redirect(w, r, tools.UrlEncode("/user"), http.StatusFound)
+		return
+	}
+
 	if r.Method == "GET" {
 		// deal with get method
 		log.Info(client_ip + " get /user/login")

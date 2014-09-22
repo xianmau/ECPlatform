@@ -7,6 +7,7 @@ import (
 	"utils/global"
 	log "utils/logger"
 	"models"
+	"utils/tools"
 )
 
 func Home(w http.ResponseWriter, r *http.Request) {
@@ -24,6 +25,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		isUserLogin = true
 	} else {
 		isUserLogin = false
+		http.Redirect(w, r, tools.UrlEncode("/user/login"), http.StatusFound)
 	}
 
 	if r.Method == "GET" {
