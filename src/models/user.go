@@ -137,7 +137,7 @@ func RegisterUser(Name string, Password string) error {
 	if err != nil {
 		return err
 	}
-	_, err = db.Exec("insert into `tb_user`(`Name`,`Password`,`BaseInfo`,`ReceiveInfo`,`LoginHistory`,`Status`) values(?,?,?)", Name, Password, "{}", "[]", "[]", 1)
+	_, err = db.Exec("insert into `tb_user`(`Name`,`Password`,`BaseInfo`,`ReceiveInfo`,`LoginHistory`,`Status`) values(?,?,?,?,?,?)", Name, Password, "{}", "[]", "[]", 1)
 	if err != nil {
 		return err
 	}

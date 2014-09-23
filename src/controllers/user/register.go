@@ -7,6 +7,7 @@ import (
 	"utils/global"
 	log "utils/logger"
 	"utils/tools"
+	"models"
 )
 
 func Register(w http.ResponseWriter, r *http.Request) {
@@ -39,6 +40,31 @@ func Register(w http.ResponseWriter, r *http.Request) {
 		err = t.Execute(w, data)
 		if err != nil {
 			log.Error(err.Error())
+			return
+		}
+	} else if r.Method == "POST" {
+		// deal with post method
+		log.Info(client_ip + " post /user/register")
+
+		form_name := r.PostFormValue("Name")
+		form_password := r.PostFormValue("Password")
+
+		user, err := models.GetUserForLogin(form_name, form_password)
+
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		if user != nil {
+			msg := "该邮箱已经注册过了"
+			w.Write([]byte(msg))
+			return
+		}
+		if err = models.RegisterUser(form_name, form_password); err != nil{
+			w.Write([]byte("注册失败，请稍后重试"))
+			return
+		} else {
+			w.Write([]byte("success"))
 			return
 		}
 	}

@@ -5,19 +5,104 @@
     <title>村民注册 - 一村一品</title>
     {{template "styles"}}
     <style>
-
+        table td{padding: 10px;}
     </style>
 </head>
 <body>
     {{template "headerpart" .}}
 
     <!--main-->
+
     <div class="wrap" style="min-height: 500px;">
-        ...
+        <h3 style="text-align: center; line-height: 80px;border-bottom: 2px solid #CCC;">“村民”注册</h3>
+        <div style="text-align: center;margin: auto; width: 330px;">
+            <table>
+                <tbody>
+                <tr>
+                    <td style="text-align: right"><label for="Name">登录邮箱：</label></td>
+                    <td><input type="text" id="Name" style="width: 200px;line-height: 20px;" /></td>
+                    <td><span style="color: red;">*</span></td>
+                </tr>
+
+                <tr>
+                    <td style="text-align: right"><label for="Password">密码：</label></td>
+                    <td><input type="password" id="Password" style="width: 200px;line-height: 20px;" /></td>
+                    <td><span style="color: red;">*</span></td>
+                </tr>
+
+                <tr>
+                    <td style="text-align: right"><label for="ConfirmPassword">确认密码：</label></td>
+                    <td><input type="password" id="ConfirmPassword" style="width: 200px;line-height: 20px;" /></td>
+                    <td><span style="color: red;">*</span></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="checkbox" checked="checked" /> 接受一村一品 <a href="javascript:void(0);" onclick="ShowTerms();">用户注册协议</a>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <span style="color: red;" id="register_msg"></span>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <a href="javascript:void(0);" onclick="Register();" style="display: inline-block;margin-right: 5px; line-height: 20px;width:60px;color: #ffffff; padding: 5px 15px; background: green;">同意并注册</a>
+                        <a href="/user/login" style="display: inline-block; line-height: 20px;width:60px;color: #ffffff; padding: 5px 15px; background: #808080;">去登录</a>
+                    </td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+
+
     </div>
 
     {{template "footerpart" .}}
 
     {{template "scripts"}}
+
+    <script>
+        function Register(){
+            var name = $('#Name').val();
+            var password = $('#Password').val();
+            var password2 = $('#ConfirmPassword').val();
+            if(name == "" || password == ""){
+                $('#register_msg').text("登录邮箱和密码不能为空");
+                return
+            }
+            if(password != password2){
+                $('#register_msg').text("密码不一致");
+                return
+            }
+            password = MD5(password);
+
+            $.ajax({
+                type: 'POST',
+                url: '/user/register',
+                data: {
+                    Name: name,
+                    Password: password
+                },
+                success: function(data) {
+                    if (data == "success"){
+                        location.href = "/user";
+                    }else {
+                        $('#register_msg').text(data);
+                    }
+                },
+                dataType: 'text'
+            });
+        }
+    </script>
 </body>
 </html>
