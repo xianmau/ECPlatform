@@ -86,7 +86,7 @@
                 url: '/webmaster/user/resetpassword',
                 data: {
                     name: name,
-                    password: "123456"
+                    password: MD5("123456")
                 },
                 success: function(data) {
                     location.reload();
