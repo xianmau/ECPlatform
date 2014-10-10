@@ -31,6 +31,56 @@
         </div>
     </div>
 
+    <!-- 4楼 -->
+    <div class="floor">
+        <div class="floortop">
+            <span class="title">华农出品</span>
+            <img class="recommendicon" src="/statics/img/web/recommend.png" />
+            <span class="recommendtext">一村一品精品</span>
+            <a href="{{UrlEncode "/web/gcat?c=华农出品"}}" class="more">MORE></a>
+        </div>
+        <div class="floorleft">
+            <div class="top"><img src="/statics/img/web/floor/scauproduct.jpg" /></div>
+            <div class="mid">
+                {{range $k, $v := .F4_SubCol}}
+                <a class="cat-tag" href="/web/gcat?c={{$v.Name}}">{{$v.Name}}</a>
+                {{end}}
+            </div>
+            <div class="floorbottom">
+                <p class="title">本分类热门推荐</p>
+                <ul class="list">
+                    {{range $k, $v := .F4_HotGoods}}
+                    <li><a target="_blank" href="/web/goods?id={{$v.Id}}">{{$v.Title}}</a></li>
+                    {{end}}
+                </ul>
+            </div>
+        </div>
+        <div class="floorright">
+            <div class="floor-first-item">
+                <a href="/web/goods?id={{.F4_UP.Id}}" target="_blank"><img src="{{GetJsonData .F4_UP.Images "large"}}" /></a>
+            </div>
+            {{range $k, $v := .F4_UPs}}
+            <div class="floor-item">
+                <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
+                <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "small"}}" /></a>
+            </div>
+            {{end}}
+        </div>
+        <div class="floorright">
+            <div class="floor-first-item">
+                <a href="/web/goods?id={{.F4_DOWN.Id}}" target="_blank"><img src="{{GetJsonData .F4_DOWN.Images "large"}}" /></a>
+            </div>
+            {{range $k, $v := .F4_DOWNs}}
+            <div class="floor-item">
+                <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
+                <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "small"}}" /></a>
+            </div>
+            {{end}}
+        </div>
+
+        <div class="clear"></div>
+    </div>
+    
     <!-- 1楼 -->
     <div class="floor">
         <div class="floortop">
@@ -181,55 +231,6 @@
         <div class="clear"></div>
     </div>
 
-    <!-- 4楼 -->
-    <div class="floor">
-        <div class="floortop">
-            <span class="title">华农出品</span>
-            <img class="recommendicon" src="/statics/img/web/recommend.png" />
-            <span class="recommendtext">一村一品精品</span>
-            <a href="{{UrlEncode "/web/gcat?c=华农出品"}}" class="more">MORE></a>
-        </div>
-        <div class="floorleft">
-            <div class="top"><img src="/statics/img/web/floor/scauproduct.jpg" /></div>
-            <div class="mid">
-                {{range $k, $v := .F4_SubCol}}
-                <a class="cat-tag" href="/web/gcat?c={{$v.Name}}">{{$v.Name}}</a>
-                {{end}}
-            </div>
-            <div class="floorbottom">
-                <p class="title">本分类热门推荐</p>
-                <ul class="list">
-                    {{range $k, $v := .F4_HotGoods}}
-                    <li><a target="_blank" href="/web/goods?id={{$v.Id}}">{{$v.Title}}</a></li>
-                    {{end}}
-                </ul>
-            </div>
-        </div>
-        <div class="floorright">
-            <div class="floor-first-item">
-                <a href="/web/goods?id={{.F4_UP.Id}}" target="_blank"><img src="{{GetJsonData .F4_UP.Images "large"}}" /></a>
-            </div>
-            {{range $k, $v := .F4_UPs}}
-            <div class="floor-item">
-                <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
-                <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "small"}}" /></a>
-            </div>
-            {{end}}
-        </div>
-        <div class="floorright">
-            <div class="floor-first-item">
-                <a href="/web/goods?id={{.F4_DOWN.Id}}" target="_blank"><img src="{{GetJsonData .F4_DOWN.Images "large"}}" /></a>
-            </div>
-            {{range $k, $v := .F4_DOWNs}}
-            <div class="floor-item">
-                <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
-                <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "small"}}" /></a>
-            </div>
-            {{end}}
-        </div>
-
-        <div class="clear"></div>
-    </div>
 
 
     {{template "footerpart" .}}
