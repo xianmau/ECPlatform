@@ -31,7 +31,7 @@ ul,li{padding: 0;margin: 0;}
 #nav .item2{font-size: 15px; padding:0 26px;color: #333; border-left: 1px solid #CCC; position: relative;}
 #nav .active{color: #009900;font-weight: bold;}
 
-.nav-sub-nav{position: absolute; z-index: 999;background: #DDD;}
+.nav-sub-nav{position: absolute; z-index: 999;background: #DDD; top: 35px;left: 0;}
 .nav-sub-nav li{list-style: none;line-height: 30px;padding: 5px 27px; margin: 0;}
 .nav-sub-nav li a{line-height: 30px;padding: 0;margin: 0;color: #555;}
 .nav-sub-nav li a:hover{color: #009900;}
