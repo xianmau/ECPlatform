@@ -40,7 +40,7 @@
 
         <div class="cat-right" style="margin-bottom: 100px;">
             <div style="margin: 0px auto 20px auto;width: 850px;">
-                <img src="/statics/img/web/banner/catbaner.jpg" alt=""/>
+                <img id="banner" src="/statics/img/web/banner/regionfood.jpg" alt=""/>
             </div>
             <div>
                 <table class="table">
@@ -79,6 +79,16 @@
 
     {{template "scripts"}}
     <script>
+        $(function(){
+            var c = GetQueryString("c");
+            if(c == "健康菜谱" || decodeURI(c) == "健康菜谱"){
+                $('#banner').attr("src", "/statics/img/web/banner/healthmenu.jpg");
+            } else if(c == "养生知识" || decodeURI(c) == "养生知识"){
+                $('#banner').attr("src", "/statics/img/web/banner/healthpreserving.jpg");
+            } else if(c == "各地美食" || decodeURI(c) == "各地美食"){
+                $('#banner').attr("src", "/statics/img/web/banner/regionfood.jpg");
+            }
+        });
     </script>
 </body>
 </html>
