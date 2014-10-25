@@ -52,7 +52,7 @@ func ArticleCat(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		// 判断一下是否为允许在前台显示的栏目
-		if get_c != "一品生活" {
+		if get_c != "健康菜谱" && get_c != "养生知识" && get_c != "各地美食" {
 			log.Error("not allowed category")
 			return
 		}

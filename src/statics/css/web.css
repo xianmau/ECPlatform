@@ -26,9 +26,15 @@ ul,li{padding: 0;margin: 0;}
 #search{}
 
 #nav{line-height: 50px; text-align: center;border-top: 2px solid #e2e2e2; border-bottom: 2px solid #e2e2e2;}
-#nav .item{font-size: 15px; padding:0 26px;color: #333; border-left: 1px solid #CCC; }
+#nav .item{font-size: 15px; padding:0 26px;color: #333; border-left: 1px solid #CCC; position: relative;}
 #nav .item:hover{color: #009900;}
+#nav .item2{font-size: 15px; padding:0 26px;color: #333; border-left: 1px solid #CCC; position: relative;}
 #nav .active{color: #009900;font-weight: bold;}
+
+.nav-sub-nav{position: absolute; z-index: 999;background: #DDD;}
+.nav-sub-nav li{list-style: none;line-height: 30px;padding: 5px 27px; margin: 0;}
+.nav-sub-nav li a{line-height: 30px;padding: 0;margin: 0;color: #555;}
+.nav-sub-nav li a:hover{color: #009900;}
 
 /************* footer style ***********/
 #footer{position: relative;}

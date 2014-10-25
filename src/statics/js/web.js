@@ -1,6 +1,12 @@
 //
 $(function () {
     //SetNavActive();
+    $('.nav-sub-nav').hide();
+    $('.item2').hover(function(){
+        $('.nav-sub-nav').stop().slideDown();
+    }, function(){
+        $('.nav-sub-nav').stop().slideUp();
+    });
 })
 
 
