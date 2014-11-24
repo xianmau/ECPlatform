@@ -52,7 +52,7 @@ func ArticleCat(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		// 判断一下是否为允许在前台显示的栏目
-		if get_c != "健康菜谱" && get_c != "养生知识" && get_c != "一品故事" {
+		if get_c != "一品菜谱" && get_c != "一品养生" && get_c != "一品故事" {
 			log.Error("not allowed category")
 			return
 		}
@@ -143,7 +143,7 @@ func ArticleDetail(w http.ResponseWriter, r *http.Request) {
 			data["NotFound"] = "找不到该文章的信息"
 		}
 		// 判断一下是否为允许在前台显示的栏目
-		if article.Category != "健康菜谱" && article.Category != "养生知识" && article.Category != "各地美食" {
+		if article.Category != "一品菜谱" && article.Category != "一品养生" && article.Category != "一品推荐" {
 			log.Error("not allowed category")
 			return
 		}
