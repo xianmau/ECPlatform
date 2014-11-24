@@ -143,7 +143,7 @@ func ArticleDetail(w http.ResponseWriter, r *http.Request) {
 			data["NotFound"] = "找不到该文章的信息"
 		}
 		// 判断一下是否为允许在前台显示的栏目
-		if article.Category != "一品菜谱" && article.Category != "一品养生" && article.Category != "一品推荐" {
+		if article.Category != "一品菜谱" && article.Category != "一品养生" && article.Category != "一品故事" {
 			log.Error("not allowed category")
 			return
 		}

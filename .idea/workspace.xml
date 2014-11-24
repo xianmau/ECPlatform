@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ed1288a-db1a-4a3f-9438-57bc09d9e434" name="Default" comment="kk">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/web/acat.html" afterPath="$PROJECT_DIR$/src/views/web/acat.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/web/article.go" afterPath="$PROJECT_DIR$/src/controllers/web/article.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/web/headerpart.html" afterPath="$PROJECT_DIR$/src/views/web/headerpart.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="86e3569d-fb54-4049-b4ef-dbfe2beece86" name="update" comment="" />
     <ignored path="ECPlatform.iws" />
@@ -53,8 +50,18 @@
       <file leaf-file-name="article.go" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controllers/web/article.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21521036" vertical-offset="2622" max-vertical-offset="3458">
-              <caret line="145" column="96" selection-start-line="145" selection-start-column="96" selection-end-line="145" selection-end-column="96" />
+            <state vertical-scroll-proportion="-0.13754046" vertical-offset="2840" max-vertical-offset="3458">
+              <caret line="145" column="96" selection-start-line="145" selection-start-column="92" selection-end-line="145" selection-end-column="96" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="article.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/web/article.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.642858" vertical-offset="518" max-vertical-offset="1121">
+              <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -725,12 +732,12 @@
       <workItem from="1416665016371" duration="1756000" />
       <workItem from="1416679586681" duration="2882000" />
       <workItem from="1416808167900" duration="3385000" />
-      <workItem from="1416838738638" duration="2242000" />
+      <workItem from="1416838738638" duration="2573000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="446428000" />
+    <option name="totallyTimeSpent" value="446759000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1150,13 +1157,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/web/article.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6849088" vertical-offset="347" max-vertical-offset="1121">
-          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/statics/css/web.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44732577" vertical-offset="2441" max-vertical-offset="4142">
@@ -1202,10 +1202,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/web/article.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.642858" vertical-offset="518" max-vertical-offset="1121">
+          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/web/article.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21521036" vertical-offset="2622" max-vertical-offset="3458">
-          <caret line="145" column="96" selection-start-line="145" selection-start-column="96" selection-end-line="145" selection-end-column="96" />
+        <state vertical-scroll-proportion="-0.13754046" vertical-offset="2840" max-vertical-offset="3458">
+          <caret line="145" column="96" selection-start-line="145" selection-start-column="92" selection-end-line="145" selection-end-column="96" />
           <folding />
         </state>
       </provider>
