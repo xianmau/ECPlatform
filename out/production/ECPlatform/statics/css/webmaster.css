@@ -1,0 +1,20 @@
+body{background: #EEE;overflow-y:auto;overflow-x:hidden;}
+.clear{clear: both;}
+
+/* layout */
+#leftside{position: fixed;top: 0px;left: 0px; background: #FCFCFC;min-height: 600px;width:280px;}
+#rightside{position: relative;left:280px;color: #FFF; min-height: 600px;}
+
+/* layout leftside */
+#leftside .avatar{position: absolute;left:20px;top: 20px;width:80px;height: 80px;background: #EEE;border-radius:40px;}
+#leftside .nav{position: absolute;left:0px;top: 150px;width: 280px;padding: 0;margin: 0;}
+#leftside .nav li{width: 100%;border-bottom:1px solid #EEE;padding: 0;margin: 0;list-style: none;}
+#leftside .nav li a{display: block;width: 100%;line-height: 45px;font-size: 18px;font-weight: bold;color: #CCC;margin: 0;padding: 0 0 0 20px;}
+#leftside .nav li a:hover{font-size: 18px;font-weight: bold;color: #FFF;background:#222;}
+#leftside .nav li .active{font-size: 18px;font-weight: bold;color: #FFF;background:#222;}
+#leftside .login-stat{position: absolute;left:120px;top:50px;}
+#leftside .copyright{position: absolute;left: 20px;bottom: 50px;font-size: 12px;color: #555;}
+
+/* rightside main style */
+.main{position:relative;width: 100%; padding:20px;color: #555;min-width:890px;}
+

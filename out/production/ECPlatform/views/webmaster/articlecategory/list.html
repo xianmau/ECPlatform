@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Article Category - Electronic Commerce Platform</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    {{template "styles"}}
+    <style>
+      .create-form{display: none; padding: 20px 10px; margin: 10px 0;border: 1px solid #CCC; border-radius: 5px; background: #FFF;}
+      .masking{display: none; position: fixed; top:0;left:0; width:100%;height: 2000px;background: rgba(0,0,0,0.8);}
+      .edit-form{display: none; width: 250px;position: fixed;top: 100px;left:0px;right:0; padding: 20px 40px; margin: 10px auto; border-radius: 5px; border: 1px solid #CCC; background: #FFF;}
+    </style>
+  </head>
+  <body>
+    <div id="leftside">
+      {{template "leftside" .}}
+    </div>
+
+    <div id="rightside">
+      <div class="main">
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Article Category Manage</div>
+            <div class="panel-body">
+                <a href="javascript:void(0);" onclick="history.back(-1)"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+                <a href="javascript:void(0);" onclick="ShowCreateForm()"><span class="glyphicon glyphicon-plus"></span> Create</a>
+
+                <form class="create-form form-inline">
+                    <div class="form-group">
+                        <label for="CreateName">Name</label>
+                        <input type="text" class="form-control" id="CreateName" placeholder="Enter name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="CreateParent">Parent</label>
+                        <select class="form-control" id="CreateParent">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="CreateOrdering">Ordering</label>
+                        <input type="text" class="form-control" id="CreateOrdering" value="0" />
+                    </div>
+
+                    <button type="button" class="btn btn-primary" onclick="SubmitCreateForm()">Submit</button>
+                    <button type="button" class="btn btn-default" onclick="HideCreateForm()">Cancel</button>
+                </form>
+            </div>
+            <!-- Table -->
+          <table class="table">
+            <thead>
+              <tr>
+                <td>#</td>
+                <td>Name</td>
+                <td>Parent</td>
+                <td>Ordering</td>
+                <td>Operation</td>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="masking"></div>
+    <form class="edit-form">
+      <div class="form-group">
+        <label for="EditName">Name</label>
+        <input type="text" class="form-control" id="EditName" placeholder="Enter name" disabled="disabled" />
+      </div>
+      <div class="form-group">
+        <label for="EditParent">Parent</label>
+        <select class="form-control" id="EditParent">
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="EditOrdering">Ordering</label>
+        <input type="text" class="form-control" id="EditOrdering" />
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="SubmitEditForm()">Submit</button>
+      <button type="button" class="btn btn-default" onclick="HideEditForm()">Cancel</button>
+    </form>
+
+    {{template "scripts"}}
+    <script>
+      // 分类列表的json对象
+      var o = JSON.parse({{.JsonCategoryList}});
+
+      $(function(){
+        LoadTableData();
+        LoadCreateFormSelectData();
+        LoadEditFormSelectData();
+      });
+
+      // 从json对象生成表格数据
+      function LoadTableData(){
+        var tbody = $('.table tbody');
+        for(var i = 0; i < o.length; i ++){
+          tr = '<tr>';
+          tr += '<td>' + i + '</td>';
+          tr += '<td>' + o[i].name + '</td>';
+          tr += '<td>' + o[i].parent + '</td>';
+          tr += '<td>' + o[i].ordering + '</td>';
+          tr += '<td><a href="javascript:void(0);" onclick="ShowEditForm(\''+i+'\')"><span class="glyphicon glyphicon-edit"></span> Edit</a><a href="javascript:void(0);" onclick="Delete(\''+o[i].name+'\')"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>';
+          tr += '</tr>';
+          tbody.append(tr);
+        }
+      }
+      // 从json对象生成添加表单的下拉列表数据
+      function LoadCreateFormSelectData(){
+        var select = $('.create-form select');
+        select.append('<option value="">无</option>');
+        for(var i = 0; i < o.length; i ++){
+          option = '<option>' + o[i].name + '</option>';
+          select.append(option);
+        }
+      }
+      // 从json对象生成修改表单的下拉列表数据
+      function LoadEditFormSelectData(){
+        var select = $('.edit-form select');
+        select.append('<option value="">无</option>');
+        for(var i = 0; i < o.length; i ++){
+          option = '<option>' + o[i].name + '</option>';
+          select.append(option);
+        }
+      }
+
+      function ShowCreateForm(){
+        $('.create-form').slideDown();
+      }
+      function HideCreateForm(){
+        $('.create-form').slideUp();
+      }
+      function SubmitCreateForm(){
+        var name = $('#CreateName').val();
+        var parent = $('#CreateParent').val();
+        var ordering = $('#CreateOrdering').val();
+
+        $.ajax({
+         type: 'POST',
+         url: '/webmaster/articlecategory/create',
+         data: {
+           name: name,
+           parent: parent,
+           ordering: ordering
+         },
+         success: function(data) {
+           location.reload();
+         },
+         dataType: 'text'
+        });
+      }
+      
+      function ShowEditForm(index){
+        var o = $('.table tbody tr').eq(index);
+        $('.masking').show();
+        $('.edit-form').slideDown();
+        $('#EditName').val(o.children('td').eq(1).text());
+        $('#EditParent').val(o.children('td').eq(2).text());
+        $('#EditOrdering').val(o.children('td').eq(3).text());
+      }
+      function HideEditForm(){
+        $('.edit-form').slideUp();
+        $('.masking').hide();
+      }
+      function SubmitEditForm(){
+        var name = $('#EditName').val();
+        var parent = $('#EditParent').val();
+        var ordering = $('#EditOrdering').val();
+
+        $.ajax({
+         type: 'POST',
+         url: '/webmaster/articlecategory/edit',
+         data: {
+           name: name,
+           parent: parent,
+           ordering: ordering
+         },
+         success: function(data) {
+           location.reload();
+         },
+         dataType: 'text'
+        });
+      }
+
+      function Delete(name){
+        if(!confirm('Are you sure?')){
+          return ;
+        }
+        $.ajax({
+         type: 'POST',
+         url: '/webmaster/articlecategory/delete',
+         data: {
+           name: name
+         },
+         success: function(data) {
+           location.reload();
+         },
+         dataType: 'text'
+        });
+      }
+    </script>
+  </body>
+</html>

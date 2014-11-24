@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Dashboard - Electronic Commerce Platform</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    {{template "styles"}}
+    <style>
+      .msgbox{
+        position: relative;
+        margin: 50px auto;
+        border: 1px solid #999;
+        border-radius: 10px;
+        width: 480px;
+        padding:20px 30px;
+        background: #C0C0C0;
+        text-align: center;
+      }
+      .msgbox h4 {color: #999;}
+      .msgbox h5 {color: #FF0000;}
+    </style>
+  </head>
+  <body>
+    <div class="msgbox">
+      <h1>Sorry, you got an error!</h1>
+      <div>
+        <h4>Error info:</h4>
+        <h5>{{.Msg}}</h5>
+        <h4>You may go to:</h4>
+        <h5><a href="javascript:void(0)" onclick="history.back(-2);">出错前的页面</a></h5>
+        <h5><a href="/webmaster/login">登录的页面</a></h5>
+      </div>
+    </div>
+    {{template "scripts"}}
+  </body>
+</html>

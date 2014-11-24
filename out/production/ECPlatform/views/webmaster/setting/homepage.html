@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Setting - Electronic Commerce Platform</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    {{template "styles"}}
+    <style>
+      .create-form{display: none; padding: 20px 10px; margin: 10px 0;border: 1px solid #CCC; border-radius: 5px; background: #FFF;}
+      .masking{display: none; position: fixed; top:0;left:0; width:100%;height: 2000px;background: rgba(0,0,0,0.8);}
+      .edit-form{display: none; width: 250px;position: fixed;top: 100px;left:0px;right:0; padding: 20px 40px; margin: 10px auto; border-radius: 5px; border: 1px solid #CCC; background: #FFF;}
+    </style>
+  </head>
+  <body>
+    <div id="leftside">
+      {{template "leftside" .}}
+    </div>
+
+    <div id="rightside">
+      <div class="main">
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Web Home Page Manage</div>
+            <div class="panel-body">
+                <a href="javascript:void(0);" onclick="history.back(-1)"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+                <a href="javascript:void(0);" onclick="ShowCreateForm()"><span class="glyphicon glyphicon-plus"></span> Create</a>
+
+                <form class="create-form form-inline">
+                    <div class="form-group">
+                        <label for="CreateFloor1">Floor1</label>
+                        <input type="text" class="form-control" id="CreateFloor1" value='["","","","","","","",""]' />
+                    </div>
+                    <div class="form-group">
+                        <label for="CreateFloor2">Floor2</label>
+                        <input type="text" class="form-control" id="CreateFloor2" value='["","","","","","","",""]' />
+                    </div>
+                    <div class="form-group">
+                        <label for="CreateFloor3">Floor3</label>
+                        <input type="text" class="form-control" id="CreateFloor3" value='["","","","","","","",""]' />
+                    </div>
+                    <div class="form-group">
+                        <label for="CreateFloor4">Floor4</label>
+                        <input type="text" class="form-control" id="CreateFloor4" value='["","","","","","","",""]' />
+                    </div>
+                    <br /><br />
+                    <button type="button" class="btn btn-primary" onclick="SubmitCreateForm()">Submit</button>
+                    <button type="button" class="btn btn-default" onclick="HideCreateForm()">Cancel</button>
+                </form>
+            </div>
+            <!-- Table -->
+          <table class="table">
+            <thead>
+              <tr>
+                <td>#</td>
+                <td>Floor1</td>
+                <td>Floor2</td>
+                <td>Floor3</td>
+                <td>Floor4</td>
+                <td>Operation</td>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="masking"></div>
+    <form class="edit-form">
+      <div class="form-group">
+        <label for="EditId">Id</label>
+        <input type="text" class="form-control" id="EditId" placeholder="Enter name" disabled="disabled" />
+      </div>
+        <div class="form-group">
+            <label for="EditFloor1">Floor1</label>
+            <input type="text" class="form-control" id="EditFloor1" placeholder="Enter info" />
+        </div>
+        <div class="form-group">
+            <label for="EditFloor2">Floor2</label>
+            <input type="text" class="form-control" id="EditFloor2" placeholder="Enter info" />
+        </div>
+        <div class="form-group">
+            <label for="EditFloor3">Floor3</label>
+            <input type="text" class="form-control" id="EditFloor3" placeholder="Enter info" />
+        </div>
+        <div class="form-group">
+            <label for="EditFloor4">Floor4</label>
+            <input type="text" class="form-control" id="EditFloor4" placeholder="Enter info" />
+        </div>
+
+      <button type="button" class="btn btn-primary" onclick="SubmitEditForm()">Submit</button>
+      <button type="button" class="btn btn-default" onclick="HideEditForm()">Cancel</button>
+    </form>
+
+    {{template "scripts"}}
+    <script>
+      // 分类列表的json对象
+      var o = JSON.parse({{.jsonWebHomeInfoList}});
+
+      $(function(){
+        LoadTableData();
+      });
+
+      // 从json对象生成表格数据
+      function LoadTableData(){
+        var tbody = $('.table tbody');
+        for(var i = 0; i < o.length; i ++){
+          tr = '<tr>';
+          tr += '<td>' + o[i].id + '</td>';
+          tr += '<td title=\'' + o[i].floor1 + '\'>' + CutLen(o[i].floor1) + '</td>';
+          tr += '<td title=\'' + o[i].floor2 + '\'>' + CutLen(o[i].floor2) + '</td>';
+          tr += '<td title=\'' + o[i].floor3 + '\'>' + CutLen(o[i].floor3) + '</td>';
+          tr += '<td title=\'' + o[i].floor4 + '\'>' + CutLen(o[i].floor4) + '</td>';
+          tr += '<td><a href="javascript:void(0);" onclick="ShowEditForm(\''+i+'\')"><span class="glyphicon glyphicon-edit"></span> Edit</a><a href="javascript:void(0);" onclick="Delete(\''+o[i].id+'\')"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>';
+          tr += '</tr>';
+          tbody.append(tr);
+        }
+      }
+
+      function CutLen(str){
+          if(str.length > 20){
+              return str.substring(0, 20) + "...";
+          }
+      }
+
+      function ShowCreateForm(){
+        $('.create-form').slideDown();
+      }
+      function HideCreateForm(){
+        $('.create-form').slideUp();
+      }
+      function SubmitCreateForm(){
+        var floor1 = $('#CreateFloor1').val();
+        var floor2 = $('#CreateFloor2').val();
+        var floor3 = $('#CreateFloor3').val();
+        var floor4 = $('#CreateFloor4').val();
+
+        $.ajax({
+         type: 'POST',
+         url: '/webmaster/setting/homepage/create',
+         data: {
+           floor1: floor1,
+           floor2: floor2,
+           floor3: floor3,
+           floor4: floor4,
+           floor5: "[]",
+           floor6: "[]",
+           floor7: "[]",
+           floor8: "[]"
+         },
+         success: function(data) {
+           location.reload();
+         },
+         dataType: 'text'
+        });
+      }
+      
+      function ShowEditForm(index){
+        var o = $('.table tbody tr').eq(index);
+        $('.masking').show();
+        $('.edit-form').slideDown();
+        $('#EditId').val(o.children('td').eq(0).text());
+        $('#EditFloor1').val(o.children('td').eq(1).attr("title"));
+        $('#EditFloor2').val(o.children('td').eq(2).attr("title"));
+        $('#EditFloor3').val(o.children('td').eq(3).attr("title"));
+        $('#EditFloor4').val(o.children('td').eq(4).attr("title"));
+
+      }
+      function HideEditForm(){
+        $('.edit-form').slideUp();
+        $('.masking').hide();
+      }
+      function SubmitEditForm(){
+        var id = $('#EditId').val();
+        var floor1 = $('#EditFloor1').val();
+        var floor2 = $('#EditFloor2').val();
+        var floor3 = $('#EditFloor3').val();
+        var floor4 = $('#EditFloor4').val();
+
+        $.ajax({
+         type: 'POST',
+         url: '/webmaster/setting/homepage/edit',
+         data: {
+             id: id,
+             floor1: floor1,
+             floor2: floor2,
+             floor3: floor3,
+             floor4: floor4,
+             floor5: "[]",
+             floor6: "[]",
+             floor7: "[]",
+             floor8: "[]"
+         },
+         success: function(data) {
+           location.reload();
+         },
+         dataType: 'text'
+        });
+      }
+
+      function Delete(id){
+        if(!confirm('Are you sure?')){
+          return ;
+        }
+        $.ajax({
+         type: 'POST',
+         url: '/webmaster/setting/homepage/delete',
+         data: {
+           id: id
+         },
+         success: function(data) {
+           location.reload();
+         },
+         dataType: 'text'
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>System - Electronic Commerce Platform</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        {{template "styles"}}
+        <style>
+            .create-form{display: none; padding: 20px 10px; margin: 10px 0;border: 1px solid #CCC; border-radius: 5px; background: #FFF;}
+            .masking{display: none; position: fixed; top:0;left:0; width:100%;height: 2000px;background: rgba(0,0,0,0.8);}
+            .edit-form{display: none; width: 350px;position: fixed;top: 100px;left:0px;right:0; padding: 20px 40px; margin: 10px auto; border-radius: 5px; border: 1px solid #CCC; background: #FFF;}
+            .authority-tag{margin-top:2px;margin-bottom:2px;display:inline-block;}
+        </style>
+    </head>
+    <body>
+        <div id="leftside">
+            {{template "leftside" .}}
+        </div>
+
+        <div id="rightside">
+            <div class="main">
+
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Role Manage</div>
+                    <div class="panel-body">
+                        <a href="javascript:void(0);" onclick="ShowCreateRoleForm()"><span class="glyphicon glyphicon-plus"></span> Create</a>
+
+                        <form id="CreateRoleForm" class="create-form form-inline">
+                            <div class="form-group">
+                                <label for="CreateRoleName">Name</label>
+                                <input type="text" class="form-control" id="CreateRoleName" style="width:150px;" placeholder="Enter name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="CreateRoleAuthority">Authority</label>
+                                <input type="text" class="form-control" id="CreateRoleAuthority" style="width:500px;" value="[]" />
+                            </div>
+
+                            <button type="button" class="btn btn-primary" onclick="SubmitCreateRoleForm()">Submit</button>
+                            <button type="button" class="btn btn-default" onclick="HideCreateRoleForm()">Cancel</button>
+                        </form>
+                    </div>
+                    <!-- Table -->
+                    <table class="table role-table">
+                        <thead>
+                        <tr>
+                            <td style="width:30px;">#</td>
+                            <td>Name</td>
+                            <td>Authority</td>
+                            <td style="width:150px;">Operation</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{range $index, $item := .RoleList}}
+                        <tr>
+                            <td>{{$index}}</td>
+                            <td>{{$item.Name}}</td>
+                            <td>
+                                {{range $i, $e := $item.Authority}}
+                                <span class="authority-tag label label-info">{{$e}}</span>
+                                {{end}}
+                                <span class="authority-json" style="display: none;">
+                                [{{range $i, $e := $item.Authority}}"{{$e}}",{{end}}]
+                                </span>
+                            </td>
+                            <td>
+                                <a href="javascript:void(0);" onclick="ShowEditRoleForm('{{$index}}')"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                <a href="javascript:void(0);" onclick="DeleteRole('{{$item.Name}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                            </td>
+                        </tr>
+                        {{end}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Admin Manage</div>
+                    <div class="panel-body">
+                        <a href="javascript:void(0);" onclick="ShowCreateAdminForm()"><span class="glyphicon glyphicon-plus"></span> Create</a>
+
+                        <form id="CreateAdminForm" class="create-form form-inline">
+                            <div class="form-group">
+                                <label for="CreateAdminName">Name</label>
+                                <input type="text" class="form-control" id="CreateAdminName" style="width:150px;" placeholder="Enter name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="CreateAdminPassword">Password</label>
+                                <input type="password" class="form-control" id="CreateAdminPassword" style="width:150px;" />
+                            </div>
+                            <div class="form-group">
+                                <label for="CreateAdminPasswordConfirm">Again</label>
+                                <input type="password" class="form-control" id="CreateAdminPasswordConfirm" style="width:150px;" />
+                            </div>
+                            <div class="form-group">
+                                <label for="CreateAdminRole">Role</label>
+                                <select class="form-control" id="CreateAdminRole">
+                                    {{range $index, $item := .RoleList}}
+                                    <option>{{$item.Name}}</option>
+                                    {{end}}
+                                </select>
+                            </div>
+
+                            <button type="button" class="btn btn-primary" onclick="SubmitCreateAdminForm()">Submit</button>
+                            <button type="button" class="btn btn-default" onclick="HideCreateAdminForm()">Cancel</button>
+                        </form>
+                    </div>
+                    <!-- Table -->
+                    <table class="table admin-table">
+                        <thead>
+                        <tr>
+                            <td style="width:30px;">#</td>
+                            <td>Name</td>
+                            <td>Role</td>
+                            <td style="width:150px;">Operation</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{range $index, $item := .AdminList}}
+                        <tr>
+                            <td>{{$index}}</td>
+                            <td>{{$item.Name}}</td>
+                            <td>{{$item.Role.Name}}</td>
+                            <td>
+                                <a href="javascript:void(0);" onclick="ShowEditAdminForm('{{$index}}')"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                <a href="javascript:void(0);" onclick="DeleteAdmin('{{$item.Name}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                            </td>
+                        </tr>
+                        {{end}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Origin Manage</div>
+                    <div class="panel-body">
+                        <a href="javascript:void(0);" onclick="ShowCreateOriginForm()"><span class="glyphicon glyphicon-plus"></span> Create</a>
+
+                        <form id="CreateOriginForm" class="create-form form-inline">
+                            <div class="form-group">
+                                <label for="CreateOriginName">Name</label>
+                                <input type="text" class="form-control" id="CreateOriginName" style="width:600px;" placeholder="Enter name" />
+                            </div>
+
+                            <button type="button" class="btn btn-primary" onclick="SubmitCreateOriginForm()">Submit</button>
+                            <button type="button" class="btn btn-default" onclick="HideCreateOriginForm()">Cancel</button>
+                        </form>
+                    </div>
+                    <!-- Table -->
+                    <table class="table origin-table">
+                        <thead>
+                        <tr>
+                            <td style="width:30px;">#</td>
+                            <td>Name</td>
+                            <td style="width:150px;">Operation</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{range $index, $item := .OriginList}}
+                        <tr>
+                            <td>{{$index}}</td>
+                            <td>{{$item.Name}}</td>
+                            <td>
+                                <a href="javascript:void(0);" onclick="DeleteOrigin('{{$item.Name}}')"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                            </td>
+                        </tr>
+                        {{end}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Account Manage</div>
+                    <div class="panel-body">
+                        <p>you can manage the accounts here, eg: alipay, email...</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="masking"></div>
+        <form id="EditRoleForm" class="edit-form">
+            <div class="form-group">
+                <label for="EditRoleName">Name</label>
+                <input type="text" class="form-control" id="EditRoleName" placeholder="Enter name" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <label for="EditRoleAuthority">Authority</label>
+                <textarea class="form-control" rows="5" id="EditRoleAuthority"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Refference</label>
+                <textarea class="form-control" rows="5" disabled="disabled">{{.AuthList}}</textarea>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="SubmitEditRoleForm()">Submit</button>
+            <button type="button" class="btn btn-default" onclick="HideEditRoleForm()">Cancel</button>
+        </form>
+
+        <form id="EditAdminForm" class="edit-form">
+            <div class="form-group">
+                <label for="EditAdminName">Name</label>
+                <input type="text" class="form-control" id="EditAdminName" placeholder="Enter name" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <label for="EditAdminPassword">Password</label>
+                <input type="password" class="form-control" id="EditAdminPassword" style="width:150px;" />
+            </div>
+            <div class="form-group">
+                <label for="EditAdminPasswordConfirm">Again</label>
+                <input type="password" class="form-control" id="EditAdminPasswordConfirm" style="width:150px;" />
+            </div>
+            <div class="form-group">
+                <label for="EditAdminRole">Role</label>
+                <select class="form-control" id="EditAdminRole">
+                    {{range $index, $item := .RoleList}}
+                    <option>{{$item.Name}}</option>
+                    {{end}}
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="SubmitEditAdminForm()">Submit</button>
+            <button type="button" class="btn btn-default" onclick="HideEditAdminForm()">Cancel</button>
+        </form>
+
+
+        {{template "scripts"}}
+        <script>
+            // Role相关的js脚本
+            function ShowCreateRoleForm(){
+                $('#CreateRoleForm').slideDown();
+            }
+            function HideCreateRoleForm(){
+                $('#CreateRoleForm').slideUp();
+            }
+            function SubmitCreateRoleForm(){
+                var name = $('#CreateRoleName').val();
+                var authority = $('#CreateRoleAuthority').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/webmaster/role/create',
+                    data: {
+                        name: name,
+                        authority: authority
+                    },
+                    success: function(data) {
+                        location.reload();
+                    },
+                    dataType: 'text'
+                });
+            }
+            function ShowEditRoleForm(index){
+                var o = $('.role-table tbody tr').eq(index);
+                $('.masking').show();
+                $('#EditRoleForm').slideDown();
+                $('#EditRoleName').val(o.children('td').eq(1).text());
+                var au = $.trim(o.children('td').eq(2).find('.authority-json').text());
+                au = au.replace(",]", "]");
+                $('#EditRoleAuthority').val(au);
+            }
+            function HideEditRoleForm(){
+                $('#EditRoleForm').slideUp();
+                $('.masking').hide();
+            }
+            function SubmitEditRoleForm(){
+                var name = $('#EditRoleName').val();
+                var authority = $('#EditRoleAuthority').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/webmaster/role/edit',
+                    data: {
+                        name: name,
+                        authority: authority
+                    },
+                    success: function(data) {
+                        location.reload();
+                    },
+                    dataType: 'text'
+                });
+            }
+            function DeleteRole(name){
+                if(!confirm('Are you sure?')){
+                    return ;
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: '/webmaster/role/delete',
+                    data: {
+                        name: name
+                    },
+                    success: function(data) {
+                        location.reload();
+                    },
+                    dataType: 'text'
+                });
+            }
+
+            // Admin相关的js脚本
+            function ShowCreateAdminForm(){
+                $('#CreateAdminForm').slideDown();
+            }
+            function HideCreateAdminForm(){
+                $('#CreateAdminForm').slideUp();
+            }
+            function SubmitCreateAdminForm(){
+                var name = $('#CreateAdminName').val();
+                var password = $('#CreateAdminPassword').val();
+                var password2 = $('#CreateAdminPasswordConfirm').val();
+                if(password != password2){
+                    alert("Password not the same")
+                    return
+                }
+                var role = $('#CreateAdminRole').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/webmaster/admin/create',
+                    data: {
+                        name: name,
+                        password: password,
+                        role: role
+                    },
+                    success: function(data) {
+                        location.reload();
+                    },
+                    dataType: 'text'
+                });
+            }
+            function ShowEditAdminForm(index){
+                var o = $('.admin-table tbody tr').eq(index);
+                $('.masking').show();
+                $('#EditAdminForm').slideDown();
+                $('#EditAdminName').val(o.children('td').eq(1).text());
+                $('#EditAdminRole').val(o.children('td').eq(2).text());
+            }
+            function HideEditAdminForm(){
+                $('#EditAdminForm').slideUp();
+                $('.masking').hide();
+            }
+            function SubmitEditAdminForm(){
+                var name = $('#EditAdminName').val();
+                var password = $('#EditAdminPassword').val();
+                var password2 = $('#EditAdminPasswordConfirm').val();
+
+                // 表单验证
+                if(password != password2){
+                    alert("Password not the same")
+                    return
+                }
+                var role = $('#EditAdminRole').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/webmaster/admin/edit',
+                    data: {
+                        name: name,
+                        password: password,
+                        role: role
+                    },
+                    success: function(data) {
+                        location.reload();
+                    },
+                    dataType: 'text'
+                });
+            }
+            function DeleteAdmin(name){
+                if(!confirm('Are you sure?')){
+                    return ;
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: '/webmaster/admin/delete',
+                    data: {
+                        name: name
+                    },
+                    success: function(data) {
+                        location.reload();
+                    },
+                    dataType: 'text'
+                });
+            }
+
+            // Origin相关的js脚本
+            function ShowCreateOriginForm(){
+                $('#CreateOriginForm').slideDown();
+            }
+            function HideCreateOriginForm(){
+                $('#CreateOriginForm').slideUp();
+            }
+            function SubmitCreateOriginForm(){
+                var name = $('#CreateOriginName').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/webmaster/origin/create',
+                    data: {
+                        name: name
+                    },
+                    success: function(data) {
+                        location.reload();
+                    },
+                    dataType: 'text'
+                });
+            }
+            function DeleteOrigin(name){
+                if(!confirm('Are you sure?')){
+                    return ;
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: '/webmaster/origin/delete',
+                    data: {
+                        name: name
+                    },
+                    success: function(data) {
+                        location.reload();
+                    },
+                    dataType: 'text'
+                });
+            }
+        </script>
+    </body>
+</html>

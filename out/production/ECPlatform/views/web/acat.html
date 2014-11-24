@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>{{.currentCategory.Name}} - 一村一品</title>
+    {{template "styles"}}
+    <style>
+        .table{width: 850px;margin: 0 auto 20px auto;}
+        .table th {color: #000; font-weight: bold;font-size: 14px;line-height: 40px;}
+        .table .table-title{text-align: left;font-size: 14px; border-bottom: 1px solid #EEE; line-height: 35px;}
+        .table .table-time{text-align: right;font-size: 14px; color: #CCC; border-bottom: 1px solid #EEE;line-height: 35px;}
+    </style>
+</head>
+<body>
+    {{template "headerpart" .}}
+
+	<!--main-->
+	<div class="pos">
+        <img src="/statics/img/web/icon_house.png" />
+        <span><a href="/web">一村一品</a></span>
+        >
+        {{if ne .currentCategory.Parent ""}}
+        <span><a href="/web/acat?c={{.currentCategory.Parent}}">{{.currentCategory.Parent}}</a></span>
+        >
+        {{end}}
+        <span><a href="/web/acat?c={{.currentCategory.Name}}">{{.currentCategory.Name}}</a></span>
+	</div>
+
+    <div id="cat" class="wrap">
+        <div class="cat-left" style="margin-bottom: 100px; border-right: 1px solid #CCC;min-height: 500px;">
+            <p style="line-height: 40px;"><strong>阅读排行 TOP {{len .hotArticleList}}</strong></p>
+            <ul class="read-rank">
+                {{range .hotArticleList}}
+                <li>
+                    <a href="/web/article?id={{.Id}}">{{.Title}}</a>
+                </li>
+                {{end}}
+            </ul>
+        </div>
+
+        <div class="cat-right" style="margin-bottom: 100px;">
+            <div style="margin: 0px auto 20px auto;width: 850px;">
+                <img id="banner" style="width:850px;height: 211px;"  src="/statics/img/web/banner/regionfood.jpg" alt=""/>
+            </div>
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 700px;text-align: left;">标题</th>
+                            <th style="width: 150px;text-align: right;">发表时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{range .articleList}}
+                        {{if ne .Status 0}}
+                        <tr>
+                            <td class="table-title"><a href="/web/article?id={{.Id}}">{{.Title}}</a></td>
+                            <td class="table-time">{{.Time}}</td>
+                        </tr>
+                        {{end}}
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="position:relative;height: 50px;margin:10px 60px 30px 0;">
+                <div id="pager">
+                    <a href="#">首页</a>
+                    <a href="#" class="active">1</a>
+                    <a href="#">尾页</a>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+
+    </div>
+
+    {{template "footerpart" .}}
+
+    {{template "scripts"}}
+    <script>
+        $(function(){
+            var c = GetQueryString("c");
+            if(c == "健康菜谱" || decodeURI(c) == "健康菜谱"){
+                $('#banner').attr("src", "/statics/img/web/banner/healthmenu.jpg");
+            } else if(c == "养生知识" || decodeURI(c) == "养生知识"){
+                $('#banner').attr("src", "/statics/img/web/banner/healthpreserving.jpg");
+            } else if(c == "一品故事" || decodeURI(c) == "一品故事"){
+                $('#banner').attr("src", "/statics/img/web/banner/story.jpg");
+            }
+        });
+    </script>
+</body>
+</html>
