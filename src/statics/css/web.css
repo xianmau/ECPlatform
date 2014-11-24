@@ -127,7 +127,7 @@ ul,li{padding: 0;margin: 0;}
 .floor .floorbottom .list li a:hover{color: #555;}
 
 /* ecep panel style */
-.panel{width: 1144px;margin: 0 auto 40px auto;position: relative;}
+.panel{width: 1144px;margin: 40px auto 40px auto;position: relative;}
 .panel h1{line-height: 350px;border:1px solid #CCC;text-align: center;font-size: 72px;}
 .panel .title{font-size: 20px; font-weight: bold;line-height: 40px;}
 

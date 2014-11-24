@@ -53,22 +53,25 @@ func GoodsCat(w http.ResponseWriter, r *http.Request) {
 
 		// 左侧分类列表
 		goodsCategories := []*models.SliceWithName{}
-	LOOP_1:
-		for _, v := range goodsCategoryList {
-			if v.Parent != "" {
-
-				for _, v2 := range goodsCategories {
-					if v2.Name == v.Parent {
-						v2.Slice = append(v2.Slice, v.Name)
-						continue LOOP_1
-					}
+		for _, v := range goodsCategoryList{
+			if v.Parent == ""{
+				subs, err := models.GetSubGoodsCategoryList(v.Name)
+				if err != nil{
+					log.Error(err.Error())
+					return
 				}
-				item := new(models.SliceWithName)
-				item.Name = v.Parent
-				item.Slice = []interface{}{v.Name}
-				goodsCategories = append(goodsCategories, item)
+				if len(subs) > 0{
+					item := new(models.SliceWithName)
+					item.Name = v.Name
+					item.Slice = []interface{}{}
+					for _, v2 := range subs{
+						item.Slice = append(item.Slice, v2.Name)
+					}
+					goodsCategories = append(goodsCategories, item)
+				}
 			}
 		}
+
 		data["goodsCategories"] = goodsCategories
 
 		// 当前分类
