@@ -39,7 +39,7 @@
 
         <div class="cat-right" style="margin-bottom: 100px;">
             <div style="width: 100%;height:300px;border: 1px solid #f3f3f3;">
-                <div class="cat-text">
+                <div class="cat-text" raw="{{.goodsCategoryInfo.CategoryInfo}}">
                     <img src="{{.goodsCategoryInfo.CategoryInfo}}" />
                 </div>
                 <div class="cat-img">
@@ -103,6 +103,22 @@
 
     {{template "scripts"}}
     <script>
+        $(function(){
+            try{
+                var info = JSON.parse($('.cat-text').attr('raw'));
+                console.log(info.title_cn);
+                var code = '<div>';
+                code += '<h1 style="text-align: center;line-height: 40px;font-weight: normal;font-size: 32px;margin: 60px 0 0 0;padding: 0;">' + info.title_cn + '</h1>';
+                code += '<h2 style="text-align: center;line-height: 30px;font-weight: normal;font-size: 24px;margin: 0 0 0 0;padding: 0;">' + info.title_en + '</h2>';
+                code += '<p style="padding: 20px 40px;line-height: 20px;font-size: 14px; color: #AAA; margin: 0 0 0 0;">' + info.content + '</p>';
+                code += '</div>';
+
+                $('.cat-text').html(code);
+            }catch (e){
+                $('.cat-text').html("loading");
+            }
+
+        });
     </script>
 </body>
 </html>
