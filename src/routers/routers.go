@@ -53,6 +53,7 @@ func registerWeb() {
 func registerUserCenter(){
 	http.HandleFunc("/user", user.Home)
 	http.HandleFunc("/user/home", user.Home)
+	http.HandleFunc("/user/profile", user.Profile)
 
 	http.HandleFunc("/user/login", user.Login)
 	http.HandleFunc("/user/logout", user.Logout)

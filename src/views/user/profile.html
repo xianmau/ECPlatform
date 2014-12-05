@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>我的村里 - 一村一品</title>
+    {{template "styles"}}
+    <style>
+
+    </style>
+</head>
+<body>
+    {{template "headerpart" .}}
+
+    <!--main-->
+    <div class="pos">
+        <img src="/statics/img/web/icon_house.png" />
+        <span><a href="/web">一村一品</a></span>
+        >
+        <span><a href="/user/home">我的村里</a></span>
+        >
+        <span><a>修改信息</a></span>
+    </div>
+
+    <div class="wrap" style="min-height: 500px;">
+        <h1 style="text-align: center;">
+
+            Welcome, {{.user.Name}}!
+        </h1>
+    </div>
+
+    {{template "footerpart" .}}
+
+    {{template "scripts"}}
+</body>
+</html>
