@@ -1,63 +1,49 @@
 package web
 
 import (
-	"html/template"
 	"models"
 	"net/http"
-	"strings"
-	"utils/global"
 	log "utils/logger"
-	"utils/tools"
+	"controllers/common"
 )
 
 func GoodsCat(w http.ResponseWriter, r *http.Request) {
-	// prepare session
-	session := global.Sessions.Prepare(w, r)
-	// get client ip
-	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
-	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
-		client_ip = xff_ip
-	}
-	isUserLogin := false
-	var user models.User
-	if session.Get("user") != nil {
-		user = (session.Get("user")).(models.User)
-		isUserLogin = true
-	} else {
-		isUserLogin = false
-	}
+	defaultHandler := common.NewDefaultHandler(w, r)
+	session := defaultHandler.Prepare()
 
 	if r.Method == "GET" {
-		// deal with get method
-		log.Info(client_ip + " get /web/gcat")
-
 		// render template
-		t := template.New("gcat.html")
-		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
-		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
-		t, err := t.ParseFiles("views/web/gcat.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		err := defaultHandler.RenderTemplate("gcat.html", []string{"views/web/gcat.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
 		if err != nil {
-			log.Error(err.Error())
 			return
 		}
+		data := make(map[string]interface {})
+		// check login
+		isUserLogin := false
+		var user models.User
+		if session.Get("user") != nil {
+			user = (session.Get("user")).(models.User)
+			isUserLogin = true
+		} else {
+			isUserLogin = false
+		}
+		// set login info
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
 
-		// bind data
-		data := make(map[string]interface{})
-
-		// 分类列表
+		// current category
 		goodsCategoryList, err := models.GetGoodsCategoryList()
 		if err != nil {
 			log.Error(err.Error())
 			return
 		}
-
-		// 左侧分类列表
+		// left category list
 		goodsCategories := []*models.SliceWithName{}
 		for _, v := range goodsCategoryList{
 			if v.Parent == ""{
 				subs, err := models.GetSubGoodsCategoryList(v.Name)
 				if err != nil{
-					log.Error(err.Error())
+					defaultHandler.LogError(err)
 					return
 				}
 				if len(subs) > 0{
@@ -74,7 +60,7 @@ func GoodsCat(w http.ResponseWriter, r *http.Request) {
 
 		data["goodsCategories"] = goodsCategories
 
-		// 当前分类
+		// current category
 		r.ParseForm()
 		get_c := r.Form.Get("c")
 		for _, v := range goodsCategoryList {
@@ -84,23 +70,23 @@ func GoodsCat(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		// 获取当前分类下的所有商品
+		// get all goods of the category
 		goodsList, err := models.GetGoodsListByCategory(get_c)
 		if err != nil {
-			log.Error(err.Error())
+			defaultHandler.LogError(err)
 			return
 		}
 		data["goodsList"] = goodsList
 		cur_c, err := models.GetGoodsCategory(get_c)
 		goodsCategoryInfo, err := models.GetGoodsCategoryInfo(cur_c.Name)
 		if err != nil {
-			log.Error(err.Error())
+			defaultHandler.LogError(err)
 			return
 		}
 		if goodsCategoryInfo == nil {
 			goodsCategoryInfo, err = models.GetGoodsCategoryInfo(cur_c.Parent)
 			if err != nil {
-				log.Error(err.Error())
+				defaultHandler.LogError(err)
 				return
 			}
 		}
@@ -109,55 +95,36 @@ func GoodsCat(w http.ResponseWriter, r *http.Request) {
 		}
 		data["goodsCategoryInfo"] = goodsCategoryInfo
 
-		// 记录登录信息
-		data["User"] = user
-		data["IsUserLogin"] = isUserLogin
-
 		// execute template
-		err = t.Execute(w, data)
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
+		defaultHandler.ExecuteTemplate(data)
 	}
 }
 
 func GoodsDetail(w http.ResponseWriter, r *http.Request) {
-	// prepare session
-	session := global.Sessions.Prepare(w, r)
-	// get client ip
-	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
-	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
-		client_ip = xff_ip
-	}
-	isUserLogin := false
-	var user models.User
-	if session.Get("user") != nil {
-		user = (session.Get("user")).(models.User)
-		isUserLogin = true
-	} else {
-		isUserLogin = false
-	}
+	defaultHandler := common.NewDefaultHandler(w, r)
+	session := defaultHandler.Prepare()
 
 	if r.Method == "GET" {
-		// deal with get method
-		log.Info(client_ip + " get /web/goods")
-
 		// render template
-		t := template.New("goods.html")
-		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
-		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
-		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
-		t, err := t.ParseFiles("views/web/goods.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		err := defaultHandler.RenderTemplate("goods.html", []string{"views/web/goods.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
 		if err != nil {
-			log.Error(err.Error())
 			return
 		}
+		data := make(map[string]interface {})
+		// check login
+		isUserLogin := false
+		var user models.User
+		if session.Get("user") != nil {
+			user = (session.Get("user")).(models.User)
+			isUserLogin = true
+		} else {
+			isUserLogin = false
+		}
+		// set login info
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
 
-		// bind data
-		data := make(map[string]interface{})
-
-		// 当前商品
+		// current goods
 		r.ParseForm()
 		get_id := r.Form.Get("id")
 		goods, err := models.GetGoods(get_id)
@@ -167,7 +134,7 @@ func GoodsDetail(w http.ResponseWriter, r *http.Request) {
 		}
 		if goods != nil {
 			data["goods"] = goods
-			// 当前分类
+			// current category
 			r.ParseForm()
 			currentCategory, err := models.GetGoodsCategory(goods.Category)
 			if err != nil {
@@ -188,7 +155,7 @@ func GoodsDetail(w http.ResponseWriter, r *http.Request) {
 		recommends := []models.Goods{}
 		data["recommends"] = recommends
 
-		// 增加商品的浏览次数
+		// add goods click
 		goods_statistic, err := models.GetGoodsStatistic(get_id)
 		if err != nil {
 			log.Error(err.Error())
@@ -199,15 +166,7 @@ func GoodsDetail(w http.ResponseWriter, r *http.Request) {
 		}
 		models.IncreaseGoodsStatisticViewTimes(get_id)
 
-		// 记录登录信息
-		data["User"] = user
-		data["IsUserLogin"] = isUserLogin
-
 		// execute template
-		err = t.Execute(w, data)
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
+		defaultHandler.ExecuteTemplate(data)
 	}
 }

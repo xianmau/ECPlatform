@@ -2,33 +2,17 @@ package web
 
 import (
 	"encoding/json"
-	"html/template"
 	"models"
 	"net/http"
 	"strings"
-	"utils/global"
-	log "utils/logger"
-	"utils/tools"
+	"controllers/common"
 )
 
 func Home(w http.ResponseWriter, r *http.Request) {
-	// prepare session
-	session := global.Sessions.Prepare(w, r)
-	// get client ip
-	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
-	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
-		client_ip = xff_ip
-	}
-	isUserLogin := false
-	var user models.User
-	if session.Get("user") != nil {
-		user = (session.Get("user")).(models.User)
-		isUserLogin = true
-	} else {
-		isUserLogin = false
-	}
+	defaultHandler := common.NewDefaultHandler(w, r)
+	session := defaultHandler.Prepare()
 
-	// 对首页来说需要特殊判断一下URL
+	// special check for home page
 	checkUrl := strings.ToLower(r.URL.Path)
 	if checkUrl != "/" && checkUrl != "/index.html" && checkUrl != "/web" && checkUrl != "/web/home" {
 		http.NotFound(w, r)
@@ -36,29 +20,32 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == "GET" {
-		// deal with get method
-		log.Info(client_ip + " get /web/home")
-
 		// render template
-		t := template.New("home.html")
-		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
-		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
-		t, err := t.ParseFiles("views/web/home.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		err := defaultHandler.RenderTemplate("home.html", []string{"views/web/home.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
 		if err != nil {
-			log.Error(err.Error())
 			return
 		}
-
-		// bind data
-		data := make(map[string]interface{})
+		data := make(map[string]interface {})
+		// check login
+		isUserLogin := false
+		var user models.User
+		if session.Get("user") != nil {
+			user = (session.Get("user")).(models.User)
+			isUserLogin = true
+		} else {
+			isUserLogin = false
+		}
+		// set login info
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
 
 		webInfoes, err := models.GetWebHomeInfoList()
 		if err != nil {
-			log.Error(err.Error())
+			defaultHandler.LogError(err)
 			return
 		}
 		if len(webInfoes) == 0 {
-			log.Error("floor info can't find")
+			defaultHandler.LogError("floor info can't find")
 			return
 		}
 
@@ -79,7 +66,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		for _, gid := range F1GoodsId {
 			goods, err := models.GetGoods(gid)
 			if err != nil {
-				log.Error(err.Error())
+				defaultHandler.LogError(err)
 				return
 			}
 			if goods != nil {
@@ -98,7 +85,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		for _, gid := range F2GoodsId {
 			goods, err := models.GetGoods(gid)
 			if err != nil {
-				log.Error(err.Error())
+				defaultHandler.LogError(err)
 				return
 			}
 			if goods != nil {
@@ -117,7 +104,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		for _, gid := range F3GoodsId {
 			goods, err := models.GetGoods(gid)
 			if err != nil {
-				log.Error(err.Error())
+				defaultHandler.LogError(err)
 				return
 			}
 			if goods != nil {
@@ -136,7 +123,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		for _, gid := range F4GoodsId {
 			goods, err := models.GetGoods(gid)
 			if err != nil {
-				log.Error(err.Error())
+				defaultHandler.LogError(err)
 				return
 			}
 			if goods != nil {
@@ -214,15 +201,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		data["F3_HotGoods"] = F3_HotGoods
 		data["F4_HotGoods"] = F4_HotGoods
 
-		// 记录登录信息
-		data["User"] = user
-		data["IsUserLogin"] = isUserLogin
-
 		// execute template
-		err = t.Execute(w, data)
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
+		defaultHandler.ExecuteTemplate(data)
 	}
 }

@@ -1,176 +1,134 @@
 package web
 
 import (
-	"html/template"
 	"models"
 	"net/http"
-	"strings"
-	"utils/global"
-	log "utils/logger"
-	"utils/tools"
+	"controllers/common"
 )
 
 func ArticleCat(w http.ResponseWriter, r *http.Request) {
-	// prepare session
-	session := global.Sessions.Prepare(w, r)
-	// get client ip
-	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
-	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
-		client_ip = xff_ip
-	}
-	isUserLogin := false
-	var user models.User
-	if session.Get("user") != nil {
-		user = (session.Get("user")).(models.User)
-		isUserLogin = true
-	} else {
-		isUserLogin = false
-	}
+	defaultHandler := common.NewDefaultHandler(w, r)
+	session := defaultHandler.Prepare()
 
 	if r.Method == "GET" {
-		// deal with get method
-		log.Info(client_ip + " get /web/acat")
-
 		// render template
-		t := template.New("acat.html")
-		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
-		t, err := t.ParseFiles("views/web/acat.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		err := defaultHandler.RenderTemplate("acat.html", []string{"views/web/acat.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
 		if err != nil {
-			log.Error(err.Error())
 			return
 		}
+		data := make(map[string]interface {})
+		// check login
+		isUserLogin := false
+		var user models.User
+		if session.Get("user") != nil {
+			user = (session.Get("user")).(models.User)
+			isUserLogin = true
+		} else {
+			isUserLogin = false
+		}
+		// set login info
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
 
-		// bind data
-		data := make(map[string]interface{})
-
-		// 当前分类
+		// current category
 		r.ParseForm()
 		get_c := r.Form.Get("c")
 		currentCategory, err := models.GetArticleCategory(get_c)
 		if err != nil {
-			log.Error(err.Error())
+			defaultHandler.LogError(err)
 			return
 		}
-		// 判断一下是否为允许在前台显示的栏目
+		// check available category
 		if get_c != "一品菜谱" && get_c != "一品养生" && get_c != "一品故事" {
-			log.Error("not allowed category")
+			defaultHandler.LogError("not allowed category")
 			return
 		}
 		data["currentCategory"] = currentCategory
-
-		// 获取当前分类下的所有文章
+		// get all articles of the category
 		articleList, err := models.GetArticleListByCategory(get_c)
 		if err != nil {
-			log.Error(err.Error())
+			defaultHandler.LogError(err)
 			return
 		}
 		data["articleList"] = articleList
-		// 获取排行文章
+		// get article ranking
 		hotArticleList, err := models.GetHotArticles(get_c, "10")
 		if err != nil {
-			log.Error(err.Error())
+			defaultHandler.LogError(err)
 			return
 		}
 		data["hotArticleList"] = hotArticleList
 
-		// 记录登录信息
-		data["User"] = user
-		data["IsUserLogin"] = isUserLogin
-
 		// execute template
-		err = t.Execute(w, data)
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
+		defaultHandler.ExecuteTemplate(data)
 	}
 }
 
 func ArticleDetail(w http.ResponseWriter, r *http.Request) {
-	// prepare session
-	session := global.Sessions.Prepare(w, r)
-	// get client ip
-	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
-	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
-		client_ip = xff_ip
-	}
-	isUserLogin := false
-	var user models.User
-	if session.Get("user") != nil {
-		user = (session.Get("user")).(models.User)
-		isUserLogin = true
-	} else {
-		isUserLogin = false
-	}
+	defaultHandler := common.NewDefaultHandler(w, r)
+	session := defaultHandler.Prepare()
 
 	if r.Method == "GET" {
-		// deal with get method
-		log.Info(client_ip + " get /web/article")
-
 		// render template
-		t := template.New("article.html")
-		t.Funcs(template.FuncMap{"GetJsonData": tools.GetJsonData})
-		t.Funcs(template.FuncMap{"ConvertToHtml": tools.ConvertToHtml})
-		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
-		t, err := t.ParseFiles("views/web/article.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		err := defaultHandler.RenderTemplate("article.html", []string{"views/web/article.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
 		if err != nil {
-			log.Error(err.Error())
 			return
 		}
+		data := make(map[string]interface {})
+		// check login
+		isUserLogin := false
+		var user models.User
+		if session.Get("user") != nil {
+			user = (session.Get("user")).(models.User)
+			isUserLogin = true
+		} else {
+			isUserLogin = false
+		}
+		// set login info
+		data["User"] = user
+		data["IsUserLogin"] = isUserLogin
 
-		// bind data
-		data := make(map[string]interface{})
-
-		// 当前文章
+		// current article
 		r.ParseForm()
 		get_id := r.Form.Get("id")
 		article, err := models.GetArticle(get_id)
 		if err != nil {
-			log.Error(err.Error())
+			defaultHandler.LogError(err)
 			return
 		}
 		if article != nil {
 			data["article"] = article
-			// 当前分类
+			// current category
 			r.ParseForm()
 			currentCategory, err := models.GetArticleCategory(article.Category)
 			if err != nil {
-				log.Error(err.Error())
+				defaultHandler.LogError(err)
 				return
 			}
 			data["currentCategory"] = currentCategory
 		} else {
 			data["NotFound"] = "找不到该文章的信息"
 		}
-		// 判断一下是否为允许在前台显示的栏目
+		// check available category
 		if article.Category != "一品菜谱" && article.Category != "一品养生" && article.Category != "一品故事" {
-			log.Error("not allowed category")
+			defaultHandler.LogError("not allowed category")
 			return
 		}
-		// 文章阅读次数增加
+		// add article click
 		err = models.IncreaseArticleReadTimes(get_id)
 		if err != nil {
-			log.Error(err.Error())
+			defaultHandler.LogError(err)
 			return
 		}
-
-		// 获取排行文章
+		// get article ranking
 		hotArticleList, err := models.GetHotArticles(article.Category, "10")
 		if err != nil {
-			log.Error(err.Error())
+			defaultHandler.LogError(err)
 			return
 		}
 		data["hotArticleList"] = hotArticleList
 
-		// 记录登录信息
-		data["User"] = user
-		data["IsUserLogin"] = isUserLogin
-
 		// execute template
-		err = t.Execute(w, data)
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
+		defaultHandler.ExecuteTemplate(data)
 	}
 }

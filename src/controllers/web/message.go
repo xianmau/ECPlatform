@@ -1,81 +1,53 @@
 package web
 
 import (
-	"html/template"
 	"net/http"
-	"strings"
-	"utils/global"
-	log "utils/logger"
 	"models"
-	"utils/tools"
+	"controllers/common"
 )
 
 func Message(w http.ResponseWriter, r *http.Request) {
-	// prepare session
-	session := global.Sessions.Prepare(w, r)
-	// get client ip
-	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
-	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
-		client_ip = xff_ip
-	}
-	isUserLogin := false
-	var user models.User
-	if session.Get("user") != nil {
-		user = (session.Get("user")).(models.User)
-		isUserLogin = true
-	} else {
-		isUserLogin = false
-	}
+	defaultHandler := common.NewDefaultHandler(w, r)
+	session := defaultHandler.Prepare()
 
 	if r.Method == "GET" {
-		// deal with get method
-		log.Info(client_ip + " get /web/message")
-
 		// render template
-		t := template.New("message.html")
-		t.Funcs(template.FuncMap{"UrlEncode": tools.UrlEncode})
-		t, err := t.ParseFiles("views/web/message.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html")
+		err := defaultHandler.RenderTemplate("message.html", []string{"views/web/message.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
 		if err != nil {
-			log.Error(err.Error())
 			return
 		}
-
-		// bind data
-		data := make(map[string]interface{})
-
-		// 记录登录信息
+		data := make(map[string]interface {})
+		// check login
+		isUserLogin := false
+		var user models.User
+		if session.Get("user") != nil {
+			user = (session.Get("user")).(models.User)
+			isUserLogin = true
+		} else {
+			isUserLogin = false
+		}
+		// set login info
 		data["User"] = user
 		data["IsUserLogin"] = isUserLogin
 
 		// execute template
-		err = t.Execute(w, data)
-		if err != nil {
-			log.Error(err.Error())
-			return
-		}
+		defaultHandler.ExecuteTemplate(data)
 	}
 }
 
 func MessageCreate(w http.ResponseWriter, r *http.Request) {
-	// prepare session
-	_ = global.Sessions.Prepare(w, r)
-	// get client ip
-	client_ip := string([]byte(r.RemoteAddr)[0:strings.LastIndex(r.RemoteAddr, ":")])
-	if xff_ip := r.Header.Get("X-Forwarded-For"); xff_ip != "" {
-		client_ip = xff_ip
-	}
+	defaultHandler := common.NewDefaultHandler(w, r)
+	defaultHandler.Prepare()
 
 	if r.Method == "POST" {
-		// deal with post method
-		log.Info(client_ip + " post /web/message/create")
-
 		form_name := r.PostFormValue("name")
 		form_email := r.PostFormValue("email")
 		form_content := r.PostFormValue("content")
 
 		err := models.CreateMessage(form_name, form_email, form_content)
 		if err != nil {
-			log.Error(err.Error())
+			defaultHandler.LogError(err)
+			w.Write([]byte(""))
 			return
 		}
 

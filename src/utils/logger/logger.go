@@ -28,15 +28,15 @@ func SetLevel(l int) {
 	level = l
 }
 
-func Trace(msg interface{}) {
+func Trace(v ...interface{}) {
 	if level > LevelTrace {
 		return
 	}
 	logger := log.New(os.Stdout, "", log.Ldate|log.Ltime|log.LstdFlags)
-	logger.Printf("[T]%+v\n", msg)
+	logger.Println("[T]", v)
 }
 
-func Debug(msg string) {
+func Debug(v ...interface{}) {
 	if level > LevelDebug {
 		return
 	}
@@ -49,10 +49,10 @@ func Debug(msg string) {
 		os.Exit(-1)
 	}
 	logger := log.New(logfile, "", log.Ldate|log.Ltime|log.LstdFlags)
-	logger.Println("[D]" + msg)
+	logger.Println("[D]", v)
 }
 
-func Info(msg string) {
+func Info(v ...interface{}) {
 	if level > LevelInfo {
 		return
 	}
@@ -65,10 +65,10 @@ func Info(msg string) {
 		os.Exit(-1)
 	}
 	logger := log.New(logfile, "", log.Ldate|log.Ltime|log.LstdFlags)
-	logger.Println("[I]" + msg)
+	logger.Println("[I]", v)
 }
 
-func Warning(msg string) {
+func Warning(v ...interface{}) {
 	if level > LevelWarning {
 		return
 	}
@@ -81,10 +81,10 @@ func Warning(msg string) {
 		os.Exit(-1)
 	}
 	logger := log.New(logfile, "", log.Ldate|log.Ltime|log.LstdFlags)
-	logger.Println("[W]" + msg)
+	logger.Println("[W]", v)
 }
 
-func Error(msg string) {
+func Error(v ...interface{}) {
 	if level > LevelError {
 		return
 	}
@@ -97,10 +97,10 @@ func Error(msg string) {
 		os.Exit(-1)
 	}
 	logger := log.New(logfile, "", log.Ldate|log.Ltime|log.LstdFlags)
-	logger.Println("[E]" + msg)
+	logger.Println("[E]", v)
 }
 
-func Fatal(msg string) {
+func Fatal(v ...interface{}) {
 	if level > LevelFatal {
 		return
 	}
@@ -113,6 +113,6 @@ func Fatal(msg string) {
 		os.Exit(-1)
 	}
 	logger := log.New(logfile, "", log.Ldate|log.Ltime|log.Llongfile)
-	logger.Println("[F]" + msg)
+	logger.Println("[F]", v)
 	os.Exit(-1)
 }
