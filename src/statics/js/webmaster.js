@@ -32,7 +32,7 @@
 
  function LoadAvatar() {
    var account_email = $("#leftside .avatar").attr("title");
-   $("#leftside .avatar").css("background-image", "url(http://www.gravatar.com/avatar/" + MD5(account_email) + ")");
+   $("#leftside .avatar").css("background-image", "url(https://secure.gravatar.com/avatar/" + MD5(account_email) + ")");
  }
 
  function SetNavActive() {

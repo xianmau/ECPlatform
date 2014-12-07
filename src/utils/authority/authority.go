@@ -93,13 +93,6 @@ func Check(role models.Role, dowhat string, args ...string) (bool, string) {
 			}
 		}
 		return false, "请确保您有货源管理权限"
-	case "帐号管理":
-		for _, v := range role.Authority {
-			if v == dowhat {
-				return true, ""
-			}
-		}
-		return false, "请确保您有帐号管理权限"
 	default:
 	}
 	return false, "请确保您有相应的权限"
