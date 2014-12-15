@@ -1,16 +1,12 @@
 {{define "headerpart"}}
-
 <div id="header">
     <div id="top">
         <div class="wrap">
             <span class="left-title">把真正的农产品带回家！</span>
-            {{if .IsUserLogin}}
-            <img class="icon-user" src="/statics/img/web/myordericon.png" />
-            <a href="/user" class="link-user">我的村里</a>
-            {{else}}
+            <!-- <img class="icon-user" src="images/myordericon.png" /> -->
+            <!-- <a href="/user" class="link-user">我的村里</a> -->
             <a href="/user/login" class="link-user-login">登录</a>
             <a href="/user/register" class="link-user-reg">注册</a>
-            {{end}}
             <img class="icon-vline" src="/statics/img/web/hlineicon.png" />
             <a href="/web/service" class="link-service">客户服务</a>
             <a href="/web/help" class="link-help">帮助</a>
@@ -18,10 +14,29 @@
         </div>
     </div>
     <div id="logo_search" class="wrap">
-        <div id="logo"><img src="/statics/img/web/logo.png" /></div>
-        <div id="search"></div>
+        <div id="logo">
+            <div class="nav_left">
+                <a href="/web" class="item" style="border-left:none;"><img src="/statics/img/web//nav/nav01.png" alt=""></a>
+                <a href="{{UrlEncode "/web/gcat?c=一品推荐"}}" class="item"><img src="/statics/img/web/nav/nav02.png" alt=""></a>
+                <a href="{{UrlEncode "/web/gcat?c=华农出品"}}" class="item"><img src="/statics/img/web/nav/nav03.png" alt=""></a>
+            </div>
+            <img src="/statics/img/web/logo.png" />
+            <div class="nav_right">
+                <a href="/web" class="item" style="border-left:none;"><img src="/statics/img/web/nav/nav04.png" alt=""></a>
+                <span class="item2">
+                    <a href="{{UrlEncode "/web/gcat?c=一品推荐"}}"><img src="/statics/img/web/nav/nav05.png" alt=""></a>
+                    <ul class="nav-sub-nav">
+                        <li><a href="{{UrlEncode "/web/acat?c=一品菜谱"}}">一品菜谱</a></li>
+                        <li><a href="{{UrlEncode "/web/acat?c=一品养生"}}">一品养生</a></li>
+                        <li><a href="{{UrlEncode "/web/acat?c=一品故事"}}">一品故事</a></li>
+                    </ul>
+                </span>
+                <a href="{{UrlEncode "/web/gcat?c=华农出品"}}" class="item"><img src="/statics/img/web/nav/nav06.png" alt=""></a>
+            </div>
+        </div>
     </div>
-    <div id="nav" class="wrap">
+    
+    <div id="nav" class="wrap" style="display:none;">
         <a href="/web" class="item" style="border-left:none;">首页</a>
         <a href="{{UrlEncode "/web/gcat?c=一品推荐"}}" class="item">一品推荐</a>
         <a href="{{UrlEncode "/web/gcat?c=华农出品"}}" class="item">华农出品</a>
@@ -37,7 +52,7 @@
             </ul>
         </span>
         <a href="/web/message" class="item">反馈建议</a>
-    </div>
+    </div>   
 </div>
 
 {{end}}

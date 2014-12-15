@@ -9,21 +9,22 @@
     {{template "styles"}}
     <style type="text/css">
         /* slide */
-        .slide{width:1143px;height:425px;overflow:hidden;margin:0 auto;background:#000;border-top:1px solid #FFF;}
-        .slide_box{width:285px;height:425px;overflow:hidden;position:relative;float:left;border-right:1px solid #FFF;cursor:pointer;background-repeat:no-repeat}
+        .slide{width:1163px;height:330px;overflow:hidden;margin:0 auto;background:#000;border-top:1px solid #FFF;}
+        .slide_box{width:220px;height:330px;overflow:hidden;position:relative;float:left;border-right:1px solid #FFF;cursor:pointer;background-repeat:no-repeat}
+        .slide_box2{width: 280px;height: 330px;position: absolute;right: 0px;}
         .slide_box.last{border-right-width:0}
-        .slide .bg1 .navbox{width:285px}
+        .slide .bg1 .navbox{width:220px}
         .slide #box_1{position:absolute;left:0;bottom:5px}
-        .slide #box_1 .navtitle{width:285px;height:45px;line-height:45px;overflow:hidden;font-size:20px;text-align:center}
+        .slide #box_1 .navtitle{width:220px;height:45px;line-height:45px;overflow:hidden;font-size:20px;text-align:center}
         .slide #box_1 .navsumary{padding:10px;margin-bottom:3px;font-size:12px;line-height:26px}
         .slide #box_2{position:absolute;left:0;bottom:5px}
-        .slide #box_2 .navtitle{width:285px;height:45px;line-height:45px;overflow:hidden;font-size:20px;text-align:center}
+        .slide #box_2 .navtitle{width:220px;height:45px;line-height:45px;overflow:hidden;font-size:20px;text-align:center}
         .slide #box_2 .navsumary{padding:10px;margin-bottom:3px;font-size:12px;line-height:26px}
         .slide #box_3{position:absolute;left:0;bottom:5px}
-        .slide #box_3 .navtitle{width:285px;height:45px;line-height:45px;overflow:hidden;font-size:20px;text-align:center}
+        .slide #box_3 .navtitle{width:220px;height:45px;line-height:45px;overflow:hidden;font-size:20px;text-align:center}
         .slide #box_3 .navsumary{padding:10px;margin-bottom:3px;font-size:12px;line-height:26px}
         .slide #box_4{position:absolute;left:0;bottom:5px}
-        .slide #box_4 .navtitle{width:285px;height:45px;line-height:45px;overflow:hidden;font-size:20px;text-align:center}
+        .slide #box_4 .navtitle{width:220px;height:45px;line-height:45px;overflow:hidden;font-size:20px;text-align:center}
         .slide #box_4 .navsumary{padding:10px;margin-bottom:3px;font-size:12px;line-height:26px}
         .slide .navbox .navsumary{color:#fff;display:none;padding:10px}
         .navtitle img{display:none}
@@ -71,7 +72,6 @@
 
     <!-- 一村一品模块 -->
     <div class="panel">
-        <div class="title">一品推荐（第一期）</div>
         <div class="slide clearfix bg1" id="slide">
             <div class="slide_box bg1" style="background-position:0 0;">
                 <div id="box_1" class="navbox">
@@ -124,59 +124,158 @@
                     </div>
                 </div>
             </div>
-        </div><!--slide end-->
-
-    </div>
-
-    <!-- 4楼 -->
-    <div class="floor">
-        <div class="floortop">
-            <span class="title">华农出品</span>
-            <img class="recommendicon" src="/statics/img/web/recommend.png" />
-            <span class="recommendtext">更多精品</span>
-            <a href="{{UrlEncode "/web/gcat?c=华农出品"}}" class="more">MORE></a>
-        </div>
-        <div class="floorleft">
-            <div class="top"><img src="/statics/img/web/floor/scauproduct.jpg" /></div>
-            <div class="mid">
-                {{range $k, $v := .F4_SubCol}}
-                <a class="cat-tag" href="/web/gcat?c={{$v.Name}}">{{$v.Name}}</a>
-                {{end}}
+            <div class="slide_box2">
+                <img src="/statics/img/web/ecep_column/s5.png" alt="">
             </div>
-            <div class="floorbottom">
-                <p class="title">本分类热门推荐</p>
-                <ul class="list">
-                    {{range $k, $v := .F4_HotGoods}}
-                    <li><a target="_blank" href="/web/goods?id={{$v.Id}}">{{$v.Title}}</a></li>
-                    {{end}}
+        </div>
+    </div><!--slide end-->
+
+    <div class="floor">
+        <div id="ecepleft_picwrap">
+            <img src="/statics/img/web/ecepbar/ecepleft_title.png" alt="">
+            <img src="/statics/img/web/ecepbar/ecepleft_pic.png" alt="">
+        </div>
+            <ul id="ecep_list">
+                <li><a>中外友人足球友谊赛完满举行</a></li>
+                <li><a>英国亚伯大学助理副校长Gary Rawns</a></li>
+                <li><a>关于组建华农国际教育官方学生QQ群</a></li>
+                <li><a>关于参加新南威尔士大学短期访学项</a></li>
+                <li><a>中外友人足球友谊赛完满举行</a></li>
+                <li><a>英国亚伯大学助理副校长Gary Rawns</a></li>
+                <li><a>关于组建华农国际教育官方学生QQ群</a></li>
+                <li><a>关于参加新南威尔士大学短期访学项</a></li>
+                <li><a>关于组建华农国际教育官方学生QQ群</a></li>
+                <li><a>关于参加新南威尔士大学短期访学项</a></li>
+                <li><a>关于参加新南威尔士大学短期访学项</a></li>
+                <li><a>关于组建华农国际教育官方学生QQ群</a></li>
+            </ul>
+        <div id="ecepright_wrap">
+            <div class="ecepright_up">
+                <img src="/statics/img/web/ecepbar/ecepright_pic1.png" alt="">
+                <ul id="ecep_list">
+                    <li><a>中外友人足球友谊赛完满举行</a></li>
+                    <li><a>英国亚伯大学助理副校长Gary Rawns</a></li>
+                    <li><a>关于组建华农国际教育官方学生QQ群</a></li>
+                    <li><a>关于参加新南威尔士大学短期访学项</a></li>
+                    <li><a>中外友人足球友谊赛完满举行</a></li>
+                </ul>
+            </div>
+            <div class="ecepright_down">
+                <img src="/statics/img/web/ecepbar/ecepright_pic2.png" alt="">
+                <ul id="ecep_list">
+                    <li><a>中外友人足球友谊赛完满举行</a></li>
+                    <li><a>英国亚伯大学助理副校长Gary Rawns</a></li>
+                    <li><a>关于组建华农国际教育官方学生QQ群</a></li>
+                    <li><a>关于参加新南威尔士大学短期访学项</a></li>
+                    <li><a>中外友人足球友谊赛完满举行</a></li>
                 </ul>
             </div>
         </div>
-        <div class="floorright">
-            <div class="floor-first-item">
-                <a href="/web/goods?id={{.F4_UP.Id}}" target="_blank"><img src="{{GetJsonData .F4_UP.Images "large"}}" /></a>
+    </div>
+
+    <!-- 4楼 -->
+        <div class="floor">
+            <div class="floortop">
+                <img src="/statics/img/web/scaupro.png" alt="">
             </div>
-            {{range $k, $v := .F4_UPs}}
-            <div class="floor-item">
-                <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
-                <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "small"}}" /></a>
+            <div class="floorleft">
+                <div class="top"><img src="/statics/img/web/floor/scauproduct.jpg" /></div>
+                <div class="mid">
+                    {{range $k, $v := .F4_SubCol}}
+                    <a class="cat-tag" href="/web/gcat?c={{$v.Name}}">{{$v.Name}}</a>
+                    {{end}}
+                </div>
+                <div class="floorbottom">
+                    <p class="title">本分类热门推荐</p>
+                    <ul class="list">
+                        {{range $k, $v := .F4_HotGoods}}
+                        <li><a target="_blank" href="/web/goods?id={{$v.Id}}">{{$v.Title}}</a></li>
+                        {{end}}
+                    </ul>
+                </div>
             </div>
-            {{end}}
-        </div>
-        <div class="floorright">
-            <div class="floor-first-item">
-                <a href="/web/goods?id={{.F4_DOWN.Id}}" target="_blank"><img src="{{GetJsonData .F4_DOWN.Images "large"}}" /></a>
+            <div class="floorright">
+                <div class="floor-first-item">
+                    <a href="/web/goods?id={{.F4_UP.Id}}" target="_blank"><img src="{{GetJsonData .F4_UP.Images "large"}}" /></a>
+                </div>
+                {{range $k, $v := .F4_UPs}}
+                <div class="floor-item">
+                    <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
+                    <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "small"}}" /></a>
+                </div>
+                {{end}}
             </div>
-            {{range $k, $v := .F4_DOWNs}}
-            <div class="floor-item">
-                <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
-                <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "small"}}" /></a>
+            <div class="floorright">
+                <div class="floor-first-item">
+                    <a href="/web/goods?id={{.F4_DOWN.Id}}" target="_blank"><img src="{{GetJsonData .F4_DOWN.Images "large"}}" /></a>
+                </div>
+                {{range $k, $v := .F4_DOWNs}}
+                <div class="floor-item">
+                    <p>{{$v.Title}}<br />￥{{$v.Price}}</p>
+                    <a href="/web/goods?id={{$v.Id}}" target="_blank"><img src="{{GetJsonData $v.Images "small"}}" /></a>
+                </div>
+                {{end}}
             </div>
-            {{end}}
+
+            <div class="clear"></div>
         </div>
 
-        <div class="clear"></div>
-    </div>
+        <div class="recomand_wrap">
+            <div class="floortop">
+                <img src="/statics/img/web/recomand.png" alt="">
+            </div>                      
+            <div class="recomand_list">
+                <div class="oldlist_wrap">
+                    <div class="old_list">
+                        <img src="/statics/img/web/old/first4.jpg" alt="">
+                        <span><a>惠州甜金针菜</a></span>
+                        <img src="/statics/img/web/old/first3.jpg" alt="">
+                        <span><a>罗定富硒紫花生</a></span>
+                        <img src="/statics/img/web/old/first2.jpg" alt="">
+                        <span><a>韶关华航丝苗米</a></span>
+                        <img src="/statics/img/web/old/first1.jpg" alt="">
+                        <span><a>韶关天堂生姜</a></span>
+                        <img class="first_title" src="/statics/img/web/old/1.png" alt="">
+                    </div> 
+                    <div class="old_list" style="display:none;">
+                        <img src="/statics/img/web/old/first4.jpg" alt="">
+                        <span><a>惠州甜金针菜</a></span>
+                        <img src="/statics/img/web/old/first3.jpg" alt="">
+                        <span><a>罗定富硒紫花生</a></span>
+                        <img src="/statics/img/web/old/first2.jpg" alt="">
+                        <span><a>韶关华航丝苗米</a></span>
+                        <img src="/statics/img/web/old/first1.jpg" alt="">
+                        <span><a>韶关天堂生姜</a></span>
+                        <img class="first_title" src="/statics/img/web/old/1.png" alt="">
+                    </div> 
+                    <div class="old_list" style="display:none;">
+                        <img src="/statics/img/web/old/first4.jpg" alt="">
+                        <span><a>惠州甜金针菜</a></span>
+                        <img src="/statics/img/web/old/first3.jpg" alt="">
+                        <span><a>罗定富硒紫花生</a></span>
+                        <img src="/statics/img/web/old/first2.jpg" alt="">
+                        <span><a>韶关华航丝苗米</a></span>
+                        <img src="/statics/img/web/old/first1.jpg" alt="">
+                        <span><a>韶关天堂生姜</a></span>
+                        <img class="first_title" src="/statics/img/web/old/1.png" alt="">
+                    </div> 
+                    <div class="old_list" style="display:none;">
+                        <img src="/statics/img/web/old/first4.jpg" alt="">
+                        <span><a>惠州甜金针菜</a></span>
+                        <img src="/statics/img/web/old/first3.jpg" alt="">
+                        <span><a>罗定富硒紫花生</a></span>
+                        <img src="/statics/img/web/old/first2.jpg" alt="">
+                        <span><a>韶关华航丝苗米</a></span>
+                        <img src="/statics/img/web/old/first1.jpg" alt="">
+                        <span><a>韶关天堂生姜</a></span>
+                        <img class="first_title" src="/statics/img/web/old/1.png" alt="">
+                    </div> 
+                </div> 
+            <div class="oldmore">
+                <a><img src="/statics/img/web/old/old_more.png" alt=""></a>
+            </div>
+            </div>  
+        </div>
 
     <!-- 1楼 -->
     <div class="floor" style="display: none;">
@@ -389,6 +488,25 @@
                             ), a = b)
                 }
             });
+        });
+        
+        var count=0;
+
+        $(".oldmore").click(function(){
+            count++;
+            var ol_num=$(".oldlist_wrap").children(".old_list").length;
+            if(count<ol_num){
+                // $(".old_list")[count-1].css("display","block");
+                document.getElementsByClassName("old_list")[count].style.display="block";
+                $(".oldlist_wrap").animate({top:"-248"*count+"px"},300);
+            }  
+            else{
+                count=0;
+                $(".oldlist_wrap").animate({top:"0px"},300);
+                for(var i=1;i<=ol_num;i++){
+                    document.getElementsByClassName("old_list")[i].style.display="none";
+                }
+            }        
         });
 
     </script>
