@@ -52,7 +52,7 @@ ul,li{padding: 0;margin: 0;}
 #rule{background: #000; height: 66px;text-align: center;}
 #rule a{line-height: 66px;text-align:center;color:#88c31d;font-size:14px;}
 #rule a:hover{text-decoration: underline;}
-#bottom{background: url(/statics/img/web/bottombg.png) center;height: 195px;}
+#bottom{background: url(/statics/img/web/bottombg.png) center repeat-y;height: 195px;}
 #bottom h3{margin:0;padding: 30px 0 5px 0;text-align:center;color:#FFF;font-size:19px;font-weight:normal;}
 #bottom .copy{margin:0;padding: 0;text-align:center;color:#FFF;font-size:13px;font-weight:normal;}
 #bottom .navlink{text-align:center;margin: 2px; color:#FFF;font-size:13px;}

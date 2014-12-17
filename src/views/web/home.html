@@ -452,18 +452,18 @@
                     b < a && ($.support?(
                             $(".slide_box").stop().animate({backgroundPositionX: "1143px"}, 0).removeClass("bg1 bg2 bg3 bg4").addClass(c),
                                     $("#box_1").parent().stop().animate({backgroundPositionX: "0"}, 100),
-                                    $("#box_2").parent().stop().animate({backgroundPositionX:"-285px"},200),
-                                    $("#box_3").parent().stop().animate({backgroundPositionX: "-570px"},300),
-                                    $("#box_4").parent().stop().animate({backgroundPositionX: "-855px"},400,
+                                    $("#box_2").parent().stop().animate({backgroundPositionX:"-221px"},200),
+                                    $("#box_3").parent().stop().animate({backgroundPositionX: "-442px"},300),
+                                    $("#box_4").parent().stop().animate({backgroundPositionX: "-663px"},400,
                                             function(){
                                                 $(".slide_box,#slide").removeClass("bg1 bg2 bg3 bg4").addClass(c);
                                             }
                                     )):(
                             $(".slide_box").stop().animate({backgroundPosition:"980px 0"},0).removeClass("bg1 bg2 bg3 bg4").addClass(c),
                                     $("#box_1").parent().stop().animate({backgroundPosition:"0 0"},100),
-                                    $("#box_2").parent().stop().animate({backgroundPosition:"-285px 0"},200),
-                                    $("#box_3").parent().stop().animate({backgroundPosition:"-570px 0"},300),
-                                    $("#box_4").parent().stop().animate({backgroundPosition: "-855px 0"},400,
+                                    $("#box_2").parent().stop().animate({backgroundPosition:"-221px 0"},200),
+                                    $("#box_3").parent().stop().animate({backgroundPosition:"-442px 0"},300),
+                                    $("#box_4").parent().stop().animate({backgroundPosition: "-663px 0"},400,
                                             function(){
                                                 $(".slide_box,#slide").removeClass("bg1 bg2 bg3 bg4").addClass(c)
                                             }
@@ -474,9 +474,9 @@
                                                 $(".slide_box,#slide").removeClass("bg1 bg2 bg3 bg4").addClass(c)
                                             }
                                     ),
-                                    $("#box_2").parent().stop().animate({ backgroundPositionX: "-285px" }, 300),
-                                    $("#box_3").parent().stop().animate({backgroundPositionX: "-570px"}, 200),
-                                    $("#box_4").parent().stop().animate({backgroundPositionX: "-855px"}, 100)):($(".slide_box").stop().animate({backgroundPosition:"-1143px 0"},0).removeClass("bg1 bg2 bg3 bg4").addClass(c),
+                                    $("#box_2").parent().stop().animate({ backgroundPositionX: "-221px" }, 300),
+                                    $("#box_3").parent().stop().animate({backgroundPositionX: "-442px"}, 200),
+                                    $("#box_4").parent().stop().animate({backgroundPositionX: "-663px"}, 100)):($(".slide_box").stop().animate({backgroundPosition:"-1143px 0"},0).removeClass("bg1 bg2 bg3 bg4").addClass(c),
                             $("#box_1").stop().parent().animate({backgroundPosition:"0 0"},400,
                                     function(){
                                         $(".slide_box,#slide").removeClass("bg1 bg2 bg3 bg4").addClass(c)
@@ -484,7 +484,7 @@
                             ),
                             $("#box_2").parent().stop().animate({backgroundPosition:"-285px 0"}, 300),
                             $("#box_3").parent().stop().animate({backgroundPosition:"-570px 0"},200),
-                            $("#box_4").parent().stop().animate({backgroundPosition: "-855px 0"},100)
+                            $("#box_4").parent().stop().animate({backgroundPosition: "-663px 0"},100)
                             ), a = b)
                 }
             });
@@ -496,15 +496,17 @@
             count++;
             var ol_num=$(".oldlist_wrap").children(".old_list").length;
             if(count<ol_num){
-                // $(".old_list")[count-1].css("display","block");
                 document.getElementsByClassName("old_list")[count].style.display="block";
-                $(".oldlist_wrap").animate({top:"-248"*count+"px"},300);
+                // $(".oldlist_wrap").animate({top:"-248"*count+"px"},300);
+                // alert("ok");
+                $(".recomand_list").animate({height:("290"*(count+1)-40*(count-1))+"px"},300);
             }  
             else{
                 count=0;
-                $(".oldlist_wrap").animate({top:"0px"},300);
+                $(".recomand_list").animate({height:"355px"},300);
+                // $(".oldlist_wrap").animate({top:"0px"},300);
                 for(var i=1;i<=ol_num;i++){
-                    document.getElementsByClassName("old_list")[i].style.display="none";
+                document.getElementsByClassName("old_list")[i].style.display="none";
                 }
             }        
         });
