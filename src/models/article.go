@@ -92,7 +92,7 @@ func GetArticleListByCategory(Category string) ([]Article, error) {
 	if err != nil {
 		return nil, err
 	}
-	rows, err := db.Query("select * from `tb_article` where `Category`=? order by `Id` desc", Category)
+	rows, err := db.Query("select * from `tb_article` where `Status`>0 and `Category`=? order by `Id` desc", Category)
 	defer rows.Close()
 	if err != nil {
 		return nil, err
