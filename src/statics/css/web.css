@@ -1,4 +1,4 @@
-body{min-width:1145px;font-size: 12px; Font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", STXihei, "华文细黑", Heiti, "黑体", sans-serif;margin:0px;background: url(/statics/img/web/index_bg.png);background-position: top center;}
+body{min-width:1145px;font-size: 12px; Font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", STXihei, "华文细黑", Heiti, "黑体", sans-serif;margin:0px;background: url(/statics/img/web/home_bg.png) repeat-y;background-position: top center;}
 a{text-decoration: none;color: #555;}
 a:hover{cursor: pointer;}
 img{border:none;}
@@ -21,11 +21,13 @@ ul,li{padding: 0;margin: 0;}
 #top .icon-down{position: absolute; top: 15px;right: 16px;}
 #top a:hover{color: #009900;}
 
-#logo_search{height: 125px;background-color: rgba(255,255,255,0.6);width: 100%;}
+#logo_search{height: 125px;background-color: rgba(255,255,255,0.7);width: 100%;}
 #logo{position: relative;height: 74px;text-align: center;}
 #logo_search .nav_left,#logo_search .nav_right{display: inline-block;}
 #logo_search .nav_left{margin-right: 50px;}
+#logo_search .nav_left a{margin-right: 15px;}
 #logo_search .nav_right{margin-left: 50px;}
+#logo_search .nav_right a{margin-left: 15px;}
 
 #ecepleft_picwrap{display: inline-block;width: 225px;}
 #ecepright_wrap{display: inline-block;width: 540px;margin-left: 70px}
@@ -112,7 +114,8 @@ ul,li{padding: 0;margin: 0;}
 
 /* goods floor style */
 .floor{width: 1144px;margin: 0 auto 30px auto;position: relative;}
-.floortop{position:relative;margin-bottom: -10px;height: 125px;text-align: center;z-index: 100;}
+.floortop{position:relative;height: 125px;text-align: center;z-index: 100;}
+.recomand_floortop{margin-bottom: -10px;}
 .floor .floorleft{float:left;width:190px;margin-right:2px;height: 482px;}
 .floor .floorleft .top{height: 170px;}
 .floor .floorleft .top img{height: 170px;width: 190px;}
