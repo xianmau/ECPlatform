@@ -29,8 +29,8 @@ ul,li{padding: 0;margin: 0;}
 #logo_search .nav_right{margin-left: 50px;}
 #logo_search .nav_right a{margin-left: 15px;}
 
-#ecepleft_picwrap{display: inline-block;width: 225px;}
-#ecepright_wrap{display: inline-block;width: 540px;margin-left: 70px}
+#ecepleft_picwrap{display: inline-block;width: 225px;margin-left: 30px;}
+#ecepright_wrap{display: inline-block;width: 550px;margin-left: 70px}
 #ecep_list{display: inline-block;width: 205px;font-size: 15px;font-family: "SimSun";color: rgb(8, 8, 8);vertical-align: top;line-height: 30px;padding: 15px 0px 0px 50px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 .ecepright_up{border-bottom: 2px solid #a8b0ae;height: 192px;}
 .ecepright_down{margin-top: 10px;height: 192px;}
@@ -114,7 +114,7 @@ ul,li{padding: 0;margin: 0;}
 
 /* goods floor style */
 .floor{width: 1144px;margin: 0 auto 30px auto;position: relative;}
-.floortop{position:relative;height: 125px;text-align: center;z-index: 100;}
+.floortop{position:relative;height: 125px;text-align: center;z-index: 100;margin-bottom: 15px;}
 .recomand_floortop{margin-bottom: -10px;}
 .floor .floorleft{float:left;width:190px;margin-right:2px;height: 482px;}
 .floor .floorleft .top{height: 170px;}
