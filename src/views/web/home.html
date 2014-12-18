@@ -116,7 +116,7 @@
             <img src="/statics/img/web/ecepbar/ecepleft_title.png" alt="">
             <img src="/statics/img/web/ecepbar/ecepleft_pic.png" alt="">
         </div>
-            <ul id="ecep_list">
+            <ul id="ecep_list_left">
                 {{range $i, $a := .AL1}}
                     <li><a href="/web/article?id={{$a.Id}}">{{$a.Title}}</a></li>
                 {{end}}
@@ -124,7 +124,7 @@
         <div id="ecepright_wrap">
             <div class="ecepright_up">
                 <img src="/statics/img/web/ecepbar/ecepright_pic1.png" alt="">
-                <ul id="ecep_list">
+                <ul id="ecep_list_right">
                     {{range $i, $a := .AL2}}
                     <li><a href="/web/article?id={{$a.Id}}">{{$a.Title}}</a></li>
                     {{end}}
@@ -132,7 +132,7 @@
             </div>
             <div class="ecepright_down">
                 <img src="/statics/img/web/ecepbar/ecepright_pic2.png" alt="">
-                <ul id="ecep_list">
+                <ul id="ecep_list_right">
                     {{range $i, $a := .AL3}}
                     <li><a href="/web/article?id={{$a.Id}}">{{$a.Title}}</a></li>
                     {{end}}
