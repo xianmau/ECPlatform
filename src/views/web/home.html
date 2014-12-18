@@ -313,9 +313,7 @@
             count++;
             var ol_num=$(".oldlist_wrap").children(".old_list").length;
             if(count<ol_num){
-                document.getElementsByClassName("old_list")[count].style.display="block";
-                // $(".oldlist_wrap").animate({top:"-248"*count+"px"},300);
-                // alert("ok");
+                $(".old_list:eq("+count+")").css("display","block");
                 $(".recomand_list").animate({height:("290"*(count+1)-40*(count-1))+"px"},300);
             }  
             else{
@@ -323,7 +321,7 @@
                 $(".recomand_list").animate({height:"355px"},300);
                 // $(".oldlist_wrap").animate({top:"0px"},300);
                 for(var i=1;i<=ol_num;i++){
-                document.getElementsByClassName("old_list")[i].style.display="none";
+                $(".old_list:eq("+i+")").css("display","none");
                 }
             }        
         });
