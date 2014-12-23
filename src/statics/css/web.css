@@ -30,13 +30,13 @@ ul,li{padding: 0;margin: 0;}
 #logo_search .nav_right{margin-left: 50px;}
 #logo_search .nav_right a{margin-left: 15px;}
 
-#ecepleft_picwrap{display: inline-block;width: 225px;margin-left: 30px;float: left;}
-#ecepright_wrap{display: inline-block;width: 550px;margin-left: 70px;}
-#ecep_list_left{display: inline-block;width: 205px;font-size: 15px;font-family: "SimSun";color: rgb(8, 8, 8);vertical-align: top;line-height: 30px;padding: 15px 0px 0px 50px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;float: left;}
-#ecep_list_right{display: inline-block;width: 205px;font-size: 15px;font-family: "SimSun";color: rgb(8, 8, 8);vertical-align: top;line-height: 30px;padding: 15px 0px 0px 50px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+#ecepleft_picwrap{width: 225px;float: left;display: inline-block;}
+#ecepright_wrap{width: 565px;margin-left: 70px;display: inline-block;}
+#ecep_listwrap{width: 230px;font-size: 15px;font-family: "SimSun";color: rgb(8, 8, 8);vertical-align: top;line-height: 30px;padding: 15px 0px 0px 50px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;float: left;display: inline-block;margin-left: 20px;}
+#ecep_list_right{display: inline-block;width: 215px;font-size: 15px;font-family: "SimSun";color: rgb(8, 8, 8);vertical-align: top;line-height: 30px;padding: 15px 0px 0px 50px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;margin-left: 15px;}
 .ecepright_up{border-bottom: 2px solid #a8b0ae;height: 192px;}
 .ecepright_down{margin-top: 10px;height: 192px;}
-#ecep_list li a{width: 100%;display: inline-block;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;vertical-align: top;}
+#ecep_listwrap li a，#ecep_list_right li a{width: 100%;display: inline-block;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;vertical-align: top;}
 
 #nav{line-height: 50px; text-align: center;border-top: 2px solid #e2e2e2; border-bottom: 2px solid #e2e2e2;}
 #nav .item{font-size: 15px; padding:0 26px;color: #333; border-left: 1px solid #CCC; position: relative;}
@@ -115,7 +115,7 @@ ul,li{padding: 0;margin: 0;}
 }
 
 /* goods floor style */
-.floor{width: 1144px;margin: 0 auto 30px auto;position: relative;}
+.floor{width: 1163px;margin: 0 auto 30px auto;position: relative;}
 .floortop{position:relative;height: 125px;text-align: center;z-index: 100;margin-bottom: 15px;}
 .recomand_floortop{margin-bottom: -10px;}
 .floor .floorleft{float:left;width:190px;margin-right:2px;height: 482px;}
