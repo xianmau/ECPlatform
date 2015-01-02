@@ -8,7 +8,7 @@
     <title>首页 - 一村一品</title>
     {{template "styles"}}
     <style type="text/css">
-		body{background: url(/statics/img/web/home_bg.jpg) no-repeat;background-position: top center;}
+		body{background: url(/statics/img/web/home_bg.jpg) repeat-y;background-position: top center;}
         /* slide */
         .slide{width:1163px;height:330px;overflow:hidden;margin:0 auto;background:#000;border-top:1px solid #FFF;}
         .slide_box{width:220px;height:330px;overflow:hidden;position:relative;float:left;border-right:1px solid #FFF;cursor:pointer;background-repeat:no-repeat}
@@ -53,6 +53,11 @@
     <!--main-->
 
     <!-- 一村一品模块 -->
+    <!-- <div class="panel"> -->
+        <div id="bslider">
+            <img src="/statics/img/web/bslider01.jpg" alt="">
+        <!-- </div> -->
+    </div>    
     <div class="panel">
         <div class="slide clearfix bg1" id="slide">
             <div class="slide_box bg1" style="background-position:0 0;">
@@ -112,32 +117,35 @@
         </div>
     </div><!--slide end-->
 
-    <div class="floor">
-        <div id="ecepleft_picwrap">
-            <img src="/statics/img/web/ecepbar/ecepleft_title.png" alt="">
-            <img src="/statics/img/web/ecepbar/ecepleft_pic.png" alt="">
-        </div>
-            <ul id="ecep_listwrap">
-                {{range $i, $a := .AL1}}
-                    <li><a href="/web/article?id={{$a.Id}}">{{$a.Title}}</a></li>
-                {{end}}
-            </ul>
-        <div id="ecepright_wrap">
-            <div class="ecepright_up">
-                <img src="/statics/img/web/ecepbar/ecepright_pic1.png" alt="">
-                <ul id="ecep_list_right">
-                    {{range $i, $a := .AL2}}
-                    <li><a href="/web/article?id={{$a.Id}}">{{$a.Title}}</a></li>
-                    {{end}}
-                </ul>
-            </div>
-            <div class="ecepright_down">
-                <img src="/statics/img/web/ecepbar/ecepright_pic2.png" alt="">
-                <ul id="ecep_list_right">
-                    {{range $i, $a := .AL3}}
-                    <li><a href="/web/article?id={{$a.Id}}">{{$a.Title}}</a></li>
-                    {{end}}
-                </ul>
+    <div class="recomand_wrap">
+        <div class="recomand_list">
+            <div class="oldlist_wrap">
+                <div class="old_list">
+                    <div class="oldlist_box">
+                        <img src="/statics/img/web/old/first4.jpg" alt="">
+                        <span><a href="/web/goods?id=187">惠州甜金针菜</a></span>
+                    </div>     
+                    <div class="oldlist_box">
+                        <img src="/statics/img/web/old/first3.jpg" alt="">
+                        <span><a href="/web/goods?id=184">罗定富硒紫花生</a></span>
+                    </div>  
+                    <div class="oldlist_box">
+                        <img src="/statics/img/web/old/first2.jpg" alt="">
+                        <span><a href="/web/goods?id=185">韶关华航丝苗米</a></span>
+                    </div>  
+                    <div class="oldlist_box">
+                        <img src="/statics/img/web/old/first1.jpg" alt="">
+                        <span><a href="/web/goods?id=186">韶关天堂生姜</a></span>
+                    </div>  
+                    <div class="oldlist_box">
+                        <img src="/statics/img/web/old/first4.jpg" alt="">
+                        <span><a href="/web/goods?id=187">惠州甜金针菜</a></span>
+                    </div>  
+                    <div class="oldtitle_wrap">
+                        <img class="first_title" src="/statics/img/web/old/recommand_title.png" alt="">
+                        <img class="oldmore" src="/statics/img/web/old/more5.png" alt="">
+                    </div>                                            
+                </div>
             </div>
         </div>
     </div>
@@ -189,29 +197,37 @@
         <div class="clear"></div>
     </div>
 
-    <div class="recomand_wrap">
-        <div class="floortop recomand_floortop">
-            <img src="/statics/img/web/recomand.png" alt="">
+    <div class="floor">
+        <div id="ecepleft_picwrap">
+            <img src="/statics/img/web/ecepbar/ecepleft_title.png" alt="">
+            <img src="/statics/img/web/ecepbar/ecepleft_pic.png" alt="">
         </div>
-        <div class="recomand_list">
-            <div class="oldlist_wrap">
-                <div class="old_list">
-                    <img src="/statics/img/web/old/first4.jpg" alt="">
-                    <span><a href="/web/goods?id=187">惠州甜金针菜</a></span>
-                    <img src="/statics/img/web/old/first3.jpg" alt="">
-                    <span><a href="/web/goods?id=184">罗定富硒紫花生</a></span>
-                    <img src="/statics/img/web/old/first2.jpg" alt="">
-                    <span><a href="/web/goods?id=185">韶关华航丝苗米</a></span>
-                    <img src="/statics/img/web/old/first1.jpg" alt="">
-                    <span><a href="/web/goods?id=186">韶关天堂生姜</a></span>
-                    <img class="first_title" src="/statics/img/web/old/1.png" alt="">
-                </div>
+            <ul id="ecep_listwrap">
+                {{range $i, $a := .AL1}}
+                    <li><a href="/web/article?id={{$a.Id}}">{{$a.Title}}</a></li>
+                {{end}}
+            </ul>
+        <div id="ecepright_wrap">
+            <div class="ecepright_up">
+                <img src="/statics/img/web/ecepbar/ecepright_pic1.png" alt="">
+                <ul id="ecep_list_right">
+                    {{range $i, $a := .AL2}}
+                    <li><a href="/web/article?id={{$a.Id}}">{{$a.Title}}</a></li>
+                    {{end}}
+                </ul>
             </div>
-        <div class="oldmore">
-            <a><img src="/statics/img/web/old/old_more.png" alt=""></a>
-        </div>
+            <div class="ecepright_down">
+                <img src="/statics/img/web/ecepbar/ecepright_pic2.png" alt="">
+                <ul id="ecep_list_right">
+                    {{range $i, $a := .AL3}}
+                    <li><a href="/web/article?id={{$a.Id}}">{{$a.Title}}</a></li>
+                    {{end}}
+                </ul>
+            </div>
         </div>
     </div>
+
+    
 
 
     {{template "footerpart" .}}
