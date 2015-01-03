@@ -53,10 +53,26 @@
     <!--main-->
 
     <!-- 一村一品模块 -->
-    <!-- <div class="panel"> -->
-        <div id="bslider">
-            <img src="/statics/img/web/bslider01.jpg" alt="">
-        <!-- </div> -->
+    <div id="bslider">
+        <div class="fullwidthbanner-container slider-main">
+            <div class="fullwidthabnner">
+                <ul id="revolutionul" style="display:none;">            
+                        <li data-transition="fade" data-slotamount="8" data-masterspeed="300" data-delay="6400" >
+                            <a href="#"> <img src="/statics/img/web/bslider01.jpg" alt=""></a>   
+                        </li>
+                        <li data-transition="fade" data-slotamount="7" data-masterspeed="300" data-delay="6400" >
+                            <a href="#"><img src="/statics/img/web/bslider02.jpg" alt=""></a>
+                        </li>
+                        <li data-transition="fade" data-slotamount="8" data-masterspeed="300" data-delay="6400" >
+                            <a href="#"><img src="/statics/img/web/bslider01.jpg" alt=""></a>
+                        </li>  
+                        <li data-transition="fade" data-slotamount="8" data-masterspeed="300" data-delay="6400" >
+                            <a href="#"><img src="/statics/img/web/bslider02.jpg" alt=""></a>                        
+                        </li>
+                </ul>
+                <div class="tp-bannertimer tp-bottom"></div><!--进度条-->
+            </div>
+        </div>
     </div>    
     <div class="panel">
         <div class="slide clearfix bg1" id="slide">
@@ -143,7 +159,7 @@
                     </div>  
                     <div class="oldtitle_wrap">
                         <img class="first_title" src="/statics/img/web/old/recommand_title.png" alt="">
-                        <img class="oldmore" src="/statics/img/web/old/more5.png" alt="">
+                        <a href=""><img class="oldmore" src="/statics/img/web/old/more5.png" alt=""></a>
                     </div>                                            
                 </div>
             </div>
@@ -234,6 +250,13 @@
 
     {{template "scripts"}}
     <script src="/statics/js/scroll.js"></script>
+    <script type="text/javascript" src="/statics/js/sliderjs/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/statics/js/sliderjs/bootstrap.min.js"></script>      
+    <script type="text/javascript" src="/statics/js/sliderjs/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="/statics/js/sliderjs/jquery.themepunch.revolution.min.js"></script> 
+    <script type="text/javascript" src="/statics/js/sliderjs/jquery.bxslider.min.js"></script>
+    <script src="/statics/js/sliderjs/app.js"></script>
+    <script src="/statics/js/sliderjs/index.js"></script> 
     <script>
         $(function(){
             // 幻灯片图片滑动
@@ -291,23 +314,28 @@
             });
         });
         
-        var count=0;
+        // var count=0;
 
-        $(".oldmore").click(function(){
-            count++;
-            var ol_num=$(".oldlist_wrap").children(".old_list").length;
-            if(count<ol_num){
-                $(".old_list:eq("+count+")").css("display","block");
-                $(".recomand_list").animate({height:("290"*(count+1)-40*(count-1))+"px"},300);
-            }  
-            else{
-                count=0;
-                $(".recomand_list").animate({height:"355px"},300);
-                // $(".oldlist_wrap").animate({top:"0px"},300);
-                for(var i=1;i<=ol_num;i++){
-                $(".old_list:eq("+i+")").css("display","none");
-                }
-            }        
+        // $(".oldmore").click(function(){
+        //     count++;
+        //     var ol_num=$(".oldlist_wrap").children(".old_list").length;
+        //     if(count<ol_num){
+        //         $(".old_list:eq("+count+")").css("display","block");
+        //         $(".recomand_list").animate({height:("290"*(count+1)-40*(count-1))+"px"},300);
+        //     }  
+        //     else{
+        //         count=0;
+        //         $(".recomand_list").animate({height:"355px"},300);
+        //         // $(".oldlist_wrap").animate({top:"0px"},300);
+        //         for(var i=1;i<=ol_num;i++){
+        //         $(".old_list:eq("+i+")").css("display","none");
+        //         }
+        //     }        
+        // });
+ jQuery(document).ready(function() {
+            App.init();    
+            App.initBxSlider();
+            Index.initRevolutionSlider();                    
         });
 
     </script>
