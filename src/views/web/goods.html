@@ -4,6 +4,22 @@
 	<meta charset="UTF-8" />
 	<title>{{.goods.Title}} - {{.goods.Category}} - 一村一品</title>
     {{template "styles"}}
+
+    <style>
+        .buy-collect{position: relative;}
+        .go-buy-btn{display: block;float:left;width: 150px;line-height: 50px;background-color: #ffa01c;text-align: center;font-size: 18px;color: #000;font-weight: bold;}
+        .preorder-btn{display: block;float:left;width: 100px;line-height: 50px;background-color: #6482ff;text-align: center;font-size: 18px;color: #000;font-weight: bold;}
+        .preorder-btn-dis{display: block;float:left;width: 100px;line-height: 50px;background-color: #abb7b2;text-align: center;font-size: 18px;color: #ffffff;font-weight: bold;}
+
+
+        .preorder-form{display:none;position: absolute;width: 400px;top:70px;left:0px;height: 280px;border: 1px solid #CCC;background: #FEFEFE;z-index: 10000;}
+        .preorder-form h3{padding: 10px;text-align: center; font-size: 14px;margin: 10px 0 0 0;}
+        .preorder-form div{padding: 10px; font-size: 14px; text-align: center;}
+        .preorder-form div input{width: 280px;}
+        .preorder-form div a{border: 1px solid #CCC;padding: 5px 10px;margin: 3px;}
+        .preorder-form div a:hover{background: #CCC;}
+    </style>
+
 </head>
 <body>
     {{template "headerpart" .}}
@@ -45,8 +61,40 @@
             </div>
 
             <div class="buy-collect">
-                <a href="{{.goods.BuyLink}}" target="_blank"><img src="/statics/img/web/btn_gotobuy.png" alt=""/></a>
+                <a href="{{.goods.BuyLink}}" class="go-buy-btn" target="_blank">去购买</a>
+                {{if eq .goods.Id 187}}
+                    <a href="javascript:void(0);" class="preorder-btn">预订</a>
+                {{else}}
+                    <a href="javascript:void(0);" class="preorder-btn-dis">预订</a>
+                {{end}}
                 <span><img src="/statics/img/web/btn_collect.png" alt=""/></span>
+                <div class="preorder-form">
+                    <h3>请填写预约信息</h3>
+                    <div>
+                        <label for="preorderName">姓名：</label>
+                        <input type="text" id="preorderName" value="" />
+                    </div>
+
+                    <div>
+                        <label for="preorderTel">电话：</label>
+                        <input type="text" id="preorderTel" value="" />
+                    </div>
+
+                    <div>
+                        <label for="preorderAddr">地址：</label>
+                        <input type="text" id="preorderAddr" value="" />
+                    </div>
+
+                    <div>
+                        <label for="preorderAddr">数量：</label>
+                        <input type="text" id="preorderNum" value="1" />
+                    </div>
+
+                    <div>
+                        <a href="javascript:void(0);" class="preorder-btn-submit">提交</a>
+                        <a href="javascript:void(0);" class="preorder-btn-cancel">取消</a>
+                    </div>
+                </div>
             </div>
 
             <div class="share">
@@ -163,6 +211,64 @@
             $('.pic .small').hover(function(){
                 var url = $(this).attr("src");
                 $('.pic .big').attr("src", url);
+            });
+
+            // 预订事件
+            $('.preorder-btn').click(function(){
+                $('.preorder-form').slideDown(500);
+            });
+
+            $('.preorder-btn-submit').click(function(){
+                var Name = $('#preorderName').val();
+                var Tel = $('#preorderTel').val();
+                var Addr = $('#preorderAddr').val();
+                var Num = $('#preorderNum').val();
+
+                if ($.trim(Name) == ""){
+                    alert('名称不能为空');
+                    return false;
+                }
+                if ($.trim(Tel) == ""){
+                    alert('电话不能为空');
+                    return false;
+                }
+                if ($.trim(Addr) == ""){
+                    alert('地址不能为空');
+                    return false;
+                }
+                if (!Num.match(/^[1-9]+[0-9]*$/)){
+                    alert('数量必须大于0');
+                    return false;
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: '/web/preorder/create',
+                    data: {
+                        gid: {{.goods.Id}},
+                        name: $.trim(Name),
+                        tel: $.trim(Tel),
+                        addr: $.trim(Addr),
+                        num: $.trim(Num)
+                    },
+                    success: function(data){
+                        if(data == "success"){
+                            alert("预订成功！");
+                            $('#preorderName').val('');
+                            $('#preorderTel').val('');
+                            $('#preorderAddr').val('');
+                            $('#preorderNum').val('0');
+                            $('.preorder-form').slideUp(500);
+                        }else{
+                            alert("系统繁忙，请稍后再试！")
+                        }
+                    },
+                    dataType: 'text'
+                });
+
+            });
+
+            $('.preorder-btn-cancel').click(function(){
+                $('.preorder-form').slideUp(500);
             });
         });
 

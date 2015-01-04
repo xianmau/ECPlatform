@@ -37,7 +37,7 @@ func registerWeb() {
 	http.HandleFunc("/web/message", web.Message)
 	http.HandleFunc("/web/message/create", web.MessageCreate)
 
-
+	http.HandleFunc("/web/preorder/create", web.ProOrderCreate)
 
 	// 单页面
 	http.HandleFunc("/web/service", web.Service)
