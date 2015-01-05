@@ -41,12 +41,13 @@
                 </div>
                 <div class="form-group">
                     <label for="CreateOrigin">Origin</label>
-                    <select class="form-control" id="CreateOrigin">
+                    <input type="text" class="form-control" id="CreateOrigin" placeholder="Enter the source" />
+                    <!--<select class="form-control" id="CreateOrigin">
                         <option value="">请选择</option>
                         {{range $index, $item := .OriginList}}
                         <option>{{$item.Name}}</option>
                         {{end}}
-                    </select>
+                    </select>-->
                 </div>
                 <div class="form-group">
                     <label for="CreateUnit">Unit</label>
