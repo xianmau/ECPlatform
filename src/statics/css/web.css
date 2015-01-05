@@ -32,8 +32,8 @@ ul,li{padding: 0;margin: 0;}
 
 #ecepleft_picwrap{width: 225px;float: left;display: inline-block;}
 #ecepright_wrap{width: 565px;margin-left: 70px;display: inline-block;}
-#ecep_listwrap{width: 230px;font-size: 15px;font-family: "SimSun";color: rgb(8, 8, 8);vertical-align: top;line-height: 30px;padding: 15px 0px 0px 50px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;float: left;display: inline-block;margin-left: 20px;}
-#ecep_list_right{display: inline-block;width: 215px;font-size: 15px;font-family: "SimSun";color: rgb(8, 8, 8);vertical-align: top;line-height: 30px;padding: 15px 0px 0px 50px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;margin-left: 15px;}
+#ecep_listwrap{width: 230px;font-size: 15px;font-family: "SimSun";color: rgb(8, 8, 8);vertical-align: top;line-height: 30px;padding: 15px 0px 0px 50px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;float: left;display: inline-block;}
+#ecep_list_right{display: inline-block;width: 215px;font-size: 15px;font-family: "SimSun";color: rgb(8, 8, 8);vertical-align: top;line-height: 30px;padding: 15px 0px 0px 50px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 .ecepright_up{border-bottom: 2px solid #a8b0ae;height: 192px;}
 .ecepright_down{margin-top: 10px;height: 192px;}
 #ecep_listwrap li a，#ecep_list_right li a{width: 100%;display: inline-block;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;vertical-align: top;}
