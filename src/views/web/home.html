@@ -8,7 +8,7 @@
     <title>首页 - 一村一品</title>
     {{template "styles"}}
     <style type="text/css">
-		body{background: url(/statics/img/web/bottom_banner.png) bottom center no-repeat;background-position: top center;background-color: #fdfcfa;}
+		body{background: url(/statics/img/web/bottom_banner.png) no-repeat;background-position: center 97%;background-color: #fdfcfa;}
         /* slide */
         .slide{width:1163px;height:330px;overflow:hidden;margin:0 auto;background:#000;border-top:1px solid #FFF;}
         .slide_box{width:220px;height:330px;overflow:hidden;position:relative;float:left;border-right:1px solid #FFF;cursor:pointer;background-repeat:no-repeat}
@@ -169,7 +169,7 @@
                     </div>  
                     <div class="oldtitle_wrap">
                         <img class="first_title" src="/statics/img/web/old/recommand_title.png" alt="">
-                        <a href=""><img class="oldmore" src="/statics/img/web/old/more5.png" alt=""></a>
+                        <a href="{{UrlEncode "/web/gcat?c=一品推荐"}}"><img class="oldmore" src="/statics/img/web/old/more5.png" alt=""></a>
                     </div>                                            
                 </div>
             </div>
