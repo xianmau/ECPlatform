@@ -78,13 +78,13 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		data["F4_DOWN"] = F4[4]
 		data["F4_DOWNs"] = F4[5:8]
 
-		F4_SubCol, _ := models.GetSubGoodsCategoryList("华农出品")
+		F4_SubCol, _ := models.GetSubGoodsCategoryList("高校出品")
 		if len(F4_SubCol) > 6 {
 			F4_SubCol = F4_SubCol[0:6]
 		}
 		data["F4_SubCol"] = F4_SubCol
 
-		F4_HotGoods, _ := models.GetHotGoodsListByCategory("华农出品")
+		F4_HotGoods, _ := models.GetHotGoodsListByCategory("高校出品")
 		if len(F4_HotGoods) > 7 {
 			F4_HotGoods = F4_HotGoods[0:7]
 		}

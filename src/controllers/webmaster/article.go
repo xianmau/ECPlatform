@@ -147,10 +147,13 @@ func ArticleCreate(w http.ResponseWriter, r *http.Request) {
 
 		form_title := r.PostFormValue("title")
 		form_category := r.PostFormValue("category")
+		form_abstract := r.PostFormValue("abstract")
+		form_image := r.PostFormValue("image")
 		form_content := r.PostFormValue("content")
 		form_status := r.PostFormValue("status")
+		form_remark := r.PostFormValue("remark")
 
-		err := models.CreateArticle(form_title, form_category, form_content, form_status)
+		err := models.CreateArticle(form_title, form_category, form_abstract, form_image, form_content, form_status, form_remark)
 		if err != nil {
 			log.Error(err.Error())
 			return
@@ -251,10 +254,13 @@ func ArticleEdit(w http.ResponseWriter, r *http.Request) {
 		form_id := r.PostFormValue("id")
 		form_title := r.PostFormValue("title")
 		form_category := r.PostFormValue("category")
+		form_abstract := r.PostFormValue("abstract")
+		form_image := r.PostFormValue("image")
 		form_content := r.PostFormValue("content")
 		form_status := r.PostFormValue("status")
+		form_remark := r.PostFormValue("remark")
 
-		err := models.EditArticle(form_id, form_title, form_category, form_content, form_status)
+		err := models.EditArticle(form_id, form_title, form_category, form_abstract, form_image, form_content, form_status, form_remark)
 		if err != nil {
 			log.Error(err.Error())
 			return
