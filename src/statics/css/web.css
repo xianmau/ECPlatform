@@ -38,7 +38,7 @@ ul,li{padding: 0;margin: 0;}
 .ecepright_down{margin-top: 10px;height: 192px;}
 #ecep_listwrap li a{width: 230px;display: inline-block;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;vertical-align: top;font-size: 18px;}
 #ecep_list_right li a{width: 215px;vertical-align: top;display: inline-block;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
-#ecep_listwrap li p{font-size: 12px;line-height: 18px;color: #380a07;}
+#ecep_listwrap li p{font-size: 14px;line-height: 22px;color: #999190;}
 
 
 #nav{line-height: 50px; text-align: center;border-top: 2px solid #e2e2e2; border-bottom: 2px solid #e2e2e2;}
