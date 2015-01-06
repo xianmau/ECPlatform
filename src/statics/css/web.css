@@ -37,7 +37,7 @@ ul,li{padding: 0;margin: 0;}
 .ecepright_up{border-bottom: 2px solid #a8b0ae;height: 192px;}
 .ecepright_down{margin-top: 10px;height: 192px;}
 #ecep_listwrap li a{width: 230px;display: inline-block;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;vertical-align: top;font-size: 18px;}
-#ecep_list_right li a{width: 230px;display: inline-block;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;vertical-align: top;}
+#ecep_list_right li a{width: 230px;vertical-align: top;}
 #ecep_listwrap li p{font-size: 12px;line-height: 18px;color: #380a07;}
 
 
@@ -148,6 +148,7 @@ ul,li{padding: 0;margin: 0;}
 .old_list{display: inline-block;}
 .oldlist_box{border: 1px solid #c8c8c7;float: left;margin-left: 10px;width: : 185px;height: 237px;}
 .oldlist_box  span{font-size: 16.629px;font-family: "Microsoft YaHei";color: rgb(44, 50, 44);display: block;text-align: left;margin-left: 12px;}
+.oldlist_box  span a{display: inline-block;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width:180px;}
 .oldlist_box img{margin: 12px;width: 185px;}
 .oldlist_wrap .first_title{margin-left: 0px;vertical-align: top;}
 .oldmore{margin-left: 8px;margin-top: 3px;}
