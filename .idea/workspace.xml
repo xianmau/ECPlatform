@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ed1288a-db1a-4a3f-9438-57bc09d9e434" name="Default" comment="kk">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/webmaster/article.go" afterPath="$PROJECT_DIR$/src/controllers/webmaster/article.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/article.go" afterPath="$PROJECT_DIR$/src/models/article.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/web/home.go" afterPath="$PROJECT_DIR$/src/controllers/web/home.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/web/home.html" afterPath="$PROJECT_DIR$/src/views/web/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/web/footerpart.html" afterPath="$PROJECT_DIR$/src/views/web/footerpart.html" />
     </list>
     <list id="86e3569d-fb54-4049-b4ef-dbfe2beece86" name="update" comment="" />
     <ignored path="ECPlatform.iws" />
@@ -51,7 +47,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/views/web/help.html" />
         <option value="$PROJECT_DIR$/src/views/web/service.html" />
         <option value="$PROJECT_DIR$/src/models/webhomeinfo.go" />
         <option value="$PROJECT_DIR$/src/controllers/webmaster/settinghomepage.go" />
@@ -102,6 +97,7 @@
         <option value="$PROJECT_DIR$/src/controllers/webmaster/article.go" />
         <option value="$PROJECT_DIR$/src/views/web/home.html" />
         <option value="$PROJECT_DIR$/src/controllers/web/home.go" />
+        <option value="$PROJECT_DIR$/src/views/web/footerpart.html" />
       </list>
     </option>
   </component>
@@ -278,28 +274,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ECPlatform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ECPlatform" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -717,12 +691,12 @@
       <workItem from="1420377751361" duration="10879000" />
       <workItem from="1420474711436" duration="4355000" />
       <workItem from="1420549003956" duration="2299000" />
-      <workItem from="1420555783235" duration="4426000" />
+      <workItem from="1420555783235" duration="5095000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="522747000" />
+    <option name="totallyTimeSpent" value="523416000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -834,13 +808,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/controllers/webmaster/errorpage.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.47543582" vertical-offset="300" max-vertical-offset="931">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/webmaster/goods.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.545307" vertical-offset="5899" max-vertical-offset="6517">
@@ -1187,6 +1154,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25932205" vertical-offset="4274" max-vertical-offset="8113">
           <caret line="233" column="42" selection-start-line="233" selection-start-column="42" selection-end-line="233" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/web/footerpart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59038144" vertical-offset="233" max-vertical-offset="836">
+          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
           <folding />
         </state>
       </provider>
