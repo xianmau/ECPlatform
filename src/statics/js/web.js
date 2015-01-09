@@ -44,8 +44,6 @@ function SetNavActive() {
     }
 }
 
-
-
 ///////////////////////////////////////////
 
 function GetQueryString(name) {

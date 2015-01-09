@@ -9,6 +9,7 @@
     {{template "styles"}}
     <style type="text/css">
 		body{background: url(/statics/img/web/bottom_banner.png) no-repeat;background-position: center 97%;background-color: #fdfcfa;}
+
         /* slide */
         .slide{width:1163px;height:330px;overflow:hidden;margin:0 auto;background:#000;border-top:1px solid #FFF;}
         .slide_box{width:220px;height:330px;overflow:hidden;position:relative;float:left;border-right:1px solid #FFF;cursor:pointer;background-repeat:no-repeat}
@@ -48,14 +49,15 @@
         /*big slider*/
         .banner{ width: 100%;position: relative; overflow: hidden;}
         .banner-btn{display:none;}
-        .banner-btn a{display:block;line-height:40px;position:absolute;top:120px;width:40px;height:40px;background-color:#000;opacity:0.3;filter:alpha(opacity=30) color:rgb(255, 255, 255);overflow:hidden;z-index:4;}
+        .banner-btn a{display:block;line-height:40px;position:absolute;top:200px;width:40px;height:40px;background-color:#000;opacity:0.3;filter:alpha(opacity=30) color:rgb(255, 255, 255);overflow:hidden;z-index:4;}
         .prevBtn{left:5px;}
         .nextBtn{right:5px;}
         .banner-img{font-size:0;*word-spacing:-1px;/* IE6、7 */ letter-spacing:-3px;position:relative;}
         .banner-img li{display:inline-block;*display:inline;*zoom:1;/* IE6、7 */ vertical-align:top;letter-spacing:normal;word-spacing:normal;font-size:12px;}
-        .banner i{background:url(http://gtms01.alicdn.com/tps/i1/T1szNBFzlmXXX8QSDI-400-340.png)  no-repeat;width:15px;height:23px;cursor:pointer;margin:8px 0 0 12px;display:block;}
-        .banner .nextBtn i{background-position:-200px -24px;}
-        .banner .prevBtn i{background-position:-200px 0px;}
+        .banner-img a{display: block;width: 100%;height: 440px;}
+        .banner i{/*background:url(http://gtms01.alicdn.com/tps/i1/T1szNBFzlmXXX8QSDI-400-340.png)  no-repeat;*/width:15px;height:23px;cursor:pointer;margin:8px 0 0 12px;display:block;}
+        .banner .nextBtn i{background:url(/statics/img/web/arrow_right.png);}
+        .banner .prevBtn i{background:url(/statics/img/web/arrow_left.png);}
 
         .banner-circle{position:absolute;left:50%;bottom:15px;height:13px;text-align:center;font-size:0;border-radius:10px;background:rgba(255,255,255,0.3);filter:alpha(opacity:30);}
         .banner-circle li{border-radius:10px;margin:2px;display:inline-block;display:-moz-inline-stack;vertical-align:middle;zoom:1;overflow: hidden;}
@@ -73,16 +75,17 @@
     <div id="bslider">
         <div class="banner">
             <div class="banner-btn">
-                <a href="javascript:;" class="prevBtn"><i></i></a>
-                <a href="javascript:;" class="nextBtn"><i></i></a>
+                <a href="javascript:void(0);" class="prevBtn"><i></i></a>
+                <a href="javascript:void(0);" class="nextBtn"><i></i></a>
             </div>
             <ul class="banner-img">
-                <li><a href="#"><img src="/statics/img/web/bslider032.jpg"></a></li>
-                <li><a href="#"><img src="/statics/img/web/bslider01.jpg"></a></li>
+                <li><a href="/web/article?id=19" style="background: url(/statics/img/web/slider/1.jpg) center;"></a></li>
+                <li><a href="/web/article?id=48" style="background: url(/statics/img/web/slider/2.jpg) center;"></a></li>
             </ul>
             <ul class="banner-circle"></ul>
         </div>
-    </div>    
+    </div>
+
     <div class="panel">
         <div class="slide clearfix bg1" id="slide">
             <div class="slide_box bg1" style="background-position:0 0;">
@@ -261,10 +264,10 @@
     {{template "footerpart" .}}
 
     {{template "scripts"}}
-    <script type="text/javascript" src="/statics/js/scroll.js"></script>
-    <script type="text/javascript" src="/statics/js/sliderjs/jquery.min.js"></script>
+    <script type="text/javascript" src="/statics/js/slider.jquery.min.js"></script>
 
     <script>
+
         $(function(){
             // 幻灯片图片滑动
             //$("html,body").animate({scrollTop:$("#slide").offset().top},800);
@@ -276,147 +279,143 @@
             });
             $("#slide>.slide_box").mouseover(function(){
                 var b =$(this).index();
-                if(b!= a){
+                if(b!= a) {
                     $("#slide .navsumary").hide();
                     $(this).find(".navbox>.navsumary").show();
                     var c = "bg" + (b + 1);
-                    b < a && ($.support?(
-                            $(".slide_box").stop().animate({backgroundPositionX: "1143px"}, 0).removeClass("bg1 bg2 bg3 bg4").addClass(c),
-                                    $("#box_1").parent().stop().animate({backgroundPositionX: "0"}, 100),
-                                    $("#box_2").parent().stop().animate({backgroundPositionX:"-221px"},200),
-                                    $("#box_3").parent().stop().animate({backgroundPositionX: "-442px"},300),
-                                    $("#box_4").parent().stop().animate({backgroundPositionX: "-663px"},400,
-                                            function(){
-                                                $(".slide_box,#slide").removeClass("bg1 bg2 bg3 bg4").addClass(c);
-                                            }
-                                    )):(
-                            $(".slide_box").stop().animate({backgroundPosition:"980px 0"},0).removeClass("bg1 bg2 bg3 bg4").addClass(c),
-                                    $("#box_1").parent().stop().animate({backgroundPosition:"0 0"},100),
-                                    $("#box_2").parent().stop().animate({backgroundPosition:"-221px 0"},200),
-                                    $("#box_3").parent().stop().animate({backgroundPosition:"-442px 0"},300),
-                                    $("#box_4").parent().stop().animate({backgroundPosition: "-663px 0"},400,
-                                            function(){
-                                                $(".slide_box,#slide").removeClass("bg1 bg2 bg3 bg4").addClass(c)
-                                            }
-                                    )), a = b),b > a &&($.support?(
-                            $(".slide_box").stop().animate({backgroundPositionX: "-980px" },0).removeClass("bg1 bg2 bg3 bg4").addClass(c),
-                                    $("#box_1").stop().parent().animate({backgroundPositionX:"0"},400,
-                                            function(){
-                                                $(".slide_box,#slide").removeClass("bg1 bg2 bg3 bg4").addClass(c)
-                                            }
-                                    ),
-                                    $("#box_2").parent().stop().animate({ backgroundPositionX: "-221px" }, 300),
-                                    $("#box_3").parent().stop().animate({backgroundPositionX: "-442px"}, 200),
-                                    $("#box_4").parent().stop().animate({backgroundPositionX: "-663px"}, 100)):($(".slide_box").stop().animate({backgroundPosition:"-1143px 0"},0).removeClass("bg1 bg2 bg3 bg4").addClass(c),
-                            $("#box_1").stop().parent().animate({backgroundPosition:"0 0"},400,
-                                    function(){
-                                        $(".slide_box,#slide").removeClass("bg1 bg2 bg3 bg4").addClass(c)
-                                    }
-                            ),
-                            $("#box_2").parent().stop().animate({backgroundPosition:"-285px 0"}, 300),
-                            $("#box_3").parent().stop().animate({backgroundPosition:"-570px 0"},200),
-                            $("#box_4").parent().stop().animate({backgroundPosition: "-663px 0"},100)
-                            ), a = b)
+                    b < a && ($.support ? (
+                        $(".slide_box").stop().animate({backgroundPositionX: "1143px"}, 0).removeClass("bg1 bg2 bg3 bg4").addClass(c),
+                                $("#box_1").parent().stop().animate({backgroundPositionX: "0"}, 100),
+                                $("#box_2").parent().stop().animate({backgroundPositionX: "-221px"}, 200),
+                                $("#box_3").parent().stop().animate({backgroundPositionX: "-442px"}, 300),
+                                $("#box_4").parent().stop().animate({backgroundPositionX: "-663px"}, 400,
+                                        function () {
+                                            $(".slide_box,#slide").removeClass("bg1 bg2 bg3 bg4").addClass(c);
+                                        }
+                                )) : (
+                        $(".slide_box").stop().animate({backgroundPosition: "980px 0"}, 0).removeClass("bg1 bg2 bg3 bg4").addClass(c),
+                                $("#box_1").parent().stop().animate({backgroundPosition: "0 0"}, 100),
+                                $("#box_2").parent().stop().animate({backgroundPosition: "-221px 0"}, 200),
+                                $("#box_3").parent().stop().animate({backgroundPosition: "-442px 0"}, 300),
+                                $("#box_4").parent().stop().animate({backgroundPosition: "-663px 0"}, 400,
+                                        function () {
+                                            $(".slide_box,#slide").removeClass("bg1 bg2 bg3 bg4").addClass(c)
+                                        }
+                                )), a = b), b > a && ($.support ? (
+                        $(".slide_box").stop().animate({backgroundPositionX: "-980px" }, 0).removeClass("bg1 bg2 bg3 bg4").addClass(c),
+                                $("#box_1").stop().parent().animate({backgroundPositionX: "0"}, 400,
+                                        function () {
+                                            $(".slide_box,#slide").removeClass("bg1 bg2 bg3 bg4").addClass(c)
+                                        }
+                                ),
+                                $("#box_2").parent().stop().animate({ backgroundPositionX: "-221px" }, 300),
+                                $("#box_3").parent().stop().animate({backgroundPositionX: "-442px"}, 200),
+                                $("#box_4").parent().stop().animate({backgroundPositionX: "-663px"}, 100)) : ($(".slide_box").stop().animate({backgroundPosition: "-1143px 0"}, 0).removeClass("bg1 bg2 bg3 bg4").addClass(c),
+                        $("#box_1").stop().parent().animate({backgroundPosition: "0 0"}, 400,
+                                function () {
+                                    $(".slide_box,#slide").removeClass("bg1 bg2 bg3 bg4").addClass(c)
+                                }
+                        ),
+                        $("#box_2").parent().stop().animate({backgroundPosition: "-285px 0"}, 300),
+                        $("#box_3").parent().stop().animate({backgroundPosition: "-570px 0"}, 200),
+                        $("#box_4").parent().stop().animate({backgroundPosition: "-663px 0"}, 100)
+                        ), a = b)
                 }
             });
         });
-            $(function(){
-                    var $banner=$('.banner');
-                    var $banner_ul=$('.banner-img');
-                    var $btn=$('.banner-btn');
-                    var $btn_a=$btn.find('a')
-                    // $banner.width($(window).width());
-                    var v_width=$banner.width();
 
-                    var page=1;
-                    
-                    var timer=null;
-                    var btnClass=null;
+        $(function(){
+            var $banner=$('.banner');
+            var $banner_ul=$('.banner-img');
+            var $btn=$('.banner-btn');
+            var $btn_a=$btn.find('a')
+            // $banner.width($(window).width());
+            var v_width=$banner.width();
 
-                    var page_count=$banner_ul.find('li').length;//把这个值赋给小圆点的个数
-                    
-                    var banner_cir="<li class='selected' href='#'><a></a></li>";
-                    for(var i=1;i<page_count;i++){
-                            //动态添加小圆点
-                            banner_cir+="<li><a href='#'></a></li>";
-                            }
-                    $('.banner-circle').append(banner_cir);
-                    
-                    var cirLeft=$('.banner-circle').width()*(-0.5);
-                    $('.banner-circle').css({'marginLeft':cirLeft});
-                    
-                    $banner_ul.width(page_count*v_width);
-                    $banner_ul.children("li").width(v_width);
-                    
-                    function move(obj,classname){
-                            //手动及自动播放
-                    if(!$banner_ul.is(':animated')){
-                            if(classname=='prevBtn'){
-                                    if(page==1){
-                                                    $banner_ul.animate({left:-v_width*(page_count-1)});
-                                                    page=page_count; 
-                                                    cirMove();
-                                    }
-                                    else{
-                                                    $banner_ul.animate({left:'+='+v_width},"slow");
-                                                    page--;
-                                                    cirMove();
-                                    }        
-                            }
-                            else{
-                                    if(page==page_count){
-                                                    $banner_ul.animate({left:0});
-                                                    page=1;
-                                                    cirMove();
-                                            }
-                                    else{
-                                                    $banner_ul.animate({left:'-='+v_width},"slow");
-                                                    page++;
-                                                    cirMove();
-                                            }
-                                    }
-                            }
+            var page=1;
+
+            var timer=null;
+            var btnClass=null;
+
+            var page_count=$banner_ul.find('li').length;//把这个值赋给小圆点的个数
+
+            var banner_cir="<li class='selected' href='#'><a></a></li>";
+            for(var i=1;i<page_count;i++){
+                //动态添加小圆点
+                banner_cir+="<li><a href='#'></a></li>";
+            }
+            $('.banner-circle').append(banner_cir);
+
+            var cirLeft=$('.banner-circle').width()*(-0.5);
+            $('.banner-circle').css({'marginLeft':cirLeft});
+
+            $banner_ul.width(page_count*v_width);
+            $banner_ul.children("li").width(v_width);
+
+            function move(obj,classname){
+                //手动及自动播放
+                if(!$banner_ul.is(':animated')){
+                    if(classname=='prevBtn'){
+                        if(page==1){
+                            $banner_ul.animate({left:-v_width*(page_count-1)});
+                            page=page_count;
+                            cirMove();
+                        }else{
+                            $banner_ul.animate({left:'+='+v_width},"slow");
+                            page--;
+                            cirMove();
+                        }
+                    }else{
+                        if(page==page_count){
+                            $banner_ul.animate({left:0});
+                            page=1;
+                            cirMove();
+                        }else{
+                            $banner_ul.animate({left:'-='+v_width},"slow");
+                            page++;
+                            cirMove();
+                        }
                     }
-                    
-                    function cirMove(){
-                            //检测page的值，使当前的page与selected的小圆点一致
-                            $('.banner-circle li').eq(page-1).addClass('selected')
-                                                                                                            .siblings().removeClass('selected');
-                    }
-                    
-                    $banner.mouseover(function(){
-                            $btn.css({'display':'block'});
-                            clearInterval(timer);
-                                            }).mouseout(function(){
-                            $btn.css({'display':'none'});                
-                            clearInterval(timer);
-                            timer=setInterval(move,3000);
-                                            }).trigger("mouseout");//激活自动播放
+                }
+            }
+            function cirMove(){
+                    //检测page的值，使当前的page与selected的小圆点一致
+                    $('.banner-circle li').eq(page-1).addClass('selected').siblings().removeClass('selected');
+            }
 
-                    $btn_a.mouseover(function(){
-                            //实现透明渐变，阻止冒泡
-                                    $(this).animate({opacity:0.6},'fast');
-                                    $btn.css({'display':'block'});
-                                     return false;
-                            }).mouseleave(function(){
-                                    $(this).animate({opacity:0.3},'fast');
-                                    $btn.css({'display':'none'});
-                                     return false;
-                            }).click(function(){
-                                    //手动点击清除计时器
-                                    btnClass=this.className;
-                                    clearInterval(timer);
-                                    timer=setInterval(move,3000);
-                                    move($(this),this.className);
-                            });
-                            
-                    $('.banner-circle li').live('click',function(){
-                                    var index=$('.banner-circle li').index(this);
-                                    $banner_ul.animate({left:-v_width*index},'slow');
-                                    page=index+1;
-                                    cirMove();
-                            });
-            }); 
+            $banner.mouseover(function(){
+                    $btn.css({'display':'block'});
+                    clearInterval(timer);
+            }).mouseout(function(){
+                    $btn.css({'display':'none'});
+                    clearInterval(timer);
+                    timer=setInterval(move,3000);
+            }).trigger("mouseout");//激活自动播放
+
+            $btn_a.mouseover(function(){
+                //实现透明渐变，阻止冒泡
+                $(this).animate({opacity:0.6},'fast');
+                $btn.css({'display':'block'});
+                return false;
+            }).mouseleave(function(){
+                $(this).animate({opacity:0.3},'fast');
+                $btn.css({'display':'none'});
+                return false;
+            }).click(function(){
+                //手动点击清除计时器
+                btnClass=this.className;
+                clearInterval(timer);
+                timer=setInterval(move,3000);
+                move($(this),this.className);
+            });
+
+            $('.banner-circle li').live('click',function(){
+                var index=$('.banner-circle li').index(this);
+                $banner_ul.animate({left:-v_width*index},'slow');
+                page=index+1;
+                cirMove();
+            });
+        });
     </script>
 </body>
 </html>
