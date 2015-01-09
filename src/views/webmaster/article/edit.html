@@ -37,6 +37,10 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="EditAbstract">Abstract</label>
+                    <textarea class="form-control" id="EditAbstract"></textarea>
+                </div>
+                <div class="form-group">
                     <label for="EditContent">Content</label>
                     <textarea class="form-control" id="EditContent"></textarea>
                 </div>
@@ -169,6 +173,7 @@
             $('#EditId').val({{.Article.Id}});
             $('#EditTitle').val({{.Article.Title}});
             $('#EditCategory').val({{.Article.Category}});
+            $('#EditAbstract').val({{.Article.Abstract}});
             $('#EditContent').val({{.Article.Content}});
             $('#EditStatus').val({{.Article.Status}});
         }
@@ -178,6 +183,7 @@
             var id = $('#EditId').val();
             var title = $('#EditTitle').val();
             var category = $('#EditCategory').val();
+            var abstract = $('#EditAbstract').val();
             var content = $('#EditContent').val();
             var status = $('#EditStatus').val();
 
@@ -198,6 +204,7 @@
                     id: id,
                     title: title,
                     category: category,
+                    abstract: abstract,
                     content: content,
                     status: status
                 },

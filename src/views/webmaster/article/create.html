@@ -36,6 +36,10 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="CreateAbstract">Abstract</label>
+                    <textarea class="form-control" id="CreateAbstract"></textarea>
+                </div>
+                <div class="form-group">
                     <label for="CreateContent">Content</label>
                     <textarea class="form-control" id="CreateContent"></textarea>
                 </div>
@@ -137,6 +141,7 @@
         function SubmitCreateForm() {
             var title = $('#CreateTitle').val();
             var category = $('#CreateCategory').val();
+            var abstract = $('#CreateAbstract').val();
             var content = $('#CreateContent').val();
             var status = $('#CreateStatus').val();
 
@@ -156,6 +161,7 @@
                 data: {
                     title: title,
                     category: category,
+                    abstract: abstract,
                     content: content,
                     status: status
                 },
