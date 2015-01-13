@@ -1,11 +1,11 @@
 package web
 
 import (
+	"controllers/common"
 	"encoding/json"
 	"models"
 	"net/http"
 	"strings"
-	"controllers/common"
 )
 
 func Home(w http.ResponseWriter, r *http.Request) {
@@ -25,7 +25,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			return
 		}
-		data := make(map[string]interface {})
+		data := make(map[string]interface{})
 		// check login
 		isUserLogin := false
 		var user models.User
@@ -90,14 +90,13 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		}
 		data["F4_HotGoods"] = F4_HotGoods
 
-
 		// 故事
 		AL1, err := models.GetArticleListByCategory("一品故事")
 		if err != nil {
 			defaultHandler.LogError(err)
 			return
 		}
-		if len(AL1) > 12{
+		if len(AL1) > 12 {
 			AL1 = AL1[0:12]
 		}
 		data["AL1"] = AL1
@@ -108,7 +107,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 			defaultHandler.LogError(err)
 			return
 		}
-		if len(AL2) > 5{
+		if len(AL2) > 5 {
 			AL2 = AL2[0:5]
 		}
 		data["AL2"] = AL2
@@ -119,7 +118,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 			defaultHandler.LogError(err)
 			return
 		}
-		if len(AL3) > 5{
+		if len(AL3) > 5 {
 			AL3 = AL3[0:5]
 		}
 		data["AL3"] = AL3

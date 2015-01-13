@@ -55,7 +55,7 @@
         .banner-img{font-size:0;*word-spacing:-1px;/* IE6、7 */ letter-spacing:-3px;position:relative;}
         .banner-img li{display:inline-block;*display:inline;*zoom:1;/* IE6、7 */ vertical-align:top;letter-spacing:normal;word-spacing:normal;font-size:12px;}
         .banner-img a{display: block;width: 100%;height: 440px;}
-        .banner i{/*background:url(http://gtms01.alicdn.com/tps/i1/T1szNBFzlmXXX8QSDI-400-340.png)  no-repeat;*/width:15px;height:23px;cursor:pointer;margin:8px 0 0 12px;display:block;}
+        .banner i{width:15px;height:23px;cursor:pointer;margin:8px 0 0 12px;display:block;}
         .banner .nextBtn i{background:url(/statics/img/web/arrow_right.png);}
         .banner .prevBtn i{background:url(/statics/img/web/arrow_left.png);}
 
@@ -415,7 +415,16 @@
                 page=index+1;
                 cirMove();
             });
+            window.onresize=function(){
+                //alert($(window).width());
+                $banner.width($(window).width());
+                v_width=$banner.width();
+                $banner_ul.width(page_count*v_width);
+                $banner_ul.children("li").width(v_width);
+            }
         });
+        
+
     </script>
 </body>
 </html>

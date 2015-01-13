@@ -96,7 +96,7 @@ ul,li{padding: 0;margin: 0;}
 .recomand_floor{margin-top: 125px;}
 .oldlist_wrap{width: 1163px;top: 0px;position: absolute;left: 50%;margin-left: -581px;overflow: hidden;}
 .old_list{display: inline-block;}
-.oldlist_box{border: 1px solid #c8c8c7;float: left;margin-left: 10px;width: 185px;height: 237px;}
+.oldlist_box{border: 1px solid #c8c8c7;float: left;margin-left: 10px;width: 209px;height: 237px;}
 .oldlist_box  span{font-size: 16.629px;font-family: "Microsoft YaHei";color: rgb(44, 50, 44);display: block;text-align: left;margin-left: 12px;}
 .oldlist_box  span a{display: inline-block;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width:180px;}
 .oldlist_box img{margin: 12px;width: 185px;}
