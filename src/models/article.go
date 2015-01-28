@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	_ "utils/mysql"
 	"utils/global"
 )
 
@@ -20,7 +20,7 @@ type Article struct {
 }
 
 func GetArticle(Id string) (*Article, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -61,7 +61,7 @@ func GetArticle(Id string) (*Article, error) {
 }
 
 func GetArticleByTitle(Title string) (*Article, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -102,7 +102,7 @@ func GetArticleByTitle(Title string) (*Article, error) {
 }
 
 func GetArticleListByCategory(Category string) ([]Article, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -144,7 +144,7 @@ func GetArticleListByCategory(Category string) ([]Article, error) {
 }
 
 func GetHotArticles(Category string, Top string) ([]Article, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -186,7 +186,7 @@ func GetHotArticles(Category string, Top string) ([]Article, error) {
 }
 
 func GetArticleList() ([]Article, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -228,7 +228,7 @@ func GetArticleList() ([]Article, error) {
 }
 
 func CreateArticle(Title string, Category string, Abstract string, Image string, Content string, Status string, Remark string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -241,7 +241,7 @@ func CreateArticle(Title string, Category string, Abstract string, Image string,
 }
 
 func EditArticle(Id string, Title string, Category string, Abstract string, Image string, Content string, Status string, Remark string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -254,7 +254,7 @@ func EditArticle(Id string, Title string, Category string, Abstract string, Imag
 }
 
 func DeleteArticle(Id string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -267,7 +267,7 @@ func DeleteArticle(Id string) error {
 }
 
 func IncreaseArticleReadTimes(Id string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err

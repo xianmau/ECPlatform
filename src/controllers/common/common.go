@@ -3,7 +3,7 @@ package common
 import (
 	"net/http"
 	"html/template"
-	log "utils/logger"
+	log "utils/glog"
 	"utils/session"
 	"utils/tools"
 	"utils/global"

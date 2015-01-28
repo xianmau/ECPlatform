@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	_ "utils/mysql"
 	"utils/global"
 )
 
@@ -11,7 +11,7 @@ type Origin struct {
 }
 
 //func GetOrigin(Name string) (*Origin, error) {
-//	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+//	db, err := sql.Open("mysql", global.Config["conn_str"])
 //	defer db.Close()
 //	if err != nil {
 //		return nil, err
@@ -34,7 +34,7 @@ type Origin struct {
 //}
 
 func GetOriginList() ([]Origin, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -58,7 +58,7 @@ func GetOriginList() ([]Origin, error) {
 }
 
 func CreateOrigin(Name string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -71,7 +71,7 @@ func CreateOrigin(Name string) error {
 }
 
 //func EditOrigin(Name string, NewName string) error {
-//	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+//	db, err := sql.Open("mysql", global.Config["conn_str"])
 //	defer db.Close()
 //	if err != nil {
 //		return err
@@ -84,7 +84,7 @@ func CreateOrigin(Name string) error {
 //}
 
 func DeleteOrigin(Name string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err

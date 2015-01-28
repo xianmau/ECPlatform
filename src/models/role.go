@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	_ "utils/mysql"
 	"utils/global"
 	"encoding/json"
 )
@@ -13,7 +13,7 @@ type Role struct {
 }
 
 func GetRole(Name string) (*Role, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -41,7 +41,7 @@ func GetRole(Name string) (*Role, error) {
 }
 
 func GetRoleList() ([]Role, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -70,7 +70,7 @@ func GetRoleList() ([]Role, error) {
 }
 
 func CreateRole(Name string, Authority string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -83,7 +83,7 @@ func CreateRole(Name string, Authority string) error {
 }
 
 func EditRole(Name string, Authority string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -96,7 +96,7 @@ func EditRole(Name string, Authority string) error {
 }
 
 func DeleteRole(Name string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err

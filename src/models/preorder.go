@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	_ "utils/mysql"
 	"utils/global"
 )
 
@@ -19,7 +19,7 @@ type Preorder struct {
 }
 
 func GetPreorder(Id string) (*Preorder, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -58,7 +58,7 @@ func GetPreorder(Id string) (*Preorder, error) {
 }
 
 func GetPreorderListByGoods(GoodsId string) ([]Preorder, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -98,7 +98,7 @@ func GetPreorderListByGoods(GoodsId string) ([]Preorder, error) {
 }
 
 func CreatePreorder(GoodsId string, UserId string, Name string, Tel string, Addr string, Num string, Status string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -111,7 +111,7 @@ func CreatePreorder(GoodsId string, UserId string, Name string, Tel string, Addr
 }
 
 func EditPreorder(Id string, Status string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -124,7 +124,7 @@ func EditPreorder(Id string, Status string) error {
 }
 
 func DeletPreorder(Id string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err

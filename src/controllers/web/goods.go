@@ -3,7 +3,7 @@ package web
 import (
 	"models"
 	"net/http"
-	log "utils/logger"
+	log "utils/glog"
 	"controllers/common"
 )
 

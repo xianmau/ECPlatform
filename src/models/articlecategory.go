@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	_ "utils/mysql"
 	"utils/global"
 )
 
@@ -13,7 +13,7 @@ type ArticleCategory struct {
 }
 
 func GetArticleCategory(Name string) (*ArticleCategory, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -40,7 +40,7 @@ func GetArticleCategory(Name string) (*ArticleCategory, error) {
 }
 
 func GetArticleCategoryList() ([]ArticleCategory, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -68,7 +68,7 @@ func GetArticleCategoryList() ([]ArticleCategory, error) {
 }
 
 func CreateArticleCategory(Name string, Parent string, Ordering string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -81,7 +81,7 @@ func CreateArticleCategory(Name string, Parent string, Ordering string) error {
 }
 
 func EditArticleCategory(Name string, Parent string, Ordering string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -94,7 +94,7 @@ func EditArticleCategory(Name string, Parent string, Ordering string) error {
 }
 
 func DeleteArticleCategory(Name string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err

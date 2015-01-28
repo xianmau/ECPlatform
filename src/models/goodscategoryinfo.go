@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	_ "utils/mysql"
 	"utils/global"
 )
 
@@ -13,7 +13,7 @@ type GoodsCategoryInfo struct {
 }
 
 func GetGoodsCategoryInfo(CategoryName string) (*GoodsCategoryInfo, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -40,7 +40,7 @@ func GetGoodsCategoryInfo(CategoryName string) (*GoodsCategoryInfo, error) {
 }
 
 func GetGoodsCategoryInfoList() ([]GoodsCategoryInfo, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -68,7 +68,7 @@ func GetGoodsCategoryInfoList() ([]GoodsCategoryInfo, error) {
 }
 
 func CreateGoodsCategoryInfo(CategoryName string, CategoryInfo string, CategoryImage string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -81,7 +81,7 @@ func CreateGoodsCategoryInfo(CategoryName string, CategoryInfo string, CategoryI
 }
 
 func EditGoodsCategoryInfo(CategoryName string, CategoryInfo string, CategoryImage string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -94,7 +94,7 @@ func EditGoodsCategoryInfo(CategoryName string, CategoryInfo string, CategoryIma
 }
 
 func DeleteGoodsCategoryInfo(CategoryName string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err

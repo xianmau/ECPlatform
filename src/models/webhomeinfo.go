@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	_ "utils/mysql"
 	"utils/global"
 )
 
@@ -19,7 +19,7 @@ type WebHomeInfo struct {
 }
 
 func GetWebHomeInfo(Id string) (*WebHomeInfo, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -58,7 +58,7 @@ func GetWebHomeInfo(Id string) (*WebHomeInfo, error) {
 }
 
 func GetWebHomeInfoList() ([]WebHomeInfo, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -98,7 +98,7 @@ func GetWebHomeInfoList() ([]WebHomeInfo, error) {
 }
 
 func CreateWebHomeInfo(Floor1, Floor2, Floor3, Floor4, Floor5, Floor6, Floor7, Floor8 string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -111,7 +111,7 @@ func CreateWebHomeInfo(Floor1, Floor2, Floor3, Floor4, Floor5, Floor6, Floor7, F
 }
 
 func EditWebHomeInfo(Id string, Floor1, Floor2, Floor3, Floor4, Floor5, Floor6, Floor7, Floor8 string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -124,7 +124,7 @@ func EditWebHomeInfo(Id string, Floor1, Floor2, Floor3, Floor4, Floor5, Floor6, 
 }
 
 func DeleteWebHomeInfo(Id string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err

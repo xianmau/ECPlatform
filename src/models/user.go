@@ -2,23 +2,23 @@ package models
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	_ "utils/mysql"
 	"utils/global"
 )
 
 type User struct {
 	Name         string `json:"name"` // 邮箱，手机
-	Password     string `json:"password"`
-	Level        int    `json:"level"`
+	Password     string `json:"password"` // 密码
+	Level        int    `json:"level"` // 用户等级
 	BaseInfo     string `json:"baseinfo"`     // 头像，真实姓名，性别，生日，地址，邮箱，手机
-	ReceiveInfo  string `json:"receiveinfo"`  // [{收货信息1},{收货信息2},..,{收货信息n}]
+	ReceiveInfo  string `json:"receiveinfo"`  // [{收货信息1},{收货信息2},..,{收货信息n}]，可以假设第0个为默认地址
 	RegisterTime string `json:"registertime"` // 注册时间
 	LoginHistory string `json:"loginhistory"` // [时间1,时间2,...,时间n]
 	Status       int    // 状态
 }
 
 func GetUserForLogin(Name string, Password string) (*User, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -55,7 +55,7 @@ func GetUserForLogin(Name string, Password string) (*User, error) {
 }
 
 func GetUser(Name string) (*User, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -93,7 +93,7 @@ func GetUser(Name string) (*User, error) {
 }
 
 func GetUserList() ([]User, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -132,7 +132,7 @@ func GetUserList() ([]User, error) {
 }
 
 func RegisterUser(Name string, Password string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -145,7 +145,7 @@ func RegisterUser(Name string, Password string) error {
 }
 
 func CreateUser(Name string, Password string, Level string, Status string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -158,7 +158,7 @@ func CreateUser(Name string, Password string, Level string, Status string) error
 }
 
 func EditUserPassword(Name string, Password string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -171,7 +171,7 @@ func EditUserPassword(Name string, Password string) error {
 }
 
 func EditUserByAdmin(Name string, Level string, Status string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -184,7 +184,7 @@ func EditUserByAdmin(Name string, Level string, Status string) error {
 }
 
 func EditUserBaseInfo(Name string, BaseInfo string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -197,7 +197,7 @@ func EditUserBaseInfo(Name string, BaseInfo string) error {
 }
 
 func EditUserReceiveInfo(Name string, ReceiveInfo string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -210,7 +210,7 @@ func EditUserReceiveInfo(Name string, ReceiveInfo string) error {
 }
 
 func EditUserLoginHistory(Name string, LoginHistory string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -223,7 +223,7 @@ func EditUserLoginHistory(Name string, LoginHistory string) error {
 }
 
 func DeleteUser(Name string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err

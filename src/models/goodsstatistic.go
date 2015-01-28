@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	_ "utils/mysql"
 	"utils/global"
 )
 
@@ -15,7 +15,7 @@ type GoodsStatistic struct {
 }
 
 func GetGoodsStatistic(GoodsId string) (*GoodsStatistic, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -46,7 +46,7 @@ func GetGoodsStatistic(GoodsId string) (*GoodsStatistic, error) {
 }
 
 func GetGoodsStatisticList() ([]GoodsStatistic, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -78,7 +78,7 @@ func GetGoodsStatisticList() ([]GoodsStatistic, error) {
 }
 
 func CreateGoodsStatistic(GoodsId string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -91,7 +91,7 @@ func CreateGoodsStatistic(GoodsId string) error {
 }
 
 func IncreaseGoodsStatisticViewTimes(GoodsId string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -104,7 +104,7 @@ func IncreaseGoodsStatisticViewTimes(GoodsId string) error {
 }
 
 func EditGoodsStatistic(GoodsId string, ViewTimes string, BuyTimes string, LinkTimes string, CollectTimes string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -117,7 +117,7 @@ func EditGoodsStatistic(GoodsId string, ViewTimes string, BuyTimes string, LinkT
 }
 
 func DeleteGoodsStatistic(GoodsId string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
