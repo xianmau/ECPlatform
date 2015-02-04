@@ -12,23 +12,14 @@ func Message(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		// render template
-		err := defaultHandler.RenderTemplate("message.html", []string{"views/web/message.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
+		tpls := append([]string{"views/web/message.html"}, defaultHandler.CommonPage...)
+		err := defaultHandler.RenderTemplate("message.html", tpls)
 		if err != nil {
 			return
 		}
 		data := make(map[string]interface {})
 		// check login
-		isUserLogin := false
-		var user models.User
-		if session.Get("user") != nil {
-			user = (session.Get("user")).(models.User)
-			isUserLogin = true
-		} else {
-			isUserLogin = false
-		}
-		// set login info
-		data["User"] = user
-		data["IsUserLogin"] = isUserLogin
+		defaultHandler.CheckUserLogin(session, data)
 
 		// execute template
 		defaultHandler.ExecuteTemplate(data)
