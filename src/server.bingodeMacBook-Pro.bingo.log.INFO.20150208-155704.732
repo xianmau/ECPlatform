@@ -1,0 +1,28 @@
+Log file created at: 2015/02/08 15:57:04
+Running on machine: bingodeMacBook-Pro
+Binary: Built with gc go1.4 for darwin/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+E0208 15:57:04.762708 00732 global.go:127] Config file `conf/conf.json` loaded, config info: map[port:9090 session_expires:3600 conn_str:root:root@/ecplatformdb?charset=utf8 version:0.0.2]
+I0208 15:57:04.772557 00732 server.go:17] Server started, listening port: 9090
+I0208 15:57:51.673351 00732 common.go:45] [::1]:51708 GET /
+I0208 15:57:51.685232 00732 common.go:45] [::1]:51709 GET /
+I0208 15:57:51.688092 00732 common.go:45] [::1]:51710 GET /
+I0208 15:57:51.700912 00732 common.go:45] [::1]:51711 GET /
+I0208 15:57:51.704197 00732 common.go:45] [::1]:51716 GET /
+I0208 15:57:51.808730 00732 common.go:45] [::1]:51718 GET /
+I0208 15:57:56.815515 00732 common.go:45] [::1]:51720 GET /
+I0208 15:58:26.824143 00732 common.go:45] [::1]:51726 GET /
+I0208 15:59:26.834628 00732 common.go:45] [::1]:51739 GET /
+I0208 16:05:07.227443 00732 common.go:45] [::1]:51894 GET /
+I0208 16:05:09.130442 00732 common.go:45] [::1]:51917 GET /favicon.ico
+I0208 16:05:16.382639 00732 common.go:45] [::1]:51917 GET /web/gcat
+I0208 16:05:16.423955 00732 common.go:45] [::1]:51896 GET /web/gcat
+I0208 16:05:18.751470 00732 common.go:45] [::1]:51896 GET /web/goods
+I0208 16:05:33.532798 00732 common.go:45] [::1]:51917 GET /web/gcat
+I0208 16:05:33.564158 00732 common.go:45] [::1]:51917 GET /web/gcat
+I0208 16:05:35.101774 00732 common.go:45] [::1]:51917 GET /web/gcat
+I0208 16:05:35.128585 00732 common.go:45] [::1]:51917 GET /web/gcat
+I0208 16:13:13.094035 00732 common.go:45] [::1]:52057 GET /web/gcat
+I0208 16:13:13.142563 00732 common.go:45] [::1]:52057 GET /web/gcat
+I0208 16:13:25.516926 00732 common.go:45] [::1]:52062 GET /web/goods
+I0208 16:25:31.233109 00732 common.go:45] [::1]:52434 GET /web/goods

@@ -1,0 +1,5 @@
+Log file created at: 2015/02/08 15:57:04
+Running on machine: bingodeMacBook-Pro
+Binary: Built with gc go1.4 for darwin/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+E0208 15:57:04.762708 00732 global.go:127] Config file `conf/conf.json` loaded, config info: map[port:9090 session_expires:3600 conn_str:root:root@/ecplatformdb?charset=utf8 version:0.0.2]
