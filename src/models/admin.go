@@ -3,7 +3,7 @@ package models
 import (
 	"database/sql"
 	"encoding/json"
-	_ "github.com/go-sql-driver/mysql"
+	_ "utils/mysql"
 	"utils/global"
 )
 
@@ -14,7 +14,7 @@ type Admin struct {
 }
 
 func GetAdminForLogin(Name string, Password string) (*Admin, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -47,7 +47,7 @@ func GetAdminForLogin(Name string, Password string) (*Admin, error) {
 }
 
 func GetAdmin(Name string) (*Admin, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -80,7 +80,7 @@ func GetAdmin(Name string) (*Admin, error) {
 }
 
 func GetAdminList() ([]Admin, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -114,7 +114,7 @@ func GetAdminList() ([]Admin, error) {
 }
 
 func CreateAdmin(Name string, Password string, RoleName string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -127,7 +127,7 @@ func CreateAdmin(Name string, Password string, RoleName string) error {
 }
 
 func EditAdmin(Name string, Password string, RoleName string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -147,7 +147,7 @@ func EditAdmin(Name string, Password string, RoleName string) error {
 }
 
 func DeleteAdmin(Name string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err

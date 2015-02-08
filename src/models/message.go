@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	_ "utils/mysql"
 	"utils/global"
 )
 
@@ -16,7 +16,7 @@ type Message struct {
 }
 
 func GetMessage(Id string) (*Message, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -49,7 +49,7 @@ func GetMessage(Id string) (*Message, error) {
 }
 
 func GetMessageListByGoods() ([]Message, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -83,7 +83,7 @@ func GetMessageListByGoods() ([]Message, error) {
 }
 
 func CreateMessage(Name string, Email string, Content string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -96,7 +96,7 @@ func CreateMessage(Name string, Email string, Content string) error {
 }
 
 func EditMessage(Id string, Status string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func EditMessage(Id string, Status string) error {
 }
 
 func DeleteMessage(Id string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err

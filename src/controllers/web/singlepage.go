@@ -13,7 +13,13 @@ func Service(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		// render template
-		err := defaultHandler.RenderTemplate("service.html", []string{"views/web/service.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
+		err := defaultHandler.RenderTemplate("service.html", []string{
+			"views/web/service.html",
+			"views/web/styles.html",
+			"views/web/scripts.html",
+			"views/web/headerpart.html",
+			"views/web/footerpart.html",
+		})
 		if err != nil {
 			return
 		}
@@ -54,23 +60,14 @@ func Help(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		// render template
-		err := defaultHandler.RenderTemplate("help.html", []string{"views/web/help.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
+		tpls := append([]string{"views/web/help.html"}, defaultHandler.CommonPage...)
+		err := defaultHandler.RenderTemplate("help.html", tpls)
 		if err != nil {
 			return
 		}
 		data := make(map[string]interface {})
 		// check login
-		isUserLogin := false
-		var user models.User
-		if session.Get("user") != nil {
-			user = (session.Get("user")).(models.User)
-			isUserLogin = true
-		} else {
-			isUserLogin = false
-		}
-		// set login info
-		data["User"] = user
-		data["IsUserLogin"] = isUserLogin
+		defaultHandler.CheckUserLogin(session, data)
 
 		article, err := models.GetArticleByTitle("帮助")
 		if err != nil {
@@ -95,23 +92,14 @@ func About(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		// render template
-		err := defaultHandler.RenderTemplate("about.html", []string{"views/web/about.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
+		tpls := append([]string{"views/web/about.html"}, defaultHandler.CommonPage...)
+		err := defaultHandler.RenderTemplate("about.html", tpls)
 		if err != nil {
 			return
 		}
 		data := make(map[string]interface {})
 		// check login
-		isUserLogin := false
-		var user models.User
-		if session.Get("user") != nil {
-			user = (session.Get("user")).(models.User)
-			isUserLogin = true
-		} else {
-			isUserLogin = false
-		}
-		// set login info
-		data["User"] = user
-		data["IsUserLogin"] = isUserLogin
+		defaultHandler.CheckUserLogin(session, data)
 
 		article, err := models.GetArticleByTitle("关于我们")
 		if err != nil {
@@ -136,23 +124,14 @@ func Promotion(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		// render template
-		err := defaultHandler.RenderTemplate("promotion.html", []string{"views/web/promotion.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
+		tpls := append([]string{"views/web/promotion.html"}, defaultHandler.CommonPage...)
+		err := defaultHandler.RenderTemplate("promotion.html", tpls)
 		if err != nil {
 			return
 		}
 		data := make(map[string]interface {})
 		// check login
-		isUserLogin := false
-		var user models.User
-		if session.Get("user") != nil {
-			user = (session.Get("user")).(models.User)
-			isUserLogin = true
-		} else {
-			isUserLogin = false
-		}
-		// set login info
-		data["User"] = user
-		data["IsUserLogin"] = isUserLogin
+		defaultHandler.CheckUserLogin(session, data)
 
 		article, err := models.GetArticleByTitle("供应商推广")
 		if err != nil {
@@ -177,23 +156,14 @@ func Privacy(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		// render template
-		err := defaultHandler.RenderTemplate("privacy.html", []string{"views/web/privacy.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
+		tpls := append([]string{"views/web/privacy.html"}, defaultHandler.CommonPage...)
+		err := defaultHandler.RenderTemplate("privacy.html", tpls)
 		if err != nil {
 			return
 		}
 		data := make(map[string]interface {})
 		// check login
-		isUserLogin := false
-		var user models.User
-		if session.Get("user") != nil {
-			user = (session.Get("user")).(models.User)
-			isUserLogin = true
-		} else {
-			isUserLogin = false
-		}
-		// set login info
-		data["User"] = user
-		data["IsUserLogin"] = isUserLogin
+		defaultHandler.CheckUserLogin(session, data)
 
 		article, err := models.GetArticleByTitle("隐私政策")
 		if err != nil {
@@ -218,23 +188,14 @@ func Link(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		// render template
-		err := defaultHandler.RenderTemplate("link.html", []string{"views/web/link.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
+		tpls := append([]string{"views/web/link.html"}, defaultHandler.CommonPage...)
+		err := defaultHandler.RenderTemplate("link.html", tpls)
 		if err != nil {
 			return
 		}
 		data := make(map[string]interface {})
 		// check login
-		isUserLogin := false
-		var user models.User
-		if session.Get("user") != nil {
-			user = (session.Get("user")).(models.User)
-			isUserLogin = true
-		} else {
-			isUserLogin = false
-		}
-		// set login info
-		data["User"] = user
-		data["IsUserLogin"] = isUserLogin
+		defaultHandler.CheckUserLogin(session, data)
 
 		// execute template
 		defaultHandler.ExecuteTemplate(data)
@@ -248,23 +209,14 @@ func Screening(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		// render template
-		err := defaultHandler.RenderTemplate("screening.html", []string{"views/web/screening.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
+		tpls := append([]string{"views/web/screening.html"}, defaultHandler.CommonPage...)
+		err := defaultHandler.RenderTemplate("screening.html", tpls)
 		if err != nil {
 			return
 		}
 		data := make(map[string]interface {})
 		// check login
-		isUserLogin := false
-		var user models.User
-		if session.Get("user") != nil {
-			user = (session.Get("user")).(models.User)
-			isUserLogin = true
-		} else {
-			isUserLogin = false
-		}
-		// set login info
-		data["User"] = user
-		data["IsUserLogin"] = isUserLogin
+		defaultHandler.CheckUserLogin(session, data)
 
 		article, err := models.GetArticleByTitle("筛选规则")
 		if err != nil {

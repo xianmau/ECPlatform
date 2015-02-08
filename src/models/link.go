@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	_ "utils/mysql"
 	"utils/global"
 )
 
@@ -16,7 +16,7 @@ type Link struct {
 }
 
 func GetLink(Id string) (*Link, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -49,7 +49,7 @@ func GetLink(Id string) (*Link, error) {
 }
 
 func GetLinkList() ([]Link, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -83,7 +83,7 @@ func GetLinkList() ([]Link, error) {
 }
 
 func CreateLink(Title string, Category string, LinkUrl string, ImageUrl string, Status string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -96,7 +96,7 @@ func CreateLink(Title string, Category string, LinkUrl string, ImageUrl string, 
 }
 
 func EditLink(Id string, Title string, Category string, LinkUrl string, ImageUrl string, Status string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func EditLink(Id string, Title string, Category string, LinkUrl string, ImageUrl
 }
 
 func DeleteLink(Id string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err

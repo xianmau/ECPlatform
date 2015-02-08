@@ -3,33 +3,38 @@ package global
 import (
 	"strconv"
 	"time"
-	"utils/config"
-	log "utils/logger"
+	log "utils/glog"
 	"utils/session"
+	"os"
+	"flag"
+	"encoding/json"
 )
 
 var (
-	Config      *config.Config
-	Sessions    *session.Sessions
-	GoodsStatus map[int]string
+	configFilePath = flag.String("config_file_path", "conf/conf.json", "If non-empty, read this config file")
+)
+
+var (
+	Config        map[string]string
+	Sessions      *session.Sessions
+	GoodsStatus   map[int]string
 	ArticleStatus map[int]string
-	LinkStatus map[int]string
-	UserStatus map[int]string
-	UserLevel map[int]string
-	ShopStatus map[int]string
-	ShopKind map[int]string
+	LinkStatus    map[int]string
+	UserStatus    map[int]string
+	UserLevel     map[int]string
+	ShopStatus    map[int]string
+	ShopKind      map[int]string
 
 	AuthorityList []string
 )
 
-func init() {
-	log.Trace("global init")
+func Init() {
 
-	// 初始化配置信息
-	Config = config.NewConfig()
+	// 加载配置文件
+	loadConfigFile()
 
 	// 初始化Session
-	session_expires, err := strconv.Atoi(Config.Get("session_expires"))
+	session_expires, err := strconv.Atoi(Config["session_expires"])
 	if err != nil {
 		session_expires = 60
 	}
@@ -99,4 +104,26 @@ func init() {
 		0: "个体户",
 		1: "合作社",
 	}
+}
+
+func loadConfigFile() {
+	configFile, err := os.Open(*configFilePath)
+	defer configFile.Close()
+	if err != nil {
+		log.Fatalf("Loading config file `%s` failed: %s\n", *configFilePath, err.Error())
+		os.Exit(1)
+	}
+	buf := make([]byte, 1024)
+	n, _ := configFile.Read(buf)
+	buf = buf[:n]
+	kv := make(map[string]string)
+	err = json.Unmarshal(buf, &kv)
+	if err != nil {
+		log.Fatalf("Loading config file `%s` failed: %s\n", *configFilePath, err.Error())
+		os.Exit(1)
+	}
+	// Notice that Config is read only
+	Config = kv
+	log.Errorf("Config file `%s` loaded, config info: %v\n", *configFilePath, Config);
+	log.Flush()
 }

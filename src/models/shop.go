@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	_ "utils/mysql"
 	"utils/global"
 )
 
@@ -17,7 +17,7 @@ type Shop struct {
 }
 
 func GetShop(Name string) (*Shop, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -53,7 +53,7 @@ func GetShop(Name string) (*Shop, error) {
 }
 
 func GetShopList() ([]Shop, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -90,7 +90,7 @@ func GetShopList() ([]Shop, error) {
 }
 
 func ApplyShop(Name string, UserName string, Kind string, Introduce string, ApplyStatement string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -103,7 +103,7 @@ func ApplyShop(Name string, UserName string, Kind string, Introduce string, Appl
 }
 
 func CreateShop(Name string, UserName string, Kind string, Introduce string, ApplyStatement string, Status string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -116,7 +116,7 @@ func CreateShop(Name string, UserName string, Kind string, Introduce string, App
 }
 
 func EditShop(Name string, UserName string, Kind string, Introduce string, ApplyStatement string, Status string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -129,7 +129,7 @@ func EditShop(Name string, UserName string, Kind string, Introduce string, Apply
 }
 
 func DeleteShop(Name string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err

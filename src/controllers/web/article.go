@@ -12,23 +12,14 @@ func ArticleCat(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		// render template
-		err := defaultHandler.RenderTemplate("acat.html", []string{"views/web/acat.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
+		tpls := append([]string{"views/web/acat.html"}, defaultHandler.CommonPage...)
+		err := defaultHandler.RenderTemplate("acat.html", tpls)
 		if err != nil {
 			return
 		}
 		data := make(map[string]interface {})
 		// check login
-		isUserLogin := false
-		var user models.User
-		if session.Get("user") != nil {
-			user = (session.Get("user")).(models.User)
-			isUserLogin = true
-		} else {
-			isUserLogin = false
-		}
-		// set login info
-		data["User"] = user
-		data["IsUserLogin"] = isUserLogin
+		defaultHandler.CheckUserLogin(session, data)
 
 		// current category
 		r.ParseForm()
@@ -70,23 +61,14 @@ func ArticleDetail(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 		// render template
-		err := defaultHandler.RenderTemplate("article.html", []string{"views/web/article.html", "views/web/styles.html", "views/web/scripts.html", "views/web/headerpart.html", "views/web/footerpart.html"})
+		tpls := append([]string{"views/web/article.html"}, defaultHandler.CommonPage...)
+		err := defaultHandler.RenderTemplate("article.html", tpls)
 		if err != nil {
 			return
 		}
 		data := make(map[string]interface {})
 		// check login
-		isUserLogin := false
-		var user models.User
-		if session.Get("user") != nil {
-			user = (session.Get("user")).(models.User)
-			isUserLogin = true
-		} else {
-			isUserLogin = false
-		}
-		// set login info
-		data["User"] = user
-		data["IsUserLogin"] = isUserLogin
+		defaultHandler.CheckUserLogin(session, data)
 
 		// current article
 		r.ParseForm()

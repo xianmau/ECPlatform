@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	_ "utils/mysql"
 	"utils/global"
 )
 
@@ -23,7 +23,7 @@ type Goods struct {
 }
 
 func GetGoods(Id string) (*Goods, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -70,7 +70,7 @@ func GetGoods(Id string) (*Goods, error) {
 }
 
 func GetGoodsList() ([]Goods, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -118,7 +118,7 @@ func GetGoodsList() ([]Goods, error) {
 }
 
 func GetGoodsListByCategory(Category string) ([]Goods, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -166,7 +166,7 @@ func GetGoodsListByCategory(Category string) ([]Goods, error) {
 }
 
 func GetHotGoodsListByCategory(Category string) ([]Goods, error) {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return nil, err
@@ -214,7 +214,7 @@ func GetHotGoodsListByCategory(Category string) ([]Goods, error) {
 }
 
 func CreateGoods(Title string, Category string, Recommend string, Content string, Origin string, Unit string, Price string, Shop string, BuyLink string, Images string, Certificates string, Status string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -227,7 +227,7 @@ func CreateGoods(Title string, Category string, Recommend string, Content string
 }
 
 func EditGoods(Id string, Title string, Category string, Recommend string, Content string, Origin string, Unit string, Price string, Shop string, BuyLink string, Images string, Certificates string, Status string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err
@@ -240,7 +240,7 @@ func EditGoods(Id string, Title string, Category string, Recommend string, Conte
 }
 
 func DeleteGoods(Id string) error {
-	db, err := sql.Open("mysql", global.Config.Get("conn_str"))
+	db, err := sql.Open("mysql", global.Config["conn_str"])
 	defer db.Close()
 	if err != nil {
 		return err

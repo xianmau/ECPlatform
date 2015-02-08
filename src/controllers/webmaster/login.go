@@ -1,13 +1,13 @@
 package webmaster
 
-import (    _ "github.com/go-sql-driver/mysql"
+import (
 	"html/template"
 	"models"
 	"net/http"
 	"strings"
 	"utils/authority"
 	"utils/global"
-	log "utils/logger"
+	log "utils/glog"
 	"utils/tools"
 )
 

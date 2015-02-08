@@ -4,20 +4,19 @@ import (
 	"net/http"
 	"routers"
 	"utils/global"
-	log "utils/logger"
+	log "utils/glog"
+	"flag"
+	"runtime"
 )
 
 func main() {
-	log.Trace("server started.")
-
+	flag.Parse()
+	runtime.GOMAXPROCS(runtime.NumCPU())
+	global.Init()
 	routers.Register()
-
-	err := http.ListenAndServe(":"+global.Config.Get("port"), nil) //设置监听的端口
+	log.Infof("Server started, listening port: %s\n", global.Config["port"])
+	err := http.ListenAndServe(":"+global.Config["port"], nil)
 	if err != nil {
-		log.Fatal(err.Error())
+		log.Fatalf("Server down: %s\n", err.Error())
 	}
-}
-
-func init() {
-	// 在这里进行全局初始化
 }

@@ -12,7 +12,7 @@ import (
 	"time"
 	"utils/authority"
 	"utils/global"
-	log "utils/logger"
+	log "utils/glog"
 )
 
 func UploadifyWebmaster(w http.ResponseWriter, r *http.Request) {
